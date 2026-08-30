@@ -10,823 +10,2169 @@
     --bg: #f4f0e8;
     --bg2: #faf8f3;
     --card: rgba(255,255,255,.76);
+
     --gold: #b49a62;
     --gold-dark: #8e7648;
     --gold-light: #d8c69b;
+
     --text: #24231f;
     --soft: #777166;
     --light: #a39b8d;
+
     --border: rgba(180,154,98,.42);
+
     --shadow: 0 12px 40px rgba(82,70,45,.08);
+
     --radius: 22px;
 }
 
-* { box-sizing: border-box; }
+* {
+    box-sizing: border-box;
+}
 
-html { scroll-behavior: smooth; }
+html {
+    scroll-behavior: smooth;
+}
 
 body {
     margin: 0;
     min-height: 100vh;
+
     color: var(--text);
-    font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+
+    font-family:
+        Inter,
+        ui-sans-serif,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
     background:
-        radial-gradient(circle at 50% -20%, rgba(214,198,155,.25), transparent 36%),
-        linear-gradient(135deg, var(--bg), var(--bg2) 50%, #f1ece2);
+        radial-gradient(
+            circle at 50% -20%,
+            rgba(214,198,155,.25),
+            transparent 36%
+        ),
+        linear-gradient(
+            135deg,
+            var(--bg),
+            var(--bg2) 50%,
+            #f1ece2
+        );
 }
 
-button, input { font: inherit; }
+button,
+input {
+    font: inherit;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
 
 header {
     padding: 34px 20px 30px;
+
     text-align: center;
-    border-bottom: 1px solid rgba(180,154,98,.22);
-    background: rgba(255,255,255,.32);
-    backdrop-filter: blur(16px);
+
+    border-bottom:
+        1px solid rgba(180,154,98,.22);
+
+    background:
+        rgba(255,255,255,.32);
+
+    backdrop-filter:
+        blur(16px);
 }
 
 .brand {
     display: inline-flex;
     align-items: center;
+
     gap: 12px;
 }
 
 .brand-symbol {
     width: 42px;
     height: 42px;
+
     display: grid;
     place-items: center;
+
     border-radius: 50%;
-    border: 1px solid var(--border);
-    background: rgba(255,255,255,.68);
-    color: var(--gold-dark);
+
+    border:
+        1px solid var(--border);
+
+    background:
+        rgba(255,255,255,.68);
+
+    color:
+        var(--gold-dark);
+
     font-size: 20px;
-    box-shadow: 0 7px 20px rgba(100,86,54,.08);
+
+    box-shadow:
+        0 7px 20px
+        rgba(100,86,54,.08);
 }
 
 header h1 {
     margin: 0;
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: clamp(27px,4vw,36px);
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(27px,4vw,36px);
+
     font-weight: 500;
-    letter-spacing: .04em;
+
+    letter-spacing:
+        .04em;
 }
 
 header p {
-    margin: 9px 0 0;
-    color: var(--soft);
-    font-size: 12px;
-    letter-spacing: .2em;
-    text-transform: uppercase;
+    margin:
+        9px 0 0;
+
+    color:
+        var(--soft);
+
+    font-size:
+        12px;
+
+    letter-spacing:
+        .2em;
+
+    text-transform:
+        uppercase;
 }
 
+
+/* =========================================================
+   LAYOUT
+   ========================================================= */
+
 .container {
-    width: min(1180px,92%);
-    margin: 42px auto;
+    width:
+        min(1180px,92%);
+
+    margin:
+        42px auto;
 }
 
 .panel {
     position: relative;
-    margin-bottom: 26px;
-    padding: 28px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    background: var(--card);
-    backdrop-filter: blur(18px);
-    box-shadow: var(--shadow);
+
+    margin-bottom:
+        26px;
+
+    padding:
+        28px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        var(--radius);
+
+    background:
+        var(--card);
+
+    backdrop-filter:
+        blur(18px);
+
+    box-shadow:
+        var(--shadow);
 }
 
 .panel::before {
     content: "";
+
     position: absolute;
+
     inset: 8px;
+
     pointer-events: none;
-    border: 1px solid rgba(180,154,98,.09);
-    border-radius: calc(var(--radius) - 8px);
+
+    border:
+        1px solid
+        rgba(180,154,98,.09);
+
+    border-radius:
+        calc(
+            var(--radius) - 8px
+        );
 }
 
 .panel-title {
     position: relative;
+
     display: flex;
+
     align-items: center;
+
     gap: 10px;
 }
 
 .panel h2 {
     margin: 0;
-    font: 500 23px Georgia, "Times New Roman", serif;
+
+    font:
+        500 23px
+        Georgia,
+        "Times New Roman",
+        serif;
 }
 
-.panel-icon { color: var(--gold-dark); }
+.panel-icon {
+    color:
+        var(--gold-dark);
+}
 
 .small-note {
     position: relative;
-    margin: 7px 0 18px;
-    color: var(--soft);
-    font-size: 13px;
-    line-height: 1.55;
+
+    margin:
+        7px 0 18px;
+
+    color:
+        var(--soft);
+
+    font-size:
+        13px;
+
+    line-height:
+        1.55;
 }
+
+
+/* =========================================================
+   CAPTURA
+   ========================================================= */
 
 .capture-grid {
     position: relative;
+
     display: grid;
-    grid-template-columns: 1fr 1fr;
+
+    grid-template-columns:
+        1fr 1fr;
+
     gap: 18px;
 }
 
 .capture-box {
-    padding: 25px;
-    border: 1px solid rgba(180,154,98,.27);
-    border-radius: 18px;
-    background: rgba(255,255,255,.46);
-    text-align: center;
+    padding:
+        25px;
+
+    border:
+        1px solid
+        rgba(180,154,98,.27);
+
+    border-radius:
+        18px;
+
+    background:
+        rgba(255,255,255,.46);
+
+    text-align:
+        center;
 }
 
 .capture-box h3 {
-    margin: 0 0 7px;
-    font: 500 20px Georgia, serif;
+    margin:
+        0 0 7px;
+
+    font:
+        500 20px
+        Georgia,
+        serif;
 }
 
 .capture-box p {
-    min-height: 42px;
-    margin: 0 0 17px;
-    color: var(--soft);
-    font-size: 12px;
-    line-height: 1.5;
+    min-height:
+        42px;
+
+    margin:
+        0 0 17px;
+
+    color:
+        var(--soft);
+
+    font-size:
+        12px;
+
+    line-height:
+        1.5;
 }
 
 .record-button {
-    position: relative;
-    width: 106px;
-    height: 106px;
-    border-radius: 50%;
-    border: 1px solid var(--gold);
-    background: linear-gradient(145deg,#fffdf8,#eee6d5);
-    color: var(--gold-dark);
-    font-size: 34px;
-    cursor: pointer;
-    box-shadow: 0 12px 30px rgba(107,88,45,.14);
-    transition: .22s;
+    position:
+        relative;
+
+    width:
+        106px;
+
+    height:
+        106px;
+
+    border-radius:
+        50%;
+
+    border:
+        1px solid
+        var(--gold);
+
+    background:
+        linear-gradient(
+            145deg,
+            #fffdf8,
+            #eee6d5
+        );
+
+    color:
+        var(--gold-dark);
+
+    font-size:
+        34px;
+
+    cursor:
+        pointer;
+
+    box-shadow:
+        0 12px 30px
+        rgba(107,88,45,.14);
+
+    transition:
+        .22s;
 }
 
 .record-button:hover {
-    transform: translateY(-2px) scale(1.03);
+    transform:
+        translateY(-2px)
+        scale(1.03);
 }
 
 .record-button.recording {
-    animation: pulseRecord .9s infinite alternate;
+    animation:
+        pulseRecord
+        .9s
+        infinite
+        alternate;
 }
 
 @keyframes pulseRecord {
-    from { box-shadow: 0 0 0 0 rgba(180,154,98,.10); }
-    to { box-shadow: 0 0 0 13px rgba(180,154,98,.09); }
+    from {
+        box-shadow:
+            0 0 0 0
+            rgba(180,154,98,.10);
+    }
+
+    to {
+        box-shadow:
+            0 0 0 13px
+            rgba(180,154,98,.09);
+    }
 }
 
 .sound-name {
-    width: min(420px,90%);
-    margin-top: 17px;
-    padding: 13px 15px;
-    border: 1px solid rgba(180,154,98,.38);
-    border-radius: 12px;
-    outline: none;
-    background: rgba(255,255,255,.75);
-    color: var(--text);
+    width:
+        min(420px,90%);
+
+    margin-top:
+        17px;
+
+    padding:
+        13px 15px;
+
+    border:
+        1px solid
+        rgba(180,154,98,.38);
+
+    border-radius:
+        12px;
+
+    outline:
+        none;
+
+    background:
+        rgba(255,255,255,.75);
+
+    color:
+        var(--text);
 }
 
 .sound-name:focus {
-    border-color: var(--gold);
-    box-shadow: 0 0 0 4px rgba(180,154,98,.09);
+    border-color:
+        var(--gold);
+
+    box-shadow:
+        0 0 0 4px
+        rgba(180,154,98,.09);
 }
 
 #recordStatus {
-    margin-top: 15px;
-    color: var(--soft);
-    font-size: 13px;
-    min-height: 20px;
+    min-height:
+        20px;
+
+    margin-top:
+        15px;
+
+    color:
+        var(--soft);
+
+    font-size:
+        13px;
 }
 
 .hunt-status {
-    margin-top: 12px;
-    color: var(--gold-dark);
-    font-size: 12px;
-    min-height: 18px;
+    min-height:
+        18px;
+
+    margin-top:
+        12px;
+
+    color:
+        var(--gold-dark);
+
+    font-size:
+        12px;
 }
 
 .premium-button {
-    padding: 12px 23px;
-    border: 1px solid var(--gold);
-    border-radius: 999px;
-    background: linear-gradient(145deg,#c4a96c,#947847);
-    color: #fff;
-    cursor: pointer;
-    font-size: 12px;
-    font-weight: 650;
-    letter-spacing: .07em;
-    transition: .2s;
+    padding:
+        12px 23px;
+
+    border:
+        1px solid
+        var(--gold);
+
+    border-radius:
+        999px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #c4a96c,
+            #947847
+        );
+
+    color:
+        #fff;
+
+    cursor:
+        pointer;
+
+    font-size:
+        12px;
+
+    font-weight:
+        650;
+
+    letter-spacing:
+        .07em;
+
+    transition:
+        .2s;
 }
 
 .premium-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 9px 22px rgba(100,78,38,.16);
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 9px 22px
+        rgba(100,78,38,.16);
 }
 
 .light-button {
-    background: rgba(255,255,255,.72);
-    color: var(--gold-dark);
+    background:
+        rgba(255,255,255,.72);
+
+    color:
+        var(--gold-dark);
 }
 
 .danger-button {
-    background: #6e5940;
+    background:
+        #6e5940;
 }
 
 .hunt-actions {
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+
+    justify-content:
+        center;
+
+    flex-wrap:
+        wrap;
+
     gap: 8px;
 }
 
+
+/* =========================================================
+   INVENTÁRIO
+   ========================================================= */
+
 .inventory-header {
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    gap: 15px;
-    margin-bottom: 20px;
+    position:
+        relative;
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    gap:
+        15px;
+
+    margin-bottom:
+        20px;
 }
 
 .sound-counter {
-    height: fit-content;
-    padding: 7px 11px;
-    border: 1px solid rgba(180,154,98,.32);
-    border-radius: 999px;
-    color: var(--gold-dark);
-    background: rgba(255,255,255,.55);
-    font-size: 12px;
+    height:
+        fit-content;
+
+    padding:
+        7px 11px;
+
+    border:
+        1px solid
+        rgba(180,154,98,.32);
+
+    border-radius:
+        999px;
+
+    color:
+        var(--gold-dark);
+
+    background:
+        rgba(255,255,255,.55);
+
+    font-size:
+        12px;
 }
 
 .inventory {
-    position: relative;
-    display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(240px,1fr));
-    gap: 18px;
+    position:
+        relative;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fill,
+            minmax(245px,1fr)
+        );
+
+    gap:
+        18px;
 }
 
 .empty {
-    grid-column: 1/-1;
-    padding: 45px 20px;
-    text-align: center;
-    color: var(--light);
+    grid-column:
+        1/-1;
+
+    padding:
+        45px 20px;
+
+    text-align:
+        center;
+
+    color:
+        var(--light);
 }
 
 .sound-card {
-    position: relative;
-    overflow: hidden;
-    padding: 20px;
-    border: 1px solid rgba(180,154,98,.26);
-    border-radius: 18px;
-    background: rgba(255,255,255,.68);
-    box-shadow: 0 8px 25px rgba(80,69,48,.06);
-    cursor: pointer;
-    transition: .24s;
+    --rarity-color:
+        var(--gold);
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+
+    padding:
+        20px;
+
+    border:
+        1px solid
+        rgba(180,154,98,.26);
+
+    border-radius:
+        18px;
+
+    background:
+        rgba(255,255,255,.68);
+
+    box-shadow:
+        0 8px 25px
+        rgba(80,69,48,.06);
+
+    cursor:
+        pointer;
+
+    transition:
+        .24s;
+}
+
+.sound-card::before {
+    content: "";
+
+    position:
+        absolute;
+
+    top:
+        0;
+
+    left:
+        22%;
+
+    right:
+        22%;
+
+    height:
+        1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--rarity-color),
+            transparent
+        );
+
+    opacity:
+        .55;
 }
 
 .sound-card:hover {
-    transform: translateY(-5px);
-    border-color: rgba(180,154,98,.55);
-    box-shadow: 0 17px 40px rgba(82,70,45,.12);
+    transform:
+        translateY(-5px);
+
+    border-color:
+        var(--rarity-color);
+
+    box-shadow:
+        0 17px 40px
+        rgba(82,70,45,.12);
 }
 
 .sound-card.selected {
-    border-color: var(--gold);
-    box-shadow: 0 0 0 2px rgba(180,154,98,.1),0 16px 35px rgba(91,75,43,.12);
+    border-color:
+        var(--gold);
+
+    box-shadow:
+        0 0 0 2px
+        rgba(180,154,98,.1),
+        0 16px 35px
+        rgba(91,75,43,.12);
+}
+
+.sound-card.rarity-mitico {
+    border-color:
+        rgba(138,49,56,.42);
+}
+
+.sound-card.rarity-lendario {
+    border-color:
+        rgba(154,114,44,.42);
+}
+
+.sound-card.rarity-epico {
+    border-color:
+        rgba(101,72,117,.38);
+}
+
+.sound-card.rarity-raro {
+    border-color:
+        rgba(51,79,115,.32);
 }
 
 .sound-orb-container {
-    height: 122px;
-    display: grid;
-    place-items: center;
+    height:
+        118px;
+
+    display:
+        grid;
+
+    place-items:
+        center;
 }
 
 .sound-orb,
-.fighter-orb {
-    width: 78px;
-    height: 78px;
-    border-radius: 50%;
-    box-shadow: 0 11px 29px currentColor;
-    transition: transform .05s linear,border-radius .08s linear;
+.fighter-orb,
+.profile-orb {
+    width:
+        78px;
+
+    height:
+        78px;
+
+    border-radius:
+        50%;
+
+    box-shadow:
+        0 11px 29px
+        currentColor;
+
+    transition:
+        transform .05s linear,
+        border-radius .08s linear;
 }
 
 .sound-card h3 {
-    margin: 10px 0 4px;
-    text-align: center;
-    font: 500 18px Georgia, serif;
+    margin:
+        8px 0 4px;
+
+    text-align:
+        center;
+
+    font:
+        500 18px
+        Georgia,
+        serif;
 }
 
 .rarity {
-    margin-bottom: 6px;
-    text-align: center;
-    font-size: 11px;
-    font-weight: 750;
-    letter-spacing: .14em;
+    margin-bottom:
+        5px;
+
+    text-align:
+        center;
+
+    font-size:
+        11px;
+
+    font-weight:
+        750;
+
+    letter-spacing:
+        .14em;
 }
 
 .origin {
-    margin-bottom: 14px;
-    color: var(--light);
-    text-align: center;
-    font-size: 10px;
-    letter-spacing: .08em;
-    text-transform: uppercase;
+    margin-bottom:
+        12px;
+
+    color:
+        var(--light);
+
+    text-align:
+        center;
+
+    font-size:
+        10px;
+
+    letter-spacing:
+        .08em;
+
+    text-transform:
+        uppercase;
 }
 
+
+/* =========================================================
+   NIVEL / XP
+   ========================================================= */
+
+.level-row {
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        center;
+
+    gap:
+        10px;
+
+    margin-bottom:
+        10px;
+
+    color:
+        var(--soft);
+
+    font-size:
+        11px;
+}
+
+.level-badge {
+    padding:
+        5px 8px;
+
+    border:
+        1px solid
+        rgba(180,154,98,.3);
+
+    border-radius:
+        999px;
+
+    color:
+        var(--gold-dark);
+
+    background:
+        rgba(180,154,98,.06);
+
+    font-weight:
+        700;
+}
+
+.power {
+    font-weight:
+        700;
+
+    color:
+        var(--text);
+}
+
+.xp-bar {
+    height:
+        5px;
+
+    overflow:
+        hidden;
+
+    margin-bottom:
+        14px;
+
+    border-radius:
+        99px;
+
+    background:
+        rgba(80,70,55,.09);
+}
+
+.xp-progress {
+    height:
+        100%;
+
+    border-radius:
+        99px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--gold-dark),
+            var(--gold-light)
+        );
+}
+
+
+/* =========================================================
+   ATRIBUTOS
+   ========================================================= */
+
 .stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    padding-top: 13px;
-    border-top: 1px solid rgba(180,154,98,.15);
-    color: var(--soft);
-    font-size: 12px;
+    display:
+        grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:
+        8px;
+
+    padding-top:
+        13px;
+
+    border-top:
+        1px solid
+        rgba(180,154,98,.15);
+
+    color:
+        var(--soft);
+
+    font-size:
+        12px;
 }
 
 .stat-value {
-    color: var(--text);
-    font-weight: 700;
+    color:
+        var(--text);
+
+    font-weight:
+        700;
 }
+
+
+/* =========================================================
+   HISTÓRICO
+   ========================================================= */
 
 .history {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 15px;
-    padding: 10px;
-    border-radius: 10px;
-    background: rgba(180,154,98,.07);
-    color: var(--soft);
-    font-size: 11px;
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    gap:
+        10px;
+
+    margin-top:
+        15px;
+
+    padding:
+        10px;
+
+    border-radius:
+        10px;
+
+    background:
+        rgba(180,154,98,.07);
+
+    color:
+        var(--soft);
+
+    font-size:
+        11px;
 }
 
-.history strong { color: var(--text); }
+.history strong {
+    color:
+        var(--text);
+}
+
+
+/* =========================================================
+   BOTÕES DO CARD
+   ========================================================= */
 
 .card-actions {
-    display: flex;
-    gap: 8px;
-    margin-top: 14px;
+    display:
+        grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:
+        8px;
+
+    margin-top:
+        14px;
 }
 
 .card-button {
-    flex: 1;
-    padding: 10px 7px;
-    border: 1px solid rgba(180,154,98,.32);
-    border-radius: 10px;
-    background: rgba(255,255,255,.64);
-    color: var(--text);
-    cursor: pointer;
-    font-size: 12px;
+    padding:
+        10px 7px;
+
+    border:
+        1px solid
+        rgba(180,154,98,.32);
+
+    border-radius:
+        10px;
+
+    background:
+        rgba(255,255,255,.64);
+
+    color:
+        var(--text);
+
+    cursor:
+        pointer;
+
+    font-size:
+        11px;
 }
 
 .card-button:hover,
 .select-button.selected-button {
-    border-color: var(--gold);
-    color: var(--gold-dark);
-    background: rgba(212,194,151,.13);
+    border-color:
+        var(--gold);
+
+    color:
+        var(--gold-dark);
+
+    background:
+        rgba(212,194,151,.13);
 }
 
+
+/* =========================================================
+   ARENA
+   ========================================================= */
+
 .battle-zone {
-    position: relative;
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    gap: 22px;
-    margin-top: 22px;
+    position:
+        relative;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        1fr auto 1fr;
+
+    gap:
+        22px;
+
+    margin-top:
+        22px;
 }
 
 .fighter {
-    min-height: 190px;
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    border: 1px solid rgba(180,154,98,.3);
-    border-radius: 17px;
-    background: rgba(255,255,255,.55);
+    min-height:
+        190px;
+
+    padding:
+        24px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    justify-content:
+        center;
+
+    text-align:
+        center;
+
+    border:
+        1px solid
+        rgba(180,154,98,.3);
+
+    border-radius:
+        17px;
+
+    background:
+        rgba(255,255,255,.55);
 }
 
 .fighter-orb {
-    width: 70px;
-    height: 70px;
-    margin: 4px auto 15px;
+    width:
+        70px;
+
+    height:
+        70px;
+
+    margin:
+        4px auto 15px;
 }
 
 .fighter-name {
-    font: 500 20px Georgia, serif;
+    font:
+        500 20px
+        Georgia,
+        serif;
 }
 
 .fighter-rarity {
-    margin-top: 5px;
-    font-size: 10px;
-    font-weight: 750;
-    letter-spacing: .13em;
+    margin-top:
+        5px;
+
+    font-size:
+        10px;
+
+    font-weight:
+        750;
+
+    letter-spacing:
+        .13em;
+}
+
+.fighter-info {
+    margin-top:
+        7px;
+
+    color:
+        var(--soft);
+
+    font-size:
+        11px;
 }
 
 .vs {
-    display: grid;
-    place-items: center;
-    color: var(--gold-dark);
-    font: 500 26px Georgia, serif;
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    color:
+        var(--gold-dark);
+
+    font:
+        500 26px
+        Georgia,
+        serif;
 }
 
 .battle-controls {
-    position: relative;
-    margin-top: 23px;
-    text-align: center;
+    position:
+        relative;
+
+    margin-top:
+        23px;
+
+    text-align:
+        center;
 }
 
 .battle-button {
-    padding: 13px 27px;
-    border: 1px solid var(--gold);
-    border-radius: 999px;
-    background: linear-gradient(145deg,#c4a96c,#947847);
-    color: white;
-    cursor: pointer;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: .08em;
+    padding:
+        13px 27px;
+
+    border:
+        1px solid
+        var(--gold);
+
+    border-radius:
+        999px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #c4a96c,
+            #947847
+        );
+
+    color:
+        white;
+
+    cursor:
+        pointer;
+
+    font-size:
+        12px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        .08em;
 }
 
 .battle-button:disabled {
-    opacity: .35;
-    cursor: not-allowed;
+    opacity:
+        .35;
+
+    cursor:
+        not-allowed;
 }
 
 .secondary-button {
-    margin-left: 8px;
-    background: rgba(255,255,255,.73);
-    color: var(--gold-dark);
+    margin-left:
+        8px;
+
+    background:
+        rgba(255,255,255,.73);
+
+    color:
+        var(--gold-dark);
 }
 
+
+/* =========================================================
+   RODADAS
+   ========================================================= */
+
 .rounds {
-    position: relative;
-    display: grid;
-    gap: 12px;
-    margin-top: 25px;
+    position:
+        relative;
+
+    display:
+        grid;
+
+    gap:
+        12px;
+
+    margin-top:
+        25px;
 }
 
 .round {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    gap: 13px;
-    align-items: center;
-    padding: 15px;
-    border: 1px solid rgba(180,154,98,.24);
-    border-radius: 14px;
-    background: rgba(255,255,255,.5);
-    animation: reveal .35s ease;
+    display:
+        grid;
+
+    grid-template-columns:
+        1fr auto 1fr;
+
+    gap:
+        13px;
+
+    align-items:
+        center;
+
+    padding:
+        15px;
+
+    border:
+        1px solid
+        rgba(180,154,98,.24);
+
+    border-radius:
+        14px;
+
+    background:
+        rgba(255,255,255,.5);
+
+    animation:
+        reveal .35s ease;
 }
 
 @keyframes reveal {
-    from { opacity:0; transform:translateY(10px); }
-    to { opacity:1; transform:translateY(0); }
+    from {
+        opacity:
+            0;
+
+        transform:
+            translateY(10px);
+    }
+
+    to {
+        opacity:
+            1;
+
+        transform:
+            translateY(0);
+    }
 }
 
 .attribute-box {
-    padding: 12px;
-    text-align: center;
-    border: 1px solid rgba(180,154,98,.15);
-    border-radius: 11px;
-    background: rgba(255,255,255,.6);
+    padding:
+        12px;
+
+    text-align:
+        center;
+
+    border:
+        1px solid
+        rgba(180,154,98,.15);
+
+    border-radius:
+        11px;
+
+    background:
+        rgba(255,255,255,.6);
 }
 
 .attribute-box.winner {
-    border-color: var(--gold);
-    background: rgba(213,194,149,.14);
+    border-color:
+        var(--gold);
+
+    background:
+        rgba(213,194,149,.14);
 }
 
 .attribute-name {
-    color: var(--soft);
-    font-size: 12px;
+    color:
+        var(--soft);
+
+    font-size:
+        12px;
 }
 
 .attribute-value {
-    margin-top: 4px;
-    font: 500 26px Georgia, serif;
+    margin-top:
+        4px;
+
+    font:
+        500 26px
+        Georgia,
+        serif;
 }
 
 .round-vs {
-    color: var(--gold-dark);
-    font-size: 11px;
-    font-weight: bold;
+    color:
+        var(--gold-dark);
+
+    font-size:
+        11px;
+
+    font-weight:
+        bold;
 }
 
 .round-winner {
-    grid-column: 1/-1;
-    color: var(--gold-dark);
-    text-align: center;
-    font-size: 12px;
-    font-weight: 650;
+    grid-column:
+        1/-1;
+
+    color:
+        var(--gold-dark);
+
+    text-align:
+        center;
+
+    font-size:
+        12px;
+
+    font-weight:
+        650;
 }
 
 .current-score {
-    margin-top: 15px;
-    text-align: center;
-    color: var(--soft);
-    font-size: 12px;
+    margin-top:
+        15px;
+
+    text-align:
+        center;
+
+    color:
+        var(--soft);
+
+    font-size:
+        12px;
 }
 
 .final-result {
-    position: relative;
-    margin-top: 22px;
-    padding: 24px;
-    border: 1px solid var(--gold);
-    border-radius: 16px;
-    text-align: center;
-    background: linear-gradient(145deg,rgba(255,255,255,.72),rgba(224,210,177,.2));
-    font: 500 25px Georgia, serif;
-    animation: reveal .4s ease;
+    position:
+        relative;
+
+    margin-top:
+        22px;
+
+    padding:
+        24px;
+
+    border:
+        1px solid
+        var(--gold);
+
+    border-radius:
+        16px;
+
+    text-align:
+        center;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.72),
+            rgba(224,210,177,.2)
+        );
+
+    font:
+        500 25px
+        Georgia,
+        serif;
+
+    animation:
+        reveal .4s ease;
 }
 
 .score {
-    margin-top: 8px;
-    color: var(--soft);
-    font: 13px Inter,Arial,sans-serif;
+    margin-top:
+        8px;
+
+    color:
+        var(--soft);
+
+    font:
+        13px
+        Inter,
+        Arial,
+        sans-serif;
+}
+
+.xp-reward {
+    margin-top:
+        12px;
+
+    color:
+        var(--gold-dark);
+
+    font:
+        12px
+        Inter,
+        Arial,
+        sans-serif;
 }
 
 .winner-pulse {
-    animation: winnerPulse .55s ease;
+    animation:
+        winnerPulse
+        .55s ease;
 }
 
 @keyframes winnerPulse {
-    50% { transform: scale(1.22); filter: brightness(1.18); }
+    50% {
+        transform:
+            scale(1.22);
+
+        filter:
+            brightness(1.18);
+    }
 }
 
-.version {
-    padding: 5px 20px 35px;
-    text-align: center;
-    color: var(--light);
-    font-size: 10px;
-    letter-spacing: .14em;
+
+/* =========================================================
+   MODAIS
+   ========================================================= */
+
+.modal {
+    display:
+        none;
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    z-index:
+        999;
+
+    place-items:
+        center;
+
+    padding:
+        20px;
+
+    background:
+        rgba(41,37,29,.45);
+
+    backdrop-filter:
+        blur(9px);
 }
 
-/* ALERTA DE CAPTURA */
-
-.capture-modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    z-index: 999;
-    place-items: center;
-    padding: 20px;
-    background: rgba(41,37,29,.45);
-    backdrop-filter: blur(9px);
+.modal.active {
+    display:
+        grid;
 }
-
-.capture-modal.active { display: grid; }
 
 .modal-card {
-    width: min(470px,100%);
-    padding: 34px;
-    border: 1px solid var(--gold);
-    border-radius: 24px;
-    background: #faf7ef;
-    text-align: center;
-    box-shadow: 0 30px 90px rgba(34,29,20,.28);
-    animation: modalIn .35s ease;
+    width:
+        min(470px,100%);
+
+    max-height:
+        90vh;
+
+    overflow-y:
+        auto;
+
+    padding:
+        34px;
+
+    border:
+        1px solid
+        var(--gold);
+
+    border-radius:
+        24px;
+
+    background:
+        #faf7ef;
+
+    text-align:
+        center;
+
+    box-shadow:
+        0 30px 90px
+        rgba(34,29,20,.28);
+
+    animation:
+        modalIn .35s ease;
 }
 
 @keyframes modalIn {
-    from { opacity:0; transform:scale(.94); }
-    to { opacity:1; transform:scale(1); }
+    from {
+        opacity:
+            0;
+
+        transform:
+            scale(.94);
+    }
+
+    to {
+        opacity:
+            1;
+
+        transform:
+            scale(1);
+    }
 }
 
 .modal-symbol {
-    width: 76px;
-    height: 76px;
-    margin: 0 auto 18px;
-    display: grid;
-    place-items: center;
-    border: 1px solid var(--gold);
-    border-radius: 50%;
-    color: var(--gold-dark);
-    font-size: 31px;
-    animation: alertPulse .7s infinite alternate;
+    width:
+        76px;
+
+    height:
+        76px;
+
+    margin:
+        0 auto 18px;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    border:
+        1px solid
+        var(--gold);
+
+    border-radius:
+        50%;
+
+    color:
+        var(--gold-dark);
+
+    font-size:
+        31px;
+}
+
+.capture-alert-symbol {
+    animation:
+        alertPulse
+        .7s
+        infinite
+        alternate;
 }
 
 @keyframes alertPulse {
-    to { transform:scale(1.08); box-shadow:0 0 0 9px rgba(180,154,98,.09); }
+    to {
+        transform:
+            scale(1.08);
+
+        box-shadow:
+            0 0 0 9px
+            rgba(180,154,98,.09);
+    }
 }
 
 .modal-card h2 {
-    margin: 0;
-    font: 500 27px Georgia, serif;
+    margin:
+        0;
+
+    font:
+        500 27px
+        Georgia,
+        serif;
 }
 
 .modal-card p {
-    color: var(--soft);
-    line-height: 1.6;
+    color:
+        var(--soft);
+
+    line-height:
+        1.6;
+
+    font-size:
+        13px;
 }
 
 .capture-countdown {
-    margin: 17px 0;
-    color: var(--gold-dark);
-    font: 500 42px Georgia, serif;
+    margin:
+        17px 0;
+
+    color:
+        var(--gold-dark);
+
+    font:
+        500 42px
+        Georgia,
+        serif;
 }
 
 .modal-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 9px;
-    flex-wrap: wrap;
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    gap:
+        9px;
+
+    flex-wrap:
+        wrap;
 }
 
+
+/* =========================================================
+   RENOMEAR
+   ========================================================= */
+
+.rename-input {
+    width:
+        100%;
+
+    margin:
+        20px 0;
+
+    padding:
+        14px 16px;
+
+    border:
+        1px solid
+        rgba(180,154,98,.45);
+
+    border-radius:
+        12px;
+
+    outline:
+        none;
+
+    background:
+        #fffdf8;
+
+    color:
+        var(--text);
+}
+
+.rename-input:focus {
+    border-color:
+        var(--gold);
+
+    box-shadow:
+        0 0 0 4px
+        rgba(180,154,98,.1);
+}
+
+
+/* =========================================================
+   PERFIL
+   ========================================================= */
+
+.profile-orb {
+    width:
+        110px;
+
+    height:
+        110px;
+
+    margin:
+        6px auto 20px;
+}
+
+.profile-subtitle {
+    margin-top:
+        5px;
+
+    color:
+        var(--soft);
+
+    font-size:
+        11px;
+
+    letter-spacing:
+        .1em;
+
+    text-transform:
+        uppercase;
+}
+
+.profile-grid {
+    display:
+        grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:
+        10px;
+
+    margin:
+        20px 0;
+}
+
+.profile-box {
+    padding:
+        14px 10px;
+
+    border:
+        1px solid
+        rgba(180,154,98,.2);
+
+    border-radius:
+        12px;
+
+    background:
+        rgba(255,255,255,.55);
+}
+
+.profile-label {
+    color:
+        var(--soft);
+
+    font-size:
+        10px;
+
+    text-transform:
+        uppercase;
+
+    letter-spacing:
+        .08em;
+}
+
+.profile-value {
+    margin-top:
+        5px;
+
+    font:
+        500 20px
+        Georgia,
+        serif;
+}
+
+.profile-stats {
+    display:
+        grid;
+
+    gap:
+        8px;
+
+    margin:
+        20px 0;
+}
+
+.profile-stat {
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    padding:
+        11px 12px;
+
+    border-bottom:
+        1px solid
+        rgba(180,154,98,.14);
+
+    color:
+        var(--soft);
+
+    font-size:
+        12px;
+}
+
+.profile-stat strong {
+    color:
+        var(--text);
+}
+
+.profile-xp {
+    margin:
+        12px 0 20px;
+
+    color:
+        var(--soft);
+
+    font-size:
+        12px;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.version {
+    padding:
+        5px 20px 35px;
+
+    text-align:
+        center;
+
+    color:
+        var(--light);
+
+    font-size:
+        10px;
+
+    letter-spacing:
+        .14em;
+}
+
+
+/* =========================================================
+   RESPONSIVO
+   ========================================================= */
+
 @media(max-width:720px) {
+
     .capture-grid,
     .battle-zone,
     .round {
-        grid-template-columns:1fr;
+        grid-template-columns:
+            1fr;
     }
 
     .container {
-        width:94%;
-        margin-top:24px;
+        width:
+            94%;
+
+        margin-top:
+            24px;
     }
 
-    .panel { padding:21px; }
+    .panel {
+        padding:
+            21px;
+    }
 
-    .card-actions { flex-direction:column; }
-
-    .inventory-header { flex-direction:column; }
+    .inventory-header {
+        flex-direction:
+            column;
+    }
 
     .round-vs,
-    .vs { text-align:center; }
+    .vs {
+        text-align:
+            center;
+    }
 
     .secondary-button {
-        margin:8px 0 0;
+        margin:
+            8px 0 0;
+    }
+
+    .profile-grid {
+        grid-template-columns:
+            1fr 1fr;
     }
 }
+
 </style>
 </head>
+
 
 <body>
 
 <header>
+
     <div class="brand">
-        <div class="brand-symbol">♪</div>
-        <h1>Batalha dos Sons</h1>
+
+        <div class="brand-symbol">
+            ♪
+        </div>
+
+        <h1>
+            Batalha dos Sons
+        </h1>
+
     </div>
-    <p>Capture · Colecione · Batalhe</p>
+
+    <p>
+        Capture · Colecione · Batalhe
+    </p>
+
 </header>
+
 
 <div class="container">
 
+
+<!-- ======================================================
+     OBTER SONS
+     ====================================================== -->
+
 <section class="panel">
+
     <div class="panel-title">
-        <span class="panel-icon">◇</span>
-        <h2>Obter Sons</h2>
+
+        <span class="panel-icon">
+            ◇
+        </span>
+
+        <h2>
+            Obter Sons
+        </h2>
+
     </div>
 
     <p class="small-note">
-        Você pode criar um som quando quiser ou ativar a Caçada para receber oportunidades especiais de captura.
+        Crie sons livremente ou mantenha a Caçada Sonora ativa
+        para encontrar capturas especiais.
     </p>
+
 
     <div class="capture-grid">
 
+
         <div class="capture-box">
-            <h3>Criar Som</h3>
+
+            <h3>
+                Criar Som
+            </h3>
+
             <p>
-                Grave livremente. Sons criados podem alcançar no máximo a raridade Raro.
+                Grave quando quiser. Sons criados podem alcançar
+                no máximo a raridade Raro.
             </p>
 
-            <button id="recordButton" class="record-button">🎙️</button>
+
+            <button
+                id="recordButton"
+                class="record-button"
+            >
+                🎙️
+            </button>
+
 
             <div>
+
                 <input
                     id="soundName"
                     class="sound-name"
                     maxlength="30"
                     placeholder="Nome do som (opcional)"
                 >
+
             </div>
+
 
             <div id="recordStatus">
                 Clique no microfone para gravar.
             </div>
+
         </div>
 
+
         <div class="capture-box">
-            <h3>Caçada Sonora</h3>
+
+            <h3>
+                Caçada Sonora
+            </h3>
+
             <p>
-                Ative a Caçada. Em algum momento o aplicativo chamará você para capturar um som inesperado.
+                Uma oportunidade pode surgir a qualquer momento.
+                Capturas podem alcançar as maiores raridades.
             </p>
 
+
             <div class="hunt-actions">
-                <button id="huntButton" class="premium-button">
+
+                <button
+                    id="huntButton"
+                    class="premium-button"
+                >
                     ATIVAR CAÇADA
                 </button>
 
-                <button id="testCaptureButton" class="premium-button light-button">
+
+                <button
+                    id="testCaptureButton"
+                    class="
+                        premium-button
+                        light-button
+                    "
+                >
                     TESTAR EVENTO
                 </button>
+
             </div>
 
-            <div id="huntStatus" class="hunt-status">
+
+            <div
+                id="huntStatus"
+                class="hunt-status"
+            >
                 Caçada desativada.
             </div>
+
         </div>
 
+
     </div>
+
 </section>
 
+
+<!-- ======================================================
+     INVENTÁRIO
+     ====================================================== -->
 
 <section class="panel">
 
     <div class="inventory-header">
+
         <div>
+
             <div class="panel-title">
-                <span class="panel-icon">◇</span>
-                <h2>Inventário</h2>
+
+                <span class="panel-icon">
+                    ◇
+                </span>
+
+                <h2>
+                    Inventário
+                </h2>
+
             </div>
 
             <p class="small-note">
-                Seus sons ficam salvos neste navegador.
+                Seus sons, progressão e histórico ficam salvos
+                neste navegador.
             </p>
+
         </div>
 
-        <div id="soundCounter" class="sound-counter">
+
+        <div
+            id="soundCounter"
+            class="sound-counter"
+        >
             0 sons
         </div>
+
     </div>
 
-    <div id="inventory" class="inventory">
+
+    <div
+        id="inventory"
+        class="inventory"
+    >
+
         <div class="empty">
             Sua coleção ainda está vazia.
         </div>
+
     </div>
 
 </section>
 
 
+<!-- ======================================================
+     ARENA
+     ====================================================== -->
+
 <section class="panel">
 
     <div class="panel-title">
-        <span class="panel-icon">◇</span>
-        <h2>Arena</h2>
+
+        <span class="panel-icon">
+            ◇
+        </span>
+
+        <h2>
+            Arena
+        </h2>
+
     </div>
 
+
     <p class="small-note">
-        Cada atributo é utilizado apenas uma vez. Os pareamentos são sorteados novamente em cada batalha.
+        Os cinco atributos são embaralhados.
+        Cada atributo aparece uma única vez por batalha.
+        Você decide quando revelar cada rodada.
     </p>
+
 
     <div class="battle-zone">
 
-        <div id="fighterA" class="fighter">
-            <div class="fighter-name">Som I</div>
-            <p class="small-note">Selecione um som.</p>
+
+        <div
+            id="fighterA"
+            class="fighter"
+        >
+
+            <div class="fighter-name">
+                Som I
+            </div>
+
+            <p class="small-note">
+                Selecione um som.
+            </p>
+
         </div>
 
-        <div class="vs">VS</div>
 
-        <div id="fighterB" class="fighter">
-            <div class="fighter-name">Som II</div>
-            <p class="small-note">Selecione outro som.</p>
+        <div class="vs">
+            VS
         </div>
+
+
+        <div
+            id="fighterB"
+            class="fighter"
+        >
+
+            <div class="fighter-name">
+                Som II
+            </div>
+
+            <p class="small-note">
+                Selecione outro som.
+            </p>
+
+        </div>
+
 
     </div>
 
+
     <div class="battle-controls">
 
-        <button id="battleButton" class="battle-button" disabled>
+
+        <button
+            id="battleButton"
+            class="battle-button"
+            disabled
+        >
             BATALHAR
         </button>
 
+
         <button
             id="nextRoundButton"
-            class="battle-button secondary-button"
+            class="
+                battle-button
+                secondary-button
+            "
             style="display:none;"
         >
             PRÓXIMA RODADA
         </button>
 
+
         <button
             id="resultButton"
-            class="battle-button secondary-button"
+            class="
+                battle-button
+                secondary-button
+            "
             style="display:none;"
         >
             VER RESULTADO
         </button>
 
+
         <button
             id="rematchButton"
-            class="battle-button secondary-button"
+            class="
+                battle-button
+                secondary-button
+            "
             style="display:none;"
         >
             REVANCHE
         </button>
 
+
     </div>
 
-    <div id="currentScore" class="current-score"></div>
 
-    <div id="rounds" class="rounds"></div>
+    <div
+        id="currentScore"
+        class="current-score"
+    ></div>
+
+
+    <div
+        id="rounds"
+        class="rounds"
+    ></div>
+
 
     <div
         id="finalResult"
@@ -838,26 +2184,45 @@ header p {
 
 </div>
 
+
 <div class="version">
-    BATALHA DOS SONS · V4
+    BATALHA DOS SONS · V5
 </div>
 
 
-<!-- ALERTA DE CAPTURA -->
+<!-- ======================================================
+     MODAL CAPTURA
+     ====================================================== -->
 
-<div id="captureModal" class="capture-modal">
+<div
+    id="captureModal"
+    class="modal"
+>
 
     <div class="modal-card">
 
-        <div class="modal-symbol">♪</div>
+        <div
+            class="
+                modal-symbol
+                capture-alert-symbol
+            "
+        >
+            ♪
+        </div>
 
-        <h2>CAPTURA DISPONÍVEL</h2>
+        <h2>
+            CAPTURA DISPONÍVEL
+        </h2>
 
         <p>
-            Grave algum som ao seu redor antes que a oportunidade desapareça.
+            Grave algum som ao seu redor
+            antes que a oportunidade desapareça.
         </p>
 
-        <div id="captureCountdown" class="capture-countdown">
+        <div
+            id="captureCountdown"
+            class="capture-countdown"
+        >
             10
         </div>
 
@@ -872,7 +2237,10 @@ header p {
 
             <button
                 id="ignoreCaptureButton"
-                class="premium-button light-button"
+                class="
+                    premium-button
+                    light-button
+                "
             >
                 IGNORAR
             </button>
@@ -884,31 +2252,158 @@ header p {
 </div>
 
 
+<!-- ======================================================
+     MODAL RENOMEAR
+     ====================================================== -->
+
+<div
+    id="renameModal"
+    class="modal"
+>
+
+    <div class="modal-card">
+
+        <div class="modal-symbol">
+            ✎
+        </div>
+
+        <h2>
+            Renomear Som
+        </h2>
+
+        <p>
+            O novo nome ficará salvo permanentemente
+            no seu inventário.
+        </p>
+
+
+        <input
+            id="renameInput"
+            class="rename-input"
+            maxlength="30"
+            placeholder="Novo nome"
+        >
+
+
+        <div class="modal-buttons">
+
+            <button
+                id="saveRenameButton"
+                class="premium-button"
+            >
+                SALVAR
+            </button>
+
+            <button
+                id="cancelRenameButton"
+                class="
+                    premium-button
+                    light-button
+                "
+            >
+                CANCELAR
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ======================================================
+     MODAL PERFIL
+     ====================================================== -->
+
+<div
+    id="profileModal"
+    class="modal"
+>
+
+    <div
+        id="profileContent"
+        class="modal-card"
+    ></div>
+
+</div>
+
+
 <script>
+
+/* =========================================================
+   CONFIGURAÇÃO
+   ========================================================= */
+
+const GAME_DATA_VERSION =
+    5;
+
+const XP_PER_LEVEL =
+    100;
+
+const XP_WIN =
+    35;
+
+const XP_DRAW =
+    25;
+
+const XP_LOSS =
+    15;
+
 
 /* =========================================================
    ESTADO
    ========================================================= */
 
-let mediaRecorder = null;
-let currentStream = null;
-let audioChunks = [];
-let recording = false;
+let mediaRecorder =
+    null;
 
-let recordingMode = "created";
+let currentStream =
+    null;
 
-let sounds = [];
+let audioChunks =
+    [];
 
-let selectedA = null;
-let selectedB = null;
+let recording =
+    false;
 
-let huntActive = false;
-let huntTimer = null;
+let recordingMode =
+    "created";
 
-let captureCountdownTimer = null;
-let captureSeconds = 10;
 
-let currentBattle = null;
+let sounds =
+    [];
+
+
+let selectedA =
+    null;
+
+let selectedB =
+    null;
+
+
+let huntActive =
+    false;
+
+let huntTimer =
+    null;
+
+
+let captureCountdownTimer =
+    null;
+
+let captureSeconds =
+    10;
+
+
+let currentBattle =
+    null;
+
+
+let renameTarget =
+    null;
+
+let profileTarget =
+    null;
 
 
 /* =========================================================
@@ -916,6 +2411,7 @@ let currentBattle = null;
    ========================================================= */
 
 const orbPalette = [
+
     "#16233F",
     "#123A32",
     "#542932",
@@ -928,6 +2424,7 @@ const orbPalette = [
     "#3C324D",
     "#27515A",
     "#664444"
+
 ];
 
 
@@ -936,6 +2433,7 @@ const orbPalette = [
    ========================================================= */
 
 const attributeInfo = {
+
     grave: {
         name: "Grave",
         icon: "◐"
@@ -960,14 +2458,18 @@ const attributeInfo = {
         name: "Complexidade",
         icon: "◇"
     }
+
 };
 
+
 const attributeKeys = [
+
     "grave",
     "agudo",
     "impacto",
     "duracao",
     "complexidade"
+
 ];
 
 
@@ -976,217 +2478,372 @@ const attributeKeys = [
    ========================================================= */
 
 const recordButton =
-    document.getElementById("recordButton");
+    document.getElementById(
+        "recordButton"
+    );
 
 const soundNameInput =
-    document.getElementById("soundName");
+    document.getElementById(
+        "soundName"
+    );
 
 const recordStatus =
-    document.getElementById("recordStatus");
+    document.getElementById(
+        "recordStatus"
+    );
+
 
 const huntButton =
-    document.getElementById("huntButton");
+    document.getElementById(
+        "huntButton"
+    );
 
 const testCaptureButton =
-    document.getElementById("testCaptureButton");
+    document.getElementById(
+        "testCaptureButton"
+    );
 
 const huntStatus =
-    document.getElementById("huntStatus");
+    document.getElementById(
+        "huntStatus"
+    );
+
 
 const inventory =
-    document.getElementById("inventory");
+    document.getElementById(
+        "inventory"
+    );
 
 const soundCounter =
-    document.getElementById("soundCounter");
+    document.getElementById(
+        "soundCounter"
+    );
+
 
 const fighterA =
-    document.getElementById("fighterA");
+    document.getElementById(
+        "fighterA"
+    );
 
 const fighterB =
-    document.getElementById("fighterB");
+    document.getElementById(
+        "fighterB"
+    );
+
 
 const battleButton =
-    document.getElementById("battleButton");
+    document.getElementById(
+        "battleButton"
+    );
 
 const nextRoundButton =
-    document.getElementById("nextRoundButton");
+    document.getElementById(
+        "nextRoundButton"
+    );
 
 const resultButton =
-    document.getElementById("resultButton");
+    document.getElementById(
+        "resultButton"
+    );
 
 const rematchButton =
-    document.getElementById("rematchButton");
+    document.getElementById(
+        "rematchButton"
+    );
+
 
 const currentScore =
-    document.getElementById("currentScore");
+    document.getElementById(
+        "currentScore"
+    );
 
 const roundsContainer =
-    document.getElementById("rounds");
+    document.getElementById(
+        "rounds"
+    );
 
 const finalResult =
-    document.getElementById("finalResult");
+    document.getElementById(
+        "finalResult"
+    );
+
 
 const captureModal =
-    document.getElementById("captureModal");
+    document.getElementById(
+        "captureModal"
+    );
 
 const captureCountdown =
-    document.getElementById("captureCountdown");
+    document.getElementById(
+        "captureCountdown"
+    );
 
 const captureNowButton =
-    document.getElementById("captureNowButton");
+    document.getElementById(
+        "captureNowButton"
+    );
 
 const ignoreCaptureButton =
-    document.getElementById("ignoreCaptureButton");
+    document.getElementById(
+        "ignoreCaptureButton"
+    );
+
+
+const renameModal =
+    document.getElementById(
+        "renameModal"
+    );
+
+const renameInput =
+    document.getElementById(
+        "renameInput"
+    );
+
+const saveRenameButton =
+    document.getElementById(
+        "saveRenameButton"
+    );
+
+const cancelRenameButton =
+    document.getElementById(
+        "cancelRenameButton"
+    );
+
+
+const profileModal =
+    document.getElementById(
+        "profileModal"
+    );
+
+const profileContent =
+    document.getElementById(
+        "profileContent"
+    );
 
 
 /* =========================================================
    INDEXED DB
    ========================================================= */
 
-const DB_NAME = "BatalhaDosSonsDB";
-const DB_VERSION = 1;
-const STORE_NAME = "sounds";
+const DB_NAME =
+    "BatalhaDosSonsDB";
+
+const DB_VERSION =
+    1;
+
+const STORE_NAME =
+    "sounds";
+
 
 function openDatabase() {
 
-    return new Promise((resolve,reject) => {
+    return new Promise(
+        (resolve,reject) => {
 
-        const request =
-            indexedDB.open(
-                DB_NAME,
-                DB_VERSION
-            );
+            const request =
+                indexedDB.open(
+                    DB_NAME,
+                    DB_VERSION
+                );
 
-        request.onupgradeneeded =
-            event => {
 
-                const db =
-                    event.target.result;
+            request.onupgradeneeded =
+                event => {
 
-                if (
-                    !db.objectStoreNames.contains(
-                        STORE_NAME
-                    )
-                ) {
+                    const db =
+                        event.target.result;
 
-                    db.createObjectStore(
-                        STORE_NAME,
-                        {
-                            keyPath: "id"
-                        }
+
+                    if (
+                        !db.objectStoreNames.contains(
+                            STORE_NAME
+                        )
+                    ) {
+
+                        db.createObjectStore(
+                            STORE_NAME,
+                            {
+                                keyPath:
+                                    "id"
+                            }
+                        );
+
+                    }
+
+                };
+
+
+            request.onsuccess =
+                () =>
+                    resolve(
+                        request.result
                     );
 
-                }
 
-            };
+            request.onerror =
+                () =>
+                    reject(
+                        request.error
+                    );
 
-        request.onsuccess =
-            () => resolve(
-                request.result
-            );
-
-        request.onerror =
-            () => reject(
-                request.error
-            );
-
-    });
+        }
+    );
 
 }
 
 
-async function saveSoundToDatabase(sound) {
+/* =========================================================
+   SALVAR SOM
+   ========================================================= */
+
+async function saveSoundToDatabase(
+    sound
+) {
 
     const db =
         await openDatabase();
 
-    return new Promise((resolve,reject) => {
 
-        const tx =
-            db.transaction(
-                STORE_NAME,
-                "readwrite"
-            );
+    return new Promise(
+        (resolve,reject) => {
 
-        const store =
-            tx.objectStore(
-                STORE_NAME
-            );
+            const tx =
+                db.transaction(
+                    STORE_NAME,
+                    "readwrite"
+                );
 
-        const storedSound = {
-            id: sound.id,
-            name: sound.name,
-            stats: sound.stats,
-            rarity: sound.rarity,
-            color: sound.color,
-            audioBlob: sound.audioBlob,
-            createdAt: sound.createdAt,
-            origin: sound.origin,
-            history: sound.history
-        };
 
-        const request =
-            store.put(
-                storedSound
-            );
+            const store =
+                tx.objectStore(
+                    STORE_NAME
+                );
 
-        request.onsuccess =
-            () => resolve();
 
-        request.onerror =
-            () => reject(
-                request.error
-            );
+            const storedSound = {
 
-        tx.oncomplete =
-            () => db.close();
+                id:
+                    sound.id,
 
-    });
+                version:
+                    GAME_DATA_VERSION,
+
+                name:
+                    sound.name,
+
+                stats:
+                    sound.stats,
+
+                rarity:
+                    sound.rarity,
+
+                color:
+                    sound.color,
+
+                audioBlob:
+                    sound.audioBlob,
+
+                createdAt:
+                    sound.createdAt,
+
+                origin:
+                    sound.origin,
+
+                history:
+                    sound.history,
+
+                xp:
+                    sound.xp
+
+            };
+
+
+            const request =
+                store.put(
+                    storedSound
+                );
+
+
+            request.onsuccess =
+                () =>
+                    resolve();
+
+
+            request.onerror =
+                () =>
+                    reject(
+                        request.error
+                    );
+
+
+            tx.oncomplete =
+                () =>
+                    db.close();
+
+        }
+    );
 
 }
 
+
+/* =========================================================
+   CARREGAR BANCO
+   ========================================================= */
 
 async function getAllSoundsFromDatabase() {
 
     const db =
         await openDatabase();
 
-    return new Promise((resolve,reject) => {
 
-        const tx =
-            db.transaction(
-                STORE_NAME,
-                "readonly"
-            );
+    return new Promise(
+        (resolve,reject) => {
 
-        const store =
-            tx.objectStore(
-                STORE_NAME
-            );
+            const tx =
+                db.transaction(
+                    STORE_NAME,
+                    "readonly"
+                );
 
-        const request =
-            store.getAll();
 
-        request.onsuccess =
-            () => resolve(
-                request.result || []
-            );
+            const store =
+                tx.objectStore(
+                    STORE_NAME
+                );
 
-        request.onerror =
-            () => reject(
-                request.error
-            );
 
-        tx.oncomplete =
-            () => db.close();
+            const request =
+                store.getAll();
 
-    });
+
+            request.onsuccess =
+                () =>
+                    resolve(
+                        request.result
+                        ||
+                        []
+                    );
+
+
+            request.onerror =
+                () =>
+                    reject(
+                        request.error
+                    );
+
+
+            tx.oncomplete =
+                () =>
+                    db.close();
+
+        }
+    );
 
 }
 
 
 /* =========================================================
-   MIGRAÇÃO / CARREGAMENTO
+   MIGRAÇÃO V3 / V4 -> V5
    ========================================================= */
 
 async function loadSavedSounds() {
@@ -1196,13 +2853,40 @@ async function loadSavedSounds() {
         const saved =
             await getAllSoundsFromDatabase();
 
+
         sounds =
-            saved.map(sound => normalizeSound(sound));
+            saved.map(
+                sound =>
+                    normalizeSound(
+                        sound
+                    )
+            );
+
 
         sounds.sort(
             (a,b) =>
-                b.createdAt - a.createdAt
+                b.createdAt
+                -
+                a.createdAt
         );
+
+
+        /*
+        Atualiza silenciosamente os sons antigos
+        para o formato da V5.
+        */
+
+        await Promise.all(
+
+            sounds.map(
+                sound =>
+                    saveSoundToDatabase(
+                        sound
+                    )
+            )
+
+        );
+
 
         renderInventory();
 
@@ -1220,28 +2904,190 @@ async function loadSavedSounds() {
 }
 
 
-function normalizeSound(sound) {
+/* =========================================================
+   NORMALIZAR SOM
+   ========================================================= */
+
+function normalizeSound(
+    sound
+) {
 
     return {
+
         ...sound,
 
+        version:
+            GAME_DATA_VERSION,
+
         origin:
-            sound.origin ||
+            sound.origin
+            ||
             "created",
 
         history:
-            sound.history ||
+            sound.history
+            ||
             {
-                wins: 0,
-                losses: 0,
-                draws: 0
+                wins:
+                    0,
+
+                losses:
+                    0,
+
+                draws:
+                    0
             },
+
+        xp:
+            Number.isFinite(
+                sound.xp
+            )
+                ?
+                sound.xp
+                :
+                0,
 
         audioURL:
             URL.createObjectURL(
                 sound.audioBlob
             )
+
     };
+
+}
+
+
+/* =========================================================
+   NIVEL
+   ========================================================= */
+
+function getLevel(
+    sound
+) {
+
+    return (
+        Math.floor(
+            sound.xp /
+            XP_PER_LEVEL
+        )
+        +
+        1
+    );
+
+}
+
+
+function getXPInsideLevel(
+    sound
+) {
+
+    return (
+        sound.xp
+        %
+        XP_PER_LEVEL
+    );
+
+}
+
+
+function getXPProgressPercent(
+    sound
+) {
+
+    return (
+        getXPInsideLevel(
+            sound
+        )
+        /
+        XP_PER_LEVEL
+    )
+    *
+    100;
+
+}
+
+
+/* =========================================================
+   PODER
+   ========================================================= */
+
+function calculatePower(
+    sound
+) {
+
+    const values =
+        Object.values(
+            sound.stats
+        );
+
+
+    const total =
+        values.reduce(
+            (sum,value) =>
+                sum + value,
+            0
+        );
+
+
+    return Math.round(
+        (
+            total /
+            50
+        )
+        *
+        100
+    );
+
+}
+
+
+/* =========================================================
+   TAXA DE VITÓRIA
+   ========================================================= */
+
+function getTotalBattles(
+    sound
+) {
+
+    return (
+        sound.history.wins
+        +
+        sound.history.losses
+        +
+        sound.history.draws
+    );
+
+}
+
+
+function getWinRate(
+    sound
+) {
+
+    const total =
+        getTotalBattles(
+            sound
+        );
+
+
+    if (
+        total === 0
+    ) {
+
+        return 0;
+
+    }
+
+
+    return Math.round(
+        (
+            sound.history.wins
+            /
+            total
+        )
+        *
+        100
+    );
 
 }
 
@@ -1273,32 +3119,49 @@ recordButton.addEventListener(
 );
 
 
+/* =========================================================
+   COMEÇAR GRAVAÇÃO
+   ========================================================= */
+
 async function startRecording() {
 
     try {
 
         currentStream =
-            await navigator.mediaDevices.getUserMedia({
-                audio: true
-            });
+            await navigator
+                .mediaDevices
+                .getUserMedia({
+                    audio:
+                        true
+                });
+
 
         mediaRecorder =
             new MediaRecorder(
                 currentStream
             );
 
-        audioChunks = [];
+
+        audioChunks =
+            [];
+
 
         mediaRecorder.ondataavailable =
             event => {
 
-                if (event.data.size > 0) {
+                if (
+                    event.data.size >
+                    0
+                ) {
+
                     audioChunks.push(
                         event.data
                     );
+
                 }
 
             };
+
 
         mediaRecorder.onstop =
             async () => {
@@ -1312,43 +3175,58 @@ async function startRecording() {
                         }
                     );
 
+
                 await createSound(
                     blob,
                     recordingMode
                 );
 
-                if (currentStream) {
+
+                if (
+                    currentStream
+                ) {
 
                     currentStream
                         .getTracks()
                         .forEach(
-                            track => track.stop()
+                            track =>
+                                track.stop()
                         );
 
                 }
 
-                currentStream = null;
+
+                currentStream =
+                    null;
 
             };
 
+
         mediaRecorder.start();
 
-        recording = true;
+
+        recording =
+            true;
+
 
         recordButton
             .classList
-            .add("recording");
+            .add(
+                "recording"
+            );
+
+
+        recordButton.textContent =
+            "■";
+
 
         if (
             recordingMode ===
             "random"
         ) {
 
-            recordButton.textContent =
-                "■";
-
             recordStatus.textContent =
-                "Captura especial gravando… clique no microfone para finalizar.";
+                "Captura especial gravando… clique para finalizar.";
 
         }
 
@@ -1363,7 +3241,10 @@ async function startRecording() {
 
     catch(error) {
 
-        console.error(error);
+        console.error(
+            error
+        );
+
 
         alert(
             "Não consegui acessar o microfone. Confira a permissão do navegador."
@@ -1374,10 +3255,15 @@ async function startRecording() {
 }
 
 
+/* =========================================================
+   PARAR GRAVAÇÃO
+   ========================================================= */
+
 function stopRecording() {
 
     if (
-        mediaRecorder &&
+        mediaRecorder
+        &&
         mediaRecorder.state !==
         "inactive"
     ) {
@@ -1386,14 +3272,21 @@ function stopRecording() {
 
     }
 
-    recording = false;
+
+    recording =
+        false;
+
 
     recordButton
         .classList
-        .remove("recording");
+        .remove(
+            "recording"
+        );
+
 
     recordButton.textContent =
         "🎙️";
+
 
     recordStatus.textContent =
         "Analisando o som…";
@@ -1412,6 +3305,7 @@ async function createSound(
 
     let stats;
 
+
     try {
 
         stats =
@@ -1423,56 +3317,98 @@ async function createSound(
 
     catch(error) {
 
-        console.error(error);
+        console.error(
+            error
+        );
+
 
         stats = {
-            grave: randomStat(),
-            agudo: randomStat(),
-            impacto: randomStat(),
-            duracao: randomStat(),
-            complexidade: randomStat()
+
+            grave:
+                randomStat(),
+
+            agudo:
+                randomStat(),
+
+            impacto:
+                randomStat(),
+
+            duracao:
+                randomStat(),
+
+            complexidade:
+                randomStat()
+
         };
 
     }
 
 
     const rarity =
-        mode === "random"
+
+        mode ===
+        "random"
+
             ?
-            calculateCapturedRarity()
+
+        calculateCapturedRarity()
+
             :
-            calculateCreatedRarity(
-                stats
-            );
+
+        calculateCreatedRarity(
+            stats
+        );
 
 
     const defaultName =
-        mode === "random"
+
+        mode ===
+        "random"
+
             ?
-            `Captura #${sounds.length + 1}`
+
+        `Captura #${sounds.length + 1}`
+
             :
-            `Som #${sounds.length + 1}`;
+
+        `Som #${sounds.length + 1}`;
 
 
     const name =
-        soundNameInput.value.trim()
+
+        soundNameInput
+            .value
+            .trim()
+
         ||
+
         defaultName;
 
 
     const sound = {
 
         id:
+
             typeof crypto !==
-            "undefined" &&
+            "undefined"
+
+            &&
             crypto.randomUUID
+
                 ?
-                crypto.randomUUID()
+
+            crypto.randomUUID()
+
                 :
-                String(
-                    Date.now() +
-                    Math.random()
-                ),
+
+            String(
+                Date.now()
+                +
+                Math.random()
+            ),
+
+        version:
+            GAME_DATA_VERSION,
 
         name,
 
@@ -1497,35 +3433,56 @@ async function createSound(
             mode,
 
         history: {
-            wins: 0,
-            losses: 0,
-            draws: 0
-        }
+
+            wins:
+                0,
+
+            losses:
+                0,
+
+            draws:
+                0
+
+        },
+
+        xp:
+            0
 
     };
 
 
-    sounds.unshift(sound);
+    sounds.unshift(
+        sound
+    );
+
 
     await saveSoundToDatabase(
         sound
     );
 
+
     soundNameInput.value =
         "";
+
 
     renderInventory();
 
 
     if (
-        mode === "random"
+        mode ===
+        "random"
     ) {
 
         recordStatus.textContent =
             `Captura concluída — ${rarity.name}!`;
 
-        if (huntActive) {
+
+        if (
+            huntActive
+        ) {
+
             scheduleNextCapture();
+
         }
 
     }
@@ -1541,33 +3498,50 @@ async function createSound(
 
 
 /* =========================================================
-   ANÁLISE DE ÁUDIO
+   ANÁLISE
    ========================================================= */
 
-async function analyzeAudio(blob) {
+async function analyzeAudio(
+    blob
+) {
 
     const arrayBuffer =
         await blob.arrayBuffer();
 
+
     const AudioContextClass =
-        window.AudioContext ||
+        window.AudioContext
+        ||
         window.webkitAudioContext;
+
 
     const audioContext =
         new AudioContextClass();
 
+
     const buffer =
-        await audioContext.decodeAudioData(
-            arrayBuffer.slice(0)
-        );
+        await audioContext
+            .decodeAudioData(
+                arrayBuffer.slice(0)
+            );
+
 
     const channel =
         buffer.getChannelData(0);
 
-    let sumSquares = 0;
-    let peak = 0;
-    let zeroCrossings = 0;
-    let differenceSum = 0;
+
+    let sumSquares =
+        0;
+
+    let peak =
+        0;
+
+    let zeroCrossings =
+        0;
+
+    let differenceSum =
+        0;
+
 
     for (
         let i = 1;
@@ -1580,33 +3554,59 @@ async function analyzeAudio(blob) {
                 channel[i]
             );
 
+
         sumSquares +=
-            channel[i] *
+            channel[i]
+            *
             channel[i];
 
-        if (sample > peak) {
-            peak = sample;
-        }
 
         if (
+            sample >
+            peak
+        ) {
+
+            peak =
+                sample;
+
+        }
+
+
+        if (
+
             (
-                channel[i - 1] < 0 &&
-                channel[i] >= 0
+                channel[i - 1] <
+                0
+
+                &&
+
+                channel[i] >=
+                0
             )
+
             ||
+
             (
-                channel[i - 1] >= 0 &&
-                channel[i] < 0
+                channel[i - 1] >=
+                0
+
+                &&
+
+                channel[i] <
+                0
             )
+
         ) {
 
             zeroCrossings++;
 
         }
 
+
         differenceSum +=
             Math.abs(
-                channel[i] -
+                channel[i]
+                -
                 channel[i - 1]
             );
 
@@ -1615,16 +3615,20 @@ async function analyzeAudio(blob) {
 
     const rms =
         Math.sqrt(
-            sumSquares /
+
+            sumSquares
+            /
             Math.max(
                 channel.length,
                 1
             )
+
         );
 
 
     const crossingRate =
-        zeroCrossings /
+        zeroCrossings
+        /
         Math.max(
             channel.length,
             1
@@ -1632,7 +3636,8 @@ async function analyzeAudio(blob) {
 
 
     const variation =
-        differenceSum /
+        differenceSum
+        /
         Math.max(
             channel.length,
             1
@@ -1641,56 +3646,80 @@ async function analyzeAudio(blob) {
 
     const impacto =
         clamp(
+
             Math.round(
                 peak * 12
             ),
+
             0,
             10
+
         );
 
 
     const agudo =
         clamp(
+
             Math.round(
                 crossingRate * 170
             ),
+
             0,
             10
+
         );
 
 
     const grave =
         clamp(
+
             Math.round(
-                10 -
-                agudo +
+
+                10
+                -
+                agudo
+                +
                 rms * 4
+
             ),
+
             0,
             10
+
         );
 
 
     const duracao =
         clamp(
+
             Math.round(
-                buffer.duration *
+                buffer.duration
+                *
                 1.4
             ),
+
             0,
             10
+
         );
 
 
     const complexidade =
         clamp(
+
             Math.round(
-                variation * 80 +
-                crossingRate * 60 +
+
+                variation * 80
+                +
+                crossingRate * 60
+                +
                 rms * 8
+
             ),
+
             0,
             10
+
         );
 
 
@@ -1698,146 +3727,220 @@ async function analyzeAudio(blob) {
 
 
     return {
+
         grave,
         agudo,
         impacto,
         duracao,
         complexidade
+
     };
 
 }
 
 
 /* =========================================================
-   RARIDADE — SOM CRIADO
-   máximo: RARO
+   RARIDADE — CRIADO
    ========================================================= */
 
-function calculateCreatedRarity(stats) {
+function calculateCreatedRarity(
+    stats
+) {
 
     const values =
-        Object.values(stats);
+        Object.values(
+            stats
+        );
+
 
     const average =
         values.reduce(
-            (a,b) => a + b,
+            (a,b) =>
+                a + b,
             0
-        ) /
+        )
+        /
         values.length;
 
+
     const highest =
-        Math.max(...values);
+        Math.max(
+            ...values
+        );
+
 
     const score =
-        average * .75 +
+        average * .75
+        +
         highest * .25;
 
 
-    if (score >= 6.3) {
+    if (
+        score >=
+        6.3
+    ) {
 
         return {
-            name: "RARO",
-            color: "#334F73"
+
+            name:
+                "RARO",
+
+            color:
+                "#334F73"
+
         };
 
     }
 
 
-    if (score >= 4.4) {
+    if (
+        score >=
+        4.4
+    ) {
 
         return {
-            name: "INCOMUM",
-            color: "#476551"
+
+            name:
+                "INCOMUM",
+
+            color:
+                "#476551"
+
         };
 
     }
 
 
     return {
-        name: "COMUM",
-        color: "#77736B"
+
+        name:
+            "COMUM",
+
+        color:
+            "#77736B"
+
     };
 
 }
 
 
 /* =========================================================
-   RARIDADE — CAPTURA ALEATÓRIA
-
-   COMUM       40%
-   INCOMUM     27%
-   RARO        17%
-   ÉPICO        9%
-   LENDÁRIO     5%
-   MÍTICO       2%
+   RARIDADE — CAÇADA
    ========================================================= */
 
 function calculateCapturedRarity() {
 
     const roll =
-        Math.random() * 100;
+        Math.random()
+        *
+        100;
 
 
-    if (roll < 2) {
+    if (
+        roll <
+        2
+    ) {
 
         return {
-            name: "MÍTICO",
-            color: "#8A3138"
+
+            name:
+                "MÍTICO",
+
+            color:
+                "#8A3138"
+
         };
 
     }
 
 
-    if (roll < 7) {
+    if (
+        roll <
+        7
+    ) {
 
         return {
-            name: "LENDÁRIO",
-            color: "#9A722C"
+
+            name:
+                "LENDÁRIO",
+
+            color:
+                "#9A722C"
+
         };
 
     }
 
 
-    if (roll < 16) {
+    if (
+        roll <
+        16
+    ) {
 
         return {
-            name: "ÉPICO",
-            color: "#654875"
+
+            name:
+                "ÉPICO",
+
+            color:
+                "#654875"
+
         };
 
     }
 
 
-    if (roll < 33) {
+    if (
+        roll <
+        33
+    ) {
 
         return {
-            name: "RARO",
-            color: "#334F73"
+
+            name:
+                "RARO",
+
+            color:
+                "#334F73"
+
         };
 
     }
 
 
-    if (roll < 60) {
+    if (
+        roll <
+        60
+    ) {
 
         return {
-            name: "INCOMUM",
-            color: "#476551"
+
+            name:
+                "INCOMUM",
+
+            color:
+                "#476551"
+
         };
 
     }
 
 
     return {
-        name: "COMUM",
-        color: "#77736B"
+
+        name:
+            "COMUM",
+
+        color:
+            "#77736B"
+
     };
 
 }
 
 
 /* =========================================================
-   CAÇADA SONORA
+   CAÇADA
    ========================================================= */
 
 huntButton.addEventListener(
@@ -1848,17 +3951,24 @@ huntButton.addEventListener(
             !huntActive;
 
 
-        if (huntActive) {
+        if (
+            huntActive
+        ) {
 
             huntButton.textContent =
                 "DESATIVAR CAÇADA";
 
-            huntButton.classList.add(
-                "danger-button"
-            );
+
+            huntButton
+                .classList
+                .add(
+                    "danger-button"
+                );
+
 
             huntStatus.textContent =
                 "Caçada ativa. Uma oportunidade pode surgir a qualquer momento.";
+
 
             scheduleNextCapture();
 
@@ -1869,12 +3979,17 @@ huntButton.addEventListener(
             huntButton.textContent =
                 "ATIVAR CAÇADA";
 
-            huntButton.classList.remove(
-                "danger-button"
-            );
+
+            huntButton
+                .classList
+                .remove(
+                    "danger-button"
+                );
+
 
             huntStatus.textContent =
                 "Caçada desativada.";
+
 
             clearTimeout(
                 huntTimer
@@ -1886,6 +4001,10 @@ huntButton.addEventListener(
 );
 
 
+/* =========================================================
+   TESTAR CAÇADA
+   ========================================================= */
+
 testCaptureButton.addEventListener(
     "click",
     () => {
@@ -1896,25 +4015,31 @@ testCaptureButton.addEventListener(
 );
 
 
+/* =========================================================
+   AGENDAR CAPTURA
+   ========================================================= */
+
 function scheduleNextCapture() {
 
     clearTimeout(
         huntTimer
     );
 
-    if (!huntActive) {
+
+    if (
+        !huntActive
+    ) {
+
         return;
+
     }
 
-    /*
-       MVP:
-       entre 30 e 90 segundos.
-       Depois podemos aumentar bastante.
-    */
 
     const delay =
-        30000 +
-        Math.random() *
+        30000
+        +
+        Math.random()
+        *
         60000;
 
 
@@ -1927,29 +4052,51 @@ function scheduleNextCapture() {
 }
 
 
+/* =========================================================
+   EVENTO DE CAPTURA
+   ========================================================= */
+
 function triggerCaptureEvent() {
 
     if (
-        recording ||
+        recording
+        ||
         captureModal
             .classList
-            .contains("active")
+            .contains(
+                "active"
+            )
     ) {
+
+        if (
+            huntActive
+        ) {
+
+            scheduleNextCapture();
+
+        }
+
         return;
+
     }
 
 
     playAlertSound();
 
+
     captureSeconds =
         10;
+
 
     captureCountdown.textContent =
         captureSeconds;
 
+
     captureModal
         .classList
-        .add("active");
+        .add(
+            "active"
+        );
 
 
     clearInterval(
@@ -1963,31 +4110,45 @@ function triggerCaptureEvent() {
 
                 captureSeconds--;
 
+
                 captureCountdown.textContent =
                     captureSeconds;
 
 
                 if (
-                    captureSeconds <= 0
+                    captureSeconds <=
+                    0
                 ) {
 
                     closeCaptureEvent();
 
+
                     huntStatus.textContent =
                         "A oportunidade escapou.";
 
-                    if (huntActive) {
+
+                    if (
+                        huntActive
+                    ) {
+
                         scheduleNextCapture();
+
                     }
 
                 }
 
             },
+
             1000
+
         );
 
 }
 
+
+/* =========================================================
+   FECHAR CAPTURA
+   ========================================================= */
 
 function closeCaptureEvent() {
 
@@ -1995,12 +4156,19 @@ function closeCaptureEvent() {
         captureCountdownTimer
     );
 
+
     captureModal
         .classList
-        .remove("active");
+        .remove(
+            "active"
+        );
 
 }
 
+
+/* =========================================================
+   CAPTURAR AGORA
+   ========================================================= */
 
 captureNowButton.addEventListener(
     "click",
@@ -2008,8 +4176,10 @@ captureNowButton.addEventListener(
 
         closeCaptureEvent();
 
+
         recordingMode =
             "random";
+
 
         await startRecording();
 
@@ -2017,61 +4187,90 @@ captureNowButton.addEventListener(
 );
 
 
+/* =========================================================
+   IGNORAR
+   ========================================================= */
+
 ignoreCaptureButton.addEventListener(
     "click",
     () => {
 
         closeCaptureEvent();
 
+
         huntStatus.textContent =
             "Oportunidade ignorada.";
 
-        if (huntActive) {
+
+        if (
+            huntActive
+        ) {
+
             scheduleNextCapture();
+
         }
 
     }
 );
 
 
+/* =========================================================
+   SOM DO ALERTA
+   ========================================================= */
+
 function playAlertSound() {
 
     try {
 
         const AudioContextClass =
-            window.AudioContext ||
+            window.AudioContext
+            ||
             window.webkitAudioContext;
+
 
         const ctx =
             new AudioContextClass();
 
+
         const osc =
             ctx.createOscillator();
+
 
         const gain =
             ctx.createGain();
 
+
         osc.frequency.value =
             660;
+
 
         gain.gain.value =
             .06;
 
-        osc.connect(gain);
+
+        osc.connect(
+            gain
+        );
+
 
         gain.connect(
             ctx.destination
         );
 
+
         osc.start();
 
+
         osc.stop(
-            ctx.currentTime +
+            ctx.currentTime
+            +
             .18
         );
 
+
         osc.onended =
-            () => ctx.close();
+            () =>
+                ctx.close();
 
     }
 
@@ -2097,22 +4296,34 @@ function renderInventory() {
 
 
     soundCounter.textContent =
-        sounds.length === 1
+
+        sounds.length ===
+        1
+
             ?
-            "1 som"
+
+        "1 som"
+
             :
-            `${sounds.length} sons`;
+
+        `${sounds.length} sons`;
 
 
     if (
-        sounds.length === 0
+        sounds.length ===
+        0
     ) {
 
         inventory.innerHTML = `
+
             <div class="empty">
+
                 Sua coleção ainda está vazia.
+
             </div>
+
         `;
+
 
         return;
 
@@ -2121,7 +4332,9 @@ function renderInventory() {
 
     sounds.forEach(
         sound =>
-            addSoundCard(sound)
+            addSoundCard(
+                sound
+            )
     );
 
 
@@ -2130,27 +4343,58 @@ function renderInventory() {
 }
 
 
-function addSoundCard(sound) {
+/* =========================================================
+   CARD
+   ========================================================= */
+
+function addSoundCard(
+    sound
+) {
 
     const card =
         document.createElement(
             "div"
         );
 
+
     card.className =
-        "sound-card";
+        `sound-card ${getRarityClass(sound.rarity.name)}`;
+
 
     card.dataset.id =
         sound.id;
 
 
+    card.style.setProperty(
+        "--rarity-color",
+        sound.rarity.color
+    );
+
+
     const originText =
+
         sound.origin ===
         "random"
+
             ?
-            "Captura Aleatória"
+
+        "Captura Aleatória"
+
             :
-            "Som Criado";
+
+        "Som Criado";
+
+
+    const level =
+        getLevel(
+            sound
+        );
+
+
+    const power =
+        calculatePower(
+            sound
+        );
 
 
     card.innerHTML = `
@@ -2167,20 +4411,54 @@ function addSoundCard(sound) {
 
         </div>
 
+
         <h3>
             ${escapeHTML(sound.name)}
         </h3>
 
+
         <div
             class="rarity"
-            style="color:${sound.rarity.color}"
+            style="
+                color:${sound.rarity.color}
+            "
         >
             ${sound.rarity.name}
         </div>
 
+
         <div class="origin">
             ${originText}
         </div>
+
+
+        <div class="level-row">
+
+            <span class="level-badge">
+                NÍVEL ${level}
+            </span>
+
+            <span>
+                PODER
+                <span class="power">
+                    ${power}
+                </span>
+            </span>
+
+        </div>
+
+
+        <div class="xp-bar">
+
+            <div
+                class="xp-progress"
+                style="
+                    width:${getXPProgressPercent(sound)}%
+                "
+            ></div>
+
+        </div>
+
 
         <div class="stats">
 
@@ -2221,39 +4499,76 @@ function addSoundCard(sound) {
 
         </div>
 
+
         <div class="history">
 
             <span>
-                V <strong>
+                V
+                <strong>
                     ${sound.history.wins}
                 </strong>
             </span>
 
             <span>
-                D <strong>
+                D
+                <strong>
                     ${sound.history.losses}
                 </strong>
             </span>
 
             <span>
-                E <strong>
+                E
+                <strong>
                     ${sound.history.draws}
                 </strong>
             </span>
 
         </div>
 
+
         <div class="card-actions">
 
-            <button class="card-button play-button">
+            <button
+                class="
+                    card-button
+                    play-button
+                "
+            >
                 Ouvir
             </button>
 
-            <button class="card-button select-button">
+
+            <button
+                class="
+                    card-button
+                    select-button
+                "
+            >
                 Selecionar
             </button>
 
+
+            <button
+                class="
+                    card-button
+                    profile-button
+                "
+            >
+                Detalhes
+            </button>
+
+
+            <button
+                class="
+                    card-button
+                    rename-button
+                "
+            >
+                Renomear
+            </button>
+
         </div>
+
     `;
 
 
@@ -2268,6 +4583,8 @@ function addSoundCard(sound) {
         );
 
 
+    /* Clique no card toca o som */
+
     card.addEventListener(
         "click",
         event => {
@@ -2277,8 +4594,11 @@ function addSoundCard(sound) {
                     "button"
                 )
             ) {
+
                 return;
+
             }
+
 
             playSound(
                 sound.audioURL,
@@ -2288,6 +4608,8 @@ function addSoundCard(sound) {
         }
     );
 
+
+    /* Ouvir */
 
     card
         .querySelector(
@@ -2299,6 +4621,7 @@ function addSoundCard(sound) {
 
                 event.stopPropagation();
 
+
                 playSound(
                     sound.audioURL,
                     orb
@@ -2307,6 +4630,8 @@ function addSoundCard(sound) {
             }
         );
 
+
+    /* Arena */
 
     card
         .querySelector(
@@ -2318,7 +4643,50 @@ function addSoundCard(sound) {
 
                 event.stopPropagation();
 
+
                 selectSound(
+                    sound
+                );
+
+            }
+        );
+
+
+    /* Detalhes */
+
+    card
+        .querySelector(
+            ".profile-button"
+        )
+        .addEventListener(
+            "click",
+            event => {
+
+                event.stopPropagation();
+
+
+                openProfile(
+                    sound
+                );
+
+            }
+        );
+
+
+    /* Renomear */
+
+    card
+        .querySelector(
+            ".rename-button"
+        )
+        .addEventListener(
+            "click",
+            event => {
+
+                event.stopPropagation();
+
+
+                openRenameModal(
                     sound
                 );
 
@@ -2329,13 +4697,662 @@ function addSoundCard(sound) {
 
 
 /* =========================================================
+   CLASSE DE RARIDADE
+   ========================================================= */
+
+function getRarityClass(
+    rarity
+) {
+
+    return (
+        "rarity-"
+        +
+        rarity
+            .normalize(
+                "NFD"
+            )
+            .replace(
+                /[\u0300-\u036f]/g,
+                ""
+            )
+            .toLowerCase()
+    );
+
+}
+
+
+/* =========================================================
+   RENOMEAR
+   ========================================================= */
+
+function openRenameModal(
+    sound
+) {
+
+    renameTarget =
+        sound;
+
+
+    renameInput.value =
+        sound.name;
+
+
+    renameModal
+        .classList
+        .add(
+            "active"
+        );
+
+
+    setTimeout(
+        () => {
+
+            renameInput.focus();
+
+            renameInput.select();
+
+        },
+
+        100
+    );
+
+}
+
+
+/* =========================================================
+   SALVAR RENOMEAÇÃO
+   ========================================================= */
+
+saveRenameButton.addEventListener(
+    "click",
+    async () => {
+
+        if (
+            !renameTarget
+        ) {
+
+            return;
+
+        }
+
+
+        const newName =
+            renameInput
+                .value
+                .trim();
+
+
+        if (
+            !newName
+        ) {
+
+            alert(
+                "O nome não pode ficar vazio."
+            );
+
+            return;
+
+        }
+
+
+        renameTarget.name =
+            newName;
+
+
+        await saveSoundToDatabase(
+            renameTarget
+        );
+
+
+        renameModal
+            .classList
+            .remove(
+                "active"
+            );
+
+
+        renameTarget =
+            null;
+
+
+        renderInventory();
+
+
+        renderFighter(
+            fighterA,
+            selectedA,
+            "Som I"
+        );
+
+
+        renderFighter(
+            fighterB,
+            selectedB,
+            "Som II"
+        );
+
+    }
+);
+
+
+/* =========================================================
+   ENTER PARA SALVAR
+   ========================================================= */
+
+renameInput.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.key ===
+            "Enter"
+        ) {
+
+            saveRenameButton.click();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   CANCELAR RENOMEAÇÃO
+   ========================================================= */
+
+cancelRenameButton.addEventListener(
+    "click",
+    () => {
+
+        renameModal
+            .classList
+            .remove(
+                "active"
+            );
+
+
+        renameTarget =
+            null;
+
+    }
+);
+
+
+/* =========================================================
+   PERFIL DO SOM
+   ========================================================= */
+
+function openProfile(
+    sound
+) {
+
+    profileTarget =
+        sound;
+
+
+    renderProfile();
+
+
+    profileModal
+        .classList
+        .add(
+            "active"
+        );
+
+}
+
+
+/* =========================================================
+   DESENHAR PERFIL
+   ========================================================= */
+
+function renderProfile() {
+
+    const sound =
+        profileTarget;
+
+
+    if (
+        !sound
+    ) {
+
+        return;
+
+    }
+
+
+    const level =
+        getLevel(
+            sound
+        );
+
+
+    const totalBattles =
+        getTotalBattles(
+            sound
+        );
+
+
+    const winRate =
+        getWinRate(
+            sound
+        );
+
+
+    const power =
+        calculatePower(
+            sound
+        );
+
+
+    const originText =
+
+        sound.origin ===
+        "random"
+
+            ?
+
+        "Captura Aleatória"
+
+            :
+
+        "Som Criado";
+
+
+    profileContent.innerHTML = `
+
+        <div
+            class="profile-orb"
+            style="
+                background:${sound.color};
+                color:${sound.color};
+            "
+        ></div>
+
+
+        <h2>
+            ${escapeHTML(sound.name)}
+        </h2>
+
+
+        <div class="profile-subtitle">
+
+            <span
+                style="
+                    color:${sound.rarity.color}
+                "
+            >
+
+                ${sound.rarity.name}
+
+            </span>
+
+            ·
+
+            ${originText}
+
+        </div>
+
+
+        <div class="profile-grid">
+
+
+            <div class="profile-box">
+
+                <div class="profile-label">
+                    Nível
+                </div>
+
+                <div class="profile-value">
+                    ${level}
+                </div>
+
+            </div>
+
+
+            <div class="profile-box">
+
+                <div class="profile-label">
+                    Poder
+                </div>
+
+                <div class="profile-value">
+                    ${power}
+                </div>
+
+            </div>
+
+
+            <div class="profile-box">
+
+                <div class="profile-label">
+                    Batalhas
+                </div>
+
+                <div class="profile-value">
+                    ${totalBattles}
+                </div>
+
+            </div>
+
+
+            <div class="profile-box">
+
+                <div class="profile-label">
+                    Taxa de vitória
+                </div>
+
+                <div class="profile-value">
+                    ${winRate}%
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="profile-xp">
+
+            XP total:
+            <strong>
+                ${sound.xp}
+            </strong>
+
+            ·
+
+            ${getXPInsideLevel(sound)}
+            /
+            ${XP_PER_LEVEL}
+            para o próximo nível
+
+        </div>
+
+
+        <div class="xp-bar">
+
+            <div
+                class="xp-progress"
+                style="
+                    width:${getXPProgressPercent(sound)}%
+                "
+            ></div>
+
+        </div>
+
+
+        <div class="profile-stats">
+
+
+            <div class="profile-stat">
+
+                <span>
+                    ◐ Grave
+                </span>
+
+                <strong>
+                    ${sound.stats.grave}/10
+                </strong>
+
+            </div>
+
+
+            <div class="profile-stat">
+
+                <span>
+                    ◑ Agudo
+                </span>
+
+                <strong>
+                    ${sound.stats.agudo}/10
+                </strong>
+
+            </div>
+
+
+            <div class="profile-stat">
+
+                <span>
+                    ✦ Impacto
+                </span>
+
+                <strong>
+                    ${sound.stats.impacto}/10
+                </strong>
+
+            </div>
+
+
+            <div class="profile-stat">
+
+                <span>
+                    ◷ Duração
+                </span>
+
+                <strong>
+                    ${sound.stats.duracao}/10
+                </strong>
+
+            </div>
+
+
+            <div class="profile-stat">
+
+                <span>
+                    ◇ Complexidade
+                </span>
+
+                <strong>
+                    ${sound.stats.complexidade}/10
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="history">
+
+            <span>
+                Vitórias
+                <strong>
+                    ${sound.history.wins}
+                </strong>
+            </span>
+
+            <span>
+                Derrotas
+                <strong>
+                    ${sound.history.losses}
+                </strong>
+            </span>
+
+            <span>
+                Empates
+                <strong>
+                    ${sound.history.draws}
+                </strong>
+            </span>
+
+        </div>
+
+
+        <div
+            class="modal-buttons"
+            style="
+                margin-top:22px
+            "
+        >
+
+            <button
+                id="profilePlayButton"
+                class="premium-button"
+            >
+                OUVIR
+            </button>
+
+
+            <button
+                id="profileRenameButton"
+                class="
+                    premium-button
+                    light-button
+                "
+            >
+                RENOMEAR
+            </button>
+
+
+            <button
+                id="closeProfileButton"
+                class="
+                    premium-button
+                    light-button
+                "
+            >
+                FECHAR
+            </button>
+
+        </div>
+
+    `;
+
+
+    const profileOrb =
+        profileContent
+            .querySelector(
+                ".profile-orb"
+            );
+
+
+    document
+        .getElementById(
+            "profilePlayButton"
+        )
+        .addEventListener(
+            "click",
+            () => {
+
+                playSound(
+                    sound.audioURL,
+                    profileOrb
+                );
+
+            }
+        );
+
+
+    document
+        .getElementById(
+            "profileRenameButton"
+        )
+        .addEventListener(
+            "click",
+            () => {
+
+                profileModal
+                    .classList
+                    .remove(
+                        "active"
+                    );
+
+
+                openRenameModal(
+                    sound
+                );
+
+            }
+        );
+
+
+    document
+        .getElementById(
+            "closeProfileButton"
+        )
+        .addEventListener(
+            "click",
+            () => {
+
+                profileModal
+                    .classList
+                    .remove(
+                        "active"
+                    );
+
+
+                profileTarget =
+                    null;
+
+            }
+        );
+
+}
+
+
+/* =========================================================
+   FECHAR MODAIS CLICANDO FORA
+   ========================================================= */
+
+renameModal.addEventListener(
+    "click",
+    event => {
+
+        if (
+            event.target ===
+            renameModal
+        ) {
+
+            renameModal
+                .classList
+                .remove(
+                    "active"
+                );
+
+            renameTarget =
+                null;
+
+        }
+
+    }
+);
+
+
+profileModal.addEventListener(
+    "click",
+    event => {
+
+        if (
+            event.target ===
+            profileModal
+        ) {
+
+            profileModal
+                .classList
+                .remove(
+                    "active"
+                );
+
+            profileTarget =
+                null;
+
+        }
+
+    }
+);
+
+
+/* =========================================================
    SELEÇÃO
    ========================================================= */
 
-function selectSound(sound) {
+function selectSound(
+    sound
+) {
 
     if (
-        selectedA &&
+        selectedA
+        &&
         selectedA.id ===
         sound.id
     ) {
@@ -2346,7 +5363,8 @@ function selectSound(sound) {
     }
 
     else if (
-        selectedB &&
+        selectedB
+        &&
         selectedB.id ===
         sound.id
     ) {
@@ -2356,14 +5374,18 @@ function selectSound(sound) {
 
     }
 
-    else if (!selectedA) {
+    else if (
+        !selectedA
+    ) {
 
         selectedA =
             sound;
 
     }
 
-    else if (!selectedB) {
+    else if (
+        !selectedB
+    ) {
 
         selectedB =
             sound;
@@ -2388,6 +5410,10 @@ function selectSound(sound) {
 }
 
 
+/* =========================================================
+   ATUALIZAR SELEÇÃO
+   ========================================================= */
+
 function updateSelectionUI() {
 
     document
@@ -2400,15 +5426,23 @@ function updateSelectionUI() {
                 const id =
                     card.dataset.id;
 
+
                 const selected =
+
                     (
-                        selectedA &&
-                        selectedA.id === id
+                        selectedA
+                        &&
+                        selectedA.id ===
+                        id
                     )
+
                     ||
+
                     (
-                        selectedB &&
-                        selectedB.id === id
+                        selectedB
+                        &&
+                        selectedB.id ===
+                        id
                     );
 
 
@@ -2426,14 +5460,19 @@ function updateSelectionUI() {
                     );
 
 
-                if (selected) {
+                if (
+                    selected
+                ) {
 
                     button.textContent =
                         "Na Arena";
 
-                    button.classList.add(
-                        "selected-button"
-                    );
+
+                    button
+                        .classList
+                        .add(
+                            "selected-button"
+                        );
 
                 }
 
@@ -2442,9 +5481,12 @@ function updateSelectionUI() {
                     button.textContent =
                         "Selecionar";
 
-                    button.classList.remove(
-                        "selected-button"
-                    );
+
+                    button
+                        .classList
+                        .remove(
+                            "selected-button"
+                        );
 
                 }
 
@@ -2467,11 +5509,16 @@ function updateSelectionUI() {
 
 
     battleButton.disabled =
-        !selectedA ||
+        !selectedA
+        ||
         !selectedB;
 
 }
 
+
+/* =========================================================
+   LUTADOR
+   ========================================================= */
 
 function renderFighter(
     element,
@@ -2479,9 +5526,12 @@ function renderFighter(
     placeholder
 ) {
 
-    if (!sound) {
+    if (
+        !sound
+    ) {
 
         element.innerHTML = `
+
             <div class="fighter-name">
                 ${placeholder}
             </div>
@@ -2489,7 +5539,9 @@ function renderFighter(
             <p class="small-note">
                 Selecione um som.
             </p>
+
         `;
+
 
         return;
 
@@ -2506,15 +5558,34 @@ function renderFighter(
             "
         ></div>
 
+
         <div class="fighter-name">
-            ${escapeHTML(sound.name)}
+
+            ${escapeHTML(
+                sound.name
+            )}
+
         </div>
+
 
         <div
             class="fighter-rarity"
-            style="color:${sound.rarity.color}"
+            style="
+                color:${sound.rarity.color}
+            "
         >
+
             ${sound.rarity.name}
+
+        </div>
+
+
+        <div class="fighter-info">
+
+            Nv. ${getLevel(sound)}
+            ·
+            Poder ${calculatePower(sound)}
+
         </div>
 
     `;
@@ -2523,56 +5594,47 @@ function renderFighter(
 
 
 /* =========================================================
-   BATALHA MANUAL
+   BOTÕES DE BATALHA
    ========================================================= */
 
 battleButton.addEventListener(
     "click",
-    () => {
-
-        startBattle();
-
-    }
+    startBattle
 );
 
 
 nextRoundButton.addEventListener(
     "click",
-    () => {
-
-        revealNextRound();
-
-    }
+    revealNextRound
 );
 
 
 resultButton.addEventListener(
     "click",
-    () => {
-
-        finishBattle();
-
-    }
+    finishBattle
 );
 
 
 rematchButton.addEventListener(
     "click",
-    () => {
-
-        startBattle();
-
-    }
+    startBattle
 );
 
+
+/* =========================================================
+   INICIAR BATALHA
+   ========================================================= */
 
 function startBattle() {
 
     if (
-        !selectedA ||
+        !selectedA
+        ||
         !selectedB
     ) {
+
         return;
+
     }
 
 
@@ -2591,7 +5653,8 @@ function startBattle() {
         );
 
 
-    const rounds = [];
+    const rounds =
+        [];
 
 
     for (
@@ -2603,58 +5666,95 @@ function startBattle() {
         const attributeA =
             attributesA[i];
 
+
         const attributeB =
             attributesB[i];
+
 
         const valueA =
             selectedA.stats[
                 attributeA
             ];
 
+
         const valueB =
             selectedB.stats[
                 attributeB
             ];
 
+
         let winner =
             "DRAW";
 
 
-        if (valueA > valueB) {
-            winner = "A";
+        if (
+            valueA >
+            valueB
+        ) {
+
+            winner =
+                "A";
+
         }
 
-        if (valueB > valueA) {
-            winner = "B";
+
+        if (
+            valueB >
+            valueA
+        ) {
+
+            winner =
+                "B";
+
         }
 
 
         rounds.push({
-            number: i + 1,
+
+            number:
+                i + 1,
+
             attributeA,
+
             attributeB,
+
             valueA,
+
             valueB,
+
             winner
+
         });
 
     }
 
 
     currentBattle = {
+
         rounds,
-        currentRound: 0,
-        scoreA: 0,
-        scoreB: 0,
-        historySaved: false
+
+        currentRound:
+            0,
+
+        scoreA:
+            0,
+
+        scoreB:
+            0,
+
+        historySaved:
+            false
+
     };
 
 
     battleButton.style.display =
         "none";
 
+
     nextRoundButton.style.display =
         "inline-block";
+
 
     nextRoundButton.textContent =
         "REVELAR 1ª RODADA";
@@ -2667,21 +5767,28 @@ function startBattle() {
 
 
 /* =========================================================
-   REVELAR UMA RODADA
+   REVELAR RODADA
    ========================================================= */
 
 function revealNextRound() {
 
-    if (!currentBattle) {
+    if (
+        !currentBattle
+    ) {
+
         return;
+
     }
 
 
     if (
-        currentBattle.currentRound >=
+        currentBattle.currentRound
+        >=
         currentBattle.rounds.length
     ) {
+
         return;
+
     }
 
 
@@ -2692,7 +5799,8 @@ function revealNextRound() {
 
 
     if (
-        round.winner === "A"
+        round.winner ===
+        "A"
     ) {
 
         currentBattle.scoreA +=
@@ -2701,7 +5809,8 @@ function revealNextRound() {
     }
 
     else if (
-        round.winner === "B"
+        round.winner ===
+        "B"
     ) {
 
         currentBattle.scoreB +=
@@ -2713,6 +5822,7 @@ function revealNextRound() {
 
         currentBattle.scoreA +=
             .5;
+
 
         currentBattle.scoreB +=
             .5;
@@ -2729,15 +5839,22 @@ function revealNextRound() {
 
 
     currentScore.textContent =
-        `${escapeHTML(selectedA.name)} ${formatScore(currentBattle.scoreA)} × ${formatScore(currentBattle.scoreB)} ${escapeHTML(selectedB.name)}`;
+
+        `${escapeHTML(selectedA.name)}
+        ${formatScore(currentBattle.scoreA)}
+        ×
+        ${formatScore(currentBattle.scoreB)}
+        ${escapeHTML(selectedB.name)}`;
 
 
     if (
-        currentBattle.currentRound >= 5
+        currentBattle.currentRound >=
+        5
     ) {
 
         nextRoundButton.style.display =
             "none";
+
 
         resultButton.style.display =
             "inline-block";
@@ -2758,12 +5875,15 @@ function revealNextRound() {
    DESENHAR RODADA
    ========================================================= */
 
-function renderRound(round) {
+function renderRound(
+    round
+) {
 
     const infoA =
         attributeInfo[
             round.attributeA
         ];
+
 
     const infoB =
         attributeInfo[
@@ -2774,22 +5894,27 @@ function renderRound(round) {
     let winnerText =
         "Empate";
 
+
     let classA =
         "";
+
 
     let classB =
         "";
 
 
     if (
-        round.winner === "A"
+        round.winner ===
+        "A"
     ) {
 
         winnerText =
             `${selectedA.name} venceu a rodada`;
 
+
         classA =
             "winner";
+
 
         pulseFighter(
             fighterA
@@ -2799,14 +5924,17 @@ function renderRound(round) {
 
 
     if (
-        round.winner === "B"
+        round.winner ===
+        "B"
     ) {
 
         winnerText =
             `${selectedB.name} venceu a rodada`;
 
+
         classB =
             "winner";
+
 
         pulseFighter(
             fighterB
@@ -2827,15 +5955,24 @@ function renderRound(round) {
 
     element.innerHTML = `
 
-        <div class="attribute-box ${classA}">
+        <div
+            class="
+                attribute-box
+                ${classA}
+            "
+        >
 
             <div class="attribute-name">
+
                 ${infoA.icon}
                 ${infoA.name}
+
             </div>
 
             <div class="attribute-value">
+
                 ${round.valueA}
+
             </div>
 
         </div>
@@ -2846,15 +5983,24 @@ function renderRound(round) {
         </div>
 
 
-        <div class="attribute-box ${classB}">
+        <div
+            class="
+                attribute-box
+                ${classB}
+            "
+        >
 
             <div class="attribute-name">
+
                 ${infoB.icon}
                 ${infoB.name}
+
             </div>
 
             <div class="attribute-value">
+
                 ${round.valueB}
+
             </div>
 
         </div>
@@ -2871,27 +6017,37 @@ function renderRound(round) {
     `;
 
 
-    roundsContainer.appendChild(
-        element
-    );
+    roundsContainer
+        .appendChild(
+            element
+        );
 
 
     element.scrollIntoView({
-        behavior: "smooth",
-        block: "nearest"
+
+        behavior:
+            "smooth",
+
+        block:
+            "nearest"
+
     });
 
 }
 
 
 /* =========================================================
-   RESULTADO
+   RESULTADO FINAL
    ========================================================= */
 
 async function finishBattle() {
 
-    if (!currentBattle) {
+    if (
+        !currentBattle
+    ) {
+
         return;
+
     }
 
 
@@ -2902,6 +6058,11 @@ async function finishBattle() {
     let result;
 
 
+    let xpA;
+
+    let xpB;
+
+
     if (
         currentBattle.scoreA >
         currentBattle.scoreB
@@ -2909,6 +6070,14 @@ async function finishBattle() {
 
         result =
             `◇ ${escapeHTML(selectedA.name)} venceu`;
+
+
+        xpA =
+            XP_WIN;
+
+
+        xpB =
+            XP_LOSS;
 
     }
 
@@ -2920,6 +6089,14 @@ async function finishBattle() {
         result =
             `◇ ${escapeHTML(selectedB.name)} venceu`;
 
+
+        xpA =
+            XP_LOSS;
+
+
+        xpB =
+            XP_WIN;
+
     }
 
     else {
@@ -2927,12 +6104,21 @@ async function finishBattle() {
         result =
             "◇ Empate";
 
+
+        xpA =
+            XP_DRAW;
+
+
+        xpB =
+            XP_DRAW;
+
     }
 
 
     finalResult.innerHTML = `
 
         ${result}
+
 
         <div class="score">
 
@@ -2952,6 +6138,21 @@ async function finishBattle() {
 
         </div>
 
+
+        <div class="xp-reward">
+
+            +${xpA} XP
+            para
+            ${escapeHTML(selectedA.name)}
+
+            &nbsp; · &nbsp;
+
+            +${xpB} XP
+            para
+            ${escapeHTML(selectedB.name)}
+
+        </div>
+
     `;
 
 
@@ -2967,7 +6168,11 @@ async function finishBattle() {
         !currentBattle.historySaved
     ) {
 
-        await saveBattleHistory();
+        await saveBattleProgress(
+            xpA,
+            xpB
+        );
+
 
         currentBattle.historySaved =
             true;
@@ -2976,18 +6181,38 @@ async function finishBattle() {
 
 
     finalResult.scrollIntoView({
-        behavior: "smooth",
-        block: "nearest"
+
+        behavior:
+            "smooth",
+
+        block:
+            "nearest"
+
     });
 
 }
 
 
 /* =========================================================
-   HISTÓRICO
+   SALVAR PROGRESSÃO
    ========================================================= */
 
-async function saveBattleHistory() {
+async function saveBattleProgress(
+    xpA,
+    xpB
+) {
+
+    const oldLevelA =
+        getLevel(
+            selectedA
+        );
+
+
+    const oldLevelB =
+        getLevel(
+            selectedB
+        );
+
 
     if (
         currentBattle.scoreA >
@@ -2995,6 +6220,7 @@ async function saveBattleHistory() {
     ) {
 
         selectedA.history.wins++;
+
         selectedB.history.losses++;
 
     }
@@ -3005,6 +6231,7 @@ async function saveBattleHistory() {
     ) {
 
         selectedB.history.wins++;
+
         selectedA.history.losses++;
 
     }
@@ -3012,12 +6239,34 @@ async function saveBattleHistory() {
     else {
 
         selectedA.history.draws++;
+
         selectedB.history.draws++;
 
     }
 
 
+    selectedA.xp +=
+        xpA;
+
+
+    selectedB.xp +=
+        xpB;
+
+
+    const newLevelA =
+        getLevel(
+            selectedA
+        );
+
+
+    const newLevelB =
+        getLevel(
+            selectedB
+        );
+
+
     await Promise.all([
+
         saveSoundToDatabase(
             selectedA
         ),
@@ -3025,16 +6274,67 @@ async function saveBattleHistory() {
         saveSoundToDatabase(
             selectedB
         )
+
     ]);
 
 
     renderInventory();
 
+
+    renderFighter(
+        fighterA,
+        selectedA,
+        "Som I"
+    );
+
+
+    renderFighter(
+        fighterB,
+        selectedB,
+        "Som II"
+    );
+
+
+    if (
+        newLevelA >
+        oldLevelA
+    ) {
+
+        currentScore.textContent =
+            `${selectedA.name} alcançou o nível ${newLevelA}!`;
+
+    }
+
+
+    if (
+        newLevelB >
+        oldLevelB
+    ) {
+
+        currentScore.textContent =
+            `${selectedB.name} alcançou o nível ${newLevelB}!`;
+
+    }
+
+
+    if (
+        newLevelA >
+        oldLevelA
+        &&
+        newLevelB >
+        oldLevelB
+    ) {
+
+        currentScore.textContent =
+            `Os dois sons subiram de nível!`;
+
+    }
+
 }
 
 
 /* =========================================================
-   RESET BATALHA
+   RESET DA BATALHA
    ========================================================= */
 
 function resetBattleVisuals() {
@@ -3042,17 +6342,22 @@ function resetBattleVisuals() {
     roundsContainer.innerHTML =
         "";
 
+
     finalResult.style.display =
         "none";
+
 
     nextRoundButton.style.display =
         "none";
 
+
     resultButton.style.display =
         "none";
 
+
     rematchButton.style.display =
         "none";
+
 
     currentScore.textContent =
         "";
@@ -3065,31 +6370,42 @@ function resetBattle() {
     currentBattle =
         null;
 
+
     resetBattleVisuals();
+
 
     battleButton.style.display =
         "inline-block";
 
+
     battleButton.disabled =
-        !selectedA ||
+        !selectedA
+        ||
         !selectedB;
 
 }
 
 
 /* =========================================================
-   PULSO
+   PULSO DO VENCEDOR
    ========================================================= */
 
-function pulseFighter(fighter) {
+function pulseFighter(
+    fighter
+) {
 
     const orb =
         fighter.querySelector(
             ".fighter-orb"
         );
 
-    if (!orb) {
+
+    if (
+        !orb
+    ) {
+
         return;
+
     }
 
 
@@ -3097,7 +6413,9 @@ function pulseFighter(fighter) {
         "winner-pulse"
     );
 
+
     void orb.offsetWidth;
+
 
     orb.classList.add(
         "winner-pulse"
@@ -3107,7 +6425,7 @@ function pulseFighter(fighter) {
 
 
 /* =========================================================
-   TOCAR SOM + BOLINHA
+   TOCAR SOM
    ========================================================= */
 
 function playSound(
@@ -3122,7 +6440,8 @@ function playSound(
 
 
     const AudioContextClass =
-        window.AudioContext ||
+        window.AudioContext
+        ||
         window.webkitAudioContext;
 
 
@@ -3131,13 +6450,15 @@ function playSound(
 
 
     const source =
-        context.createMediaElementSource(
-            audio
-        );
+        context
+            .createMediaElementSource(
+                audio
+            );
 
 
     const analyser =
-        context.createAnalyser();
+        context
+            .createAnalyser();
 
 
     analyser.fftSize =
@@ -3166,35 +6487,50 @@ function playSound(
     function animate() {
 
         if (
-            audio.paused ||
+            audio.paused
+            ||
             audio.ended
         ) {
 
             orb.style.transform =
                 "scale(1)";
 
+
             orb.style.borderRadius =
                 "50%";
 
+
             context.close();
+
 
             return;
 
         }
 
 
-        analyser.getByteFrequencyData(
-            data
-        );
+        analyser
+            .getByteFrequencyData(
+                data
+            );
 
 
-        let total = 0;
-        let lowTotal = 0;
-        let highTotal = 0;
+        let total =
+            0;
+
+
+        let lowTotal =
+            0;
+
+
+        let highTotal =
+            0;
+
 
         const half =
             Math.floor(
-                data.length / 2
+                data.length
+                /
+                2
             );
 
 
@@ -3204,9 +6540,14 @@ function playSound(
             i++
         ) {
 
-            total += data[i];
+            total +=
+                data[i];
 
-            if (i < half) {
+
+            if (
+                i <
+                half
+            ) {
 
                 lowTotal +=
                     data[i];
@@ -3224,44 +6565,60 @@ function playSound(
 
 
         const average =
-            total /
+            total
+            /
             data.length;
 
 
         const low =
-            lowTotal /
+            lowTotal
+            /
             half;
 
 
         const high =
-            highTotal /
+            highTotal
+            /
             (
-                data.length -
+                data.length
+                -
                 half
             );
 
 
         const scale =
-            1 +
+            1
+            +
             (
-                average / 255
-            ) *
+                average
+                /
+                255
+            )
+            *
             .75;
 
 
         const shapeA =
-            38 +
+            38
+            +
             (
-                low / 255
-            ) *
+                low
+                /
+                255
+            )
+            *
             23;
 
 
         const shapeB =
-            38 +
+            38
+            +
             (
-                high / 255
-            ) *
+                high
+                /
+                255
+            )
+            *
             23;
 
 
@@ -3270,7 +6627,11 @@ function playSound(
 
 
         orb.style.borderRadius =
-            `${shapeA}% ${shapeB}% ${60 - shapeA / 4}% ${50 + shapeB / 6}%`;
+
+            `${shapeA}%
+            ${shapeB}%
+            ${60 - shapeA / 4}%
+            ${50 + shapeB / 6}%`;
 
 
         requestAnimationFrame(
@@ -3286,14 +6647,15 @@ function playSound(
 
 
 /* =========================================================
-   UTILIDADES
+   CORES
    ========================================================= */
 
 function elegantRandomColor() {
 
     return orbPalette[
         Math.floor(
-            Math.random() *
+            Math.random()
+            *
             orbPalette.length
         )
     ];
@@ -3301,26 +6663,43 @@ function elegantRandomColor() {
 }
 
 
-function shuffle(array) {
+/* =========================================================
+   EMBARALHAR
+   ========================================================= */
+
+function shuffle(
+    array
+) {
 
     for (
+
         let i =
             array.length - 1;
-        i > 0;
+
+        i >
+        0;
+
         i--
+
     ) {
 
         const j =
             Math.floor(
-                Math.random() *
-                (i + 1)
+
+                Math.random()
+                *
+                (
+                    i + 1
+                )
+
             );
 
 
         [
             array[i],
             array[j]
-        ] =
+        ]
+        =
         [
             array[j],
             array[i]
@@ -3328,15 +6707,21 @@ function shuffle(array) {
 
     }
 
+
     return array;
 
 }
 
 
+/* =========================================================
+   UTILIDADES
+   ========================================================= */
+
 function randomStat() {
 
     return Math.floor(
-        Math.random() *
+        Math.random()
+        *
         11
     );
 
@@ -3350,38 +6735,53 @@ function clamp(
 ) {
 
     return Math.min(
+
         Math.max(
             value,
             min
         ),
+
         max
+
     );
 
 }
 
 
-function formatScore(score) {
+function formatScore(
+    score
+) {
 
     return Number.isInteger(
         score
     )
+
         ?
-        score
+
+    score
+
         :
-        score.toFixed(1);
+
+    score.toFixed(1);
 
 }
 
 
-function escapeHTML(text) {
+function escapeHTML(
+    text
+) {
 
     const div =
         document.createElement(
             "div"
         );
 
+
     div.textContent =
-        String(text);
+        String(
+            text
+        );
+
 
     return div.innerHTML;
 
@@ -3389,7 +6789,7 @@ function escapeHTML(text) {
 
 
 /* =========================================================
-   INICIAR
+   INICIAR V5
    ========================================================= */
 
 loadSavedSounds();
