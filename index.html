@@ -6,1635 +6,630 @@
 <title>Batalha dos Sons</title>
 
 <style>
-:root {
-    --bg: #f4f0e8;
-    --bg2: #faf8f3;
-    --card: rgba(255,255,255,.76);
-
-    --gold: #b49a62;
-    --gold-dark: #8e7648;
-    --gold-light: #d8c69b;
-
-    --text: #24231f;
-    --soft: #777166;
-    --light: #a39b8d;
-
-    --border: rgba(180,154,98,.42);
-
-    --shadow: 0 12px 40px rgba(82,70,45,.08);
-
-    --radius: 22px;
+:root{
+  --bg:#f4f0e8;
+  --bg2:#faf8f3;
+  --card:rgba(255,255,255,.78);
+  --gold:#b49a62;
+  --gold-dark:#8e7648;
+  --gold-light:#d8c69b;
+  --text:#24231f;
+  --soft:#777166;
+  --light:#a39b8d;
+  --border:rgba(180,154,98,.42);
+  --shadow:0 12px 40px rgba(82,70,45,.08);
+  --radius:22px;
 }
 
-* {
-    box-sizing: border-box;
+*{box-sizing:border-box}
+body{
+  margin:0;
+  min-height:100vh;
+  color:var(--text);
+  font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  background:
+    radial-gradient(circle at 50% -20%,rgba(214,198,155,.25),transparent 36%),
+    linear-gradient(135deg,var(--bg),var(--bg2) 50%,#f1ece2);
 }
 
-html {
-    scroll-behavior: smooth;
+button,input{font:inherit}
+
+header{
+  padding:34px 20px 30px;
+  text-align:center;
+  border-bottom:1px solid rgba(180,154,98,.22);
+  background:rgba(255,255,255,.32);
+  backdrop-filter:blur(16px);
 }
 
-body {
-    margin: 0;
-    min-height: 100vh;
-
-    color: var(--text);
-
-    font-family:
-        Inter,
-        ui-sans-serif,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Arial,
-        sans-serif;
-
-    background:
-        radial-gradient(
-            circle at 50% -20%,
-            rgba(214,198,155,.25),
-            transparent 36%
-        ),
-        linear-gradient(
-            135deg,
-            var(--bg),
-            var(--bg2) 50%,
-            #f1ece2
-        );
+.brand{display:inline-flex;align-items:center;gap:12px}
+.brand-symbol{
+  width:42px;height:42px;display:grid;place-items:center;
+  border-radius:50%;border:1px solid var(--border);
+  background:rgba(255,255,255,.68);color:var(--gold-dark);
+  font-size:20px;box-shadow:0 7px 20px rgba(100,86,54,.08)
 }
 
-button,
-input {
-    font: inherit;
+header h1{
+  margin:0;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(27px,4vw,36px);
+  font-weight:500;
+  letter-spacing:.04em
 }
+
+header p{
+  margin:9px 0 0;
+  color:var(--soft);
+  font-size:12px;
+  letter-spacing:.2em;
+  text-transform:uppercase
+}
+
+.container{width:min(1180px,92%);margin:42px auto}
+.panel{
+  position:relative;
+  margin-bottom:26px;
+  padding:28px;
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  background:var(--card);
+  backdrop-filter:blur(18px);
+  box-shadow:var(--shadow)
+}
+.panel h2{
+  margin:0;
+  font:500 23px Georgia,"Times New Roman",serif
+}
+.panel-title{display:flex;align-items:center;gap:10px}
+.panel-icon{color:var(--gold-dark)}
+.small-note{
+  margin:7px 0 18px;
+  color:var(--soft);
+  font-size:13px;
+  line-height:1.55
+}
+
+.capture-grid,.multiplayer-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px
+}
+
+.capture-box,.multi-box{
+  padding:25px;
+  border:1px solid rgba(180,154,98,.27);
+  border-radius:18px;
+  background:rgba(255,255,255,.46);
+  text-align:center
+}
+
+.capture-box h3,.multi-box h3{
+  margin:0 0 7px;
+  font:500 20px Georgia,serif
+}
+
+.capture-box p,.multi-box p{
+  margin:0 0 17px;
+  color:var(--soft);
+  font-size:12px;
+  line-height:1.5
+}
+
+.record-button{
+  width:106px;height:106px;border-radius:50%;
+  border:1px solid var(--gold);
+  background:linear-gradient(145deg,#fffdf8,#eee6d5);
+  color:var(--gold-dark);
+  font-size:34px;
+  cursor:pointer;
+  box-shadow:0 12px 30px rgba(107,88,45,.14)
+}
+.record-button.recording{animation:pulseRecord .9s infinite alternate}
+@keyframes pulseRecord{to{box-shadow:0 0 0 13px rgba(180,154,98,.09)}}
+
+.sound-name,.text-input{
+  width:min(420px,90%);
+  margin-top:17px;
+  padding:13px 15px;
+  border:1px solid rgba(180,154,98,.38);
+  border-radius:12px;
+  outline:none;
+  background:rgba(255,255,255,.75)
+}
+
+.premium-button{
+  padding:12px 23px;
+  border:1px solid var(--gold);
+  border-radius:999px;
+  background:linear-gradient(145deg,#c4a96c,#947847);
+  color:white;
+  cursor:pointer;
+  font-size:12px;
+  font-weight:650;
+  letter-spacing:.07em
+}
+.light-button{
+  background:rgba(255,255,255,.72);
+  color:var(--gold-dark)
+}
+
+.hunt-actions,.multi-actions{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:8px
+}
+
+.inventory{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(245px,1fr));
+  gap:18px
+}
+.sound-card{
+  position:relative;
+  padding:20px;
+  border:1px solid rgba(180,154,98,.26);
+  border-radius:18px;
+  background:rgba(255,255,255,.68);
+  cursor:pointer
+}
+.sound-card.selected{border-color:var(--gold)}
+.sound-orb-container{height:118px;display:grid;place-items:center}
+.sound-orb,.fighter-orb{
+  width:78px;height:78px;border-radius:50%;
+  box-shadow:0 11px 29px currentColor
+}
+.sound-card h3{
+  margin:8px 0 4px;
+  text-align:center;
+  font:500 18px Georgia,serif
+}
+.rarity{text-align:center;font-size:11px;font-weight:750;letter-spacing:.14em}
+.origin{
+  margin-bottom:12px;
+  color:var(--light);
+  text-align:center;
+  font-size:10px;
+  text-transform:uppercase
+}
+.level-row{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:10px;
+  color:var(--soft);
+  font-size:11px
+}
+.level-badge{
+  padding:5px 8px;
+  border:1px solid rgba(180,154,98,.3);
+  border-radius:999px;
+  color:var(--gold-dark)
+}
+.xp-bar{
+  height:5px;
+  overflow:hidden;
+  margin-bottom:14px;
+  border-radius:99px;
+  background:rgba(80,70,55,.09)
+}
+.xp-progress{
+  height:100%;
+  background:linear-gradient(90deg,var(--gold-dark),var(--gold-light))
+}
+.stats{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  padding-top:13px;
+  border-top:1px solid rgba(180,154,98,.15);
+  color:var(--soft);
+  font-size:12px
+}
+.stat-value{color:var(--text);font-weight:700}
+.history{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin-top:15px;
+  padding:10px;
+  border-radius:10px;
+  background:rgba(180,154,98,.07);
+  color:var(--soft);
+  font-size:11px
+}
+.card-actions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin-top:14px
+}
+.card-button{
+  padding:10px 7px;
+  border:1px solid rgba(180,154,98,.32);
+  border-radius:10px;
+  background:rgba(255,255,255,.64);
+  cursor:pointer;
+  font-size:11px
+}
+
+.battle-zone{
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  gap:22px;
+  margin-top:22px
+}
+.fighter{
+  min-height:190px;
+  padding:24px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  text-align:center;
+  border:1px solid rgba(180,154,98,.3);
+  border-radius:17px;
+  background:rgba(255,255,255,.55)
+}
+.fighter-orb{width:70px;height:70px;margin:4px auto 15px}
+.fighter-name{font:500 20px Georgia,serif}
+.vs{display:grid;place-items:center;color:var(--gold-dark);font:500 26px Georgia,serif}
+.battle-controls{text-align:center;margin-top:23px}
+.battle-button{
+  padding:13px 27px;
+  border:1px solid var(--gold);
+  border-radius:999px;
+  background:linear-gradient(145deg,#c4a96c,#947847);
+  color:white;
+  cursor:pointer;
+  font-size:12px;
+  font-weight:700
+}
+.secondary-button{
+  margin-left:8px;
+  background:rgba(255,255,255,.73);
+  color:var(--gold-dark)
+}
+.rounds{display:grid;gap:12px;margin-top:25px}
+.round{
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  gap:13px;
+  align-items:center;
+  padding:15px;
+  border:1px solid rgba(180,154,98,.24);
+  border-radius:14px;
+  background:rgba(255,255,255,.5)
+}
+.attribute-box{
+  padding:12px;
+  text-align:center;
+  border:1px solid rgba(180,154,98,.15);
+  border-radius:11px;
+  background:rgba(255,255,255,.6)
+}
+.attribute-box.winner{
+  border-color:var(--gold);
+  background:rgba(213,194,149,.14)
+}
+.attribute-value{font:500 26px Georgia,serif}
+.round-winner{
+  grid-column:1/-1;
+  text-align:center;
+  color:var(--gold-dark);
+  font-size:12px
+}
+.current-score{text-align:center;margin-top:15px;color:var(--soft)}
+.final-result{
+  margin-top:22px;
+  padding:24px;
+  border:1px solid var(--gold);
+  border-radius:16px;
+  text-align:center;
+  background:rgba(255,255,255,.7);
+  font:500 25px Georgia,serif
+}
+
+.multiplayer-status{
+  padding:14px;
+  border:1px solid rgba(180,154,98,.25);
+  border-radius:12px;
+  background:rgba(255,255,255,.56);
+  color:var(--soft);
+  font-size:12px;
+  line-height:1.5
+}
+.room-code{
+  margin:16px 0;
+  font:500 34px Georgia,serif;
+  letter-spacing:.15em;
+  color:var(--gold-dark)
+}
+.room-player{
+  padding:12px;
+  border:1px solid rgba(180,154,98,.2);
+  border-radius:12px;
+  margin-top:8px
+}
+.connected-dot{
+  display:inline-block;width:8px;height:8px;
+  border-radius:50%;background:#4b7c59;margin-right:7px
+}
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:999;
+  place-items:center;
+  padding:20px;
+  background:rgba(41,37,29,.45);
+  backdrop-filter:blur(9px)
+}
+.modal.active{display:grid}
+.modal-card{
+  width:min(470px,100%);
+  padding:34px;
+  border:1px solid var(--gold);
+  border-radius:24px;
+  background:#faf7ef;
+  text-align:center
+}
+.rename-input{
+  width:100%;
+  margin:20px 0;
+  padding:14px 16px;
+  border:1px solid rgba(180,154,98,.45);
+  border-radius:12px
+}
+
+.version{
+  padding:5px 20px 35px;
+  text-align:center;
+  color:var(--light);
+  font-size:10px;
+  letter-spacing:.14em
+}
+
+@media(max-width:720px){
+  .capture-grid,.multiplayer-grid,.battle-zone,.round{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="brand">
+    <div class="brand-symbol">♪</div>
+    <h1>Batalha dos Sons</h1>
+  </div>
+  <p>Capture · Colecione · Batalhe</p>
+</header>
+
+<div class="container">
+
+<section class="panel">
+  <div class="panel-title">
+    <span class="panel-icon">◇</span>
+    <h2>Multiplayer Alpha</h2>
+  </div>
+
+  <p class="small-note">
+    Entre com um apelido, crie uma sala privada e envie o código para um amigo.
+  </p>
+
+  <div class="multiplayer-grid">
+
+    <div class="multi-box">
+      <h3>Seu perfil</h3>
+      <p>Seu navegador recebe uma identidade anônima própria.</p>
+
+      <input id="nicknameInput" class="text-input" maxlength="24" placeholder="Seu apelido">
+
+      <div class="multi-actions" style="margin-top:12px;">
+        <button id="saveProfileButton" class="premium-button">SALVAR PERFIL</button>
+      </div>
+
+      <div id="authStatus" class="multiplayer-status" style="margin-top:14px;">
+        Conectando ao servidor...
+      </div>
+    </div>
+
+    <div class="multi-box">
+      <h3>Sala privada</h3>
+      <p>Crie uma sala ou entre usando o código enviado pelo outro jogador.</p>
+
+      <div class="multi-actions">
+        <button id="createRoomButton" class="premium-button" disabled>CRIAR SALA</button>
+      </div>
+
+      <input id="roomCodeInput" class="text-input" maxlength="6" placeholder="Código da sala">
+
+      <div class="multi-actions" style="margin-top:12px;">
+        <button id="joinRoomButton" class="premium-button light-button" disabled>ENTRAR NA SALA</button>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="roomPanel" style="display:none;margin-top:18px;">
+    <div class="multi-box">
+      <h3>Sala atual</h3>
+
+      <div id="roomCodeDisplay" class="room-code">------</div>
+
+      <div id="roomStatusText" class="multiplayer-status">
+        Aguardando jogadores...
+      </div>
+
+      <div id="roomPlayersList" style="margin-top:12px;"></div>
+    </div>
+  </div>
+</section>
+
+<section class="panel">
+  <div class="panel-title">
+    <span class="panel-icon">◇</span>
+    <h2>Obter Sons</h2>
+  </div>
+
+  <div class="capture-grid">
+    <div class="capture-box">
+      <h3>Criar Som</h3>
+      <p>Sons criados podem alcançar no máximo a raridade Raro.</p>
+      <button id="recordButton" class="record-button">🎙️</button>
+      <div>
+        <input id="soundName" class="sound-name" maxlength="30" placeholder="Nome do som">
+      </div>
+      <div id="recordStatus" class="small-note">Clique no microfone para gravar.</div>
+    </div>
+
+    <div class="capture-box">
+      <h3>Caçada Sonora</h3>
+      <p>Capturas podem alcançar as maiores raridades.</p>
+
+      <div class="hunt-actions">
+        <button id="huntButton" class="premium-button">ATIVAR CAÇADA</button>
+        <button id="testCaptureButton" class="premium-button light-button">TESTAR EVENTO</button>
+      </div>
+
+      <div id="huntStatus" class="small-note">Caçada desativada.</div>
+    </div>
+  </div>
+</section>
+
+<section class="panel">
+  <div class="panel-title">
+    <span class="panel-icon">◇</span>
+    <h2>Inventário</h2>
+  </div>
+
+  <p id="soundCounter" class="small-note">0 sons</p>
+  <div id="inventory" class="inventory"></div>
+</section>
+
+<section class="panel">
+  <div class="panel-title">
+    <span class="panel-icon">◇</span>
+    <h2>Arena Local</h2>
+  </div>
+
+  <p class="small-note">A batalha local da V5 continua funcionando normalmente.</p>
+
+  <div class="battle-zone">
+    <div id="fighterA" class="fighter">
+      <div class="fighter-name">Som I</div>
+    </div>
+
+    <div class="vs">VS</div>
+
+    <div id="fighterB" class="fighter">
+      <div class="fighter-name">Som II</div>
+    </div>
+  </div>
+
+  <div class="battle-controls">
+    <button id="battleButton" class="battle-button" disabled>BATALHAR</button>
+    <button id="nextRoundButton" class="battle-button secondary-button" style="display:none;">PRÓXIMA RODADA</button>
+    <button id="resultButton" class="battle-button secondary-button" style="display:none;">VER RESULTADO</button>
+    <button id="rematchButton" class="battle-button secondary-button" style="display:none;">REVANCHE</button>
+  </div>
+
+  <div id="currentScore" class="current-score"></div>
+  <div id="rounds" class="rounds"></div>
+  <div id="finalResult" class="final-result" style="display:none;"></div>
+</section>
+
+</div>
+
+<div class="version">BATALHA DOS SONS · V6 MULTIPLAYER ALPHA</div>
+
+<div id="captureModal" class="modal">
+  <div class="modal-card">
+    <h2>CAPTURA DISPONÍVEL</h2>
+    <div id="captureCountdown" class="room-code">10</div>
+    <button id="captureNowButton" class="premium-button">GRAVAR AGORA</button>
+    <button id="ignoreCaptureButton" class="premium-button light-button">IGNORAR</button>
+  </div>
+</div>
+
+<div id="renameModal" class="modal">
+  <div class="modal-card">
+    <h2>Renomear Som</h2>
+    <input id="renameInput" class="rename-input" maxlength="30">
+    <button id="saveRenameButton" class="premium-button">SALVAR</button>
+    <button id="cancelRenameButton" class="premium-button light-button">CANCELAR</button>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+/* =========================================================
+   SUPABASE
+   TROQUE SOMENTE ESTAS DUAS LINHAS
+   ========================================================= */
+
+const SUPABASE_URL = https://ccxblyuuiyzrofzlxyde.supabase.co;
+const SUPABASE_KEY = sb_publishable_Os30nYCS7xVwE-jEeNthzA_t6W8NrWn;
+
+const sb = supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+
+let currentUser = null;
+let currentProfile = null;
+let currentRoomId = null;
+let currentRoomCode = null;
+let roomChannel = null;
 
 
 /* =========================================================
-   HEADER
+   ELEMENTOS MULTIPLAYER
    ========================================================= */
 
-header {
-    padding: 34px 20px 30px;
-
-    text-align: center;
-
-    border-bottom:
-        1px solid rgba(180,154,98,.22);
-
-    background:
-        rgba(255,255,255,.32);
-
-    backdrop-filter:
-        blur(16px);
-}
-
-.brand {
-    display: inline-flex;
-    align-items: center;
-
-    gap: 12px;
-}
-
-.brand-symbol {
-    width: 42px;
-    height: 42px;
-
-    display: grid;
-    place-items: center;
-
-    border-radius: 50%;
-
-    border:
-        1px solid var(--border);
-
-    background:
-        rgba(255,255,255,.68);
-
-    color:
-        var(--gold-dark);
-
-    font-size: 20px;
-
-    box-shadow:
-        0 7px 20px
-        rgba(100,86,54,.08);
-}
-
-header h1 {
-    margin: 0;
-
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-    font-size:
-        clamp(27px,4vw,36px);
-
-    font-weight: 500;
-
-    letter-spacing:
-        .04em;
-}
-
-header p {
-    margin:
-        9px 0 0;
-
-    color:
-        var(--soft);
-
-    font-size:
-        12px;
-
-    letter-spacing:
-        .2em;
-
-    text-transform:
-        uppercase;
-}
+const nicknameInput = document.getElementById("nicknameInput");
+const saveProfileButton = document.getElementById("saveProfileButton");
+const authStatus = document.getElementById("authStatus");
+const createRoomButton = document.getElementById("createRoomButton");
+const joinRoomButton = document.getElementById("joinRoomButton");
+const roomCodeInput = document.getElementById("roomCodeInput");
+const roomPanel = document.getElementById("roomPanel");
+const roomCodeDisplay = document.getElementById("roomCodeDisplay");
+const roomStatusText = document.getElementById("roomStatusText");
+const roomPlayersList = document.getElementById("roomPlayersList");
 
 
 /* =========================================================
-   LAYOUT
+   AUTENTICAÇÃO ANÔNIMA
    ========================================================= */
 
-.container {
-    width:
-        min(1180px,92%);
+async function initializeOnlineIdentity(){
 
-    margin:
-        42px auto;
-}
+  authStatus.textContent = "Conectando ao servidor...";
 
-.panel {
-    position: relative;
+  let {
+    data: { session }
+  } = await sb.auth.getSession();
 
-    margin-bottom:
-        26px;
+  if(!session){
 
-    padding:
-        28px;
+    const { data, error } =
+      await sb.auth.signInAnonymously();
 
-    border:
-        1px solid var(--border);
-
-    border-radius:
-        var(--radius);
-
-    background:
-        var(--card);
-
-    backdrop-filter:
-        blur(18px);
-
-    box-shadow:
-        var(--shadow);
-}
-
-.panel::before {
-    content: "";
-
-    position: absolute;
-
-    inset: 8px;
-
-    pointer-events: none;
-
-    border:
-        1px solid
-        rgba(180,154,98,.09);
-
-    border-radius:
-        calc(
-            var(--radius) - 8px
-        );
-}
-
-.panel-title {
-    position: relative;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 10px;
-}
-
-.panel h2 {
-    margin: 0;
-
-    font:
-        500 23px
-        Georgia,
-        "Times New Roman",
-        serif;
-}
-
-.panel-icon {
-    color:
-        var(--gold-dark);
-}
-
-.small-note {
-    position: relative;
-
-    margin:
-        7px 0 18px;
-
-    color:
-        var(--soft);
-
-    font-size:
-        13px;
-
-    line-height:
-        1.55;
-}
-
-
-/* =========================================================
-   CAPTURA
-   ========================================================= */
-
-.capture-grid {
-    position: relative;
-
-    display: grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
-    gap: 18px;
-}
-
-.capture-box {
-    padding:
-        25px;
-
-    border:
-        1px solid
-        rgba(180,154,98,.27);
-
-    border-radius:
-        18px;
-
-    background:
-        rgba(255,255,255,.46);
-
-    text-align:
-        center;
-}
-
-.capture-box h3 {
-    margin:
-        0 0 7px;
-
-    font:
-        500 20px
-        Georgia,
-        serif;
-}
-
-.capture-box p {
-    min-height:
-        42px;
-
-    margin:
-        0 0 17px;
-
-    color:
-        var(--soft);
-
-    font-size:
-        12px;
-
-    line-height:
-        1.5;
-}
-
-.record-button {
-    position:
-        relative;
-
-    width:
-        106px;
-
-    height:
-        106px;
-
-    border-radius:
-        50%;
-
-    border:
-        1px solid
-        var(--gold);
-
-    background:
-        linear-gradient(
-            145deg,
-            #fffdf8,
-            #eee6d5
-        );
-
-    color:
-        var(--gold-dark);
-
-    font-size:
-        34px;
-
-    cursor:
-        pointer;
-
-    box-shadow:
-        0 12px 30px
-        rgba(107,88,45,.14);
-
-    transition:
-        .22s;
-}
-
-.record-button:hover {
-    transform:
-        translateY(-2px)
-        scale(1.03);
-}
-
-.record-button.recording {
-    animation:
-        pulseRecord
-        .9s
-        infinite
-        alternate;
-}
-
-@keyframes pulseRecord {
-    from {
-        box-shadow:
-            0 0 0 0
-            rgba(180,154,98,.10);
+    if(error){
+      console.error(error);
+      authStatus.textContent = "Erro ao conectar ao servidor.";
+      return;
     }
 
-    to {
-        box-shadow:
-            0 0 0 13px
-            rgba(180,154,98,.09);
-    }
-}
+    session = data.session;
+  }
 
-.sound-name {
-    width:
-        min(420px,90%);
+  currentUser = session.user;
 
-    margin-top:
-        17px;
-
-    padding:
-        13px 15px;
-
-    border:
-        1px solid
-        rgba(180,154,98,.38);
-
-    border-radius:
-        12px;
-
-    outline:
-        none;
-
-    background:
-        rgba(255,255,255,.75);
-
-    color:
-        var(--text);
-}
-
-.sound-name:focus {
-    border-color:
-        var(--gold);
-
-    box-shadow:
-        0 0 0 4px
-        rgba(180,154,98,.09);
-}
-
-#recordStatus {
-    min-height:
-        20px;
-
-    margin-top:
-        15px;
-
-    color:
-        var(--soft);
-
-    font-size:
-        13px;
-}
-
-.hunt-status {
-    min-height:
-        18px;
-
-    margin-top:
-        12px;
-
-    color:
-        var(--gold-dark);
-
-    font-size:
-        12px;
-}
-
-.premium-button {
-    padding:
-        12px 23px;
-
-    border:
-        1px solid
-        var(--gold);
-
-    border-radius:
-        999px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #c4a96c,
-            #947847
-        );
-
-    color:
-        #fff;
-
-    cursor:
-        pointer;
-
-    font-size:
-        12px;
-
-    font-weight:
-        650;
-
-    letter-spacing:
-        .07em;
-
-    transition:
-        .2s;
-}
-
-.premium-button:hover {
-    transform:
-        translateY(-2px);
-
-    box-shadow:
-        0 9px 22px
-        rgba(100,78,38,.16);
-}
-
-.light-button {
-    background:
-        rgba(255,255,255,.72);
-
-    color:
-        var(--gold-dark);
-}
-
-.danger-button {
-    background:
-        #6e5940;
-}
-
-.hunt-actions {
-    display: flex;
-
-    justify-content:
-        center;
-
-    flex-wrap:
-        wrap;
-
-    gap: 8px;
-}
-
-
-/* =========================================================
-   INVENTÁRIO
-   ========================================================= */
-
-.inventory-header {
-    position:
-        relative;
-
-    display:
-        flex;
-
-    justify-content:
-        space-between;
-
-    gap:
-        15px;
-
-    margin-bottom:
-        20px;
-}
-
-.sound-counter {
-    height:
-        fit-content;
-
-    padding:
-        7px 11px;
-
-    border:
-        1px solid
-        rgba(180,154,98,.32);
-
-    border-radius:
-        999px;
-
-    color:
-        var(--gold-dark);
-
-    background:
-        rgba(255,255,255,.55);
-
-    font-size:
-        12px;
-}
-
-.inventory {
-    position:
-        relative;
-
-    display:
-        grid;
-
-    grid-template-columns:
-        repeat(
-            auto-fill,
-            minmax(245px,1fr)
-        );
-
-    gap:
-        18px;
-}
-
-.empty {
-    grid-column:
-        1/-1;
-
-    padding:
-        45px 20px;
-
-    text-align:
-        center;
-
-    color:
-        var(--light);
-}
-
-.sound-card {
-    --rarity-color:
-        var(--gold);
-
-    position:
-        relative;
-
-    overflow:
-        hidden;
-
-    padding:
-        20px;
-
-    border:
-        1px solid
-        rgba(180,154,98,.26);
-
-    border-radius:
-        18px;
-
-    background:
-        rgba(255,255,255,.68);
-
-    box-shadow:
-        0 8px 25px
-        rgba(80,69,48,.06);
-
-    cursor:
-        pointer;
-
-    transition:
-        .24s;
-}
-
-.sound-card::before {
-    content: "";
-
-    position:
-        absolute;
-
-    top:
-        0;
-
-    left:
-        22%;
-
-    right:
-        22%;
-
-    height:
-        1px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            var(--rarity-color),
-            transparent
-        );
-
-    opacity:
-        .55;
-}
-
-.sound-card:hover {
-    transform:
-        translateY(-5px);
-
-    border-color:
-        var(--rarity-color);
-
-    box-shadow:
-        0 17px 40px
-        rgba(82,70,45,.12);
-}
-
-.sound-card.selected {
-    border-color:
-        var(--gold);
-
-    box-shadow:
-        0 0 0 2px
-        rgba(180,154,98,.1),
-        0 16px 35px
-        rgba(91,75,43,.12);
-}
-
-.sound-card.rarity-mitico {
-    border-color:
-        rgba(138,49,56,.42);
-}
-
-.sound-card.rarity-lendario {
-    border-color:
-        rgba(154,114,44,.42);
-}
-
-.sound-card.rarity-epico {
-    border-color:
-        rgba(101,72,117,.38);
-}
-
-.sound-card.rarity-raro {
-    border-color:
-        rgba(51,79,115,.32);
-}
-
-.sound-orb-container {
-    height:
-        118px;
-
-    display:
-        grid;
-
-    place-items:
-        center;
-}
-
-.sound-orb,
-.fighter-orb,
-.profile-orb {
-    width:
-        78px;
-
-    height:
-        78px;
-
-    border-radius:
-        50%;
-
-    box-shadow:
-        0 11px 29px
-        currentColor;
-
-    transition:
-        transform .05s linear,
-        border-radius .08s linear;
-}
-
-.sound-card h3 {
-    margin:
-        8px 0 4px;
-
-    text-align:
-        center;
-
-    font:
-        500 18px
-        Georgia,
-        serif;
-}
-
-.rarity {
-    margin-bottom:
-        5px;
-
-    text-align:
-        center;
-
-    font-size:
-        11px;
-
-    font-weight:
-        750;
-
-    letter-spacing:
-        .14em;
-}
-
-.origin {
-    margin-bottom:
-        12px;
-
-    color:
-        var(--light);
-
-    text-align:
-        center;
-
-    font-size:
-        10px;
-
-    letter-spacing:
-        .08em;
-
-    text-transform:
-        uppercase;
-}
-
-
-/* =========================================================
-   NIVEL / XP
-   ========================================================= */
-
-.level-row {
-    display:
-        flex;
-
-    justify-content:
-        space-between;
-
-    align-items:
-        center;
-
-    gap:
-        10px;
-
-    margin-bottom:
-        10px;
-
-    color:
-        var(--soft);
-
-    font-size:
-        11px;
-}
-
-.level-badge {
-    padding:
-        5px 8px;
-
-    border:
-        1px solid
-        rgba(180,154,98,.3);
-
-    border-radius:
-        999px;
-
-    color:
-        var(--gold-dark);
-
-    background:
-        rgba(180,154,98,.06);
-
-    font-weight:
-        700;
-}
-
-.power {
-    font-weight:
-        700;
-
-    color:
-        var(--text);
-}
-
-.xp-bar {
-    height:
-        5px;
-
-    overflow:
-        hidden;
-
-    margin-bottom:
-        14px;
-
-    border-radius:
-        99px;
-
-    background:
-        rgba(80,70,55,.09);
-}
-
-.xp-progress {
-    height:
-        100%;
-
-    border-radius:
-        99px;
-
-    background:
-        linear-gradient(
-            90deg,
-            var(--gold-dark),
-            var(--gold-light)
-        );
-}
-
-
-/* =========================================================
-   ATRIBUTOS
-   ========================================================= */
-
-.stats {
-    display:
-        grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
-    gap:
-        8px;
-
-    padding-top:
-        13px;
-
-    border-top:
-        1px solid
-        rgba(180,154,98,.15);
-
-    color:
-        var(--soft);
-
-    font-size:
-        12px;
-}
-
-.stat-value {
-    color:
-        var(--text);
-
-    font-weight:
-        700;
-}
-
-
-/* =========================================================
-   HISTÓRICO
-   ========================================================= */
-
-.history {
-    display:
-        flex;
-
-    justify-content:
-        center;
-
-    gap:
-        10px;
-
-    margin-top:
-        15px;
-
-    padding:
-        10px;
-
-    border-radius:
-        10px;
-
-    background:
-        rgba(180,154,98,.07);
-
-    color:
-        var(--soft);
-
-    font-size:
-        11px;
-}
-
-.history strong {
-    color:
-        var(--text);
-}
-
-
-/* =========================================================
-   BOTÕES DO CARD
-   ========================================================= */
-
-.card-actions {
-    display:
-        grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
-    gap:
-        8px;
-
-    margin-top:
-        14px;
-}
-
-.card-button {
-    padding:
-        10px 7px;
-
-    border:
-        1px solid
-        rgba(180,154,98,.32);
-
-    border-radius:
-        10px;
-
-    background:
-        rgba(255,255,255,.64);
-
-    color:
-        var(--text);
-
-    cursor:
-        pointer;
-
-    font-size:
-        11px;
-}
-
-.card-button:hover,
-.select-button.selected-button {
-    border-color:
-        var(--gold);
-
-    color:
-        var(--gold-dark);
-
-    background:
-        rgba(212,194,151,.13);
-}
-
-
-/* =========================================================
-   ARENA
-   ========================================================= */
-
-.battle-zone {
-    position:
-        relative;
-
-    display:
-        grid;
-
-    grid-template-columns:
-        1fr auto 1fr;
-
-    gap:
-        22px;
-
-    margin-top:
-        22px;
-}
-
-.fighter {
-    min-height:
-        190px;
-
-    padding:
-        24px;
-
-    display:
-        flex;
-
-    flex-direction:
-        column;
-
-    justify-content:
-        center;
-
-    text-align:
-        center;
-
-    border:
-        1px solid
-        rgba(180,154,98,.3);
-
-    border-radius:
-        17px;
-
-    background:
-        rgba(255,255,255,.55);
-}
-
-.fighter-orb {
-    width:
-        70px;
-
-    height:
-        70px;
-
-    margin:
-        4px auto 15px;
-}
-
-.fighter-name {
-    font:
-        500 20px
-        Georgia,
-        serif;
-}
-
-.fighter-rarity {
-    margin-top:
-        5px;
-
-    font-size:
-        10px;
-
-    font-weight:
-        750;
-
-    letter-spacing:
-        .13em;
-}
-
-.fighter-info {
-    margin-top:
-        7px;
-
-    color:
-        var(--soft);
-
-    font-size:
-        11px;
-}
-
-.vs {
-    display:
-        grid;
-
-    place-items:
-        center;
-
-    color:
-        var(--gold-dark);
-
-    font:
-        500 26px
-        Georgia,
-        serif;
-}
-
-.battle-controls {
-    position:
-        relative;
-
-    margin-top:
-        23px;
-
-    text-align:
-        center;
-}
-
-.battle-button {
-    padding:
-        13px 27px;
-
-    border:
-        1px solid
-        var(--gold);
-
-    border-radius:
-        999px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #c4a96c,
-            #947847
-        );
-
-    color:
-        white;
-
-    cursor:
-        pointer;
-
-    font-size:
-        12px;
-
-    font-weight:
-        700;
-
-    letter-spacing:
-        .08em;
-}
-
-.battle-button:disabled {
-    opacity:
-        .35;
-
-    cursor:
-        not-allowed;
-}
-
-.secondary-button {
-    margin-left:
-        8px;
-
-    background:
-        rgba(255,255,255,.73);
-
-    color:
-        var(--gold-dark);
-}
-
-
-/* =========================================================
-   RODADAS
-   ========================================================= */
-
-.rounds {
-    position:
-        relative;
-
-    display:
-        grid;
-
-    gap:
-        12px;
-
-    margin-top:
-        25px;
-}
-
-.round {
-    display:
-        grid;
-
-    grid-template-columns:
-        1fr auto 1fr;
-
-    gap:
-        13px;
-
-    align-items:
-        center;
-
-    padding:
-        15px;
-
-    border:
-        1px solid
-        rgba(180,154,98,.24);
-
-    border-radius:
-        14px;
-
-    background:
-        rgba(255,255,255,.5);
-
-    animation:
-        reveal .35s ease;
-}
-
-@keyframes reveal {
-    from {
-        opacity:
-            0;
-
-        transform:
-            translateY(10px);
-    }
-
-    to {
-        opacity:
-            1;
-
-        transform:
-            translateY(0);
-    }
-}
-
-.attribute-box {
-    padding:
-        12px;
-
-    text-align:
-        center;
-
-    border:
-        1px solid
-        rgba(180,154,98,.15);
-
-    border-radius:
-        11px;
-
-    background:
-        rgba(255,255,255,.6);
-}
-
-.attribute-box.winner {
-    border-color:
-        var(--gold);
-
-    background:
-        rgba(213,194,149,.14);
-}
-
-.attribute-name {
-    color:
-        var(--soft);
-
-    font-size:
-        12px;
-}
-
-.attribute-value {
-    margin-top:
-        4px;
-
-    font:
-        500 26px
-        Georgia,
-        serif;
-}
-
-.round-vs {
-    color:
-        var(--gold-dark);
-
-    font-size:
-        11px;
-
-    font-weight:
-        bold;
-}
-
-.round-winner {
-    grid-column:
-        1/-1;
-
-    color:
-        var(--gold-dark);
-
-    text-align:
-        center;
-
-    font-size:
-        12px;
-
-    font-weight:
-        650;
-}
-
-.current-score {
-    margin-top:
-        15px;
-
-    text-align:
-        center;
-
-    color:
-        var(--soft);
-
-    font-size:
-        12px;
-}
-
-.final-result {
-    position:
-        relative;
-
-    margin-top:
-        22px;
-
-    padding:
-        24px;
-
-    border:
-        1px solid
-        var(--gold);
-
-    border-radius:
-        16px;
-
-    text-align:
-        center;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.72),
-            rgba(224,210,177,.2)
-        );
-
-    font:
-        500 25px
-        Georgia,
-        serif;
-
-    animation:
-        reveal .4s ease;
-}
-
-.score {
-    margin-top:
-        8px;
-
-    color:
-        var(--soft);
-
-    font:
-        13px
-        Inter,
-        Arial,
-        sans-serif;
-}
-
-.xp-reward {
-    margin-top:
-        12px;
-
-    color:
-        var(--gold-dark);
-
-    font:
-        12px
-        Inter,
-        Arial,
-        sans-serif;
-}
-
-.winner-pulse {
-    animation:
-        winnerPulse
-        .55s ease;
-}
-
-@keyframes winnerPulse {
-    50% {
-        transform:
-            scale(1.22);
-
-        filter:
-            brightness(1.18);
-    }
-}
-
-
-/* =========================================================
-   MODAIS
-   ========================================================= */
-
-.modal {
-    display:
-        none;
-
-    position:
-        fixed;
-
-    inset:
-        0;
-
-    z-index:
-        999;
-
-    place-items:
-        center;
-
-    padding:
-        20px;
-
-    background:
-        rgba(41,37,29,.45);
-
-    backdrop-filter:
-        blur(9px);
-}
-
-.modal.active {
-    display:
-        grid;
-}
-
-.modal-card {
-    width:
-        min(470px,100%);
-
-    max-height:
-        90vh;
-
-    overflow-y:
-        auto;
-
-    padding:
-        34px;
-
-    border:
-        1px solid
-        var(--gold);
-
-    border-radius:
-        24px;
-
-    background:
-        #faf7ef;
-
-    text-align:
-        center;
-
-    box-shadow:
-        0 30px 90px
-        rgba(34,29,20,.28);
-
-    animation:
-        modalIn .35s ease;
-}
-
-@keyframes modalIn {
-    from {
-        opacity:
-            0;
-
-        transform:
-            scale(.94);
-    }
-
-    to {
-        opacity:
-            1;
-
-        transform:
-            scale(1);
-    }
-}
-
-.modal-symbol {
-    width:
-        76px;
-
-    height:
-        76px;
-
-    margin:
-        0 auto 18px;
-
-    display:
-        grid;
-
-    place-items:
-        center;
-
-    border:
-        1px solid
-        var(--gold);
-
-    border-radius:
-        50%;
-
-    color:
-        var(--gold-dark);
-
-    font-size:
-        31px;
-}
-
-.capture-alert-symbol {
-    animation:
-        alertPulse
-        .7s
-        infinite
-        alternate;
-}
-
-@keyframes alertPulse {
-    to {
-        transform:
-            scale(1.08);
-
-        box-shadow:
-            0 0 0 9px
-            rgba(180,154,98,.09);
-    }
-}
-
-.modal-card h2 {
-    margin:
-        0;
-
-    font:
-        500 27px
-        Georgia,
-        serif;
-}
-
-.modal-card p {
-    color:
-        var(--soft);
-
-    line-height:
-        1.6;
-
-    font-size:
-        13px;
-}
-
-.capture-countdown {
-    margin:
-        17px 0;
-
-    color:
-        var(--gold-dark);
-
-    font:
-        500 42px
-        Georgia,
-        serif;
-}
-
-.modal-buttons {
-    display:
-        flex;
-
-    justify-content:
-        center;
-
-    gap:
-        9px;
-
-    flex-wrap:
-        wrap;
-}
-
-
-/* =========================================================
-   RENOMEAR
-   ========================================================= */
-
-.rename-input {
-    width:
-        100%;
-
-    margin:
-        20px 0;
-
-    padding:
-        14px 16px;
-
-    border:
-        1px solid
-        rgba(180,154,98,.45);
-
-    border-radius:
-        12px;
-
-    outline:
-        none;
-
-    background:
-        #fffdf8;
-
-    color:
-        var(--text);
-}
-
-.rename-input:focus {
-    border-color:
-        var(--gold);
-
-    box-shadow:
-        0 0 0 4px
-        rgba(180,154,98,.1);
+  await loadProfile();
 }
 
 
@@ -1642,5159 +637,1007 @@ header p {
    PERFIL
    ========================================================= */
 
-.profile-orb {
-    width:
-        110px;
+async function loadProfile(){
 
-    height:
-        110px;
+  const { data, error } = await sb
+    .from("profiles")
+    .select("*")
+    .eq("user_id", currentUser.id)
+    .maybeSingle();
 
-    margin:
-        6px auto 20px;
+  if(error){
+    console.error(error);
+  }
+
+  if(data){
+    currentProfile = data;
+    nicknameInput.value = data.nickname;
+
+    authStatus.innerHTML =
+      `<span class="connected-dot"></span>Conectado como <strong>${escapeHTML(data.nickname)}</strong>`;
+
+    createRoomButton.disabled = false;
+    joinRoomButton.disabled = false;
+  }else{
+    authStatus.textContent = "Conectado. Escolha um apelido para jogar online.";
+  }
 }
 
-.profile-subtitle {
-    margin-top:
-        5px;
 
-    color:
-        var(--soft);
+saveProfileButton.addEventListener("click", async ()=>{
 
-    font-size:
-        11px;
+  const nickname = nicknameInput.value.trim();
 
-    letter-spacing:
-        .1em;
+  if(nickname.length < 2){
+    alert("Use um apelido com pelo menos 2 caracteres.");
+    return;
+  }
 
-    text-transform:
-        uppercase;
-}
+  const { data, error } = await sb
+    .from("profiles")
+    .upsert({
+      user_id: currentUser.id,
+      nickname
+    })
+    .select()
+    .single();
 
-.profile-grid {
-    display:
-        grid;
+  if(error){
+    console.error(error);
+    alert("Não consegui salvar o perfil.");
+    return;
+  }
 
-    grid-template-columns:
-        1fr 1fr;
+  currentProfile = data;
 
-    gap:
-        10px;
+  authStatus.innerHTML =
+    `<span class="connected-dot"></span>Conectado como <strong>${escapeHTML(nickname)}</strong>`;
 
-    margin:
-        20px 0;
-}
+  createRoomButton.disabled = false;
+  joinRoomButton.disabled = false;
 
-.profile-box {
-    padding:
-        14px 10px;
-
-    border:
-        1px solid
-        rgba(180,154,98,.2);
-
-    border-radius:
-        12px;
-
-    background:
-        rgba(255,255,255,.55);
-}
-
-.profile-label {
-    color:
-        var(--soft);
-
-    font-size:
-        10px;
-
-    text-transform:
-        uppercase;
-
-    letter-spacing:
-        .08em;
-}
-
-.profile-value {
-    margin-top:
-        5px;
-
-    font:
-        500 20px
-        Georgia,
-        serif;
-}
-
-.profile-stats {
-    display:
-        grid;
-
-    gap:
-        8px;
-
-    margin:
-        20px 0;
-}
-
-.profile-stat {
-    display:
-        flex;
-
-    justify-content:
-        space-between;
-
-    padding:
-        11px 12px;
-
-    border-bottom:
-        1px solid
-        rgba(180,154,98,.14);
-
-    color:
-        var(--soft);
-
-    font-size:
-        12px;
-}
-
-.profile-stat strong {
-    color:
-        var(--text);
-}
-
-.profile-xp {
-    margin:
-        12px 0 20px;
-
-    color:
-        var(--soft);
-
-    font-size:
-        12px;
-}
+});
 
 
 /* =========================================================
-   FOOTER
+   CRIAR SALA
    ========================================================= */
 
-.version {
-    padding:
-        5px 20px 35px;
+createRoomButton.addEventListener("click", async ()=>{
 
-    text-align:
-        center;
+  const { data, error } = await sb.rpc(
+    "create_game_room"
+  );
 
-    color:
-        var(--light);
+  if(error){
+    console.error(error);
+    alert("Erro ao criar sala: " + error.message);
+    return;
+  }
 
-    font-size:
-        10px;
+  const room = data[0];
 
-    letter-spacing:
-        .14em;
-}
+  currentRoomId = room.room_id;
+  currentRoomCode = room.room_code;
+
+  await openRoom();
+});
 
 
 /* =========================================================
-   RESPONSIVO
+   ENTRAR NA SALA
    ========================================================= */
 
-@media(max-width:720px) {
+joinRoomButton.addEventListener("click", async ()=>{
 
-    .capture-grid,
-    .battle-zone,
-    .round {
-        grid-template-columns:
-            1fr;
+  const code = roomCodeInput.value
+    .trim()
+    .toUpperCase();
+
+  if(code.length !== 6){
+    alert("Digite um código de 6 caracteres.");
+    return;
+  }
+
+  const { data, error } = await sb.rpc(
+    "join_game_room",
+    {
+      requested_code: code
     }
-
-    .container {
-        width:
-            94%;
-
-        margin-top:
-            24px;
-    }
-
-    .panel {
-        padding:
-            21px;
-    }
-
-    .inventory-header {
-        flex-direction:
-            column;
-    }
-
-    .round-vs,
-    .vs {
-        text-align:
-            center;
-    }
-
-    .secondary-button {
-        margin:
-            8px 0 0;
-    }
-
-    .profile-grid {
-        grid-template-columns:
-            1fr 1fr;
-    }
-}
-
-</style>
-</head>
-
-
-<body>
-
-<header>
-
-    <div class="brand">
-
-        <div class="brand-symbol">
-            ♪
-        </div>
-
-        <h1>
-            Batalha dos Sons
-        </h1>
-
-    </div>
-
-    <p>
-        Capture · Colecione · Batalhe
-    </p>
-
-</header>
-
-
-<div class="container">
-
-
-<!-- ======================================================
-     OBTER SONS
-     ====================================================== -->
-
-<section class="panel">
-
-    <div class="panel-title">
-
-        <span class="panel-icon">
-            ◇
-        </span>
-
-        <h2>
-            Obter Sons
-        </h2>
-
-    </div>
-
-    <p class="small-note">
-        Crie sons livremente ou mantenha a Caçada Sonora ativa
-        para encontrar capturas especiais.
-    </p>
-
-
-    <div class="capture-grid">
-
-
-        <div class="capture-box">
-
-            <h3>
-                Criar Som
-            </h3>
-
-            <p>
-                Grave quando quiser. Sons criados podem alcançar
-                no máximo a raridade Raro.
-            </p>
-
-
-            <button
-                id="recordButton"
-                class="record-button"
-            >
-                🎙️
-            </button>
-
-
-            <div>
-
-                <input
-                    id="soundName"
-                    class="sound-name"
-                    maxlength="30"
-                    placeholder="Nome do som (opcional)"
-                >
-
-            </div>
-
-
-            <div id="recordStatus">
-                Clique no microfone para gravar.
-            </div>
-
-        </div>
-
-
-        <div class="capture-box">
-
-            <h3>
-                Caçada Sonora
-            </h3>
-
-            <p>
-                Uma oportunidade pode surgir a qualquer momento.
-                Capturas podem alcançar as maiores raridades.
-            </p>
-
-
-            <div class="hunt-actions">
-
-                <button
-                    id="huntButton"
-                    class="premium-button"
-                >
-                    ATIVAR CAÇADA
-                </button>
-
-
-                <button
-                    id="testCaptureButton"
-                    class="
-                        premium-button
-                        light-button
-                    "
-                >
-                    TESTAR EVENTO
-                </button>
-
-            </div>
-
-
-            <div
-                id="huntStatus"
-                class="hunt-status"
-            >
-                Caçada desativada.
-            </div>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-<!-- ======================================================
-     INVENTÁRIO
-     ====================================================== -->
-
-<section class="panel">
-
-    <div class="inventory-header">
-
-        <div>
-
-            <div class="panel-title">
-
-                <span class="panel-icon">
-                    ◇
-                </span>
-
-                <h2>
-                    Inventário
-                </h2>
-
-            </div>
-
-            <p class="small-note">
-                Seus sons, progressão e histórico ficam salvos
-                neste navegador.
-            </p>
-
-        </div>
-
-
-        <div
-            id="soundCounter"
-            class="sound-counter"
-        >
-            0 sons
-        </div>
-
-    </div>
-
-
-    <div
-        id="inventory"
-        class="inventory"
-    >
-
-        <div class="empty">
-            Sua coleção ainda está vazia.
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ======================================================
-     ARENA
-     ====================================================== -->
-
-<section class="panel">
-
-    <div class="panel-title">
-
-        <span class="panel-icon">
-            ◇
-        </span>
-
-        <h2>
-            Arena
-        </h2>
-
-    </div>
-
-
-    <p class="small-note">
-        Os cinco atributos são embaralhados.
-        Cada atributo aparece uma única vez por batalha.
-        Você decide quando revelar cada rodada.
-    </p>
-
-
-    <div class="battle-zone">
-
-
-        <div
-            id="fighterA"
-            class="fighter"
-        >
-
-            <div class="fighter-name">
-                Som I
-            </div>
-
-            <p class="small-note">
-                Selecione um som.
-            </p>
-
-        </div>
-
-
-        <div class="vs">
-            VS
-        </div>
-
-
-        <div
-            id="fighterB"
-            class="fighter"
-        >
-
-            <div class="fighter-name">
-                Som II
-            </div>
-
-            <p class="small-note">
-                Selecione outro som.
-            </p>
-
-        </div>
-
-
-    </div>
-
-
-    <div class="battle-controls">
-
-
-        <button
-            id="battleButton"
-            class="battle-button"
-            disabled
-        >
-            BATALHAR
-        </button>
-
-
-        <button
-            id="nextRoundButton"
-            class="
-                battle-button
-                secondary-button
-            "
-            style="display:none;"
-        >
-            PRÓXIMA RODADA
-        </button>
-
-
-        <button
-            id="resultButton"
-            class="
-                battle-button
-                secondary-button
-            "
-            style="display:none;"
-        >
-            VER RESULTADO
-        </button>
-
-
-        <button
-            id="rematchButton"
-            class="
-                battle-button
-                secondary-button
-            "
-            style="display:none;"
-        >
-            REVANCHE
-        </button>
-
-
-    </div>
-
-
-    <div
-        id="currentScore"
-        class="current-score"
-    ></div>
-
-
-    <div
-        id="rounds"
-        class="rounds"
-    ></div>
-
-
-    <div
-        id="finalResult"
-        class="final-result"
-        style="display:none;"
-    ></div>
-
-</section>
-
-</div>
-
-
-<div class="version">
-    BATALHA DOS SONS · V5
-</div>
-
-
-<!-- ======================================================
-     MODAL CAPTURA
-     ====================================================== -->
-
-<div
-    id="captureModal"
-    class="modal"
->
-
-    <div class="modal-card">
-
-        <div
-            class="
-                modal-symbol
-                capture-alert-symbol
-            "
-        >
-            ♪
-        </div>
-
-        <h2>
-            CAPTURA DISPONÍVEL
-        </h2>
-
-        <p>
-            Grave algum som ao seu redor
-            antes que a oportunidade desapareça.
-        </p>
-
-        <div
-            id="captureCountdown"
-            class="capture-countdown"
-        >
-            10
-        </div>
-
-        <div class="modal-buttons">
-
-            <button
-                id="captureNowButton"
-                class="premium-button"
-            >
-                GRAVAR AGORA
-            </button>
-
-            <button
-                id="ignoreCaptureButton"
-                class="
-                    premium-button
-                    light-button
-                "
-            >
-                IGNORAR
-            </button>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- ======================================================
-     MODAL RENOMEAR
-     ====================================================== -->
-
-<div
-    id="renameModal"
-    class="modal"
->
-
-    <div class="modal-card">
-
-        <div class="modal-symbol">
-            ✎
-        </div>
-
-        <h2>
-            Renomear Som
-        </h2>
-
-        <p>
-            O novo nome ficará salvo permanentemente
-            no seu inventário.
-        </p>
-
-
-        <input
-            id="renameInput"
-            class="rename-input"
-            maxlength="30"
-            placeholder="Novo nome"
-        >
-
-
-        <div class="modal-buttons">
-
-            <button
-                id="saveRenameButton"
-                class="premium-button"
-            >
-                SALVAR
-            </button>
-
-            <button
-                id="cancelRenameButton"
-                class="
-                    premium-button
-                    light-button
-                "
-            >
-                CANCELAR
-            </button>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- ======================================================
-     MODAL PERFIL
-     ====================================================== -->
-
-<div
-    id="profileModal"
-    class="modal"
->
-
-    <div
-        id="profileContent"
-        class="modal-card"
-    ></div>
-
-</div>
-
-
-<script>
-
-/* =========================================================
-   CONFIGURAÇÃO
-   ========================================================= */
-
-const GAME_DATA_VERSION =
-    5;
-
-const XP_PER_LEVEL =
-    100;
-
-const XP_WIN =
-    35;
-
-const XP_DRAW =
-    25;
-
-const XP_LOSS =
-    15;
+  );
+
+  if(error){
+    console.error(error);
+    alert("Erro ao entrar: " + error.message);
+    return;
+  }
+
+  currentRoomId = data[0].room_id;
+  currentRoomCode = code;
+
+  await openRoom();
+});
 
 
 /* =========================================================
-   ESTADO
+   ABRIR SALA
    ========================================================= */
 
-let mediaRecorder =
-    null;
+async function openRoom(){
 
-let currentStream =
-    null;
+  roomPanel.style.display = "block";
+  roomCodeDisplay.textContent = currentRoomCode;
 
-let audioChunks =
-    [];
+  await refreshRoom();
 
-let recording =
-    false;
-
-let recordingMode =
-    "created";
-
-
-let sounds =
-    [];
-
-
-let selectedA =
-    null;
-
-let selectedB =
-    null;
-
-
-let huntActive =
-    false;
-
-let huntTimer =
-    null;
-
-
-let captureCountdownTimer =
-    null;
-
-let captureSeconds =
-    10;
-
-
-let currentBattle =
-    null;
-
-
-let renameTarget =
-    null;
-
-let profileTarget =
-    null;
-
-
-/* =========================================================
-   PALETA
-   ========================================================= */
-
-const orbPalette = [
-
-    "#16233F",
-    "#123A32",
-    "#542932",
-    "#313A46",
-    "#16414C",
-    "#51405E",
-    "#4F5735",
-    "#784D3C",
-    "#35404A",
-    "#3C324D",
-    "#27515A",
-    "#664444"
-
-];
-
-
-/* =========================================================
-   ATRIBUTOS
-   ========================================================= */
-
-const attributeInfo = {
-
-    grave: {
-        name: "Grave",
-        icon: "◐"
-    },
-
-    agudo: {
-        name: "Agudo",
-        icon: "◑"
-    },
-
-    impacto: {
-        name: "Impacto",
-        icon: "✦"
-    },
-
-    duracao: {
-        name: "Duração",
-        icon: "◷"
-    },
-
-    complexidade: {
-        name: "Complexidade",
-        icon: "◇"
-    }
-
-};
-
-
-const attributeKeys = [
-
-    "grave",
-    "agudo",
-    "impacto",
-    "duracao",
-    "complexidade"
-
-];
-
-
-/* =========================================================
-   ELEMENTOS
-   ========================================================= */
-
-const recordButton =
-    document.getElementById(
-        "recordButton"
-    );
-
-const soundNameInput =
-    document.getElementById(
-        "soundName"
-    );
-
-const recordStatus =
-    document.getElementById(
-        "recordStatus"
-    );
-
-
-const huntButton =
-    document.getElementById(
-        "huntButton"
-    );
-
-const testCaptureButton =
-    document.getElementById(
-        "testCaptureButton"
-    );
-
-const huntStatus =
-    document.getElementById(
-        "huntStatus"
-    );
-
-
-const inventory =
-    document.getElementById(
-        "inventory"
-    );
-
-const soundCounter =
-    document.getElementById(
-        "soundCounter"
-    );
-
-
-const fighterA =
-    document.getElementById(
-        "fighterA"
-    );
-
-const fighterB =
-    document.getElementById(
-        "fighterB"
-    );
-
-
-const battleButton =
-    document.getElementById(
-        "battleButton"
-    );
-
-const nextRoundButton =
-    document.getElementById(
-        "nextRoundButton"
-    );
-
-const resultButton =
-    document.getElementById(
-        "resultButton"
-    );
-
-const rematchButton =
-    document.getElementById(
-        "rematchButton"
-    );
-
-
-const currentScore =
-    document.getElementById(
-        "currentScore"
-    );
-
-const roundsContainer =
-    document.getElementById(
-        "rounds"
-    );
-
-const finalResult =
-    document.getElementById(
-        "finalResult"
-    );
-
-
-const captureModal =
-    document.getElementById(
-        "captureModal"
-    );
-
-const captureCountdown =
-    document.getElementById(
-        "captureCountdown"
-    );
-
-const captureNowButton =
-    document.getElementById(
-        "captureNowButton"
-    );
-
-const ignoreCaptureButton =
-    document.getElementById(
-        "ignoreCaptureButton"
-    );
-
-
-const renameModal =
-    document.getElementById(
-        "renameModal"
-    );
-
-const renameInput =
-    document.getElementById(
-        "renameInput"
-    );
-
-const saveRenameButton =
-    document.getElementById(
-        "saveRenameButton"
-    );
-
-const cancelRenameButton =
-    document.getElementById(
-        "cancelRenameButton"
-    );
-
-
-const profileModal =
-    document.getElementById(
-        "profileModal"
-    );
-
-const profileContent =
-    document.getElementById(
-        "profileContent"
-    );
-
-
-/* =========================================================
-   INDEXED DB
-   ========================================================= */
-
-const DB_NAME =
-    "BatalhaDosSonsDB";
-
-const DB_VERSION =
-    1;
-
-const STORE_NAME =
-    "sounds";
-
-
-function openDatabase() {
-
-    return new Promise(
-        (resolve,reject) => {
-
-            const request =
-                indexedDB.open(
-                    DB_NAME,
-                    DB_VERSION
-                );
-
-
-            request.onupgradeneeded =
-                event => {
-
-                    const db =
-                        event.target.result;
-
-
-                    if (
-                        !db.objectStoreNames.contains(
-                            STORE_NAME
-                        )
-                    ) {
-
-                        db.createObjectStore(
-                            STORE_NAME,
-                            {
-                                keyPath:
-                                    "id"
-                            }
-                        );
-
-                    }
-
-                };
-
-
-            request.onsuccess =
-                () =>
-                    resolve(
-                        request.result
-                    );
-
-
-            request.onerror =
-                () =>
-                    reject(
-                        request.error
-                    );
-
-        }
-    );
-
+  subscribeToRoom();
 }
 
 
 /* =========================================================
-   SALVAR SOM
+   ATUALIZAR SALA
    ========================================================= */
 
-async function saveSoundToDatabase(
-    sound
-) {
-
-    const db =
-        await openDatabase();
-
-
-    return new Promise(
-        (resolve,reject) => {
-
-            const tx =
-                db.transaction(
-                    STORE_NAME,
-                    "readwrite"
-                );
-
-
-            const store =
-                tx.objectStore(
-                    STORE_NAME
-                );
-
-
-            const storedSound = {
-
-                id:
-                    sound.id,
-
-                version:
-                    GAME_DATA_VERSION,
-
-                name:
-                    sound.name,
-
-                stats:
-                    sound.stats,
-
-                rarity:
-                    sound.rarity,
-
-                color:
-                    sound.color,
-
-                audioBlob:
-                    sound.audioBlob,
-
-                createdAt:
-                    sound.createdAt,
-
-                origin:
-                    sound.origin,
-
-                history:
-                    sound.history,
-
-                xp:
-                    sound.xp
-
-            };
-
-
-            const request =
-                store.put(
-                    storedSound
-                );
-
-
-            request.onsuccess =
-                () =>
-                    resolve();
-
-
-            request.onerror =
-                () =>
-                    reject(
-                        request.error
-                    );
-
-
-            tx.oncomplete =
-                () =>
-                    db.close();
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   CARREGAR BANCO
-   ========================================================= */
-
-async function getAllSoundsFromDatabase() {
-
-    const db =
-        await openDatabase();
-
-
-    return new Promise(
-        (resolve,reject) => {
-
-            const tx =
-                db.transaction(
-                    STORE_NAME,
-                    "readonly"
-                );
-
-
-            const store =
-                tx.objectStore(
-                    STORE_NAME
-                );
-
-
-            const request =
-                store.getAll();
-
-
-            request.onsuccess =
-                () =>
-                    resolve(
-                        request.result
-                        ||
-                        []
-                    );
-
-
-            request.onerror =
-                () =>
-                    reject(
-                        request.error
-                    );
-
-
-            tx.oncomplete =
-                () =>
-                    db.close();
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   MIGRAÇÃO V3 / V4 -> V5
-   ========================================================= */
-
-async function loadSavedSounds() {
-
-    try {
-
-        const saved =
-            await getAllSoundsFromDatabase();
-
-
-        sounds =
-            saved.map(
-                sound =>
-                    normalizeSound(
-                        sound
-                    )
-            );
-
-
-        sounds.sort(
-            (a,b) =>
-                b.createdAt
-                -
-                a.createdAt
-        );
-
-
-        /*
-        Atualiza silenciosamente os sons antigos
-        para o formato da V5.
-        */
-
-        await Promise.all(
-
-            sounds.map(
-                sound =>
-                    saveSoundToDatabase(
-                        sound
-                    )
-            )
-
-        );
-
-
-        renderInventory();
-
-    }
-
-    catch(error) {
-
-        console.error(
-            "Erro ao carregar inventário:",
-            error
-        );
-
-    }
-
-}
-
-
-/* =========================================================
-   NORMALIZAR SOM
-   ========================================================= */
-
-function normalizeSound(
-    sound
-) {
-
-    return {
-
-        ...sound,
-
-        version:
-            GAME_DATA_VERSION,
-
-        origin:
-            sound.origin
-            ||
-            "created",
-
-        history:
-            sound.history
-            ||
-            {
-                wins:
-                    0,
-
-                losses:
-                    0,
-
-                draws:
-                    0
-            },
-
-        xp:
-            Number.isFinite(
-                sound.xp
-            )
-                ?
-                sound.xp
-                :
-                0,
-
-        audioURL:
-            URL.createObjectURL(
-                sound.audioBlob
-            )
-
-    };
-
-}
-
-
-/* =========================================================
-   NIVEL
-   ========================================================= */
-
-function getLevel(
-    sound
-) {
-
-    return (
-        Math.floor(
-            sound.xp /
-            XP_PER_LEVEL
-        )
-        +
-        1
-    );
-
-}
-
-
-function getXPInsideLevel(
-    sound
-) {
-
-    return (
-        sound.xp
-        %
-        XP_PER_LEVEL
-    );
-
-}
-
-
-function getXPProgressPercent(
-    sound
-) {
-
-    return (
-        getXPInsideLevel(
-            sound
-        )
-        /
-        XP_PER_LEVEL
-    )
-    *
-    100;
-
-}
-
-
-/* =========================================================
-   PODER
-   ========================================================= */
-
-function calculatePower(
-    sound
-) {
-
-    const values =
-        Object.values(
-            sound.stats
-        );
-
-
-    const total =
-        values.reduce(
-            (sum,value) =>
-                sum + value,
-            0
-        );
-
-
-    return Math.round(
-        (
-            total /
-            50
-        )
-        *
-        100
-    );
-
-}
-
-
-/* =========================================================
-   TAXA DE VITÓRIA
-   ========================================================= */
-
-function getTotalBattles(
-    sound
-) {
-
-    return (
-        sound.history.wins
-        +
-        sound.history.losses
-        +
-        sound.history.draws
-    );
-
-}
-
-
-function getWinRate(
-    sound
-) {
-
-    const total =
-        getTotalBattles(
-            sound
-        );
-
-
-    if (
-        total === 0
-    ) {
-
-        return 0;
-
-    }
-
-
-    return Math.round(
-        (
-            sound.history.wins
-            /
-            total
-        )
-        *
-        100
-    );
-
-}
-
-
-/* =========================================================
-   GRAVAÇÃO NORMAL
-   ========================================================= */
-
-recordButton.addEventListener(
-    "click",
-    async () => {
-
-        if (!recording) {
-
-            recordingMode =
-                "created";
-
-            await startRecording();
-
-        }
-
-        else {
-
-            stopRecording();
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   COMEÇAR GRAVAÇÃO
-   ========================================================= */
-
-async function startRecording() {
-
-    try {
-
-        currentStream =
-            await navigator
-                .mediaDevices
-                .getUserMedia({
-                    audio:
-                        true
-                });
-
-
-        mediaRecorder =
-            new MediaRecorder(
-                currentStream
-            );
-
-
-        audioChunks =
-            [];
-
-
-        mediaRecorder.ondataavailable =
-            event => {
-
-                if (
-                    event.data.size >
-                    0
-                ) {
-
-                    audioChunks.push(
-                        event.data
-                    );
-
-                }
-
-            };
-
-
-        mediaRecorder.onstop =
-            async () => {
-
-                const blob =
-                    new Blob(
-                        audioChunks,
-                        {
-                            type:
-                                mediaRecorder.mimeType
-                        }
-                    );
-
-
-                await createSound(
-                    blob,
-                    recordingMode
-                );
-
-
-                if (
-                    currentStream
-                ) {
-
-                    currentStream
-                        .getTracks()
-                        .forEach(
-                            track =>
-                                track.stop()
-                        );
-
-                }
-
-
-                currentStream =
-                    null;
-
-            };
-
-
-        mediaRecorder.start();
-
-
-        recording =
-            true;
-
-
-        recordButton
-            .classList
-            .add(
-                "recording"
-            );
-
-
-        recordButton.textContent =
-            "■";
-
-
-        if (
-            recordingMode ===
-            "random"
-        ) {
-
-            recordStatus.textContent =
-                "Captura especial gravando… clique para finalizar.";
-
-        }
-
-        else {
-
-            recordStatus.textContent =
-                "Gravando… clique novamente para finalizar.";
-
-        }
-
-    }
-
-    catch(error) {
-
-        console.error(
-            error
-        );
-
-
-        alert(
-            "Não consegui acessar o microfone. Confira a permissão do navegador."
-        );
-
-    }
-
-}
-
-
-/* =========================================================
-   PARAR GRAVAÇÃO
-   ========================================================= */
-
-function stopRecording() {
-
-    if (
-        mediaRecorder
-        &&
-        mediaRecorder.state !==
-        "inactive"
-    ) {
-
-        mediaRecorder.stop();
-
-    }
-
-
-    recording =
-        false;
-
-
-    recordButton
-        .classList
-        .remove(
-            "recording"
-        );
-
-
-    recordButton.textContent =
-        "🎙️";
-
-
-    recordStatus.textContent =
-        "Analisando o som…";
-
-}
-
-
-/* =========================================================
-   CRIAR SOM
-   ========================================================= */
-
-async function createSound(
-    audioBlob,
-    mode
-) {
-
-    let stats;
-
-
-    try {
-
-        stats =
-            await analyzeAudio(
-                audioBlob
-            );
-
-    }
-
-    catch(error) {
-
-        console.error(
-            error
-        );
-
-
-        stats = {
-
-            grave:
-                randomStat(),
-
-            agudo:
-                randomStat(),
-
-            impacto:
-                randomStat(),
-
-            duracao:
-                randomStat(),
-
-            complexidade:
-                randomStat()
-
-        };
-
-    }
-
-
-    const rarity =
-
-        mode ===
-        "random"
-
-            ?
-
-        calculateCapturedRarity()
-
-            :
-
-        calculateCreatedRarity(
-            stats
-        );
-
-
-    const defaultName =
-
-        mode ===
-        "random"
-
-            ?
-
-        `Captura #${sounds.length + 1}`
-
-            :
-
-        `Som #${sounds.length + 1}`;
-
+async function refreshRoom(){
+
+  if(!currentRoomId) return;
+
+  const { data: room, error: roomError } = await sb
+    .from("rooms")
+    .select("*")
+    .eq("id", currentRoomId)
+    .single();
+
+  if(roomError){
+    console.error(roomError);
+    return;
+  }
+
+  const { data: players, error: playersError } = await sb
+    .from("room_players")
+    .select(`
+      slot,
+      user_id,
+      ready,
+      profiles:user_id (
+        nickname
+      )
+    `)
+    .eq("room_id", currentRoomId)
+    .order("slot");
+
+  if(playersError){
+    console.error(playersError);
+  }
+
+  roomStatusText.textContent =
+    room.status === "waiting"
+      ? "Aguardando jogadores..."
+      : room.status === "ready"
+      ? "Os dois jogadores estão prontos."
+      : `Status: ${room.status}`;
+
+  roomPlayersList.innerHTML = "";
+
+  (players || []).forEach(player=>{
+
+    const div = document.createElement("div");
+    div.className = "room-player";
 
     const name =
-
-        soundNameInput
-            .value
-            .trim()
-
-        ||
-
-        defaultName;
-
-
-    const sound = {
-
-        id:
-
-            typeof crypto !==
-            "undefined"
-
-            &&
-            crypto.randomUUID
-
-                ?
-
-            crypto.randomUUID()
-
-                :
-
-            String(
-                Date.now()
-                +
-                Math.random()
-            ),
-
-        version:
-            GAME_DATA_VERSION,
-
-        name,
-
-        stats,
-
-        rarity,
-
-        color:
-            elegantRandomColor(),
-
-        audioBlob,
-
-        audioURL:
-            URL.createObjectURL(
-                audioBlob
-            ),
-
-        createdAt:
-            Date.now(),
-
-        origin:
-            mode,
-
-        history: {
-
-            wins:
-                0,
-
-            losses:
-                0,
-
-            draws:
-                0
-
-        },
-
-        xp:
-            0
-
-    };
-
-
-    sounds.unshift(
-        sound
-    );
-
-
-    await saveSoundToDatabase(
-        sound
-    );
-
-
-    soundNameInput.value =
-        "";
-
-
-    renderInventory();
-
-
-    if (
-        mode ===
-        "random"
-    ) {
-
-        recordStatus.textContent =
-            `Captura concluída — ${rarity.name}!`;
-
-
-        if (
-            huntActive
-        ) {
-
-            scheduleNextCapture();
-
-        }
-
-    }
-
-    else {
-
-        recordStatus.textContent =
-            "Som criado e salvo.";
-
-    }
-
-}
-
-
-/* =========================================================
-   ANÁLISE
-   ========================================================= */
-
-async function analyzeAudio(
-    blob
-) {
-
-    const arrayBuffer =
-        await blob.arrayBuffer();
-
-
-    const AudioContextClass =
-        window.AudioContext
-        ||
-        window.webkitAudioContext;
-
-
-    const audioContext =
-        new AudioContextClass();
-
-
-    const buffer =
-        await audioContext
-            .decodeAudioData(
-                arrayBuffer.slice(0)
-            );
-
-
-    const channel =
-        buffer.getChannelData(0);
-
-
-    let sumSquares =
-        0;
-
-    let peak =
-        0;
-
-    let zeroCrossings =
-        0;
-
-    let differenceSum =
-        0;
-
-
-    for (
-        let i = 1;
-        i < channel.length;
-        i++
-    ) {
-
-        const sample =
-            Math.abs(
-                channel[i]
-            );
-
-
-        sumSquares +=
-            channel[i]
-            *
-            channel[i];
-
-
-        if (
-            sample >
-            peak
-        ) {
-
-            peak =
-                sample;
-
-        }
-
-
-        if (
-
-            (
-                channel[i - 1] <
-                0
-
-                &&
-
-                channel[i] >=
-                0
-            )
-
-            ||
-
-            (
-                channel[i - 1] >=
-                0
-
-                &&
-
-                channel[i] <
-                0
-            )
-
-        ) {
-
-            zeroCrossings++;
-
-        }
-
-
-        differenceSum +=
-            Math.abs(
-                channel[i]
-                -
-                channel[i - 1]
-            );
-
-    }
-
-
-    const rms =
-        Math.sqrt(
-
-            sumSquares
-            /
-            Math.max(
-                channel.length,
-                1
-            )
-
-        );
-
-
-    const crossingRate =
-        zeroCrossings
-        /
-        Math.max(
-            channel.length,
-            1
-        );
-
-
-    const variation =
-        differenceSum
-        /
-        Math.max(
-            channel.length,
-            1
-        );
-
-
-    const impacto =
-        clamp(
-
-            Math.round(
-                peak * 12
-            ),
-
-            0,
-            10
-
-        );
-
-
-    const agudo =
-        clamp(
-
-            Math.round(
-                crossingRate * 170
-            ),
-
-            0,
-            10
-
-        );
-
-
-    const grave =
-        clamp(
-
-            Math.round(
-
-                10
-                -
-                agudo
-                +
-                rms * 4
-
-            ),
-
-            0,
-            10
-
-        );
-
-
-    const duracao =
-        clamp(
-
-            Math.round(
-                buffer.duration
-                *
-                1.4
-            ),
-
-            0,
-            10
-
-        );
-
-
-    const complexidade =
-        clamp(
-
-            Math.round(
-
-                variation * 80
-                +
-                crossingRate * 60
-                +
-                rms * 8
-
-            ),
-
-            0,
-            10
-
-        );
-
-
-    await audioContext.close();
-
-
-    return {
-
-        grave,
-        agudo,
-        impacto,
-        duracao,
-        complexidade
-
-    };
-
-}
-
-
-/* =========================================================
-   RARIDADE — CRIADO
-   ========================================================= */
-
-function calculateCreatedRarity(
-    stats
-) {
-
-    const values =
-        Object.values(
-            stats
-        );
-
-
-    const average =
-        values.reduce(
-            (a,b) =>
-                a + b,
-            0
-        )
-        /
-        values.length;
-
-
-    const highest =
-        Math.max(
-            ...values
-        );
-
-
-    const score =
-        average * .75
-        +
-        highest * .25;
-
-
-    if (
-        score >=
-        6.3
-    ) {
-
-        return {
-
-            name:
-                "RARO",
-
-            color:
-                "#334F73"
-
-        };
-
-    }
-
-
-    if (
-        score >=
-        4.4
-    ) {
-
-        return {
-
-            name:
-                "INCOMUM",
-
-            color:
-                "#476551"
-
-        };
-
-    }
-
-
-    return {
-
-        name:
-            "COMUM",
-
-        color:
-            "#77736B"
-
-    };
-
-}
-
-
-/* =========================================================
-   RARIDADE — CAÇADA
-   ========================================================= */
-
-function calculateCapturedRarity() {
-
-    const roll =
-        Math.random()
-        *
-        100;
-
-
-    if (
-        roll <
-        2
-    ) {
-
-        return {
-
-            name:
-                "MÍTICO",
-
-            color:
-                "#8A3138"
-
-        };
-
-    }
-
-
-    if (
-        roll <
-        7
-    ) {
-
-        return {
-
-            name:
-                "LENDÁRIO",
-
-            color:
-                "#9A722C"
-
-        };
-
-    }
-
-
-    if (
-        roll <
-        16
-    ) {
-
-        return {
-
-            name:
-                "ÉPICO",
-
-            color:
-                "#654875"
-
-        };
-
-    }
-
-
-    if (
-        roll <
-        33
-    ) {
-
-        return {
-
-            name:
-                "RARO",
-
-            color:
-                "#334F73"
-
-        };
-
-    }
-
-
-    if (
-        roll <
-        60
-    ) {
-
-        return {
-
-            name:
-                "INCOMUM",
-
-            color:
-                "#476551"
-
-        };
-
-    }
-
-
-    return {
-
-        name:
-            "COMUM",
-
-        color:
-            "#77736B"
-
-    };
-
-}
-
-
-/* =========================================================
-   CAÇADA
-   ========================================================= */
-
-huntButton.addEventListener(
-    "click",
-    () => {
-
-        huntActive =
-            !huntActive;
-
-
-        if (
-            huntActive
-        ) {
-
-            huntButton.textContent =
-                "DESATIVAR CAÇADA";
-
-
-            huntButton
-                .classList
-                .add(
-                    "danger-button"
-                );
-
-
-            huntStatus.textContent =
-                "Caçada ativa. Uma oportunidade pode surgir a qualquer momento.";
-
-
-            scheduleNextCapture();
-
-        }
-
-        else {
-
-            huntButton.textContent =
-                "ATIVAR CAÇADA";
-
-
-            huntButton
-                .classList
-                .remove(
-                    "danger-button"
-                );
-
-
-            huntStatus.textContent =
-                "Caçada desativada.";
-
-
-            clearTimeout(
-                huntTimer
-            );
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   TESTAR CAÇADA
-   ========================================================= */
-
-testCaptureButton.addEventListener(
-    "click",
-    () => {
-
-        triggerCaptureEvent();
-
-    }
-);
-
-
-/* =========================================================
-   AGENDAR CAPTURA
-   ========================================================= */
-
-function scheduleNextCapture() {
-
-    clearTimeout(
-        huntTimer
-    );
-
-
-    if (
-        !huntActive
-    ) {
-
-        return;
-
-    }
-
-
-    const delay =
-        30000
-        +
-        Math.random()
-        *
-        60000;
-
-
-    huntTimer =
-        setTimeout(
-            triggerCaptureEvent,
-            delay
-        );
-
-}
-
-
-/* =========================================================
-   EVENTO DE CAPTURA
-   ========================================================= */
-
-function triggerCaptureEvent() {
-
-    if (
-        recording
-        ||
-        captureModal
-            .classList
-            .contains(
-                "active"
-            )
-    ) {
-
-        if (
-            huntActive
-        ) {
-
-            scheduleNextCapture();
-
-        }
-
-        return;
-
-    }
-
-
-    playAlertSound();
-
-
-    captureSeconds =
-        10;
-
-
-    captureCountdown.textContent =
-        captureSeconds;
-
-
-    captureModal
-        .classList
-        .add(
-            "active"
-        );
-
-
-    clearInterval(
-        captureCountdownTimer
-    );
-
-
-    captureCountdownTimer =
-        setInterval(
-            () => {
-
-                captureSeconds--;
-
-
-                captureCountdown.textContent =
-                    captureSeconds;
-
-
-                if (
-                    captureSeconds <=
-                    0
-                ) {
-
-                    closeCaptureEvent();
-
-
-                    huntStatus.textContent =
-                        "A oportunidade escapou.";
-
-
-                    if (
-                        huntActive
-                    ) {
-
-                        scheduleNextCapture();
-
-                    }
-
-                }
-
-            },
-
-            1000
-
-        );
-
-}
-
-
-/* =========================================================
-   FECHAR CAPTURA
-   ========================================================= */
-
-function closeCaptureEvent() {
-
-    clearInterval(
-        captureCountdownTimer
-    );
-
-
-    captureModal
-        .classList
-        .remove(
-            "active"
-        );
-
-}
-
-
-/* =========================================================
-   CAPTURAR AGORA
-   ========================================================= */
-
-captureNowButton.addEventListener(
-    "click",
-    async () => {
-
-        closeCaptureEvent();
-
-
-        recordingMode =
-            "random";
-
-
-        await startRecording();
-
-    }
-);
-
-
-/* =========================================================
-   IGNORAR
-   ========================================================= */
-
-ignoreCaptureButton.addEventListener(
-    "click",
-    () => {
-
-        closeCaptureEvent();
-
-
-        huntStatus.textContent =
-            "Oportunidade ignorada.";
-
-
-        if (
-            huntActive
-        ) {
-
-            scheduleNextCapture();
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   SOM DO ALERTA
-   ========================================================= */
-
-function playAlertSound() {
-
-    try {
-
-        const AudioContextClass =
-            window.AudioContext
-            ||
-            window.webkitAudioContext;
-
-
-        const ctx =
-            new AudioContextClass();
-
-
-        const osc =
-            ctx.createOscillator();
-
-
-        const gain =
-            ctx.createGain();
-
-
-        osc.frequency.value =
-            660;
-
-
-        gain.gain.value =
-            .06;
-
-
-        osc.connect(
-            gain
-        );
-
-
-        gain.connect(
-            ctx.destination
-        );
-
-
-        osc.start();
-
-
-        osc.stop(
-            ctx.currentTime
-            +
-            .18
-        );
-
-
-        osc.onended =
-            () =>
-                ctx.close();
-
-    }
-
-    catch(error) {
-
-        console.log(
-            "Alerta sonoro indisponível."
-        );
-
-    }
-
-}
-
-
-/* =========================================================
-   INVENTÁRIO
-   ========================================================= */
-
-function renderInventory() {
-
-    inventory.innerHTML =
-        "";
-
-
-    soundCounter.textContent =
-
-        sounds.length ===
-        1
-
-            ?
-
-        "1 som"
-
-            :
-
-        `${sounds.length} sons`;
-
-
-    if (
-        sounds.length ===
-        0
-    ) {
-
-        inventory.innerHTML = `
-
-            <div class="empty">
-
-                Sua coleção ainda está vazia.
-
-            </div>
-
-        `;
-
-
-        return;
-
-    }
-
-
-    sounds.forEach(
-        sound =>
-            addSoundCard(
-                sound
-            )
-    );
-
-
-    updateSelectionUI();
-
-}
-
-
-/* =========================================================
-   CARD
-   ========================================================= */
-
-function addSoundCard(
-    sound
-) {
-
-    const card =
-        document.createElement(
-            "div"
-        );
-
-
-    card.className =
-        `sound-card ${getRarityClass(sound.rarity.name)}`;
-
-
-    card.dataset.id =
-        sound.id;
-
-
-    card.style.setProperty(
-        "--rarity-color",
-        sound.rarity.color
-    );
-
-
-    const originText =
-
-        sound.origin ===
-        "random"
-
-            ?
-
-        "Captura Aleatória"
-
-            :
-
-        "Som Criado";
-
-
-    const level =
-        getLevel(
-            sound
-        );
-
-
-    const power =
-        calculatePower(
-            sound
-        );
-
-
-    card.innerHTML = `
-
-        <div class="sound-orb-container">
-
-            <div
-                class="sound-orb"
-                style="
-                    background:${sound.color};
-                    color:${sound.color};
-                "
-            ></div>
-
-        </div>
-
-
-        <h3>
-            ${escapeHTML(sound.name)}
-        </h3>
-
-
-        <div
-            class="rarity"
-            style="
-                color:${sound.rarity.color}
-            "
-        >
-            ${sound.rarity.name}
-        </div>
-
-
-        <div class="origin">
-            ${originText}
-        </div>
-
-
-        <div class="level-row">
-
-            <span class="level-badge">
-                NÍVEL ${level}
-            </span>
-
-            <span>
-                PODER
-                <span class="power">
-                    ${power}
-                </span>
-            </span>
-
-        </div>
-
-
-        <div class="xp-bar">
-
-            <div
-                class="xp-progress"
-                style="
-                    width:${getXPProgressPercent(sound)}%
-                "
-            ></div>
-
-        </div>
-
-
-        <div class="stats">
-
-            <div>
-                ◐ Grave:
-                <span class="stat-value">
-                    ${sound.stats.grave}/10
-                </span>
-            </div>
-
-            <div>
-                ◑ Agudo:
-                <span class="stat-value">
-                    ${sound.stats.agudo}/10
-                </span>
-            </div>
-
-            <div>
-                ✦ Impacto:
-                <span class="stat-value">
-                    ${sound.stats.impacto}/10
-                </span>
-            </div>
-
-            <div>
-                ◷ Duração:
-                <span class="stat-value">
-                    ${sound.stats.duracao}/10
-                </span>
-            </div>
-
-            <div>
-                ◇ Complexidade:
-                <span class="stat-value">
-                    ${sound.stats.complexidade}/10
-                </span>
-            </div>
-
-        </div>
-
-
-        <div class="history">
-
-            <span>
-                V
-                <strong>
-                    ${sound.history.wins}
-                </strong>
-            </span>
-
-            <span>
-                D
-                <strong>
-                    ${sound.history.losses}
-                </strong>
-            </span>
-
-            <span>
-                E
-                <strong>
-                    ${sound.history.draws}
-                </strong>
-            </span>
-
-        </div>
-
-
-        <div class="card-actions">
-
-            <button
-                class="
-                    card-button
-                    play-button
-                "
-            >
-                Ouvir
-            </button>
-
-
-            <button
-                class="
-                    card-button
-                    select-button
-                "
-            >
-                Selecionar
-            </button>
-
-
-            <button
-                class="
-                    card-button
-                    profile-button
-                "
-            >
-                Detalhes
-            </button>
-
-
-            <button
-                class="
-                    card-button
-                    rename-button
-                "
-            >
-                Renomear
-            </button>
-
-        </div>
-
+      player.profiles?.nickname
+      || "Jogador";
+
+    div.innerHTML = `
+      <strong>Jogador ${player.slot}</strong><br>
+      ${escapeHTML(name)}
+      ${player.user_id === currentUser.id ? " · você" : ""}
     `;
 
+    roomPlayersList.appendChild(div);
+  });
 
-    inventory.appendChild(
-        card
-    );
+  if((players || []).length < 2){
 
-
-    const orb =
-        card.querySelector(
-            ".sound-orb"
-        );
-
-
-    /* Clique no card toca o som */
-
-    card.addEventListener(
-        "click",
-        event => {
-
-            if (
-                event.target.closest(
-                    "button"
-                )
-            ) {
-
-                return;
-
-            }
-
-
-            playSound(
-                sound.audioURL,
-                orb
-            );
-
-        }
-    );
-
-
-    /* Ouvir */
-
-    card
-        .querySelector(
-            ".play-button"
-        )
-        .addEventListener(
-            "click",
-            event => {
-
-                event.stopPropagation();
-
-
-                playSound(
-                    sound.audioURL,
-                    orb
-                );
-
-            }
-        );
-
-
-    /* Arena */
-
-    card
-        .querySelector(
-            ".select-button"
-        )
-        .addEventListener(
-            "click",
-            event => {
-
-                event.stopPropagation();
-
-
-                selectSound(
-                    sound
-                );
-
-            }
-        );
-
-
-    /* Detalhes */
-
-    card
-        .querySelector(
-            ".profile-button"
-        )
-        .addEventListener(
-            "click",
-            event => {
-
-                event.stopPropagation();
-
-
-                openProfile(
-                    sound
-                );
-
-            }
-        );
-
-
-    /* Renomear */
-
-    card
-        .querySelector(
-            ".rename-button"
-        )
-        .addEventListener(
-            "click",
-            event => {
-
-                event.stopPropagation();
-
-
-                openRenameModal(
-                    sound
-                );
-
-            }
-        );
-
+    const div = document.createElement("div");
+    div.className = "room-player";
+    div.textContent = "Aguardando o segundo jogador...";
+    roomPlayersList.appendChild(div);
+  }
 }
 
 
 /* =========================================================
-   CLASSE DE RARIDADE
+   REALTIME
    ========================================================= */
 
-function getRarityClass(
-    rarity
-) {
-
-    return (
-        "rarity-"
-        +
-        rarity
-            .normalize(
-                "NFD"
-            )
-            .replace(
-                /[\u0300-\u036f]/g,
-                ""
-            )
-            .toLowerCase()
-    );
-
-}
-
-
-/* =========================================================
-   RENOMEAR
-   ========================================================= */
-
-function openRenameModal(
-    sound
-) {
-
-    renameTarget =
-        sound;
-
-
-    renameInput.value =
-        sound.name;
-
-
-    renameModal
-        .classList
-        .add(
-            "active"
-        );
-
-
-    setTimeout(
-        () => {
-
-            renameInput.focus();
-
-            renameInput.select();
-
-        },
-
-        100
-    );
-
-}
-
-
-/* =========================================================
-   SALVAR RENOMEAÇÃO
-   ========================================================= */
-
-saveRenameButton.addEventListener(
-    "click",
-    async () => {
-
-        if (
-            !renameTarget
-        ) {
-
-            return;
-
-        }
-
-
-        const newName =
-            renameInput
-                .value
-                .trim();
-
-
-        if (
-            !newName
-        ) {
-
-            alert(
-                "O nome não pode ficar vazio."
-            );
-
-            return;
-
-        }
-
-
-        renameTarget.name =
-            newName;
-
-
-        await saveSoundToDatabase(
-            renameTarget
-        );
-
-
-        renameModal
-            .classList
-            .remove(
-                "active"
-            );
-
-
-        renameTarget =
-            null;
-
-
-        renderInventory();
-
-
-        renderFighter(
-            fighterA,
-            selectedA,
-            "Som I"
-        );
-
-
-        renderFighter(
-            fighterB,
-            selectedB,
-            "Som II"
-        );
-
-    }
-);
-
-
-/* =========================================================
-   ENTER PARA SALVAR
-   ========================================================= */
-
-renameInput.addEventListener(
-    "keydown",
-    event => {
-
-        if (
-            event.key ===
-            "Enter"
-        ) {
-
-            saveRenameButton.click();
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   CANCELAR RENOMEAÇÃO
-   ========================================================= */
-
-cancelRenameButton.addEventListener(
-    "click",
-    () => {
-
-        renameModal
-            .classList
-            .remove(
-                "active"
-            );
-
-
-        renameTarget =
-            null;
-
-    }
-);
-
-
-/* =========================================================
-   PERFIL DO SOM
-   ========================================================= */
-
-function openProfile(
-    sound
-) {
-
-    profileTarget =
-        sound;
-
-
-    renderProfile();
-
-
-    profileModal
-        .classList
-        .add(
-            "active"
-        );
-
-}
-
-
-/* =========================================================
-   DESENHAR PERFIL
-   ========================================================= */
-
-function renderProfile() {
-
-    const sound =
-        profileTarget;
-
-
-    if (
-        !sound
-    ) {
-
-        return;
-
-    }
-
-
-    const level =
-        getLevel(
-            sound
-        );
-
-
-    const totalBattles =
-        getTotalBattles(
-            sound
-        );
-
-
-    const winRate =
-        getWinRate(
-            sound
-        );
-
-
-    const power =
-        calculatePower(
-            sound
-        );
-
-
-    const originText =
-
-        sound.origin ===
-        "random"
-
-            ?
-
-        "Captura Aleatória"
-
-            :
-
-        "Som Criado";
-
-
-    profileContent.innerHTML = `
-
-        <div
-            class="profile-orb"
-            style="
-                background:${sound.color};
-                color:${sound.color};
-            "
-        ></div>
-
-
-        <h2>
-            ${escapeHTML(sound.name)}
-        </h2>
-
-
-        <div class="profile-subtitle">
-
-            <span
-                style="
-                    color:${sound.rarity.color}
-                "
-            >
-
-                ${sound.rarity.name}
-
-            </span>
-
-            ·
-
-            ${originText}
-
-        </div>
-
-
-        <div class="profile-grid">
-
-
-            <div class="profile-box">
-
-                <div class="profile-label">
-                    Nível
-                </div>
-
-                <div class="profile-value">
-                    ${level}
-                </div>
-
-            </div>
-
-
-            <div class="profile-box">
-
-                <div class="profile-label">
-                    Poder
-                </div>
-
-                <div class="profile-value">
-                    ${power}
-                </div>
-
-            </div>
-
-
-            <div class="profile-box">
-
-                <div class="profile-label">
-                    Batalhas
-                </div>
-
-                <div class="profile-value">
-                    ${totalBattles}
-                </div>
-
-            </div>
-
-
-            <div class="profile-box">
-
-                <div class="profile-label">
-                    Taxa de vitória
-                </div>
-
-                <div class="profile-value">
-                    ${winRate}%
-                </div>
-
-            </div>
-
-
-        </div>
-
-
-        <div class="profile-xp">
-
-            XP total:
-            <strong>
-                ${sound.xp}
-            </strong>
-
-            ·
-
-            ${getXPInsideLevel(sound)}
-            /
-            ${XP_PER_LEVEL}
-            para o próximo nível
-
-        </div>
-
-
-        <div class="xp-bar">
-
-            <div
-                class="xp-progress"
-                style="
-                    width:${getXPProgressPercent(sound)}%
-                "
-            ></div>
-
-        </div>
-
-
-        <div class="profile-stats">
-
-
-            <div class="profile-stat">
-
-                <span>
-                    ◐ Grave
-                </span>
-
-                <strong>
-                    ${sound.stats.grave}/10
-                </strong>
-
-            </div>
-
-
-            <div class="profile-stat">
-
-                <span>
-                    ◑ Agudo
-                </span>
-
-                <strong>
-                    ${sound.stats.agudo}/10
-                </strong>
-
-            </div>
-
-
-            <div class="profile-stat">
-
-                <span>
-                    ✦ Impacto
-                </span>
-
-                <strong>
-                    ${sound.stats.impacto}/10
-                </strong>
-
-            </div>
-
-
-            <div class="profile-stat">
-
-                <span>
-                    ◷ Duração
-                </span>
-
-                <strong>
-                    ${sound.stats.duracao}/10
-                </strong>
-
-            </div>
-
-
-            <div class="profile-stat">
-
-                <span>
-                    ◇ Complexidade
-                </span>
-
-                <strong>
-                    ${sound.stats.complexidade}/10
-                </strong>
-
-            </div>
-
-
-        </div>
-
-
-        <div class="history">
-
-            <span>
-                Vitórias
-                <strong>
-                    ${sound.history.wins}
-                </strong>
-            </span>
-
-            <span>
-                Derrotas
-                <strong>
-                    ${sound.history.losses}
-                </strong>
-            </span>
-
-            <span>
-                Empates
-                <strong>
-                    ${sound.history.draws}
-                </strong>
-            </span>
-
-        </div>
-
-
-        <div
-            class="modal-buttons"
-            style="
-                margin-top:22px
-            "
-        >
-
-            <button
-                id="profilePlayButton"
-                class="premium-button"
-            >
-                OUVIR
-            </button>
-
-
-            <button
-                id="profileRenameButton"
-                class="
-                    premium-button
-                    light-button
-                "
-            >
-                RENOMEAR
-            </button>
-
-
-            <button
-                id="closeProfileButton"
-                class="
-                    premium-button
-                    light-button
-                "
-            >
-                FECHAR
-            </button>
-
-        </div>
-
-    `;
-
-
-    const profileOrb =
-        profileContent
-            .querySelector(
-                ".profile-orb"
-            );
-
-
-    document
-        .getElementById(
-            "profilePlayButton"
-        )
-        .addEventListener(
-            "click",
-            () => {
-
-                playSound(
-                    sound.audioURL,
-                    profileOrb
-                );
-
-            }
-        );
-
-
-    document
-        .getElementById(
-            "profileRenameButton"
-        )
-        .addEventListener(
-            "click",
-            () => {
-
-                profileModal
-                    .classList
-                    .remove(
-                        "active"
-                    );
-
-
-                openRenameModal(
-                    sound
-                );
-
-            }
-        );
-
-
-    document
-        .getElementById(
-            "closeProfileButton"
-        )
-        .addEventListener(
-            "click",
-            () => {
-
-                profileModal
-                    .classList
-                    .remove(
-                        "active"
-                    );
-
-
-                profileTarget =
-                    null;
-
-            }
-        );
-
-}
-
-
-/* =========================================================
-   FECHAR MODAIS CLICANDO FORA
-   ========================================================= */
-
-renameModal.addEventListener(
-    "click",
-    event => {
-
-        if (
-            event.target ===
-            renameModal
-        ) {
-
-            renameModal
-                .classList
-                .remove(
-                    "active"
-                );
-
-            renameTarget =
-                null;
-
-        }
-
-    }
-);
-
-
-profileModal.addEventListener(
-    "click",
-    event => {
-
-        if (
-            event.target ===
-            profileModal
-        ) {
-
-            profileModal
-                .classList
-                .remove(
-                    "active"
-                );
-
-            profileTarget =
-                null;
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   SELEÇÃO
-   ========================================================= */
-
-function selectSound(
-    sound
-) {
-
-    if (
-        selectedA
-        &&
-        selectedA.id ===
-        sound.id
-    ) {
-
-        selectedA =
-            null;
-
-    }
-
-    else if (
-        selectedB
-        &&
-        selectedB.id ===
-        sound.id
-    ) {
-
-        selectedB =
-            null;
-
-    }
-
-    else if (
-        !selectedA
-    ) {
-
-        selectedA =
-            sound;
-
-    }
-
-    else if (
-        !selectedB
-    ) {
-
-        selectedB =
-            sound;
-
-    }
-
-    else {
-
-        selectedA =
-            selectedB;
-
-        selectedB =
-            sound;
-
-    }
-
-
-    updateSelectionUI();
-
-    resetBattle();
-
-}
-
-
-/* =========================================================
-   ATUALIZAR SELEÇÃO
-   ========================================================= */
-
-function updateSelectionUI() {
-
-    document
-        .querySelectorAll(
-            ".sound-card"
-        )
-        .forEach(
-            card => {
-
-                const id =
-                    card.dataset.id;
-
-
-                const selected =
-
-                    (
-                        selectedA
-                        &&
-                        selectedA.id ===
-                        id
-                    )
-
-                    ||
-
-                    (
-                        selectedB
-                        &&
-                        selectedB.id ===
-                        id
-                    );
-
-
-                card
-                    .classList
-                    .toggle(
-                        "selected",
-                        selected
-                    );
-
-
-                const button =
-                    card.querySelector(
-                        ".select-button"
-                    );
-
-
-                if (
-                    selected
-                ) {
-
-                    button.textContent =
-                        "Na Arena";
-
-
-                    button
-                        .classList
-                        .add(
-                            "selected-button"
-                        );
-
-                }
-
-                else {
-
-                    button.textContent =
-                        "Selecionar";
-
-
-                    button
-                        .classList
-                        .remove(
-                            "selected-button"
-                        );
-
-                }
-
-            }
-        );
-
-
-    renderFighter(
-        fighterA,
-        selectedA,
-        "Som I"
-    );
-
-
-    renderFighter(
-        fighterB,
-        selectedB,
-        "Som II"
-    );
-
-
-    battleButton.disabled =
-        !selectedA
-        ||
-        !selectedB;
-
-}
-
-
-/* =========================================================
-   LUTADOR
-   ========================================================= */
-
-function renderFighter(
-    element,
-    sound,
-    placeholder
-) {
-
-    if (
-        !sound
-    ) {
-
-        element.innerHTML = `
-
-            <div class="fighter-name">
-                ${placeholder}
-            </div>
-
-            <p class="small-note">
-                Selecione um som.
-            </p>
-
-        `;
-
-
-        return;
-
-    }
-
-
-    element.innerHTML = `
-
-        <div
-            class="fighter-orb"
-            style="
-                background:${sound.color};
-                color:${sound.color};
-            "
-        ></div>
-
-
-        <div class="fighter-name">
-
-            ${escapeHTML(
-                sound.name
-            )}
-
-        </div>
-
-
-        <div
-            class="fighter-rarity"
-            style="
-                color:${sound.rarity.color}
-            "
-        >
-
-            ${sound.rarity.name}
-
-        </div>
-
-
-        <div class="fighter-info">
-
-            Nv. ${getLevel(sound)}
-            ·
-            Poder ${calculatePower(sound)}
-
-        </div>
-
-    `;
-
-}
-
-
-/* =========================================================
-   BOTÕES DE BATALHA
-   ========================================================= */
-
-battleButton.addEventListener(
-    "click",
-    startBattle
-);
-
-
-nextRoundButton.addEventListener(
-    "click",
-    revealNextRound
-);
-
-
-resultButton.addEventListener(
-    "click",
-    finishBattle
-);
-
-
-rematchButton.addEventListener(
-    "click",
-    startBattle
-);
-
-
-/* =========================================================
-   INICIAR BATALHA
-   ========================================================= */
-
-function startBattle() {
-
-    if (
-        !selectedA
-        ||
-        !selectedB
-    ) {
-
-        return;
-
-    }
-
-
-    resetBattleVisuals();
-
-
-    const attributesA =
-        shuffle(
-            [...attributeKeys]
-        );
-
-
-    const attributesB =
-        shuffle(
-            [...attributeKeys]
-        );
-
-
-    const rounds =
-        [];
-
-
-    for (
-        let i = 0;
-        i < 5;
-        i++
-    ) {
-
-        const attributeA =
-            attributesA[i];
-
-
-        const attributeB =
-            attributesB[i];
-
-
-        const valueA =
-            selectedA.stats[
-                attributeA
-            ];
-
-
-        const valueB =
-            selectedB.stats[
-                attributeB
-            ];
-
-
-        let winner =
-            "DRAW";
-
-
-        if (
-            valueA >
-            valueB
-        ) {
-
-            winner =
-                "A";
-
-        }
-
-
-        if (
-            valueB >
-            valueA
-        ) {
-
-            winner =
-                "B";
-
-        }
-
-
-        rounds.push({
-
-            number:
-                i + 1,
-
-            attributeA,
-
-            attributeB,
-
-            valueA,
-
-            valueB,
-
-            winner
-
-        });
-
-    }
-
-
-    currentBattle = {
-
-        rounds,
-
-        currentRound:
-            0,
-
-        scoreA:
-            0,
-
-        scoreB:
-            0,
-
-        historySaved:
-            false
-
-    };
-
-
-    battleButton.style.display =
-        "none";
-
-
-    nextRoundButton.style.display =
-        "inline-block";
-
-
-    nextRoundButton.textContent =
-        "REVELAR 1ª RODADA";
-
-
-    currentScore.textContent =
-        "A batalha começou. Revele o primeiro confronto.";
-
-}
-
-
-/* =========================================================
-   REVELAR RODADA
-   ========================================================= */
-
-function revealNextRound() {
-
-    if (
-        !currentBattle
-    ) {
-
-        return;
-
-    }
-
-
-    if (
-        currentBattle.currentRound
-        >=
-        currentBattle.rounds.length
-    ) {
-
-        return;
-
-    }
-
-
-    const round =
-        currentBattle.rounds[
-            currentBattle.currentRound
-        ];
-
-
-    if (
-        round.winner ===
-        "A"
-    ) {
-
-        currentBattle.scoreA +=
-            1;
-
-    }
-
-    else if (
-        round.winner ===
-        "B"
-    ) {
-
-        currentBattle.scoreB +=
-            1;
-
-    }
-
-    else {
-
-        currentBattle.scoreA +=
-            .5;
-
-
-        currentBattle.scoreB +=
-            .5;
-
-    }
-
-
-    renderRound(
-        round
-    );
-
-
-    currentBattle.currentRound++;
-
-
-    currentScore.textContent =
-
-        `${escapeHTML(selectedA.name)}
-        ${formatScore(currentBattle.scoreA)}
-        ×
-        ${formatScore(currentBattle.scoreB)}
-        ${escapeHTML(selectedB.name)}`;
-
-
-    if (
-        currentBattle.currentRound >=
-        5
-    ) {
-
-        nextRoundButton.style.display =
-            "none";
-
-
-        resultButton.style.display =
-            "inline-block";
-
-    }
-
-    else {
-
-        nextRoundButton.textContent =
-            `PRÓXIMA RODADA · ${currentBattle.currentRound + 1}/5`;
-
-    }
-
-}
-
-
-/* =========================================================
-   DESENHAR RODADA
-   ========================================================= */
-
-function renderRound(
-    round
-) {
-
-    const infoA =
-        attributeInfo[
-            round.attributeA
-        ];
-
-
-    const infoB =
-        attributeInfo[
-            round.attributeB
-        ];
-
-
-    let winnerText =
-        "Empate";
-
-
-    let classA =
-        "";
-
-
-    let classB =
-        "";
-
-
-    if (
-        round.winner ===
-        "A"
-    ) {
-
-        winnerText =
-            `${selectedA.name} venceu a rodada`;
-
-
-        classA =
-            "winner";
-
-
-        pulseFighter(
-            fighterA
-        );
-
-    }
-
-
-    if (
-        round.winner ===
-        "B"
-    ) {
-
-        winnerText =
-            `${selectedB.name} venceu a rodada`;
-
-
-        classB =
-            "winner";
-
-
-        pulseFighter(
-            fighterB
-        );
-
-    }
-
-
-    const element =
-        document.createElement(
-            "div"
-        );
-
-
-    element.className =
-        "round";
-
-
-    element.innerHTML = `
-
-        <div
-            class="
-                attribute-box
-                ${classA}
-            "
-        >
-
-            <div class="attribute-name">
-
-                ${infoA.icon}
-                ${infoA.name}
-
-            </div>
-
-            <div class="attribute-value">
-
-                ${round.valueA}
-
-            </div>
-
-        </div>
-
-
-        <div class="round-vs">
-            VS
-        </div>
-
-
-        <div
-            class="
-                attribute-box
-                ${classB}
-            "
-        >
-
-            <div class="attribute-name">
-
-                ${infoB.icon}
-                ${infoB.name}
-
-            </div>
-
-            <div class="attribute-value">
-
-                ${round.valueB}
-
-            </div>
-
-        </div>
-
-
-        <div class="round-winner">
-
-            Rodada ${round.number}
-            ·
-            ${escapeHTML(winnerText)}
-
-        </div>
-
-    `;
-
-
-    roundsContainer
-        .appendChild(
-            element
-        );
-
-
-    element.scrollIntoView({
-
-        behavior:
-            "smooth",
-
-        block:
-            "nearest"
-
-    });
-
-}
-
-
-/* =========================================================
-   RESULTADO FINAL
-   ========================================================= */
-
-async function finishBattle() {
-
-    if (
-        !currentBattle
-    ) {
-
-        return;
-
-    }
-
-
-    resultButton.style.display =
-        "none";
-
-
-    let result;
-
-
-    let xpA;
-
-    let xpB;
-
-
-    if (
-        currentBattle.scoreA >
-        currentBattle.scoreB
-    ) {
-
-        result =
-            `◇ ${escapeHTML(selectedA.name)} venceu`;
-
-
-        xpA =
-            XP_WIN;
-
-
-        xpB =
-            XP_LOSS;
-
-    }
-
-    else if (
-        currentBattle.scoreB >
-        currentBattle.scoreA
-    ) {
-
-        result =
-            `◇ ${escapeHTML(selectedB.name)} venceu`;
-
-
-        xpA =
-            XP_LOSS;
-
-
-        xpB =
-            XP_WIN;
-
-    }
-
-    else {
-
-        result =
-            "◇ Empate";
-
-
-        xpA =
-            XP_DRAW;
-
-
-        xpB =
-            XP_DRAW;
-
-    }
-
-
-    finalResult.innerHTML = `
-
-        ${result}
-
-
-        <div class="score">
-
-            ${escapeHTML(selectedA.name)}
-
-            ${formatScore(
-                currentBattle.scoreA
-            )}
-
-            &nbsp; × &nbsp;
-
-            ${formatScore(
-                currentBattle.scoreB
-            )}
-
-            ${escapeHTML(selectedB.name)}
-
-        </div>
-
-
-        <div class="xp-reward">
-
-            +${xpA} XP
-            para
-            ${escapeHTML(selectedA.name)}
-
-            &nbsp; · &nbsp;
-
-            +${xpB} XP
-            para
-            ${escapeHTML(selectedB.name)}
-
-        </div>
-
-    `;
-
-
-    finalResult.style.display =
-        "block";
-
-
-    rematchButton.style.display =
-        "inline-block";
-
-
-    if (
-        !currentBattle.historySaved
-    ) {
-
-        await saveBattleProgress(
-            xpA,
-            xpB
-        );
-
-
-        currentBattle.historySaved =
-            true;
-
-    }
-
-
-    finalResult.scrollIntoView({
-
-        behavior:
-            "smooth",
-
-        block:
-            "nearest"
-
-    });
-
-}
-
-
-/* =========================================================
-   SALVAR PROGRESSÃO
-   ========================================================= */
-
-async function saveBattleProgress(
-    xpA,
-    xpB
-) {
-
-    const oldLevelA =
-        getLevel(
-            selectedA
-        );
-
-
-    const oldLevelB =
-        getLevel(
-            selectedB
-        );
-
-
-    if (
-        currentBattle.scoreA >
-        currentBattle.scoreB
-    ) {
-
-        selectedA.history.wins++;
-
-        selectedB.history.losses++;
-
-    }
-
-    else if (
-        currentBattle.scoreB >
-        currentBattle.scoreA
-    ) {
-
-        selectedB.history.wins++;
-
-        selectedA.history.losses++;
-
-    }
-
-    else {
-
-        selectedA.history.draws++;
-
-        selectedB.history.draws++;
-
-    }
-
-
-    selectedA.xp +=
-        xpA;
-
-
-    selectedB.xp +=
-        xpB;
-
-
-    const newLevelA =
-        getLevel(
-            selectedA
-        );
-
-
-    const newLevelB =
-        getLevel(
-            selectedB
-        );
-
-
-    await Promise.all([
-
-        saveSoundToDatabase(
-            selectedA
-        ),
-
-        saveSoundToDatabase(
-            selectedB
-        )
-
-    ]);
-
-
-    renderInventory();
-
-
-    renderFighter(
-        fighterA,
-        selectedA,
-        "Som I"
-    );
-
-
-    renderFighter(
-        fighterB,
-        selectedB,
-        "Som II"
-    );
-
-
-    if (
-        newLevelA >
-        oldLevelA
-    ) {
-
-        currentScore.textContent =
-            `${selectedA.name} alcançou o nível ${newLevelA}!`;
-
-    }
-
-
-    if (
-        newLevelB >
-        oldLevelB
-    ) {
-
-        currentScore.textContent =
-            `${selectedB.name} alcançou o nível ${newLevelB}!`;
-
-    }
-
-
-    if (
-        newLevelA >
-        oldLevelA
-        &&
-        newLevelB >
-        oldLevelB
-    ) {
-
-        currentScore.textContent =
-            `Os dois sons subiram de nível!`;
-
-    }
-
-}
-
-
-/* =========================================================
-   RESET DA BATALHA
-   ========================================================= */
-
-function resetBattleVisuals() {
-
-    roundsContainer.innerHTML =
-        "";
-
-
-    finalResult.style.display =
-        "none";
-
-
-    nextRoundButton.style.display =
-        "none";
-
-
-    resultButton.style.display =
-        "none";
-
-
-    rematchButton.style.display =
-        "none";
-
-
-    currentScore.textContent =
-        "";
-
-}
-
-
-function resetBattle() {
-
-    currentBattle =
-        null;
-
-
-    resetBattleVisuals();
-
-
-    battleButton.style.display =
-        "inline-block";
-
-
-    battleButton.disabled =
-        !selectedA
-        ||
-        !selectedB;
-
-}
-
-
-/* =========================================================
-   PULSO DO VENCEDOR
-   ========================================================= */
-
-function pulseFighter(
-    fighter
-) {
-
-    const orb =
-        fighter.querySelector(
-            ".fighter-orb"
-        );
-
-
-    if (
-        !orb
-    ) {
-
-        return;
-
-    }
-
-
-    orb.classList.remove(
-        "winner-pulse"
-    );
-
-
-    void orb.offsetWidth;
-
-
-    orb.classList.add(
-        "winner-pulse"
-    );
-
-}
-
-
-/* =========================================================
-   TOCAR SOM
-   ========================================================= */
-
-function playSound(
-    audioURL,
-    orb
-) {
-
-    const audio =
-        new Audio(
-            audioURL
-        );
-
-
-    const AudioContextClass =
-        window.AudioContext
-        ||
-        window.webkitAudioContext;
-
-
-    const context =
-        new AudioContextClass();
-
-
-    const source =
-        context
-            .createMediaElementSource(
-                audio
-            );
-
-
-    const analyser =
-        context
-            .createAnalyser();
-
-
-    analyser.fftSize =
-        256;
-
-
-    source.connect(
-        analyser
-    );
-
-
-    analyser.connect(
-        context.destination
-    );
-
-
-    const data =
-        new Uint8Array(
-            analyser.frequencyBinCount
-        );
-
-
-    audio.play();
-
-
-    function animate() {
-
-        if (
-            audio.paused
-            ||
-            audio.ended
-        ) {
-
-            orb.style.transform =
-                "scale(1)";
-
-
-            orb.style.borderRadius =
-                "50%";
-
-
-            context.close();
-
-
-            return;
-
-        }
-
-
-        analyser
-            .getByteFrequencyData(
-                data
-            );
-
-
-        let total =
-            0;
-
-
-        let lowTotal =
-            0;
-
-
-        let highTotal =
-            0;
-
-
-        const half =
-            Math.floor(
-                data.length
-                /
-                2
-            );
-
-
-        for (
-            let i = 0;
-            i < data.length;
-            i++
-        ) {
-
-            total +=
-                data[i];
-
-
-            if (
-                i <
-                half
-            ) {
-
-                lowTotal +=
-                    data[i];
-
-            }
-
-            else {
-
-                highTotal +=
-                    data[i];
-
-            }
-
-        }
-
-
-        const average =
-            total
-            /
-            data.length;
-
-
-        const low =
-            lowTotal
-            /
-            half;
-
-
-        const high =
-            highTotal
-            /
-            (
-                data.length
-                -
-                half
-            );
-
-
-        const scale =
-            1
-            +
-            (
-                average
-                /
-                255
-            )
-            *
-            .75;
-
-
-        const shapeA =
-            38
-            +
-            (
-                low
-                /
-                255
-            )
-            *
-            23;
-
-
-        const shapeB =
-            38
-            +
-            (
-                high
-                /
-                255
-            )
-            *
-            23;
-
-
-        orb.style.transform =
-            `scale(${scale})`;
-
-
-        orb.style.borderRadius =
-
-            `${shapeA}%
-            ${shapeB}%
-            ${60 - shapeA / 4}%
-            ${50 + shapeB / 6}%`;
-
-
-        requestAnimationFrame(
-            animate
-        );
-
-    }
-
-
-    animate();
-
-}
-
-
-/* =========================================================
-   CORES
-   ========================================================= */
-
-function elegantRandomColor() {
-
-    return orbPalette[
-        Math.floor(
-            Math.random()
-            *
-            orbPalette.length
-        )
-    ];
-
-}
-
-
-/* =========================================================
-   EMBARALHAR
-   ========================================================= */
-
-function shuffle(
-    array
-) {
-
-    for (
-
-        let i =
-            array.length - 1;
-
-        i >
-        0;
-
-        i--
-
-    ) {
-
-        const j =
-            Math.floor(
-
-                Math.random()
-                *
-                (
-                    i + 1
-                )
-
-            );
-
-
-        [
-            array[i],
-            array[j]
-        ]
-        =
-        [
-            array[j],
-            array[i]
-        ];
-
-    }
-
-
-    return array;
-
-}
-
-
-/* =========================================================
-   UTILIDADES
-   ========================================================= */
-
-function randomStat() {
-
-    return Math.floor(
-        Math.random()
-        *
-        11
-    );
-
-}
-
-
-function clamp(
-    value,
-    min,
-    max
-) {
-
-    return Math.min(
-
-        Math.max(
-            value,
-            min
-        ),
-
-        max
-
-    );
-
-}
-
-
-function formatScore(
-    score
-) {
-
-    return Number.isInteger(
-        score
+function subscribeToRoom(){
+
+  if(roomChannel){
+    sb.removeChannel(roomChannel);
+  }
+
+  roomChannel = sb
+    .channel("room-" + currentRoomId)
+
+    .on(
+      "postgres_changes",
+      {
+        event: "*",
+        schema: "public",
+        table: "room_players",
+        filter: `room_id=eq.${currentRoomId}`
+      },
+      ()=>{
+        refreshRoom();
+      }
     )
 
-        ?
+    .on(
+      "postgres_changes",
+      {
+        event: "*",
+        schema: "public",
+        table: "rooms",
+        filter: `id=eq.${currentRoomId}`
+      },
+      ()=>{
+        refreshRoom();
+      }
+    )
 
-    score
-
-        :
-
-    score.toFixed(1);
-
-}
-
-
-function escapeHTML(
-    text
-) {
-
-    const div =
-        document.createElement(
-            "div"
-        );
-
-
-    div.textContent =
-        String(
-            text
-        );
-
-
-    return div.innerHTML;
-
+    .subscribe();
 }
 
 
 /* =========================================================
-   INICIAR V5
+   V5 LOCAL
+   ========================================================= */
+
+const GAME_DATA_VERSION = 6;
+const XP_PER_LEVEL = 100;
+const XP_WIN = 35;
+const XP_DRAW = 25;
+const XP_LOSS = 15;
+
+let mediaRecorder = null;
+let currentStream = null;
+let audioChunks = [];
+let recording = false;
+let recordingMode = "created";
+
+let sounds = [];
+let selectedA = null;
+let selectedB = null;
+let currentBattle = null;
+
+let huntActive = false;
+let huntTimer = null;
+let captureCountdownTimer = null;
+let captureSeconds = 10;
+
+let renameTarget = null;
+
+const attributeKeys = [
+  "grave",
+  "agudo",
+  "impacto",
+  "duracao",
+  "complexidade"
+];
+
+const attributeInfo = {
+  grave:{name:"Grave"},
+  agudo:{name:"Agudo"},
+  impacto:{name:"Impacto"},
+  duracao:{name:"Duração"},
+  complexidade:{name:"Complexidade"}
+};
+
+const orbPalette = [
+  "#16233F","#123A32","#542932","#313A46",
+  "#16414C","#51405E","#4F5735","#784D3C"
+];
+
+const recordButton = document.getElementById("recordButton");
+const soundNameInput = document.getElementById("soundName");
+const recordStatus = document.getElementById("recordStatus");
+const huntButton = document.getElementById("huntButton");
+const testCaptureButton = document.getElementById("testCaptureButton");
+const huntStatus = document.getElementById("huntStatus");
+const inventory = document.getElementById("inventory");
+const soundCounter = document.getElementById("soundCounter");
+const fighterA = document.getElementById("fighterA");
+const fighterB = document.getElementById("fighterB");
+const battleButton = document.getElementById("battleButton");
+const nextRoundButton = document.getElementById("nextRoundButton");
+const resultButton = document.getElementById("resultButton");
+const rematchButton = document.getElementById("rematchButton");
+const roundsContainer = document.getElementById("rounds");
+const currentScore = document.getElementById("currentScore");
+const finalResult = document.getElementById("finalResult");
+const captureModal = document.getElementById("captureModal");
+const captureCountdown = document.getElementById("captureCountdown");
+const captureNowButton = document.getElementById("captureNowButton");
+const ignoreCaptureButton = document.getElementById("ignoreCaptureButton");
+const renameModal = document.getElementById("renameModal");
+const renameInput = document.getElementById("renameInput");
+const saveRenameButton = document.getElementById("saveRenameButton");
+const cancelRenameButton = document.getElementById("cancelRenameButton");
+
+const DB_NAME = "BatalhaDosSonsDB";
+const DB_VERSION = 1;
+const STORE_NAME = "sounds";
+
+function openDatabase(){
+  return new Promise((resolve,reject)=>{
+    const request = indexedDB.open(DB_NAME,DB_VERSION);
+
+    request.onupgradeneeded = e=>{
+      const db=e.target.result;
+      if(!db.objectStoreNames.contains(STORE_NAME)){
+        db.createObjectStore(STORE_NAME,{keyPath:"id"});
+      }
+    };
+
+    request.onsuccess=()=>resolve(request.result);
+    request.onerror=()=>reject(request.error);
+  });
+}
+
+async function saveSoundToDatabase(sound){
+  const db=await openDatabase();
+
+  return new Promise((resolve,reject)=>{
+    const tx=db.transaction(STORE_NAME,"readwrite");
+    const store=tx.objectStore(STORE_NAME);
+
+    store.put({
+      id:sound.id,
+      version:GAME_DATA_VERSION,
+      name:sound.name,
+      stats:sound.stats,
+      rarity:sound.rarity,
+      color:sound.color,
+      audioBlob:sound.audioBlob,
+      createdAt:sound.createdAt,
+      origin:sound.origin,
+      history:sound.history,
+      xp:sound.xp
+    });
+
+    tx.oncomplete=()=>{
+      db.close();
+      resolve();
+    };
+
+    tx.onerror=()=>reject(tx.error);
+  });
+}
+
+async function loadSavedSounds(){
+
+  const db=await openDatabase();
+
+  const saved=await new Promise((resolve,reject)=>{
+    const tx=db.transaction(STORE_NAME,"readonly");
+    const req=tx.objectStore(STORE_NAME).getAll();
+
+    req.onsuccess=()=>resolve(req.result||[]);
+    req.onerror=()=>reject(req.error);
+  });
+
+  sounds=saved.map(normalizeSound).sort((a,b)=>b.createdAt-a.createdAt);
+
+  renderInventory();
+}
+
+function normalizeSound(sound){
+  return{
+    ...sound,
+    origin:sound.origin||"created",
+    history:sound.history||{wins:0,losses:0,draws:0},
+    xp:Number.isFinite(sound.xp)?sound.xp:0,
+    audioURL:URL.createObjectURL(sound.audioBlob)
+  };
+}
+
+function getLevel(sound){
+  return Math.floor(sound.xp/XP_PER_LEVEL)+1;
+}
+
+function calculatePower(sound){
+  const total=Object.values(sound.stats).reduce((a,b)=>a+b,0);
+  return Math.round(total/50*100);
+}
+
+recordButton.onclick=async()=>{
+  if(!recording){
+    recordingMode="created";
+    await startRecording();
+  }else{
+    stopRecording();
+  }
+};
+
+async function startRecording(){
+
+  try{
+
+    currentStream=await navigator.mediaDevices.getUserMedia({audio:true});
+    mediaRecorder=new MediaRecorder(currentStream);
+    audioChunks=[];
+
+    mediaRecorder.ondataavailable=e=>{
+      if(e.data.size>0) audioChunks.push(e.data);
+    };
+
+    mediaRecorder.onstop=async()=>{
+      const blob=new Blob(audioChunks,{type:mediaRecorder.mimeType});
+
+      await createSound(blob,recordingMode);
+
+      currentStream.getTracks().forEach(t=>t.stop());
+    };
+
+    mediaRecorder.start();
+
+    recording=true;
+    recordButton.classList.add("recording");
+    recordButton.textContent="■";
+    recordStatus.textContent="Gravando...";
+  }
+
+  catch(error){
+    console.error(error);
+    alert("Não consegui acessar o microfone.");
+  }
+}
+
+function stopRecording(){
+  if(mediaRecorder && mediaRecorder.state!=="inactive"){
+    mediaRecorder.stop();
+  }
+
+  recording=false;
+  recordButton.classList.remove("recording");
+  recordButton.textContent="🎙️";
+  recordStatus.textContent="Analisando...";
+}
+
+async function createSound(blob,mode){
+
+  const stats=await analyzeAudio(blob).catch(()=>({
+    grave:randomStat(),
+    agudo:randomStat(),
+    impacto:randomStat(),
+    duracao:randomStat(),
+    complexidade:randomStat()
+  }));
+
+  const rarity=
+    mode==="random"
+    ?calculateCapturedRarity()
+    :calculateCreatedRarity(stats);
+
+  const sound={
+    id:crypto.randomUUID(),
+    name:soundNameInput.value.trim() || (mode==="random"?"Captura":"Som"),
+    stats,
+    rarity,
+    color:orbPalette[Math.floor(Math.random()*orbPalette.length)],
+    audioBlob:blob,
+    audioURL:URL.createObjectURL(blob),
+    createdAt:Date.now(),
+    origin:mode,
+    history:{wins:0,losses:0,draws:0},
+    xp:0
+  };
+
+  sounds.unshift(sound);
+
+  await saveSoundToDatabase(sound);
+
+  soundNameInput.value="";
+  recordStatus.textContent="Som salvo.";
+
+  renderInventory();
+
+  if(mode==="random" && huntActive){
+    scheduleNextCapture();
+  }
+}
+
+async function analyzeAudio(blob){
+
+  const bufferData=await blob.arrayBuffer();
+  const ctx=new AudioContext();
+  const buffer=await ctx.decodeAudioData(bufferData);
+
+  const channel=buffer.getChannelData(0);
+
+  let sum=0;
+  let peak=0;
+  let zero=0;
+  let variation=0;
+
+  for(let i=1;i<channel.length;i++){
+
+    sum+=channel[i]*channel[i];
+
+    peak=Math.max(
+      peak,
+      Math.abs(channel[i])
+    );
+
+    if(
+      (channel[i-1]<0 && channel[i]>=0)
+      ||
+      (channel[i-1]>=0 && channel[i]<0)
+    ){
+      zero++;
+    }
+
+    variation+=Math.abs(channel[i]-channel[i-1]);
+  }
+
+  const rms=Math.sqrt(sum/channel.length);
+  const crossing=zero/channel.length;
+  const diff=variation/channel.length;
+
+  await ctx.close();
+
+  const agudo=clamp(Math.round(crossing*170),0,10);
+
+  return{
+    impacto:clamp(Math.round(peak*12),0,10),
+    agudo,
+    grave:clamp(Math.round(10-agudo+rms*4),0,10),
+    duracao:clamp(Math.round(buffer.duration*1.4),0,10),
+    complexidade:clamp(Math.round(diff*80+crossing*60+rms*8),0,10)
+  };
+}
+
+function calculateCreatedRarity(stats){
+
+  const values=Object.values(stats);
+  const average=values.reduce((a,b)=>a+b,0)/values.length;
+  const highest=Math.max(...values);
+  const score=average*.75+highest*.25;
+
+  if(score>=6.3) return{name:"RARO",color:"#334F73"};
+  if(score>=4.4) return{name:"INCOMUM",color:"#476551"};
+  return{name:"COMUM",color:"#77736B"};
+}
+
+function calculateCapturedRarity(){
+
+  const roll=Math.random()*100;
+
+  if(roll<2) return{name:"MÍTICO",color:"#8A3138"};
+  if(roll<7) return{name:"LENDÁRIO",color:"#9A722C"};
+  if(roll<16) return{name:"ÉPICO",color:"#654875"};
+  if(roll<33) return{name:"RARO",color:"#334F73"};
+  if(roll<60) return{name:"INCOMUM",color:"#476551"};
+
+  return{name:"COMUM",color:"#77736B"};
+}
+
+huntButton.onclick=()=>{
+
+  huntActive=!huntActive;
+
+  huntButton.textContent=
+    huntActive
+    ?"DESATIVAR CAÇADA"
+    :"ATIVAR CAÇADA";
+
+  huntStatus.textContent=
+    huntActive
+    ?"Caçada ativa."
+    :"Caçada desativada.";
+
+  if(huntActive){
+    scheduleNextCapture();
+  }else{
+    clearTimeout(huntTimer);
+  }
+};
+
+function scheduleNextCapture(){
+
+  clearTimeout(huntTimer);
+
+  if(!huntActive) return;
+
+  huntTimer=setTimeout(
+    triggerCaptureEvent,
+    30000+Math.random()*60000
+  );
+}
+
+testCaptureButton.onclick=triggerCaptureEvent;
+
+function triggerCaptureEvent(){
+
+  if(recording){
+    if(huntActive) scheduleNextCapture();
+    return;
+  }
+
+  captureSeconds=10;
+  captureCountdown.textContent=10;
+  captureModal.classList.add("active");
+
+  clearInterval(captureCountdownTimer);
+
+  captureCountdownTimer=setInterval(()=>{
+
+    captureSeconds--;
+    captureCountdown.textContent=captureSeconds;
+
+    if(captureSeconds<=0){
+      clearInterval(captureCountdownTimer);
+      captureModal.classList.remove("active");
+
+      if(huntActive){
+        scheduleNextCapture();
+      }
+    }
+
+  },1000);
+}
+
+captureNowButton.onclick=async()=>{
+  clearInterval(captureCountdownTimer);
+  captureModal.classList.remove("active");
+  recordingMode="random";
+  await startRecording();
+};
+
+ignoreCaptureButton.onclick=()=>{
+  clearInterval(captureCountdownTimer);
+  captureModal.classList.remove("active");
+
+  if(huntActive){
+    scheduleNextCapture();
+  }
+};
+
+function renderInventory(){
+
+  inventory.innerHTML="";
+
+  soundCounter.textContent=
+    sounds.length===1
+    ?"1 som"
+    :`${sounds.length} sons`;
+
+  sounds.forEach(sound=>{
+
+    const card=document.createElement("div");
+    card.className="sound-card";
+
+    card.innerHTML=`
+      <div class="sound-orb-container">
+        <div class="sound-orb"
+        style="background:${sound.color};color:${sound.color}"></div>
+      </div>
+
+      <h3>${escapeHTML(sound.name)}</h3>
+
+      <div class="rarity" style="color:${sound.rarity.color}">
+        ${sound.rarity.name}
+      </div>
+
+      <div class="origin">
+        ${sound.origin==="random"?"Captura Aleatória":"Som Criado"}
+      </div>
+
+      <div class="level-row">
+        <span class="level-badge">NÍVEL ${getLevel(sound)}</span>
+        <span>PODER <strong>${calculatePower(sound)}</strong></span>
+      </div>
+
+      <div class="stats">
+        <div>Grave: <span class="stat-value">${sound.stats.grave}</span></div>
+        <div>Agudo: <span class="stat-value">${sound.stats.agudo}</span></div>
+        <div>Impacto: <span class="stat-value">${sound.stats.impacto}</span></div>
+        <div>Duração: <span class="stat-value">${sound.stats.duracao}</span></div>
+        <div>Complexidade: <span class="stat-value">${sound.stats.complexidade}</span></div>
+      </div>
+
+      <div class="history">
+        V ${sound.history.wins}
+        · D ${sound.history.losses}
+        · E ${sound.history.draws}
+      </div>
+
+      <div class="card-actions">
+        <button class="card-button play">Ouvir</button>
+        <button class="card-button select">Selecionar</button>
+        <button class="card-button rename">Renomear</button>
+      </div>
+    `;
+
+    inventory.appendChild(card);
+
+    card.querySelector(".play").onclick=()=>{
+      new Audio(sound.audioURL).play();
+    };
+
+    card.querySelector(".select").onclick=()=>{
+      selectSound(sound);
+    };
+
+    card.querySelector(".rename").onclick=()=>{
+      renameTarget=sound;
+      renameInput.value=sound.name;
+      renameModal.classList.add("active");
+    };
+  });
+
+  updateSelectionUI();
+}
+
+saveRenameButton.onclick=async()=>{
+
+  if(!renameTarget) return;
+
+  const name=renameInput.value.trim();
+
+  if(!name) return;
+
+  renameTarget.name=name;
+
+  await saveSoundToDatabase(renameTarget);
+
+  renameModal.classList.remove("active");
+
+  renderInventory();
+};
+
+cancelRenameButton.onclick=()=>{
+  renameModal.classList.remove("active");
+};
+
+function selectSound(sound){
+
+  if(selectedA?.id===sound.id){
+    selectedA=null;
+  }
+
+  else if(selectedB?.id===sound.id){
+    selectedB=null;
+  }
+
+  else if(!selectedA){
+    selectedA=sound;
+  }
+
+  else if(!selectedB){
+    selectedB=sound;
+  }
+
+  else{
+    selectedA=selectedB;
+    selectedB=sound;
+  }
+
+  updateSelectionUI();
+  resetBattle();
+}
+
+function updateSelectionUI(){
+
+  renderFighter(fighterA,selectedA,"Som I");
+  renderFighter(fighterB,selectedB,"Som II");
+
+  battleButton.disabled=!selectedA||!selectedB;
+}
+
+function renderFighter(el,sound,label){
+
+  if(!sound){
+    el.innerHTML=`<div class="fighter-name">${label}</div>`;
+    return;
+  }
+
+  el.innerHTML=`
+    <div class="fighter-orb"
+      style="background:${sound.color};color:${sound.color}">
+    </div>
+
+    <div class="fighter-name">
+      ${escapeHTML(sound.name)}
+    </div>
+
+    <div class="rarity" style="color:${sound.rarity.color}">
+      ${sound.rarity.name}
+    </div>
+  `;
+}
+
+battleButton.onclick=startBattle;
+nextRoundButton.onclick=revealNextRound;
+resultButton.onclick=finishBattle;
+rematchButton.onclick=startBattle;
+
+function startBattle(){
+
+  if(!selectedA||!selectedB) return;
+
+  resetBattleVisuals();
+
+  const a=shuffle([...attributeKeys]);
+  const b=shuffle([...attributeKeys]);
+
+  currentBattle={
+    rounds:[],
+    currentRound:0,
+    scoreA:0,
+    scoreB:0,
+    historySaved:false
+  };
+
+  for(let i=0;i<5;i++){
+
+    const valueA=selectedA.stats[a[i]];
+    const valueB=selectedB.stats[b[i]];
+
+    currentBattle.rounds.push({
+      attributeA:a[i],
+      attributeB:b[i],
+      valueA,
+      valueB,
+      winner:valueA>valueB?"A":valueB>valueA?"B":"DRAW"
+    });
+  }
+
+  battleButton.style.display="none";
+  nextRoundButton.style.display="inline-block";
+}
+
+function revealNextRound(){
+
+  const r=currentBattle.rounds[currentBattle.currentRound];
+
+  if(r.winner==="A") currentBattle.scoreA++;
+  else if(r.winner==="B") currentBattle.scoreB++;
+  else{
+    currentBattle.scoreA+=.5;
+    currentBattle.scoreB+=.5;
+  }
+
+  const div=document.createElement("div");
+  div.className="round";
+
+  div.innerHTML=`
+    <div class="attribute-box ${r.winner==="A"?"winner":""}">
+      ${attributeInfo[r.attributeA].name}
+      <div class="attribute-value">${r.valueA}</div>
+    </div>
+
+    <div>VS</div>
+
+    <div class="attribute-box ${r.winner==="B"?"winner":""}">
+      ${attributeInfo[r.attributeB].name}
+      <div class="attribute-value">${r.valueB}</div>
+    </div>
+  `;
+
+  roundsContainer.appendChild(div);
+
+  currentBattle.currentRound++;
+
+  currentScore.textContent=
+    `${selectedA.name} ${currentBattle.scoreA} × ${currentBattle.scoreB} ${selectedB.name}`;
+
+  if(currentBattle.currentRound>=5){
+    nextRoundButton.style.display="none";
+    resultButton.style.display="inline-block";
+  }
+}
+
+async function finishBattle(){
+
+  resultButton.style.display="none";
+  rematchButton.style.display="inline-block";
+  finalResult.style.display="block";
+
+  let xpA, xpB;
+
+  if(currentBattle.scoreA>currentBattle.scoreB){
+
+    selectedA.history.wins++;
+    selectedB.history.losses++;
+
+    xpA=XP_WIN;
+    xpB=XP_LOSS;
+
+    finalResult.textContent=`${selectedA.name} venceu`;
+  }
+
+  else if(currentBattle.scoreB>currentBattle.scoreA){
+
+    selectedB.history.wins++;
+    selectedA.history.losses++;
+
+    xpB=XP_WIN;
+    xpA=XP_LOSS;
+
+    finalResult.textContent=`${selectedB.name} venceu`;
+  }
+
+  else{
+
+    selectedA.history.draws++;
+    selectedB.history.draws++;
+
+    xpA=XP_DRAW;
+    xpB=XP_DRAW;
+
+    finalResult.textContent="Empate";
+  }
+
+  selectedA.xp+=xpA;
+  selectedB.xp+=xpB;
+
+  await saveSoundToDatabase(selectedA);
+  await saveSoundToDatabase(selectedB);
+
+  renderInventory();
+}
+
+function resetBattleVisuals(){
+  roundsContainer.innerHTML="";
+  currentScore.textContent="";
+  finalResult.style.display="none";
+  nextRoundButton.style.display="none";
+  resultButton.style.display="none";
+  rematchButton.style.display="none";
+}
+
+function resetBattle(){
+  currentBattle=null;
+  resetBattleVisuals();
+  battleButton.style.display="inline-block";
+}
+
+function shuffle(array){
+
+  for(let i=array.length-1;i>0;i--){
+
+    const j=Math.floor(Math.random()*(i+1));
+
+    [array[i],array[j]]=[array[j],array[i]];
+  }
+
+  return array;
+}
+
+function randomStat(){
+  return Math.floor(Math.random()*11);
+}
+
+function clamp(v,min,max){
+  return Math.min(Math.max(v,min),max);
+}
+
+function escapeHTML(text){
+  const div=document.createElement("div");
+  div.textContent=String(text);
+  return div.innerHTML;
+}
+
+
+/* =========================================================
+   INICIAR
    ========================================================= */
 
 loadSavedSounds();
+initializeOnlineIdentity();
 
 </script>
-
 </body>
 </html>
