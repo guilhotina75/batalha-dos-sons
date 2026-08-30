@@ -38,7 +38,7 @@ header p {
 }
 
 .container {
-    width: min(1100px, 92%);
+    width: min(1150px, 92%);
     margin: 35px auto;
 }
 
@@ -82,6 +82,7 @@ header p {
     from {
         box-shadow: 0 0 5px #ff405d;
     }
+
     to {
         box-shadow: 0 0 35px #ff405d;
     }
@@ -101,6 +102,11 @@ header p {
     background: #0b0d12;
     color: white;
     font-size: 16px;
+}
+
+.small-note {
+    color: #777;
+    font-size: 13px;
 }
 
 .inventory {
@@ -125,6 +131,11 @@ header p {
     border-color: #555b70;
 }
 
+.sound-card.selected {
+    border-color: #ff405d;
+    box-shadow: 0 0 18px rgba(255, 64, 93, 0.25);
+}
+
 .sound-orb-container {
     height: 130px;
     display: flex;
@@ -137,7 +148,9 @@ header p {
     height: 75px;
     border-radius: 50%;
     box-shadow: 0 0 30px currentColor;
-    transition: transform 0.05s linear, border-radius 0.08s linear;
+    transition:
+        transform 0.05s linear,
+        border-radius 0.08s linear;
 }
 
 .sound-card h3 {
@@ -164,6 +177,31 @@ header p {
     font-weight: bold;
 }
 
+.card-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.card-button {
+    flex: 1;
+    padding: 9px;
+    border-radius: 9px;
+    border: 1px solid #363946;
+    background: #171a23;
+    color: white;
+    cursor: pointer;
+}
+
+.card-button:hover {
+    background: #222633;
+}
+
+.select-button.selected-button {
+    border-color: #ff405d;
+    color: #ff6b82;
+}
+
 .empty {
     text-align: center;
     color: #777;
@@ -171,39 +209,169 @@ header p {
 }
 
 .battle-zone {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     gap: 20px;
-    text-align: center;
+    align-items: stretch;
 }
 
 .fighter {
-    flex: 1;
-    min-height: 120px;
-    border: 1px dashed #404452;
+    border: 1px solid #343846;
     border-radius: 15px;
     padding: 20px;
+    min-height: 180px;
+    text-align: center;
+    background: #0c0e14;
+}
+
+.fighter-orb {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    margin: 10px auto 15px;
+    box-shadow: 0 0 25px currentColor;
+}
+
+.fighter-name {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.fighter-rarity {
+    font-size: 13px;
+    margin-top: 5px;
 }
 
 .vs {
-    font-size: 30px;
-    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: #ff405d;
+    font-size: 32px;
+    font-weight: bold;
 }
 
-.small-note {
-    color: #777;
+.battle-controls {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.battle-button {
+    padding: 14px 30px;
+    border: none;
+    border-radius: 12px;
+    background: #ff405d;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.battle-button:hover {
+    transform: scale(1.03);
+}
+
+.battle-button:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.secondary-button {
+    margin-left: 10px;
+    background: #292d3a;
+}
+
+.rounds {
+    margin-top: 25px;
+    display: grid;
+    gap: 10px;
+}
+
+.round {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 12px;
+    align-items: center;
+    background: #0b0d12;
+    border: 1px solid #292d39;
+    border-radius: 12px;
+    padding: 14px;
+}
+
+.attribute-box {
+    padding: 10px;
+    border-radius: 9px;
+    background: #161923;
+    text-align: center;
+}
+
+.attribute-name {
+    color: #aaa;
     font-size: 13px;
 }
 
-@media (max-width: 600px) {
+.attribute-value {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 3px;
+}
+
+.round-vs {
+    font-weight: bold;
+    color: #777;
+}
+
+.round-winner {
+    grid-column: 1 / -1;
+    text-align: center;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.final-result {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 20px;
+    border-radius: 14px;
+    background: #0b0d12;
+    border: 1px solid #343846;
+}
+
+.score {
+    font-size: 17px;
+    margin-top: 8px;
+    color: #aaa;
+}
+
+.version {
+    text-align: center;
+    color: #555;
+    font-size: 12px;
+    padding-bottom: 25px;
+}
+
+@media (max-width: 700px) {
     .battle-zone {
-        flex-direction: column;
+        grid-template-columns: 1fr;
     }
 
     .vs {
-        transform: rotate(90deg);
+        padding: 5px;
+    }
+
+    .round {
+        grid-template-columns: 1fr;
+    }
+
+    .round-vs {
+        text-align: center;
+    }
+
+    .card-actions {
+        flex-direction: column;
     }
 }
 </style>
@@ -251,6 +419,11 @@ header p {
 
         <h2>🎒 Inventário de Sons</h2>
 
+        <p class="small-note">
+            Clique no card ou em Ouvir para tocar o som.
+            Use Selecionar para mandar dois sons para a Arena.
+        </p>
+
         <div id="inventory" class="inventory">
 
             <div class="empty">
@@ -267,10 +440,13 @@ header p {
 
         <div class="battle-zone">
 
-            <div class="fighter">
-                SOM 1
+            <div id="fighterA" class="fighter">
+                <div class="fighter-name">
+                    SOM 1
+                </div>
+
                 <p class="small-note">
-                    Sistema de batalha será conectado na próxima versão.
+                    Selecione um som do inventário.
                 </p>
             </div>
 
@@ -278,17 +454,52 @@ header p {
                 VS
             </div>
 
-            <div class="fighter">
-                SOM 2
+            <div id="fighterB" class="fighter">
+                <div class="fighter-name">
+                    SOM 2
+                </div>
+
                 <p class="small-note">
-                    Sistema de batalha será conectado na próxima versão.
+                    Selecione outro som do inventário.
                 </p>
             </div>
 
         </div>
 
+        <div class="battle-controls">
+
+            <button
+                id="battleButton"
+                class="battle-button"
+                disabled
+            >
+                ⚔️ BATALHAR
+            </button>
+
+            <button
+                id="rematchButton"
+                class="battle-button secondary-button"
+                style="display:none;"
+            >
+                🔀 REVANCHE
+            </button>
+
+        </div>
+
+        <div id="rounds" class="rounds"></div>
+
+        <div
+            id="finalResult"
+            class="final-result"
+            style="display:none;"
+        ></div>
+
     </section>
 
+</div>
+
+<div class="version">
+    Batalha dos Sons — V2
 </div>
 
 <script>
@@ -296,6 +507,48 @@ header p {
 let mediaRecorder;
 let audioChunks = [];
 let recording = false;
+
+let soundCounter = 0;
+
+const sounds = [];
+
+let selectedA = null;
+let selectedB = null;
+
+const attributeInfo = {
+    grave: {
+        name: "Grave",
+        icon: "🔉"
+    },
+
+    agudo: {
+        name: "Agudo",
+        icon: "🔊"
+    },
+
+    impacto: {
+        name: "Impacto",
+        icon: "💥"
+    },
+
+    duracao: {
+        name: "Duração",
+        icon: "⏱️"
+    },
+
+    complexidade: {
+        name: "Complexidade",
+        icon: "🌀"
+    }
+};
+
+const attributeKeys = [
+    "grave",
+    "agudo",
+    "impacto",
+    "duracao",
+    "complexidade"
+];
 
 const recordButton =
     document.getElementById("recordButton");
@@ -309,85 +562,115 @@ const inventory =
 const soundNameInput =
     document.getElementById("soundName");
 
+const fighterA =
+    document.getElementById("fighterA");
 
-recordButton.addEventListener("click", async () => {
+const fighterB =
+    document.getElementById("fighterB");
 
-    if (!recording) {
+const battleButton =
+    document.getElementById("battleButton");
 
-        try {
+const rematchButton =
+    document.getElementById("rematchButton");
 
-            const stream =
-                await navigator.mediaDevices.getUserMedia({
-                    audio: true
-                });
+const roundsContainer =
+    document.getElementById("rounds");
 
-            mediaRecorder =
-                new MediaRecorder(stream);
+const finalResult =
+    document.getElementById("finalResult");
 
-            audioChunks = [];
 
-            mediaRecorder.ondataavailable = event => {
+recordButton.addEventListener(
+    "click",
+    async () => {
 
-                if (event.data.size > 0) {
-                    audioChunks.push(event.data);
-                }
+        if (!recording) {
 
-            };
+            try {
 
-            mediaRecorder.onstop = async () => {
+                const stream =
+                    await navigator.mediaDevices.getUserMedia({
+                        audio: true
+                    });
 
-                const audioBlob =
-                    new Blob(
-                        audioChunks,
-                        { type: mediaRecorder.mimeType }
-                    );
+                mediaRecorder =
+                    new MediaRecorder(stream);
 
-                await createSound(audioBlob);
+                audioChunks = [];
 
-                stream
-                    .getTracks()
-                    .forEach(track => track.stop());
+                mediaRecorder.ondataavailable =
+                    event => {
 
-            };
+                        if (event.data.size > 0) {
+                            audioChunks.push(event.data);
+                        }
 
-            mediaRecorder.start();
+                    };
 
-            recording = true;
+                mediaRecorder.onstop =
+                    async () => {
 
-            recordButton.classList.add("recording");
+                        const audioBlob =
+                            new Blob(
+                                audioChunks,
+                                {
+                                    type: mediaRecorder.mimeType
+                                }
+                            );
 
-            recordStatus.textContent =
-                "🔴 Gravando... clique novamente para finalizar.";
+                        await createSound(audioBlob);
+
+                        stream
+                            .getTracks()
+                            .forEach(
+                                track => track.stop()
+                            );
+
+                    };
+
+                mediaRecorder.start();
+
+                recording = true;
+
+                recordButton.classList.add(
+                    "recording"
+                );
+
+                recordStatus.textContent =
+                    "🔴 Gravando... clique novamente para finalizar.";
+
+            }
+
+            catch (error) {
+
+                alert(
+                    "Não consegui acessar o microfone. Verifique se você permitiu o acesso."
+                );
+
+                console.error(error);
+
+            }
 
         }
 
-        catch (error) {
+        else {
 
-            alert(
-                "Não consegui acessar o microfone. " +
-                "Verifique se você permitiu o acesso."
+            mediaRecorder.stop();
+
+            recording = false;
+
+            recordButton.classList.remove(
+                "recording"
             );
 
-            console.error(error);
+            recordStatus.textContent =
+                "Analisando seu som...";
 
         }
 
     }
-
-    else {
-
-        mediaRecorder.stop();
-
-        recording = false;
-
-        recordButton.classList.remove("recording");
-
-        recordStatus.textContent =
-            "Analisando seu som...";
-
-    }
-
-});
+);
 
 
 async function createSound(blob) {
@@ -424,19 +707,25 @@ async function createSound(blob) {
     const color =
         randomColor();
 
+    soundCounter++;
+
     const name =
         soundNameInput.value.trim()
         ||
-        "Som #" +
-        (document.querySelectorAll(".sound-card").length + 1);
+        "Som #" + soundCounter;
 
-    addSoundToInventory(
+    const sound = {
+        id: Date.now() + Math.random(),
         name,
         audioURL,
         stats,
         rarity,
         color
-    );
+    };
+
+    sounds.push(sound);
+
+    addSoundToInventory(sound);
 
     soundNameInput.value = "";
 
@@ -451,11 +740,12 @@ async function analyzeAudio(blob) {
     const arrayBuffer =
         await blob.arrayBuffer();
 
+    const AudioContextClass =
+        window.AudioContext ||
+        window.webkitAudioContext;
+
     const audioContext =
-        new (
-            window.AudioContext ||
-            window.webkitAudioContext
-        )();
+        new AudioContextClass();
 
     const buffer =
         await audioContext.decodeAudioData(
@@ -468,6 +758,8 @@ async function analyzeAudio(blob) {
     let sumSquares = 0;
     let peak = 0;
     let zeroCrossings = 0;
+
+    let differenceSum = 0;
 
     for (
         let i = 1;
@@ -486,56 +778,87 @@ async function analyzeAudio(blob) {
         }
 
         if (
-            (channel[i - 1] < 0 && channel[i] >= 0)
+            (
+                channel[i - 1] < 0 &&
+                channel[i] >= 0
+            )
             ||
-            (channel[i - 1] >= 0 && channel[i] < 0)
+            (
+                channel[i - 1] >= 0 &&
+                channel[i] < 0
+            )
         ) {
             zeroCrossings++;
         }
+
+        differenceSum +=
+            Math.abs(
+                channel[i] -
+                channel[i - 1]
+            );
 
     }
 
     const rms =
         Math.sqrt(
-            sumSquares / channel.length
+            sumSquares /
+            Math.max(
+                channel.length,
+                1
+            )
         );
 
     const duration =
         buffer.duration;
 
     const crossingRate =
-        zeroCrossings / channel.length;
+        zeroCrossings /
+        Math.max(
+            channel.length,
+            1
+        );
 
-    /*
-       Esses valores ainda são uma interpretação
-       simplificada do áudio para o protótipo.
-    */
+    const variation =
+        differenceSum /
+        Math.max(
+            channel.length,
+            1
+        );
 
     const impacto =
         clamp(
-            Math.round(peak * 10),
+            Math.round(
+                peak * 12
+            ),
             0,
             10
         );
 
     const agudo =
         clamp(
-            Math.round(crossingRate * 150),
+            Math.round(
+                crossingRate * 170
+            ),
             0,
             10
         );
 
     const grave =
         clamp(
-            10 - agudo +
-            Math.round(rms * 2),
+            Math.round(
+                10 -
+                agudo +
+                rms * 4
+            ),
             0,
             10
         );
 
     const duracao =
         clamp(
-            Math.round(duration),
+            Math.round(
+                duration * 1.4
+            ),
             0,
             10
         );
@@ -543,7 +866,9 @@ async function analyzeAudio(blob) {
     const complexidade =
         clamp(
             Math.round(
-                (agudo + impacto + Math.random() * 5) / 2
+                variation * 80 +
+                crossingRate * 60 +
+                rms * 8
             ),
             0,
             10
@@ -564,19 +889,24 @@ async function analyzeAudio(blob) {
 
 function calculateRarity(stats) {
 
-    const score =
-        (
-            stats.grave +
-            stats.agudo +
-            stats.impacto +
-            stats.duracao +
-            stats.complexidade
-        ) / 5;
+    const values =
+        Object.values(stats);
 
-    /*
-       Raridade inicial do protótipo.
-       Depois vamos criar regras mais sofisticadas.
-    */
+    const average =
+        values.reduce(
+            (sum, value) =>
+                sum + value,
+            0
+        )
+        /
+        values.length;
+
+    const highest =
+        Math.max(...values);
+
+    const score =
+        average * 0.75 +
+        highest * 0.25;
 
     if (score >= 8.5) {
 
@@ -622,13 +952,7 @@ function calculateRarity(stats) {
 }
 
 
-function addSoundToInventory(
-    name,
-    audioURL,
-    stats,
-    rarity,
-    color
-) {
+function addSoundToInventory(sound) {
 
     const empty =
         inventory.querySelector(".empty");
@@ -643,6 +967,9 @@ function addSoundToInventory(
     card.className =
         "sound-card";
 
+    card.dataset.id =
+        sound.id;
+
     card.innerHTML = `
 
         <div class="sound-orb-container">
@@ -650,20 +977,24 @@ function addSoundToInventory(
             <div
                 class="sound-orb"
                 style="
-                    background:${color};
-                    color:${color};
+                    background:${sound.color};
+                    color:${sound.color};
                 "
             ></div>
 
         </div>
 
-        <h3>${escapeHTML(name)}</h3>
+        <h3>
+            ${escapeHTML(sound.name)}
+        </h3>
 
         <div
             class="rarity"
-            style="color:${rarity.color}"
+            style="
+                color:${sound.rarity.color}
+            "
         >
-            ${rarity.name}
+            ${sound.rarity.name}
         </div>
 
         <div class="stats">
@@ -671,37 +1002,53 @@ function addSoundToInventory(
             <div>
                 🔉 Grave:
                 <span class="stat-value">
-                    ${stats.grave}/10
+                    ${sound.stats.grave}/10
                 </span>
             </div>
 
             <div>
                 🔊 Agudo:
                 <span class="stat-value">
-                    ${stats.agudo}/10
+                    ${sound.stats.agudo}/10
                 </span>
             </div>
 
             <div>
                 💥 Impacto:
                 <span class="stat-value">
-                    ${stats.impacto}/10
+                    ${sound.stats.impacto}/10
                 </span>
             </div>
 
             <div>
                 ⏱️ Duração:
                 <span class="stat-value">
-                    ${stats.duracao}/10
+                    ${sound.stats.duracao}/10
                 </span>
             </div>
 
             <div>
                 🌀 Complexidade:
                 <span class="stat-value">
-                    ${stats.complexidade}/10
+                    ${sound.stats.complexidade}/10
                 </span>
             </div>
+
+        </div>
+
+        <div class="card-actions">
+
+            <button
+                class="card-button play-button"
+            >
+                ▶ Ouvir
+            </button>
+
+            <button
+                class="card-button select-button"
+            >
+                ⚔️ Selecionar
+            </button>
 
         </div>
 
@@ -710,14 +1057,600 @@ function addSoundToInventory(
     inventory.prepend(card);
 
     const orb =
-        card.querySelector(".sound-orb");
+        card.querySelector(
+            ".sound-orb"
+        );
+
+    const playButton =
+        card.querySelector(
+            ".play-button"
+        );
+
+    const selectButton =
+        card.querySelector(
+            ".select-button"
+        );
 
     card.addEventListener(
         "click",
-        () => playSound(
-            audioURL,
-            orb
+        event => {
+
+            if (
+                event.target.closest(
+                    "button"
+                )
+            ) {
+                return;
+            }
+
+            playSound(
+                sound.audioURL,
+                orb
+            );
+
+        }
+    );
+
+    playButton.addEventListener(
+        "click",
+        event => {
+
+            event.stopPropagation();
+
+            playSound(
+                sound.audioURL,
+                orb
+            );
+
+        }
+    );
+
+    selectButton.addEventListener(
+        "click",
+        event => {
+
+            event.stopPropagation();
+
+            selectSound(sound);
+
+        }
+    );
+
+}
+
+
+function selectSound(sound) {
+
+    if (
+        selectedA &&
+        selectedA.id === sound.id
+    ) {
+
+        selectedA = null;
+
+    }
+
+    else if (
+        selectedB &&
+        selectedB.id === sound.id
+    ) {
+
+        selectedB = null;
+
+    }
+
+    else if (!selectedA) {
+
+        selectedA = sound;
+
+    }
+
+    else if (!selectedB) {
+
+        selectedB = sound;
+
+    }
+
+    else {
+
+        selectedA =
+            selectedB;
+
+        selectedB =
+            sound;
+
+    }
+
+    updateSelectionUI();
+
+}
+
+
+function updateSelectionUI() {
+
+    document
+        .querySelectorAll(
+            ".sound-card"
         )
+        .forEach(card => {
+
+            const id =
+                Number(
+                    card.dataset.id
+                );
+
+            const selected =
+                (
+                    selectedA &&
+                    selectedA.id === id
+                )
+                ||
+                (
+                    selectedB &&
+                    selectedB.id === id
+                );
+
+            card.classList.toggle(
+                "selected",
+                selected
+            );
+
+            const button =
+                card.querySelector(
+                    ".select-button"
+                );
+
+            if (selected) {
+
+                button.textContent =
+                    "✓ Na Arena";
+
+                button.classList.add(
+                    "selected-button"
+                );
+
+            }
+
+            else {
+
+                button.textContent =
+                    "⚔️ Selecionar";
+
+                button.classList.remove(
+                    "selected-button"
+                );
+
+            }
+
+        });
+
+    renderFighter(
+        fighterA,
+        selectedA,
+        "SOM 1"
+    );
+
+    renderFighter(
+        fighterB,
+        selectedB,
+        "SOM 2"
+    );
+
+    battleButton.disabled =
+        !selectedA ||
+        !selectedB;
+
+    clearBattleResults();
+
+}
+
+
+function renderFighter(
+    element,
+    sound,
+    placeholder
+) {
+
+    if (!sound) {
+
+        element.innerHTML = `
+
+            <div class="fighter-name">
+                ${placeholder}
+            </div>
+
+            <p class="small-note">
+                Selecione um som do inventário.
+            </p>
+
+        `;
+
+        return;
+
+    }
+
+    element.innerHTML = `
+
+        <div
+            class="fighter-orb"
+            style="
+                background:${sound.color};
+                color:${sound.color};
+            "
+        ></div>
+
+        <div class="fighter-name">
+            ${escapeHTML(sound.name)}
+        </div>
+
+        <div
+            class="fighter-rarity"
+            style="
+                color:${sound.rarity.color}
+            "
+        >
+            ${sound.rarity.name}
+        </div>
+
+    `;
+
+}
+
+
+battleButton.addEventListener(
+    "click",
+    () => {
+
+        startBattle();
+
+    }
+);
+
+
+rematchButton.addEventListener(
+    "click",
+    () => {
+
+        startBattle();
+
+    }
+);
+
+
+function startBattle() {
+
+    if (
+        !selectedA ||
+        !selectedB
+    ) {
+        return;
+    }
+
+    roundsContainer.innerHTML = "";
+
+    finalResult.style.display =
+        "none";
+
+    rematchButton.style.display =
+        "none";
+
+    const attributesA =
+        shuffle(
+            [...attributeKeys]
+        );
+
+    const attributesB =
+        shuffle(
+            [...attributeKeys]
+        );
+
+    let scoreA = 0;
+    let scoreB = 0;
+
+    const rounds = [];
+
+    for (
+        let i = 0;
+        i < attributeKeys.length;
+        i++
+    ) {
+
+        const attributeA =
+            attributesA[i];
+
+        const attributeB =
+            attributesB[i];
+
+        const valueA =
+            selectedA.stats[
+                attributeA
+            ];
+
+        const valueB =
+            selectedB.stats[
+                attributeB
+            ];
+
+        let winner;
+
+        if (valueA > valueB) {
+
+            winner = "A";
+            scoreA += 1;
+
+        }
+
+        else if (valueB > valueA) {
+
+            winner = "B";
+            scoreB += 1;
+
+        }
+
+        else {
+
+            winner = "EMPATE";
+
+            scoreA += 0.5;
+            scoreB += 0.5;
+
+        }
+
+        rounds.push({
+            number: i + 1,
+            attributeA,
+            attributeB,
+            valueA,
+            valueB,
+            winner
+        });
+
+    }
+
+    showRounds(
+        rounds,
+        scoreA,
+        scoreB
+    );
+
+}
+
+
+async function showRounds(
+    rounds,
+    scoreA,
+    scoreB
+) {
+
+    battleButton.disabled = true;
+
+    for (
+        const round of rounds
+    ) {
+
+        await wait(450);
+
+        const infoA =
+            attributeInfo[
+                round.attributeA
+            ];
+
+        const infoB =
+            attributeInfo[
+                round.attributeB
+            ];
+
+        const roundElement =
+            document.createElement(
+                "div"
+            );
+
+        roundElement.className =
+            "round";
+
+        let winnerText;
+
+        if (
+            round.winner === "A"
+        ) {
+
+            winnerText =
+                `${selectedA.name} venceu a rodada!`;
+
+        }
+
+        else if (
+            round.winner === "B"
+        ) {
+
+            winnerText =
+                `${selectedB.name} venceu a rodada!`;
+
+        }
+
+        else {
+
+            winnerText =
+                "Empate!";
+
+        }
+
+        roundElement.innerHTML = `
+
+            <div class="attribute-box">
+
+                <div class="attribute-name">
+
+                    ${infoA.icon}
+                    ${infoA.name}
+
+                </div>
+
+                <div class="attribute-value">
+
+                    ${round.valueA}
+
+                </div>
+
+            </div>
+
+            <div class="round-vs">
+
+                VS
+
+            </div>
+
+            <div class="attribute-box">
+
+                <div class="attribute-name">
+
+                    ${infoB.icon}
+                    ${infoB.name}
+
+                </div>
+
+                <div class="attribute-value">
+
+                    ${round.valueB}
+
+                </div>
+
+            </div>
+
+            <div class="round-winner">
+
+                Rodada ${round.number} —
+                ${escapeHTML(winnerText)}
+
+            </div>
+
+        `;
+
+        roundsContainer.appendChild(
+            roundElement
+        );
+
+    }
+
+    await wait(500);
+
+    showFinalResult(
+        scoreA,
+        scoreB
+    );
+
+    battleButton.disabled = false;
+
+    rematchButton.style.display =
+        "inline-block";
+
+}
+
+
+function showFinalResult(
+    scoreA,
+    scoreB
+) {
+
+    let result;
+
+    if (scoreA > scoreB) {
+
+        result =
+            `🏆 ${escapeHTML(selectedA.name)} VENCEU!`;
+
+    }
+
+    else if (scoreB > scoreA) {
+
+        result =
+            `🏆 ${escapeHTML(selectedB.name)} VENCEU!`;
+
+    }
+
+    else {
+
+        result =
+            "🤝 EMPATE!";
+    }
+
+    finalResult.innerHTML = `
+
+        ${result}
+
+        <div class="score">
+
+            ${escapeHTML(selectedA.name)}
+            ${formatScore(scoreA)}
+
+            &nbsp; × &nbsp;
+
+            ${formatScore(scoreB)}
+            ${escapeHTML(selectedB.name)}
+
+        </div>
+
+    `;
+
+    finalResult.style.display =
+        "block";
+
+}
+
+
+function clearBattleResults() {
+
+    roundsContainer.innerHTML =
+        "";
+
+    finalResult.style.display =
+        "none";
+
+    rematchButton.style.display =
+        "none";
+
+}
+
+
+function shuffle(array) {
+
+    for (
+        let i =
+            array.length - 1;
+        i > 0;
+        i--
+    ) {
+
+        const j =
+            Math.floor(
+                Math.random() *
+                (i + 1)
+            );
+
+        [
+            array[i],
+            array[j]
+        ] =
+        [
+            array[j],
+            array[i]
+        ];
+
+    }
+
+    return array;
+
+}
+
+
+function wait(milliseconds) {
+
+    return new Promise(
+        resolve =>
+            setTimeout(
+                resolve,
+                milliseconds
+            )
     );
 
 }
@@ -731,14 +1664,17 @@ function playSound(
     const audio =
         new Audio(audioURL);
 
+    const AudioContextClass =
+        window.AudioContext ||
+        window.webkitAudioContext;
+
     const context =
-        new (
-            window.AudioContext ||
-            window.webkitAudioContext
-        )();
+        new AudioContextClass();
 
     const source =
-        context.createMediaElementSource(audio);
+        context.createMediaElementSource(
+            audio
+        );
 
     const analyser =
         context.createAnalyser();
@@ -760,7 +1696,10 @@ function playSound(
 
     function animate() {
 
-        if (audio.paused || audio.ended) {
+        if (
+            audio.paused ||
+            audio.ended
+        ) {
 
             orb.style.transform =
                 "scale(1)";
@@ -774,9 +1713,20 @@ function playSound(
 
         }
 
-        analyser.getByteFrequencyData(data);
+        analyser.getByteFrequencyData(
+            data
+        );
 
         let total = 0;
+
+        let lowTotal = 0;
+
+        let highTotal = 0;
+
+        const half =
+            Math.floor(
+                data.length / 2
+            );
 
         for (
             let i = 0;
@@ -786,22 +1736,66 @@ function playSound(
 
             total += data[i];
 
+            if (i < half) {
+
+                lowTotal +=
+                    data[i];
+
+            }
+
+            else {
+
+                highTotal +=
+                    data[i];
+
+            }
+
         }
 
         const average =
-            total / data.length;
+            total /
+            data.length;
+
+        const low =
+            lowTotal /
+            half;
+
+        const high =
+            highTotal /
+            (
+                data.length -
+                half
+            );
 
         const scale =
-            1 + (average / 255) * 0.8;
+            1 +
+            (
+                average /
+                255
+            ) *
+            0.8;
 
-        const deformation =
-            40 + (average / 255) * 20;
+        const sideA =
+            38 +
+            (
+                low /
+                255
+            ) *
+            25;
+
+        const sideB =
+            38 +
+            (
+                high /
+                255
+            ) *
+            25;
 
         orb.style.transform =
             `scale(${scale})`;
 
         orb.style.borderRadius =
-            `${deformation}% ${60 - deformation / 4}% ${deformation}% 50%`;
+            `${sideA}% ${sideB}% ${60 - sideA / 4}% ${50 + sideB / 6}%`;
 
         requestAnimationFrame(
             animate
@@ -818,7 +1812,8 @@ function randomColor() {
 
     const hue =
         Math.floor(
-            Math.random() * 360
+            Math.random() *
+            360
         );
 
     return `hsl(${hue}, 80%, 60%)`;
@@ -829,7 +1824,8 @@ function randomColor() {
 function randomStat() {
 
     return Math.floor(
-        Math.random() * 11
+        Math.random() *
+        11
     );
 
 }
@@ -842,9 +1838,25 @@ function clamp(
 ) {
 
     return Math.min(
-        Math.max(value, min),
+        Math.max(
+            value,
+            min
+        ),
         max
     );
+
+}
+
+
+function formatScore(score) {
+
+    if (
+        Number.isInteger(score)
+    ) {
+        return score;
+    }
+
+    return score.toFixed(1);
 
 }
 
@@ -852,9 +1864,12 @@ function clamp(
 function escapeHTML(text) {
 
     const div =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
 
-    div.textContent = text;
+    div.textContent =
+        String(text);
 
     return div.innerHTML;
 
