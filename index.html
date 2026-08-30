@@ -7,359 +7,1029 @@
 <title>Batalha dos Sons</title>
 
 <style>
+
+/* =========================================================
+   BATALHA DOS SONS — V3
+   ========================================================= */
+
+:root {
+    --bg: #f4f0e8;
+    --bg-soft: #faf8f3;
+    --card: rgba(255,255,255,0.78);
+    --card-solid: #fffdf8;
+
+    --gold: #b49a62;
+    --gold-dark: #8e7648;
+    --gold-light: #d8c69b;
+
+    --text: #24231f;
+    --text-soft: #777166;
+    --text-light: #a39b8d;
+
+    --border: rgba(180,154,98,0.42);
+    --border-soft: rgba(82,74,60,0.12);
+
+    --shadow:
+        0 12px 40px rgba(82,70,45,0.08);
+
+    --shadow-strong:
+        0 18px 50px rgba(82,70,45,0.14);
+
+    --radius: 22px;
+}
+
 * {
     box-sizing: border-box;
 }
 
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background:
-        radial-gradient(circle at 50% -20%, #32205e 0%, transparent 40%),
-        #090a0f;
-    color: white;
-    min-height: 100vh;
+html {
+    scroll-behavior: smooth;
 }
 
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    font-family:
+        Inter,
+        ui-sans-serif,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    color: var(--text);
+
+    background:
+        radial-gradient(
+            circle at 50% -20%,
+            rgba(214,198,155,0.25),
+            transparent 36%
+        ),
+        linear-gradient(
+            135deg,
+            #f4f0e8,
+            #f8f5ef 50%,
+            #f1ece2
+        );
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
 header {
-    padding: 25px;
+    padding: 34px 20px 30px;
     text-align: center;
-    border-bottom: 1px solid #252733;
+
+    border-bottom:
+        1px solid rgba(180,154,98,0.22);
+
+    background:
+        rgba(255,255,255,0.32);
+
+    backdrop-filter:
+        blur(16px);
+}
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brand-symbol {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    border:
+        1px solid var(--border);
+
+    background:
+        rgba(255,255,255,0.68);
+
+    color: var(--gold-dark);
+
+    font-size: 20px;
+
+    box-shadow:
+        0 7px 20px rgba(100,86,54,0.08);
 }
 
 header h1 {
     margin: 0;
-    font-size: 30px;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(26px, 4vw, 36px);
+
+    font-weight: 500;
+
+    letter-spacing: 0.04em;
 }
 
 header p {
-    margin: 7px 0 0;
-    color: #999;
+    margin: 9px 0 0;
+
+    color: var(--text-soft);
+
+    font-size: 13px;
+
+    letter-spacing: 0.2em;
+
+    text-transform: uppercase;
 }
 
+
+/* =========================================================
+   LAYOUT
+   ========================================================= */
+
 .container {
-    width: min(1150px, 92%);
-    margin: 35px auto;
+    width: min(1180px, 92%);
+    margin: 42px auto;
 }
 
 .panel {
-    background: #11131a;
-    border: 1px solid #292c38;
-    border-radius: 18px;
-    padding: 25px;
-    margin-bottom: 25px;
+    position: relative;
+
+    margin-bottom: 26px;
+
+    padding: 28px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        var(--radius);
+
+    background:
+        var(--card);
+
+    backdrop-filter:
+        blur(18px);
+
+    box-shadow:
+        var(--shadow);
+}
+
+.panel::before {
+    content: "";
+
+    position: absolute;
+    inset: 8px;
+
+    pointer-events: none;
+
+    border:
+        1px solid rgba(180,154,98,0.10);
+
+    border-radius:
+        calc(var(--radius) - 8px);
+}
+
+.panel-title {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: 6px;
+}
+
+.panel-icon {
+    color: var(--gold-dark);
 }
 
 .panel h2 {
-    margin-top: 0;
+    margin: 0;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 23px;
+
+    font-weight: 500;
 }
+
+.small-note {
+    position: relative;
+
+    margin: 6px 0 18px;
+
+    color: var(--text-soft);
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   CAPTURA
+   ========================================================= */
 
 .record-area {
     text-align: center;
 }
 
 .record-button {
-    width: 105px;
-    height: 105px;
+    position: relative;
+
+    width: 112px;
+    height: 112px;
+
     border-radius: 50%;
-    border: 3px solid #ff405d;
-    background: #241219;
-    color: white;
-    font-size: 36px;
+
+    border:
+        1px solid var(--gold);
+
+    background:
+        linear-gradient(
+            145deg,
+            #fffdf8,
+            #eee6d5
+        );
+
+    color: var(--gold-dark);
+
+    font-size: 35px;
+
     cursor: pointer;
-    transition: 0.2s;
+
+    box-shadow:
+        0 12px 30px rgba(107,88,45,0.14);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.record-button::before {
+    content: "";
+
+    position: absolute;
+    inset: 7px;
+
+    border:
+        1px solid rgba(180,154,98,0.32);
+
+    border-radius: 50%;
 }
 
 .record-button:hover {
-    transform: scale(1.06);
+    transform: translateY(-2px) scale(1.03);
+
+    box-shadow:
+        0 16px 40px rgba(107,88,45,0.20);
 }
 
 .record-button.recording {
-    animation: recordingPulse 0.8s infinite alternate;
+    animation:
+        elegantPulse 1s infinite alternate;
 }
 
-@keyframes recordingPulse {
+@keyframes elegantPulse {
+
     from {
-        box-shadow: 0 0 5px #ff405d;
+        box-shadow:
+            0 0 0 rgba(180,154,98,0.1),
+            0 12px 30px rgba(107,88,45,0.14);
     }
 
     to {
-        box-shadow: 0 0 35px #ff405d;
+        box-shadow:
+            0 0 0 12px rgba(180,154,98,0.08),
+            0 16px 45px rgba(107,88,45,0.22);
     }
+
 }
 
 #recordStatus {
-    color: #aaa;
-    margin-top: 15px;
+    margin-top: 18px;
+
+    color: var(--text-soft);
+
+    font-size: 14px;
 }
 
 .sound-name {
-    margin-top: 18px;
-    padding: 12px;
-    width: min(400px, 90%);
-    border-radius: 10px;
-    border: 1px solid #363946;
-    background: #0b0d12;
-    color: white;
-    font-size: 16px;
+    width: min(420px, 90%);
+
+    margin-top: 20px;
+
+    padding: 14px 16px;
+
+    border:
+        1px solid rgba(180,154,98,0.38);
+
+    border-radius: 13px;
+
+    outline: none;
+
+    background:
+        rgba(255,255,255,0.68);
+
+    color: var(--text);
+
+    font-size: 15px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
-.small-note {
-    color: #777;
-    font-size: 13px;
+.sound-name:focus {
+    border-color: var(--gold);
+
+    box-shadow:
+        0 0 0 4px rgba(180,154,98,0.10);
+}
+
+.capture-hint {
+    margin-top: 12px;
+
+    color: var(--text-light);
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   INVENTÁRIO
+   ========================================================= */
+
+.inventory-header {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 20px;
+}
+
+.sound-counter {
+    padding: 7px 11px;
+
+    border:
+        1px solid rgba(180,154,98,0.32);
+
+    border-radius: 999px;
+
+    color: var(--gold-dark);
+
+    background:
+        rgba(255,255,255,0.55);
+
+    font-size: 12px;
 }
 
 .inventory {
+    position: relative;
+
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+
+    grid-template-columns:
+        repeat(
+            auto-fill,
+            minmax(235px, 1fr)
+        );
+
     gap: 18px;
 }
 
 .sound-card {
     position: relative;
-    background: #0c0e14;
-    border: 1px solid #2b2e39;
-    border-radius: 16px;
-    padding: 20px;
-    cursor: pointer;
-    transition: 0.2s;
+
     overflow: hidden;
+
+    padding: 20px;
+
+    border:
+        1px solid rgba(180,154,98,0.26);
+
+    border-radius: 18px;
+
+    background:
+        rgba(255,255,255,0.68);
+
+    box-shadow:
+        0 8px 25px rgba(80,69,48,0.06);
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.sound-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 20%;
+    right: 20%;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--gold-light),
+            transparent
+        );
 }
 
 .sound-card:hover {
-    transform: translateY(-4px);
-    border-color: #555b70;
+    transform:
+        translateY(-5px);
+
+    border-color:
+        rgba(180,154,98,0.55);
+
+    box-shadow:
+        var(--shadow-strong);
 }
 
 .sound-card.selected {
-    border-color: #ff405d;
-    box-shadow: 0 0 18px rgba(255, 64, 93, 0.25);
+    border-color:
+        var(--gold);
+
+    box-shadow:
+        0 0 0 2px rgba(180,154,98,0.10),
+        0 16px 35px rgba(91,75,43,0.12);
 }
 
 .sound-orb-container {
-    height: 130px;
+    height: 128px;
+
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .sound-orb {
-    width: 75px;
-    height: 75px;
+    width: 80px;
+    height: 80px;
+
     border-radius: 50%;
-    box-shadow: 0 0 30px currentColor;
+
+    box-shadow:
+        0 12px 30px currentColor;
+
     transition:
         transform 0.05s linear,
         border-radius 0.08s linear;
 }
 
 .sound-card h3 {
+    margin:
+        10px 0 5px;
+
     text-align: center;
-    margin: 10px 0 4px;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 18px;
+
+    font-weight: 500;
 }
 
 .rarity {
+    margin-bottom: 16px;
+
     text-align: center;
-    font-weight: bold;
-    margin-bottom: 15px;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.15em;
 }
 
 .stats {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 7px;
-    color: #aaa;
-    font-size: 13px;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 8px;
+
+    padding-top: 14px;
+
+    border-top:
+        1px solid rgba(180,154,98,0.16);
+
+    color: var(--text-soft);
+
+    font-size: 12px;
 }
 
 .stat-value {
-    color: white;
-    font-weight: bold;
+    color: var(--text);
+
+    font-weight: 700;
 }
 
 .card-actions {
     display: flex;
+
     gap: 8px;
-    margin-top: 15px;
+
+    margin-top: 17px;
 }
 
 .card-button {
     flex: 1;
-    padding: 9px;
-    border-radius: 9px;
-    border: 1px solid #363946;
-    background: #171a23;
-    color: white;
+
+    padding: 10px 8px;
+
+    border:
+        1px solid rgba(180,154,98,0.32);
+
+    border-radius: 10px;
+
+    background:
+        rgba(255,255,255,0.62);
+
+    color: var(--text);
+
     cursor: pointer;
+
+    font-size: 12px;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
 }
 
 .card-button:hover {
-    background: #222633;
+    background:
+        #fffaf0;
+
+    border-color:
+        var(--gold);
 }
 
 .select-button.selected-button {
-    border-color: #ff405d;
-    color: #ff6b82;
+    color:
+        var(--gold-dark);
+
+    border-color:
+        var(--gold);
+
+    background:
+        rgba(212,194,151,0.15);
 }
 
 .empty {
+    grid-column:
+        1 / -1;
+
+    padding: 50px 20px;
+
     text-align: center;
-    color: #777;
-    padding: 30px;
+
+    color:
+        var(--text-light);
 }
 
+
+/* =========================================================
+   ARENA
+   ========================================================= */
+
 .battle-zone {
+    position: relative;
+
     display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    gap: 20px;
+
+    grid-template-columns:
+        1fr auto 1fr;
+
+    gap: 22px;
+
     align-items: stretch;
+
+    margin-top: 24px;
 }
 
 .fighter {
-    border: 1px solid #343846;
-    border-radius: 15px;
-    padding: 20px;
-    min-height: 180px;
+    min-height: 195px;
+
+    padding: 24px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
     text-align: center;
-    background: #0c0e14;
+
+    border:
+        1px solid rgba(180,154,98,0.30);
+
+    border-radius: 17px;
+
+    background:
+        rgba(255,255,255,0.55);
 }
 
 .fighter-orb {
-    width: 65px;
-    height: 65px;
+    width: 72px;
+    height: 72px;
+
+    margin:
+        5px auto 16px;
+
     border-radius: 50%;
-    margin: 10px auto 15px;
-    box-shadow: 0 0 25px currentColor;
+
+    box-shadow:
+        0 10px 28px currentColor;
+
+    transition:
+        transform 0.3s ease,
+        filter 0.3s ease;
+}
+
+.fighter-orb.round-winner-orb {
+    animation:
+        winnerPulse 0.65s ease;
+}
+
+@keyframes winnerPulse {
+
+    0% {
+        transform: scale(1);
+    }
+
+    45% {
+        transform: scale(1.22);
+        filter: brightness(1.15);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+
 }
 
 .fighter-name {
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
     font-size: 20px;
-    font-weight: bold;
+
+    font-weight: 500;
 }
 
 .fighter-rarity {
-    font-size: 13px;
     margin-top: 5px;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.14em;
 }
 
 .vs {
     display: flex;
-    justify-content: center;
+
     align-items: center;
-    color: #ff405d;
-    font-size: 32px;
-    font-weight: bold;
+    justify-content: center;
+
+    color:
+        var(--gold-dark);
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 26px;
 }
 
 .battle-controls {
+    position: relative;
+
+    margin-top: 24px;
+
     text-align: center;
-    margin-top: 25px;
 }
 
 .battle-button {
-    padding: 14px 30px;
-    border: none;
-    border-radius: 12px;
-    background: #ff405d;
+    padding:
+        13px 28px;
+
+    border:
+        1px solid var(--gold);
+
+    border-radius:
+        999px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #c4a96c,
+            #9a8050
+        );
+
     color: white;
-    font-size: 16px;
-    font-weight: bold;
+
     cursor: pointer;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.08em;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 .battle-button:hover {
-    transform: scale(1.03);
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 10px 25px rgba(116,92,48,0.16);
 }
 
 .battle-button:disabled {
     opacity: 0.35;
+
     cursor: not-allowed;
+
     transform: none;
+
+    box-shadow: none;
 }
 
 .secondary-button {
-    margin-left: 10px;
-    background: #292d3a;
+    margin-left: 8px;
+
+    color: var(--gold-dark);
+
+    background:
+        rgba(255,255,255,0.70);
 }
 
+
+/* =========================================================
+   RODADAS
+   ========================================================= */
+
 .rounds {
-    margin-top: 25px;
+    position: relative;
+
     display: grid;
-    gap: 10px;
+
+    gap: 12px;
+
+    margin-top: 26px;
 }
 
 .round {
+    opacity: 0;
+
+    transform:
+        translateY(12px);
+
     display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    gap: 12px;
+
+    grid-template-columns:
+        1fr auto 1fr;
+
+    gap: 13px;
+
     align-items: center;
-    background: #0b0d12;
-    border: 1px solid #292d39;
-    border-radius: 12px;
-    padding: 14px;
+
+    padding: 15px;
+
+    border:
+        1px solid rgba(180,154,98,0.23);
+
+    border-radius: 14px;
+
+    background:
+        rgba(255,255,255,0.48);
+
+    animation:
+        roundReveal 0.4s ease forwards;
+}
+
+@keyframes roundReveal {
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
 }
 
 .attribute-box {
-    padding: 10px;
-    border-radius: 9px;
-    background: #161923;
+    padding: 12px;
+
     text-align: center;
+
+    border:
+        1px solid rgba(180,154,98,0.16);
+
+    border-radius: 11px;
+
+    background:
+        rgba(255,255,255,0.58);
+
+    transition:
+        border-color 0.3s ease,
+        background 0.3s ease;
+}
+
+.attribute-box.winner {
+    border-color:
+        var(--gold);
+
+    background:
+        rgba(213,194,149,0.14);
 }
 
 .attribute-name {
-    color: #aaa;
-    font-size: 13px;
+    color:
+        var(--text-soft);
+
+    font-size: 12px;
 }
 
 .attribute-value {
-    font-size: 24px;
-    font-weight: bold;
-    margin-top: 3px;
+    margin-top: 4px;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 25px;
 }
 
 .round-vs {
-    font-weight: bold;
-    color: #777;
+    color:
+        var(--gold-dark);
+
+    font-size: 12px;
+
+    font-weight: 700;
 }
 
 .round-winner {
-    grid-column: 1 / -1;
+    grid-column:
+        1 / -1;
+
     text-align: center;
-    font-size: 13px;
-    font-weight: bold;
+
+    color:
+        var(--gold-dark);
+
+    font-size: 12px;
+
+    font-weight: 600;
 }
 
 .final-result {
-    margin-top: 20px;
+    position: relative;
+
+    margin-top: 22px;
+
+    padding: 24px;
+
     text-align: center;
+
+    border:
+        1px solid var(--gold);
+
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.70),
+            rgba(224,210,177,0.20)
+        );
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
     font-size: 24px;
-    font-weight: bold;
-    padding: 20px;
-    border-radius: 14px;
-    background: #0b0d12;
-    border: 1px solid #343846;
+
+    animation:
+        resultAppear 0.5s ease;
+}
+
+@keyframes resultAppear {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(10px)
+            scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
 }
 
 .score {
-    font-size: 17px;
     margin-top: 8px;
-    color: #aaa;
+
+    color:
+        var(--text-soft);
+
+    font-family:
+        Inter,
+        Arial,
+        sans-serif;
+
+    font-size: 13px;
 }
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
 
 .version {
+    padding:
+        5px 20px 35px;
+
     text-align: center;
-    color: #555;
-    font-size: 12px;
-    padding-bottom: 25px;
+
+    color:
+        var(--text-light);
+
+    font-size: 11px;
+
+    letter-spacing: 0.12em;
 }
 
-@media (max-width: 700px) {
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 720px) {
+
+    .container {
+        width: 94%;
+        margin-top: 24px;
+    }
+
+    .panel {
+        padding: 21px;
+    }
+
     .battle-zone {
         grid-template-columns: 1fr;
     }
 
     .vs {
-        padding: 5px;
+        padding: 2px;
     }
 
     .round {
@@ -373,22 +1043,66 @@ header p {
     .card-actions {
         flex-direction: column;
     }
+
+    .inventory-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
 }
+
 </style>
 </head>
+
 
 <body>
 
 <header>
-    <h1>🎵 BATALHA DOS SONS</h1>
-    <p>Capture. Colecione. Batalhe.</p>
+
+    <div class="brand">
+
+        <div class="brand-symbol">
+            ♪
+        </div>
+
+        <h1>
+            Batalha dos Sons
+        </h1>
+
+    </div>
+
+    <p>
+        Capture · Colecione · Batalhe
+    </p>
+
 </header>
+
 
 <div class="container">
 
+
+    <!-- =====================================================
+         CAPTURA
+         ===================================================== -->
+
     <section class="panel record-area">
 
-        <h2>Capturar Som</h2>
+        <div class="panel-title">
+
+            <span class="panel-icon">
+                ◇
+            </span>
+
+            <h2>
+                Capturar Som
+            </h2>
+
+        </div>
+
+        <p class="small-note">
+            Transforme qualquer som em uma peça única
+            da sua coleção.
+        </p>
 
         <button
             id="recordButton"
@@ -409,62 +1123,130 @@ header p {
             placeholder="Nome do som (opcional)"
         >
 
-        <p class="small-note">
+        <div class="capture-hint">
             Clique novamente no microfone para finalizar.
-        </p>
+        </div>
 
     </section>
 
+
+    <!-- =====================================================
+         INVENTÁRIO
+         ===================================================== -->
+
     <section class="panel">
 
-        <h2>🎒 Inventário de Sons</h2>
+        <div class="inventory-header">
 
-        <p class="small-note">
-            Clique no card ou em Ouvir para tocar o som.
-            Use Selecionar para mandar dois sons para a Arena.
-        </p>
+            <div>
 
-        <div id="inventory" class="inventory">
+                <div class="panel-title">
+
+                    <span class="panel-icon">
+                        ◇
+                    </span>
+
+                    <h2>
+                        Inventário
+                    </h2>
+
+                </div>
+
+                <p class="small-note">
+                    Seus sons ficam salvos neste navegador.
+                    Escolha dois para entrar na Arena.
+                </p>
+
+            </div>
+
+            <div
+                id="soundCounter"
+                class="sound-counter"
+            >
+                0 sons
+            </div>
+
+        </div>
+
+        <div
+            id="inventory"
+            class="inventory"
+        >
 
             <div class="empty">
-                Você ainda não capturou nenhum som.
+                Sua coleção ainda está vazia.
             </div>
 
         </div>
 
     </section>
 
+
+    <!-- =====================================================
+         ARENA
+         ===================================================== -->
+
     <section class="panel">
 
-        <h2>⚔️ Arena</h2>
+        <div class="panel-title">
+
+            <span class="panel-icon">
+                ◇
+            </span>
+
+            <h2>
+                Arena
+            </h2>
+
+        </div>
+
+        <p class="small-note">
+            Cada atributo é usado uma única vez.
+            Os confrontos são embaralhados novamente
+            a cada batalha.
+        </p>
+
 
         <div class="battle-zone">
 
-            <div id="fighterA" class="fighter">
+            <div
+                id="fighterA"
+                class="fighter"
+            >
+
                 <div class="fighter-name">
-                    SOM 1
+                    Som I
                 </div>
 
                 <p class="small-note">
-                    Selecione um som do inventário.
+                    Selecione um som.
                 </p>
+
             </div>
+
 
             <div class="vs">
                 VS
             </div>
 
-            <div id="fighterB" class="fighter">
+
+            <div
+                id="fighterB"
+                class="fighter"
+            >
+
                 <div class="fighter-name">
-                    SOM 2
+                    Som II
                 </div>
 
                 <p class="small-note">
-                    Selecione outro som do inventário.
+                    Selecione outro som.
                 </p>
+
             </div>
 
         </div>
+
 
         <div class="battle-controls">
 
@@ -473,20 +1255,28 @@ header p {
                 class="battle-button"
                 disabled
             >
-                ⚔️ BATALHAR
+                BATALHAR
             </button>
 
             <button
                 id="rematchButton"
-                class="battle-button secondary-button"
+                class="
+                    battle-button
+                    secondary-button
+                "
                 style="display:none;"
             >
-                🔀 REVANCHE
+                REVANCHE
             </button>
 
         </div>
 
-        <div id="rounds" class="rounds"></div>
+
+        <div
+            id="rounds"
+            class="rounds"
+        ></div>
+
 
         <div
             id="finalResult"
@@ -498,88 +1288,383 @@ header p {
 
 </div>
 
+
 <div class="version">
-    Batalha dos Sons — V2
+    BATALHA DOS SONS · V3
 </div>
+
 
 <script>
 
-let mediaRecorder;
+/* =========================================================
+   VARIÁVEIS GERAIS
+   ========================================================= */
+
+let mediaRecorder = null;
 let audioChunks = [];
 let recording = false;
 
-let soundCounter = 0;
-
-const sounds = [];
+let sounds = [];
 
 let selectedA = null;
 let selectedB = null;
 
+
+/* =========================================================
+   PALETA DE ESFERAS
+   ========================================================= */
+
+const orbPalette = [
+
+    "#16233F", // azul marinho
+
+    "#123A32", // esmeralda escuro
+
+    "#542932", // vinho
+
+    "#313A46", // grafite azulado
+
+    "#16414C", // petróleo
+
+    "#51405E", // ameixa
+
+    "#4F5735", // oliva escuro
+
+    "#784D3C", // terracota
+
+    "#35404A", // ardósia
+
+    "#3C324D", // violeta profundo
+
+    "#27515A", // teal profundo
+
+    "#664444"  // bordô queimado
+
+];
+
+
+/* =========================================================
+   ATRIBUTOS
+   ========================================================= */
+
 const attributeInfo = {
+
     grave: {
         name: "Grave",
-        icon: "🔉"
+        icon: "◐"
     },
 
     agudo: {
         name: "Agudo",
-        icon: "🔊"
+        icon: "◑"
     },
 
     impacto: {
         name: "Impacto",
-        icon: "💥"
+        icon: "✦"
     },
 
     duracao: {
         name: "Duração",
-        icon: "⏱️"
+        icon: "◷"
     },
 
     complexidade: {
         name: "Complexidade",
-        icon: "🌀"
+        icon: "◇"
     }
+
 };
 
+
 const attributeKeys = [
+
     "grave",
     "agudo",
     "impacto",
     "duracao",
     "complexidade"
+
 ];
 
+
+/* =========================================================
+   ELEMENTOS
+   ========================================================= */
+
 const recordButton =
-    document.getElementById("recordButton");
+    document.getElementById(
+        "recordButton"
+    );
 
 const recordStatus =
-    document.getElementById("recordStatus");
+    document.getElementById(
+        "recordStatus"
+    );
 
 const inventory =
-    document.getElementById("inventory");
+    document.getElementById(
+        "inventory"
+    );
 
 const soundNameInput =
-    document.getElementById("soundName");
+    document.getElementById(
+        "soundName"
+    );
 
 const fighterA =
-    document.getElementById("fighterA");
+    document.getElementById(
+        "fighterA"
+    );
 
 const fighterB =
-    document.getElementById("fighterB");
+    document.getElementById(
+        "fighterB"
+    );
 
 const battleButton =
-    document.getElementById("battleButton");
+    document.getElementById(
+        "battleButton"
+    );
 
 const rematchButton =
-    document.getElementById("rematchButton");
+    document.getElementById(
+        "rematchButton"
+    );
 
 const roundsContainer =
-    document.getElementById("rounds");
+    document.getElementById(
+        "rounds"
+    );
 
 const finalResult =
-    document.getElementById("finalResult");
+    document.getElementById(
+        "finalResult"
+    );
 
+const soundCounterElement =
+    document.getElementById(
+        "soundCounter"
+    );
+
+
+/* =========================================================
+   INDEXED DB
+   ========================================================= */
+
+const DB_NAME =
+    "BatalhaDosSonsDB";
+
+const DB_VERSION =
+    1;
+
+const STORE_NAME =
+    "sounds";
+
+
+function openDatabase() {
+
+    return new Promise(
+        (resolve, reject) => {
+
+            const request =
+                indexedDB.open(
+                    DB_NAME,
+                    DB_VERSION
+                );
+
+            request.onupgradeneeded =
+                event => {
+
+                    const db =
+                        event.target.result;
+
+                    if (
+                        !db.objectStoreNames.contains(
+                            STORE_NAME
+                        )
+                    ) {
+
+                        db.createObjectStore(
+                            STORE_NAME,
+                            {
+                                keyPath: "id"
+                            }
+                        );
+
+                    }
+
+                };
+
+            request.onsuccess =
+                () => {
+
+                    resolve(
+                        request.result
+                    );
+
+                };
+
+            request.onerror =
+                () => {
+
+                    reject(
+                        request.error
+                    );
+
+                };
+
+        }
+    );
+
+}
+
+
+async function saveSoundToDatabase(
+    sound
+) {
+
+    const db =
+        await openDatabase();
+
+    return new Promise(
+        (resolve, reject) => {
+
+            const transaction =
+                db.transaction(
+                    STORE_NAME,
+                    "readwrite"
+                );
+
+            const store =
+                transaction.objectStore(
+                    STORE_NAME
+                );
+
+            const request =
+                store.put(sound);
+
+            request.onsuccess =
+                () => resolve();
+
+            request.onerror =
+                () =>
+                    reject(
+                        request.error
+                    );
+
+            transaction.oncomplete =
+                () => db.close();
+
+        }
+    );
+
+}
+
+
+async function getAllSoundsFromDatabase() {
+
+    const db =
+        await openDatabase();
+
+    return new Promise(
+        (resolve, reject) => {
+
+            const transaction =
+                db.transaction(
+                    STORE_NAME,
+                    "readonly"
+                );
+
+            const store =
+                transaction.objectStore(
+                    STORE_NAME
+                );
+
+            const request =
+                store.getAll();
+
+            request.onsuccess =
+                () => {
+
+                    resolve(
+                        request.result || []
+                    );
+
+                };
+
+            request.onerror =
+                () => {
+
+                    reject(
+                        request.error
+                    );
+
+                };
+
+            transaction.oncomplete =
+                () => db.close();
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   CARREGAR INVENTÁRIO
+   ========================================================= */
+
+async function loadSavedSounds() {
+
+    try {
+
+        const saved =
+            await getAllSoundsFromDatabase();
+
+        sounds =
+            saved.map(
+                sound => {
+
+                    return {
+
+                        ...sound,
+
+                        audioURL:
+                            URL.createObjectURL(
+                                sound.audioBlob
+                            )
+
+                    };
+
+                }
+            );
+
+        sounds.sort(
+            (a, b) =>
+                b.createdAt -
+                a.createdAt
+        );
+
+        renderInventory();
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Erro ao carregar sons:",
+            error
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   GRAVAÇÃO
+   ========================================================= */
 
 recordButton.addEventListener(
     "click",
@@ -590,23 +1675,34 @@ recordButton.addEventListener(
             try {
 
                 const stream =
-                    await navigator.mediaDevices.getUserMedia({
-                        audio: true
-                    });
+                    await navigator
+                        .mediaDevices
+                        .getUserMedia({
+                            audio: true
+                        });
 
                 mediaRecorder =
-                    new MediaRecorder(stream);
+                    new MediaRecorder(
+                        stream
+                    );
 
                 audioChunks = [];
 
                 mediaRecorder.ondataavailable =
                     event => {
 
-                        if (event.data.size > 0) {
-                            audioChunks.push(event.data);
+                        if (
+                            event.data.size > 0
+                        ) {
+
+                            audioChunks.push(
+                                event.data
+                            );
+
                         }
 
                     };
+
 
                 mediaRecorder.onstop =
                     async () => {
@@ -615,40 +1711,48 @@ recordButton.addEventListener(
                             new Blob(
                                 audioChunks,
                                 {
-                                    type: mediaRecorder.mimeType
+                                    type:
+                                        mediaRecorder
+                                            .mimeType
                                 }
                             );
 
-                        await createSound(audioBlob);
+                        await createSound(
+                            audioBlob
+                        );
 
                         stream
                             .getTracks()
                             .forEach(
-                                track => track.stop()
+                                track =>
+                                    track.stop()
                             );
 
                     };
+
 
                 mediaRecorder.start();
 
                 recording = true;
 
-                recordButton.classList.add(
-                    "recording"
-                );
+                recordButton
+                    .classList
+                    .add(
+                        "recording"
+                    );
 
                 recordStatus.textContent =
-                    "🔴 Gravando... clique novamente para finalizar.";
+                    "Gravando… clique novamente para finalizar.";
 
             }
 
             catch (error) {
 
-                alert(
-                    "Não consegui acessar o microfone. Verifique se você permitiu o acesso."
-                );
-
                 console.error(error);
+
+                alert(
+                    "Não consegui acessar o microfone. Verifique a permissão do navegador."
+                );
 
             }
 
@@ -660,12 +1764,14 @@ recordButton.addEventListener(
 
             recording = false;
 
-            recordButton.classList.remove(
-                "recording"
-            );
+            recordButton
+                .classList
+                .remove(
+                    "recording"
+                );
 
             recordStatus.textContent =
-                "Analisando seu som...";
+                "Analisando o som…";
 
         }
 
@@ -673,17 +1779,22 @@ recordButton.addEventListener(
 );
 
 
-async function createSound(blob) {
+/* =========================================================
+   CRIAR SOM
+   ========================================================= */
 
-    const audioURL =
-        URL.createObjectURL(blob);
+async function createSound(
+    audioBlob
+) {
 
     let stats;
 
     try {
 
         stats =
-            await analyzeAudio(blob);
+            await analyzeAudio(
+                audioBlob
+            );
 
     }
 
@@ -692,50 +1803,141 @@ async function createSound(blob) {
         console.error(error);
 
         stats = {
-            grave: randomStat(),
-            agudo: randomStat(),
-            impacto: randomStat(),
-            duracao: randomStat(),
-            complexidade: randomStat()
+
+            grave:
+                randomStat(),
+
+            agudo:
+                randomStat(),
+
+            impacto:
+                randomStat(),
+
+            duracao:
+                randomStat(),
+
+            complexidade:
+                randomStat()
+
         };
 
     }
 
+
     const rarity =
-        calculateRarity(stats);
+        calculateRarity(
+            stats
+        );
 
     const color =
-        randomColor();
-
-    soundCounter++;
+        elegantRandomColor();
 
     const name =
-        soundNameInput.value.trim()
+        soundNameInput
+            .value
+            .trim()
         ||
-        "Som #" + soundCounter;
+        `Som #${sounds.length + 1}`;
+
 
     const sound = {
-        id: Date.now() + Math.random(),
+
+        id:
+            crypto.randomUUID
+                ?
+                crypto.randomUUID()
+                :
+                String(
+                    Date.now() +
+                    Math.random()
+                ),
+
         name,
-        audioURL,
+
         stats,
+
         rarity,
-        color
+
+        color,
+
+        audioBlob,
+
+        audioURL:
+            URL.createObjectURL(
+                audioBlob
+            ),
+
+        createdAt:
+            Date.now()
+
     };
 
-    sounds.push(sound);
 
-    addSoundToInventory(sound);
+    sounds.unshift(
+        sound
+    );
 
-    soundNameInput.value = "";
+
+    try {
+
+        await saveSoundToDatabase(
+            {
+
+                id:
+                    sound.id,
+
+                name:
+                    sound.name,
+
+                stats:
+                    sound.stats,
+
+                rarity:
+                    sound.rarity,
+
+                color:
+                    sound.color,
+
+                audioBlob:
+                    sound.audioBlob,
+
+                createdAt:
+                    sound.createdAt
+
+            }
+
+        );
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Erro ao salvar:",
+            error
+        );
+
+    }
+
+
+    renderInventory();
+
+    soundNameInput.value =
+        "";
 
     recordStatus.textContent =
-        "Som capturado! Grave outro quando quiser.";
+        "Som capturado e salvo.";
 
 }
 
 
-async function analyzeAudio(blob) {
+/* =========================================================
+   ANÁLISE DO ÁUDIO
+   ========================================================= */
+
+async function analyzeAudio(
+    blob
+) {
 
     const arrayBuffer =
         await blob.arrayBuffer();
@@ -748,18 +1950,23 @@ async function analyzeAudio(blob) {
         new AudioContextClass();
 
     const buffer =
-        await audioContext.decodeAudioData(
-            arrayBuffer.slice(0)
-        );
+        await audioContext
+            .decodeAudioData(
+                arrayBuffer.slice(0)
+            );
 
     const channel =
         buffer.getChannelData(0);
 
+
     let sumSquares = 0;
+
     let peak = 0;
+
     let zeroCrossings = 0;
 
     let differenceSum = 0;
+
 
     for (
         let i = 1;
@@ -768,207 +1975,374 @@ async function analyzeAudio(blob) {
     ) {
 
         const sample =
-            Math.abs(channel[i]);
+            Math.abs(
+                channel[i]
+            );
+
 
         sumSquares +=
-            channel[i] * channel[i];
+            channel[i] *
+            channel[i];
 
-        if (sample > peak) {
-            peak = sample;
-        }
 
         if (
+            sample > peak
+        ) {
+
+            peak =
+                sample;
+
+        }
+
+
+        if (
+
             (
                 channel[i - 1] < 0 &&
                 channel[i] >= 0
             )
+
             ||
+
             (
                 channel[i - 1] >= 0 &&
                 channel[i] < 0
             )
+
         ) {
+
             zeroCrossings++;
+
         }
+
 
         differenceSum +=
             Math.abs(
-                channel[i] -
+
+                channel[i]
+                -
                 channel[i - 1]
+
             );
 
     }
 
+
     const rms =
         Math.sqrt(
+
             sumSquares /
+
             Math.max(
                 channel.length,
                 1
             )
+
         );
+
 
     const duration =
         buffer.duration;
 
+
     const crossingRate =
         zeroCrossings /
+
         Math.max(
             channel.length,
             1
         );
+
 
     const variation =
         differenceSum /
+
         Math.max(
             channel.length,
             1
         );
 
+
     const impacto =
         clamp(
+
             Math.round(
                 peak * 12
             ),
+
             0,
             10
+
         );
+
 
     const agudo =
         clamp(
+
             Math.round(
                 crossingRate * 170
             ),
+
             0,
             10
+
         );
+
 
     const grave =
         clamp(
+
             Math.round(
-                10 -
-                agudo +
+
+                10
+                -
+                agudo
+                +
                 rms * 4
+
             ),
+
             0,
             10
+
         );
+
 
     const duracao =
         clamp(
+
             Math.round(
                 duration * 1.4
             ),
+
             0,
             10
+
         );
+
 
     const complexidade =
         clamp(
+
             Math.round(
-                variation * 80 +
-                crossingRate * 60 +
+
+                variation * 80
+                +
+                crossingRate * 60
+                +
                 rms * 8
+
             ),
+
             0,
             10
+
         );
+
 
     await audioContext.close();
 
+
     return {
+
         grave,
         agudo,
         impacto,
         duracao,
         complexidade
+
     };
 
 }
 
 
-function calculateRarity(stats) {
+/* =========================================================
+   RARIDADE
+   ========================================================= */
+
+function calculateRarity(
+    stats
+) {
 
     const values =
-        Object.values(stats);
+        Object.values(
+            stats
+        );
+
 
     const average =
         values.reduce(
-            (sum, value) =>
-                sum + value,
+
+            (
+                total,
+                value
+            ) =>
+                total + value,
+
             0
-        )
-        /
+
+        ) /
         values.length;
 
+
     const highest =
-        Math.max(...values);
+        Math.max(
+            ...values
+        );
+
 
     const score =
-        average * 0.75 +
+        average * 0.75
+        +
         highest * 0.25;
 
-    if (score >= 8.5) {
+
+    if (
+        score >= 8.5
+    ) {
 
         return {
-            name: "LENDÁRIO",
-            color: "#ffb52e"
+
+            name:
+                "LENDÁRIO",
+
+            color:
+                "#8A6A2F"
+
         };
 
     }
 
-    if (score >= 7) {
+
+    if (
+        score >= 7
+    ) {
 
         return {
-            name: "ÉPICO",
-            color: "#b35cff"
+
+            name:
+                "ÉPICO",
+
+            color:
+                "#654875"
+
         };
 
     }
 
-    if (score >= 5.5) {
+
+    if (
+        score >= 5.5
+    ) {
 
         return {
-            name: "RARO",
-            color: "#4287ff"
+
+            name:
+                "RARO",
+
+            color:
+                "#334F73"
+
         };
 
     }
 
-    if (score >= 4) {
+
+    if (
+        score >= 4
+    ) {
 
         return {
-            name: "INCOMUM",
-            color: "#42d67b"
+
+            name:
+                "INCOMUM",
+
+            color:
+                "#476551"
+
         };
 
     }
+
 
     return {
-        name: "COMUM",
-        color: "#aaaaaa"
+
+        name:
+            "COMUM",
+
+        color:
+            "#77736B"
+
     };
 
 }
 
 
-function addSoundToInventory(sound) {
+/* =========================================================
+   INVENTÁRIO
+   ========================================================= */
 
-    const empty =
-        inventory.querySelector(".empty");
+function renderInventory() {
 
-    if (empty) {
-        empty.remove();
+    inventory.innerHTML =
+        "";
+
+
+    soundCounterElement.textContent =
+        sounds.length === 1
+            ?
+            "1 som"
+            :
+            `${sounds.length} sons`;
+
+
+    if (
+        sounds.length === 0
+    ) {
+
+        inventory.innerHTML = `
+
+            <div class="empty">
+
+                Sua coleção ainda está vazia.
+
+            </div>
+
+        `;
+
+        return;
+
     }
 
+
+    sounds.forEach(
+        sound => {
+
+            addSoundCard(
+                sound
+            );
+
+        }
+    );
+
+}
+
+
+function addSoundCard(
+    sound
+) {
+
     const card =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
 
     card.className =
         "sound-card";
 
     card.dataset.id =
         sound.id;
+
 
     card.innerHTML = `
 
@@ -984,51 +2358,64 @@ function addSoundToInventory(sound) {
 
         </div>
 
+
         <h3>
-            ${escapeHTML(sound.name)}
+
+            ${escapeHTML(
+                sound.name
+            )}
+
         </h3>
+
 
         <div
             class="rarity"
             style="
-                color:${sound.rarity.color}
+                color:${sound.rarity.color};
             "
         >
+
             ${sound.rarity.name}
+
         </div>
+
 
         <div class="stats">
 
             <div>
-                🔉 Grave:
+                ◐ Grave:
                 <span class="stat-value">
                     ${sound.stats.grave}/10
                 </span>
             </div>
 
+
             <div>
-                🔊 Agudo:
+                ◑ Agudo:
                 <span class="stat-value">
                     ${sound.stats.agudo}/10
                 </span>
             </div>
 
+
             <div>
-                💥 Impacto:
+                ✦ Impacto:
                 <span class="stat-value">
                     ${sound.stats.impacto}/10
                 </span>
             </div>
 
+
             <div>
-                ⏱️ Duração:
+                ◷ Duração:
                 <span class="stat-value">
                     ${sound.stats.duracao}/10
                 </span>
             </div>
 
+
             <div>
-                🌀 Complexidade:
+                ◇ Complexidade:
                 <span class="stat-value">
                     ${sound.stats.complexidade}/10
                 </span>
@@ -1036,40 +2423,59 @@ function addSoundToInventory(sound) {
 
         </div>
 
+
         <div class="card-actions">
 
             <button
-                class="card-button play-button"
+                class="
+                    card-button
+                    play-button
+                "
             >
-                ▶ Ouvir
+
+                Ouvir
+
             </button>
 
+
             <button
-                class="card-button select-button"
+                class="
+                    card-button
+                    select-button
+                "
             >
-                ⚔️ Selecionar
+
+                Selecionar
+
             </button>
 
         </div>
 
     `;
 
-    inventory.prepend(card);
+
+    inventory.appendChild(
+        card
+    );
+
 
     const orb =
         card.querySelector(
             ".sound-orb"
         );
 
+
     const playButton =
         card.querySelector(
             ".play-button"
         );
 
+
     const selectButton =
         card.querySelector(
             ".select-button"
         );
+
 
     card.addEventListener(
         "click",
@@ -1091,6 +2497,7 @@ function addSoundToInventory(sound) {
         }
     );
 
+
     playButton.addEventListener(
         "click",
         event => {
@@ -1105,13 +2512,16 @@ function addSoundToInventory(sound) {
         }
     );
 
+
     selectButton.addEventListener(
         "click",
         event => {
 
             event.stopPropagation();
 
-            selectSound(sound);
+            selectSound(
+                sound
+            );
 
         }
     );
@@ -1119,14 +2529,21 @@ function addSoundToInventory(sound) {
 }
 
 
-function selectSound(sound) {
+/* =========================================================
+   SELEÇÃO PARA ARENA
+   ========================================================= */
+
+function selectSound(
+    sound
+) {
 
     if (
         selectedA &&
         selectedA.id === sound.id
     ) {
 
-        selectedA = null;
+        selectedA =
+            null;
 
     }
 
@@ -1135,19 +2552,26 @@ function selectSound(sound) {
         selectedB.id === sound.id
     ) {
 
-        selectedB = null;
+        selectedB =
+            null;
 
     }
 
-    else if (!selectedA) {
+    else if (
+        !selectedA
+    ) {
 
-        selectedA = sound;
+        selectedA =
+            sound;
 
     }
 
-    else if (!selectedB) {
+    else if (
+        !selectedB
+    ) {
 
-        selectedB = sound;
+        selectedB =
+            sound;
 
     }
 
@@ -1161,10 +2585,15 @@ function selectSound(sound) {
 
     }
 
+
     updateSelectionUI();
 
 }
 
+
+/* =========================================================
+   UI DE SELEÇÃO
+   ========================================================= */
 
 function updateSelectionUI() {
 
@@ -1172,78 +2601,99 @@ function updateSelectionUI() {
         .querySelectorAll(
             ".sound-card"
         )
-        .forEach(card => {
+        .forEach(
+            card => {
 
-            const id =
-                Number(
-                    card.dataset.id
+                const id =
+                    card.dataset.id;
+
+
+                const selected =
+
+                    (
+                        selectedA &&
+                        selectedA.id === id
+                    )
+
+                    ||
+
+                    (
+                        selectedB &&
+                        selectedB.id === id
+                    );
+
+
+                card.classList.toggle(
+                    "selected",
+                    selected
                 );
 
-            const selected =
-                (
-                    selectedA &&
-                    selectedA.id === id
-                )
-                ||
-                (
-                    selectedB &&
-                    selectedB.id === id
-                );
 
-            card.classList.toggle(
-                "selected",
-                selected
-            );
+                const button =
+                    card.querySelector(
+                        ".select-button"
+                    );
 
-            const button =
-                card.querySelector(
-                    ".select-button"
-                );
 
-            if (selected) {
+                if (
+                    selected
+                ) {
 
-                button.textContent =
-                    "✓ Na Arena";
+                    button.textContent =
+                        "Na Arena";
 
-                button.classList.add(
-                    "selected-button"
-                );
+                    button
+                        .classList
+                        .add(
+                            "selected-button"
+                        );
+
+                }
+
+                else {
+
+                    button.textContent =
+                        "Selecionar";
+
+                    button
+                        .classList
+                        .remove(
+                            "selected-button"
+                        );
+
+                }
 
             }
+        );
 
-            else {
-
-                button.textContent =
-                    "⚔️ Selecionar";
-
-                button.classList.remove(
-                    "selected-button"
-                );
-
-            }
-
-        });
 
     renderFighter(
         fighterA,
         selectedA,
-        "SOM 1"
+        "Som I"
     );
+
 
     renderFighter(
         fighterB,
         selectedB,
-        "SOM 2"
+        "Som II"
     );
+
 
     battleButton.disabled =
         !selectedA ||
         !selectedB;
 
+
     clearBattleResults();
 
 }
 
+
+/* =========================================================
+   LUTADORES
+   ========================================================= */
 
 function renderFighter(
     element,
@@ -1251,7 +2701,9 @@ function renderFighter(
     placeholder
 ) {
 
-    if (!sound) {
+    if (
+        !sound
+    ) {
 
         element.innerHTML = `
 
@@ -1260,7 +2712,7 @@ function renderFighter(
             </div>
 
             <p class="small-note">
-                Selecione um som do inventário.
+                Selecione um som.
             </p>
 
         `;
@@ -1268,6 +2720,7 @@ function renderFighter(
         return;
 
     }
+
 
     element.innerHTML = `
 
@@ -1279,23 +2732,35 @@ function renderFighter(
             "
         ></div>
 
+
         <div class="fighter-name">
-            ${escapeHTML(sound.name)}
+
+            ${escapeHTML(
+                sound.name
+            )}
+
         </div>
+
 
         <div
             class="fighter-rarity"
             style="
-                color:${sound.rarity.color}
+                color:${sound.rarity.color};
             "
         >
+
             ${sound.rarity.name}
+
         </div>
 
     `;
 
 }
 
+
+/* =========================================================
+   BATALHA
+   ========================================================= */
 
 battleButton.addEventListener(
     "click",
@@ -1317,37 +2782,58 @@ rematchButton.addEventListener(
 );
 
 
+/* =========================================================
+   INICIAR BATALHA
+   ========================================================= */
+
 function startBattle() {
 
     if (
         !selectedA ||
         !selectedB
     ) {
+
         return;
+
     }
 
-    roundsContainer.innerHTML = "";
+
+    roundsContainer.innerHTML =
+        "";
+
 
     finalResult.style.display =
         "none";
 
+
     rematchButton.style.display =
         "none";
+
+
+    battleButton.disabled =
+        true;
+
 
     const attributesA =
         shuffle(
             [...attributeKeys]
         );
 
+
     const attributesB =
         shuffle(
             [...attributeKeys]
         );
 
+
     let scoreA = 0;
+
     let scoreB = 0;
 
-    const rounds = [];
+
+    const rounds =
+        [];
+
 
     for (
         let i = 0;
@@ -1358,63 +2844,98 @@ function startBattle() {
         const attributeA =
             attributesA[i];
 
+
         const attributeB =
             attributesB[i];
+
 
         const valueA =
             selectedA.stats[
                 attributeA
             ];
 
+
         const valueB =
             selectedB.stats[
                 attributeB
             ];
 
+
         let winner;
 
-        if (valueA > valueB) {
 
-            winner = "A";
-            scoreA += 1;
+        if (
+            valueA > valueB
+        ) {
+
+            winner =
+                "A";
+
+            scoreA +=
+                1;
 
         }
 
-        else if (valueB > valueA) {
+        else if (
+            valueB > valueA
+        ) {
 
-            winner = "B";
-            scoreB += 1;
+            winner =
+                "B";
+
+            scoreB +=
+                1;
 
         }
 
         else {
 
-            winner = "EMPATE";
+            winner =
+                "EMPATE";
 
-            scoreA += 0.5;
-            scoreB += 0.5;
+            scoreA +=
+                0.5;
+
+            scoreB +=
+                0.5;
 
         }
 
+
         rounds.push({
-            number: i + 1,
+
+            number:
+                i + 1,
+
             attributeA,
+
             attributeB,
+
             valueA,
+
             valueB,
+
             winner
+
         });
 
     }
 
+
     showRounds(
+
         rounds,
         scoreA,
         scoreB
+
     );
 
 }
 
+
+/* =========================================================
+   MOSTRAR RODADAS
+   ========================================================= */
 
 async function showRounds(
     rounds,
@@ -1422,40 +2943,63 @@ async function showRounds(
     scoreB
 ) {
 
-    battleButton.disabled = true;
-
     for (
         const round of rounds
     ) {
 
-        await wait(450);
+        await wait(
+            800
+        );
+
 
         const infoA =
             attributeInfo[
                 round.attributeA
             ];
 
+
         const infoB =
             attributeInfo[
                 round.attributeB
             ];
+
 
         const roundElement =
             document.createElement(
                 "div"
             );
 
+
         roundElement.className =
             "round";
 
-        let winnerText;
+
+        let winnerText =
+            "Empate";
+
+
+        let winnerAClass =
+            "";
+
+
+        let winnerBClass =
+            "";
+
 
         if (
             round.winner === "A"
         ) {
 
             winnerText =
-                `${selectedA.name} venceu a rodada!`;
+                `${selectedA.name} venceu a rodada`;
+
+            winnerAClass =
+                "winner";
+
+
+            pulseFighter(
+                "A"
+            );
 
         }
 
@@ -1464,20 +3008,27 @@ async function showRounds(
         ) {
 
             winnerText =
-                `${selectedB.name} venceu a rodada!`;
+                `${selectedB.name} venceu a rodada`;
+
+            winnerBClass =
+                "winner";
+
+
+            pulseFighter(
+                "B"
+            );
 
         }
 
-        else {
-
-            winnerText =
-                "Empate!";
-
-        }
 
         roundElement.innerHTML = `
 
-            <div class="attribute-box">
+            <div
+                class="
+                    attribute-box
+                    ${winnerAClass}
+                "
+            >
 
                 <div class="attribute-name">
 
@@ -1494,13 +3045,20 @@ async function showRounds(
 
             </div>
 
+
             <div class="round-vs">
 
                 VS
 
             </div>
 
-            <div class="attribute-box">
+
+            <div
+                class="
+                    attribute-box
+                    ${winnerBClass}
+                "
+            >
 
                 <div class="attribute-name">
 
@@ -1517,35 +3075,104 @@ async function showRounds(
 
             </div>
 
+
             <div class="round-winner">
 
-                Rodada ${round.number} —
-                ${escapeHTML(winnerText)}
+                Rodada ${round.number}
+                ·
+                ${escapeHTML(
+                    winnerText
+                )}
 
             </div>
 
         `;
 
+
         roundsContainer.appendChild(
             roundElement
         );
 
+
+        roundElement.scrollIntoView({
+            behavior:
+                "smooth",
+
+            block:
+                "nearest"
+        });
+
     }
 
-    await wait(500);
+
+    await wait(
+        650
+    );
+
 
     showFinalResult(
         scoreA,
         scoreB
     );
 
-    battleButton.disabled = false;
+
+    battleButton.disabled =
+        false;
+
 
     rematchButton.style.display =
         "inline-block";
 
 }
 
+
+/* =========================================================
+   PULSO DO VENCEDOR
+   ========================================================= */
+
+function pulseFighter(
+    side
+) {
+
+    const fighter =
+        side === "A"
+            ?
+            fighterA
+            :
+            fighterB;
+
+
+    const orb =
+        fighter.querySelector(
+            ".fighter-orb"
+        );
+
+
+    if (
+        !orb
+    ) {
+        return;
+    }
+
+
+    orb.classList.remove(
+        "round-winner-orb"
+    );
+
+
+    void orb.offsetWidth;
+
+
+    orb.classList.add(
+        "round-winner-orb"
+    );
+
+}
+
+
+/* =========================================================
+   RESULTADO FINAL
+   ========================================================= */
 
 function showFinalResult(
     scoreA,
@@ -1554,25 +3181,36 @@ function showFinalResult(
 
     let result;
 
-    if (scoreA > scoreB) {
+
+    if (
+        scoreA > scoreB
+    ) {
 
         result =
-            `🏆 ${escapeHTML(selectedA.name)} VENCEU!`;
+            `◇ ${escapeHTML(
+                selectedA.name
+            )} venceu`;
 
     }
 
-    else if (scoreB > scoreA) {
+    else if (
+        scoreB > scoreA
+    ) {
 
         result =
-            `🏆 ${escapeHTML(selectedB.name)} VENCEU!`;
+            `◇ ${escapeHTML(
+                selectedB.name
+            )} venceu`;
 
     }
 
     else {
 
         result =
-            "🤝 EMPATE!";
+            "◇ Empate";
+
     }
+
 
     finalResult.innerHTML = `
 
@@ -1580,31 +3218,59 @@ function showFinalResult(
 
         <div class="score">
 
-            ${escapeHTML(selectedA.name)}
-            ${formatScore(scoreA)}
+            ${escapeHTML(
+                selectedA.name
+            )}
+
+            ${formatScore(
+                scoreA
+            )}
 
             &nbsp; × &nbsp;
 
-            ${formatScore(scoreB)}
-            ${escapeHTML(selectedB.name)}
+            ${formatScore(
+                scoreB
+            )}
+
+            ${escapeHTML(
+                selectedB.name
+            )}
 
         </div>
 
     `;
 
+
     finalResult.style.display =
         "block";
 
+
+    finalResult.scrollIntoView({
+
+        behavior:
+            "smooth",
+
+        block:
+            "nearest"
+
+    });
+
 }
 
+
+/* =========================================================
+   LIMPAR BATALHA
+   ========================================================= */
 
 function clearBattleResults() {
 
     roundsContainer.innerHTML =
         "";
 
+
     finalResult.style.display =
         "none";
+
 
     rematchButton.style.display =
         "none";
@@ -1612,49 +3278,9 @@ function clearBattleResults() {
 }
 
 
-function shuffle(array) {
-
-    for (
-        let i =
-            array.length - 1;
-        i > 0;
-        i--
-    ) {
-
-        const j =
-            Math.floor(
-                Math.random() *
-                (i + 1)
-            );
-
-        [
-            array[i],
-            array[j]
-        ] =
-        [
-            array[j],
-            array[i]
-        ];
-
-    }
-
-    return array;
-
-}
-
-
-function wait(milliseconds) {
-
-    return new Promise(
-        resolve =>
-            setTimeout(
-                resolve,
-                milliseconds
-            )
-    );
-
-}
-
+/* =========================================================
+   TOCAR ÁUDIO + ESFERA
+   ========================================================= */
 
 function playSound(
     audioURL,
@@ -1662,37 +3288,57 @@ function playSound(
 ) {
 
     const audio =
-        new Audio(audioURL);
+        new Audio(
+            audioURL
+        );
+
 
     const AudioContextClass =
         window.AudioContext ||
         window.webkitAudioContext;
 
+
     const context =
         new AudioContextClass();
 
+
     const source =
-        context.createMediaElementSource(
-            audio
-        );
+        context
+            .createMediaElementSource(
+                audio
+            );
+
 
     const analyser =
-        context.createAnalyser();
+        context
+            .createAnalyser();
 
-    analyser.fftSize = 256;
 
-    source.connect(analyser);
+    analyser.fftSize =
+        256;
+
+
+    source.connect(
+        analyser
+    );
+
 
     analyser.connect(
         context.destination
     );
 
+
     const data =
         new Uint8Array(
-            analyser.frequencyBinCount
+
+            analyser
+                .frequencyBinCount
+
         );
 
+
     audio.play();
+
 
     function animate() {
 
@@ -1704,18 +3350,24 @@ function playSound(
             orb.style.transform =
                 "scale(1)";
 
+
             orb.style.borderRadius =
                 "50%";
 
+
             context.close();
+
 
             return;
 
         }
 
-        analyser.getByteFrequencyData(
-            data
-        );
+
+        analyser
+            .getByteFrequencyData(
+                data
+            );
+
 
         let total = 0;
 
@@ -1723,10 +3375,12 @@ function playSound(
 
         let highTotal = 0;
 
+
         const half =
             Math.floor(
                 data.length / 2
             );
+
 
         for (
             let i = 0;
@@ -1734,9 +3388,13 @@ function playSound(
             i++
         ) {
 
-            total += data[i];
+            total +=
+                data[i];
 
-            if (i < half) {
+
+            if (
+                i < half
+            ) {
 
                 lowTotal +=
                     data[i];
@@ -1752,50 +3410,70 @@ function playSound(
 
         }
 
+
         const average =
             total /
             data.length;
+
 
         const low =
             lowTotal /
             half;
 
+
         const high =
             highTotal /
+
             (
                 data.length -
                 half
             );
 
+
         const scale =
-            1 +
+            1
+            +
             (
                 average /
                 255
-            ) *
-            0.8;
+            )
+            *
+            0.75;
 
-        const sideA =
-            38 +
+
+        const shapeA =
+            38
+            +
             (
                 low /
                 255
-            ) *
-            25;
+            )
+            *
+            23;
 
-        const sideB =
-            38 +
+
+        const shapeB =
+            38
+            +
             (
                 high /
                 255
-            ) *
-            25;
+            )
+            *
+            23;
+
 
         orb.style.transform =
             `scale(${scale})`;
 
+
         orb.style.borderRadius =
-            `${sideA}% ${sideB}% ${60 - sideA / 4}% ${50 + sideB / 6}%`;
+
+            `${shapeA}% 
+             ${shapeB}% 
+             ${60 - shapeA / 4}% 
+             ${50 + shapeB / 6}%`;
+
 
         requestAnimationFrame(
             animate
@@ -1803,20 +3481,96 @@ function playSound(
 
     }
 
+
     animate();
 
 }
 
 
-function randomColor() {
+/* =========================================================
+   CORES
+   ========================================================= */
 
-    const hue =
+function elegantRandomColor() {
+
+    return orbPalette[
+
         Math.floor(
-            Math.random() *
-            360
-        );
 
-    return `hsl(${hue}, 80%, 60%)`;
+            Math.random()
+            *
+            orbPalette.length
+
+        )
+
+    ];
+
+}
+
+
+/* =========================================================
+   EMBARALHAR
+   ========================================================= */
+
+function shuffle(
+    array
+) {
+
+    for (
+
+        let i =
+            array.length - 1;
+
+        i > 0;
+
+        i--
+
+    ) {
+
+        const j =
+            Math.floor(
+
+                Math.random()
+                *
+                (i + 1)
+
+            );
+
+
+        [
+            array[i],
+            array[j]
+        ]
+        =
+        [
+            array[j],
+            array[i]
+        ];
+
+    }
+
+
+    return array;
+
+}
+
+
+/* =========================================================
+   UTILIDADES
+   ========================================================= */
+
+function wait(
+    milliseconds
+) {
+
+    return new Promise(
+        resolve =>
+
+            setTimeout(
+                resolve,
+                milliseconds
+            )
+    );
 
 }
 
@@ -1824,8 +3578,11 @@ function randomColor() {
 function randomStat() {
 
     return Math.floor(
-        Math.random() *
+
+        Math.random()
+        *
         11
+
     );
 
 }
@@ -1838,42 +3595,60 @@ function clamp(
 ) {
 
     return Math.min(
+
         Math.max(
             value,
             min
         ),
+
         max
+
     );
 
 }
 
 
-function formatScore(score) {
+function formatScore(
+    score
+) {
 
-    if (
-        Number.isInteger(score)
-    ) {
-        return score;
-    }
-
-    return score.toFixed(1);
+    return Number.isInteger(
+        score
+    )
+        ?
+        score
+        :
+        score.toFixed(1);
 
 }
 
 
-function escapeHTML(text) {
+function escapeHTML(
+    text
+) {
 
     const div =
         document.createElement(
             "div"
         );
 
+
     div.textContent =
-        String(text);
+        String(
+            text
+        );
+
 
     return div.innerHTML;
 
 }
+
+
+/* =========================================================
+   INICIAR V3
+   ========================================================= */
+
+loadSavedSounds();
 
 </script>
 
