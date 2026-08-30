@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Batalha dos Sons</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background:
+        radial-gradient(circle at 50% -20%, #32205e 0%, transparent 40%),
+        #090a0f;
+    color: white;
+    min-height: 100vh;
+}
+
+header {
+    padding: 25px;
+    text-align: center;
+    border-bottom: 1px solid #252733;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 30px;
+}
+
+header p {
+    margin: 7px 0 0;
+    color: #999;
+}
+
+.container {
+    width: min(1100px, 92%);
+    margin: 35px auto;
+}
+
+.panel {
+    background: #11131a;
+    border: 1px solid #292c38;
+    border-radius: 18px;
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+.panel h2 {
+    margin-top: 0;
+}
+
+.record-area {
+    text-align: center;
+}
+
+.record-button {
+    width: 105px;
+    height: 105px;
+    border-radius: 50%;
+    border: 3px solid #ff405d;
+    background: #241219;
+    color: white;
+    font-size: 36px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.record-button:hover {
+    transform: scale(1.06);
+}
+
+.record-button.recording {
+    animation: recordingPulse 0.8s infinite alternate;
+}
+
+@keyframes recordingPulse {
+    from {
+        box-shadow: 0 0 5px #ff405d;
+    }
+    to {
+        box-shadow: 0 0 35px #ff405d;
+    }
+}
+
+#recordStatus {
+    color: #aaa;
+    margin-top: 15px;
+}
+
+.sound-name {
+    margin-top: 18px;
+    padding: 12px;
+    width: min(400px, 90%);
+    border-radius: 10px;
+    border: 1px solid #363946;
+    background: #0b0d12;
+    color: white;
+    font-size: 16px;
+}
+
+.inventory {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 18px;
+}
+
+.sound-card {
+    position: relative;
+    background: #0c0e14;
+    border: 1px solid #2b2e39;
+    border-radius: 16px;
+    padding: 20px;
+    cursor: pointer;
+    transition: 0.2s;
+    overflow: hidden;
+}
+
+.sound-card:hover {
+    transform: translateY(-4px);
+    border-color: #555b70;
+}
+
+.sound-orb-container {
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sound-orb {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    box-shadow: 0 0 30px currentColor;
+    transition: transform 0.05s linear, border-radius 0.08s linear;
+}
+
+.sound-card h3 {
+    text-align: center;
+    margin: 10px 0 4px;
+}
+
+.rarity {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7px;
+    color: #aaa;
+    font-size: 13px;
+}
+
+.stat-value {
+    color: white;
+    font-weight: bold;
+}
+
+.empty {
+    text-align: center;
+    color: #777;
+    padding: 30px;
+}
+
+.battle-zone {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+}
+
+.fighter {
+    flex: 1;
+    min-height: 120px;
+    border: 1px dashed #404452;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.vs {
+    font-size: 30px;
+    font-weight: bold;
+    color: #ff405d;
+}
+
+.small-note {
+    color: #777;
+    font-size: 13px;
+}
+
+@media (max-width: 600px) {
+    .battle-zone {
+        flex-direction: column;
+    }
+
+    .vs {
+        transform: rotate(90deg);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🎵 BATALHA DOS SONS</h1>
+    <p>Capture. Colecione. Batalhe.</p>
+</header>
+
+<div class="container">
+
+    <section class="panel record-area">
+
+        <h2>Capturar Som</h2>
+
+        <button
+            id="recordButton"
+            class="record-button"
+            title="Gravar som"
+        >
+            🎙️
+        </button>
+
+        <div id="recordStatus">
+            Clique para começar a gravação
+        </div>
+
+        <input
+            id="soundName"
+            class="sound-name"
+            maxlength="30"
+            placeholder="Nome do som (opcional)"
+        >
+
+        <p class="small-note">
+            Clique novamente no microfone para finalizar.
+        </p>
+
+    </section>
+
+    <section class="panel">
+
+        <h2>🎒 Inventário de Sons</h2>
+
+        <div id="inventory" class="inventory">
+
+            <div class="empty">
+                Você ainda não capturou nenhum som.
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="panel">
+
+        <h2>⚔️ Arena</h2>
+
+        <div class="battle-zone">
+
+            <div class="fighter">
+                SOM 1
+                <p class="small-note">
+                    Sistema de batalha será conectado na próxima versão.
+                </p>
+            </div>
+
+            <div class="vs">
+                VS
+            </div>
+
+            <div class="fighter">
+                SOM 2
+                <p class="small-note">
+                    Sistema de batalha será conectado na próxima versão.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+<script>
+
+let mediaRecorder;
+let audioChunks = [];
+let recording = false;
+
+const recordButton =
+    document.getElementById("recordButton");
+
+const recordStatus =
+    document.getElementById("recordStatus");
+
+const inventory =
+    document.getElementById("inventory");
+
+const soundNameInput =
+    document.getElementById("soundName");
+
+
+recordButton.addEventListener("click", async () => {
+
+    if (!recording) {
+
+        try {
+
+            const stream =
+                await navigator.mediaDevices.getUserMedia({
+                    audio: true
+                });
+
+            mediaRecorder =
+                new MediaRecorder(stream);
+
+            audioChunks = [];
+
+            mediaRecorder.ondataavailable = event => {
+
+                if (event.data.size > 0) {
+                    audioChunks.push(event.data);
+                }
+
+            };
+
+            mediaRecorder.onstop = async () => {
+
+                const audioBlob =
+                    new Blob(
+                        audioChunks,
+                        { type: mediaRecorder.mimeType }
+                    );
+
+                await createSound(audioBlob);
+
+                stream
+                    .getTracks()
+                    .forEach(track => track.stop());
+
+            };
+
+            mediaRecorder.start();
+
+            recording = true;
+
+            recordButton.classList.add("recording");
+
+            recordStatus.textContent =
+                "🔴 Gravando... clique novamente para finalizar.";
+
+        }
+
+        catch (error) {
+
+            alert(
+                "Não consegui acessar o microfone. " +
+                "Verifique se você permitiu o acesso."
+            );
+
+            console.error(error);
+
+        }
+
+    }
+
+    else {
+
+        mediaRecorder.stop();
+
+        recording = false;
+
+        recordButton.classList.remove("recording");
+
+        recordStatus.textContent =
+            "Analisando seu som...";
+
+    }
+
+});
+
+
+async function createSound(blob) {
+
+    const audioURL =
+        URL.createObjectURL(blob);
+
+    let stats;
+
+    try {
+
+        stats =
+            await analyzeAudio(blob);
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        stats = {
+            grave: randomStat(),
+            agudo: randomStat(),
+            impacto: randomStat(),
+            duracao: randomStat(),
+            complexidade: randomStat()
+        };
+
+    }
+
+    const rarity =
+        calculateRarity(stats);
+
+    const color =
+        randomColor();
+
+    const name =
+        soundNameInput.value.trim()
+        ||
+        "Som #" +
+        (document.querySelectorAll(".sound-card").length + 1);
+
+    addSoundToInventory(
+        name,
+        audioURL,
+        stats,
+        rarity,
+        color
+    );
+
+    soundNameInput.value = "";
+
+    recordStatus.textContent =
+        "Som capturado! Grave outro quando quiser.";
+
+}
+
+
+async function analyzeAudio(blob) {
+
+    const arrayBuffer =
+        await blob.arrayBuffer();
+
+    const audioContext =
+        new (
+            window.AudioContext ||
+            window.webkitAudioContext
+        )();
+
+    const buffer =
+        await audioContext.decodeAudioData(
+            arrayBuffer.slice(0)
+        );
+
+    const channel =
+        buffer.getChannelData(0);
+
+    let sumSquares = 0;
+    let peak = 0;
+    let zeroCrossings = 0;
+
+    for (
+        let i = 1;
+        i < channel.length;
+        i++
+    ) {
+
+        const sample =
+            Math.abs(channel[i]);
+
+        sumSquares +=
+            channel[i] * channel[i];
+
+        if (sample > peak) {
+            peak = sample;
+        }
+
+        if (
+            (channel[i - 1] < 0 && channel[i] >= 0)
+            ||
+            (channel[i - 1] >= 0 && channel[i] < 0)
+        ) {
+            zeroCrossings++;
+        }
+
+    }
+
+    const rms =
+        Math.sqrt(
+            sumSquares / channel.length
+        );
+
+    const duration =
+        buffer.duration;
+
+    const crossingRate =
+        zeroCrossings / channel.length;
+
+    /*
+       Esses valores ainda são uma interpretação
+       simplificada do áudio para o protótipo.
+    */
+
+    const impacto =
+        clamp(
+            Math.round(peak * 10),
+            0,
+            10
+        );
+
+    const agudo =
+        clamp(
+            Math.round(crossingRate * 150),
+            0,
+            10
+        );
+
+    const grave =
+        clamp(
+            10 - agudo +
+            Math.round(rms * 2),
+            0,
+            10
+        );
+
+    const duracao =
+        clamp(
+            Math.round(duration),
+            0,
+            10
+        );
+
+    const complexidade =
+        clamp(
+            Math.round(
+                (agudo + impacto + Math.random() * 5) / 2
+            ),
+            0,
+            10
+        );
+
+    await audioContext.close();
+
+    return {
+        grave,
+        agudo,
+        impacto,
+        duracao,
+        complexidade
+    };
+
+}
+
+
+function calculateRarity(stats) {
+
+    const score =
+        (
+            stats.grave +
+            stats.agudo +
+            stats.impacto +
+            stats.duracao +
+            stats.complexidade
+        ) / 5;
+
+    /*
+       Raridade inicial do protótipo.
+       Depois vamos criar regras mais sofisticadas.
+    */
+
+    if (score >= 8.5) {
+
+        return {
+            name: "LENDÁRIO",
+            color: "#ffb52e"
+        };
+
+    }
+
+    if (score >= 7) {
+
+        return {
+            name: "ÉPICO",
+            color: "#b35cff"
+        };
+
+    }
+
+    if (score >= 5.5) {
+
+        return {
+            name: "RARO",
+            color: "#4287ff"
+        };
+
+    }
+
+    if (score >= 4) {
+
+        return {
+            name: "INCOMUM",
+            color: "#42d67b"
+        };
+
+    }
+
+    return {
+        name: "COMUM",
+        color: "#aaaaaa"
+    };
+
+}
+
+
+function addSoundToInventory(
+    name,
+    audioURL,
+    stats,
+    rarity,
+    color
+) {
+
+    const empty =
+        inventory.querySelector(".empty");
+
+    if (empty) {
+        empty.remove();
+    }
+
+    const card =
+        document.createElement("div");
+
+    card.className =
+        "sound-card";
+
+    card.innerHTML = `
+
+        <div class="sound-orb-container">
+
+            <div
+                class="sound-orb"
+                style="
+                    background:${color};
+                    color:${color};
+                "
+            ></div>
+
+        </div>
+
+        <h3>${escapeHTML(name)}</h3>
+
+        <div
+            class="rarity"
+            style="color:${rarity.color}"
+        >
+            ${rarity.name}
+        </div>
+
+        <div class="stats">
+
+            <div>
+                🔉 Grave:
+                <span class="stat-value">
+                    ${stats.grave}/10
+                </span>
+            </div>
+
+            <div>
+                🔊 Agudo:
+                <span class="stat-value">
+                    ${stats.agudo}/10
+                </span>
+            </div>
+
+            <div>
+                💥 Impacto:
+                <span class="stat-value">
+                    ${stats.impacto}/10
+                </span>
+            </div>
+
+            <div>
+                ⏱️ Duração:
+                <span class="stat-value">
+                    ${stats.duracao}/10
+                </span>
+            </div>
+
+            <div>
+                🌀 Complexidade:
+                <span class="stat-value">
+                    ${stats.complexidade}/10
+                </span>
+            </div>
+
+        </div>
+
+    `;
+
+    inventory.prepend(card);
+
+    const orb =
+        card.querySelector(".sound-orb");
+
+    card.addEventListener(
+        "click",
+        () => playSound(
+            audioURL,
+            orb
+        )
+    );
+
+}
+
+
+function playSound(
+    audioURL,
+    orb
+) {
+
+    const audio =
+        new Audio(audioURL);
+
+    const context =
+        new (
+            window.AudioContext ||
+            window.webkitAudioContext
+        )();
+
+    const source =
+        context.createMediaElementSource(audio);
+
+    const analyser =
+        context.createAnalyser();
+
+    analyser.fftSize = 256;
+
+    source.connect(analyser);
+
+    analyser.connect(
+        context.destination
+    );
+
+    const data =
+        new Uint8Array(
+            analyser.frequencyBinCount
+        );
+
+    audio.play();
+
+    function animate() {
+
+        if (audio.paused || audio.ended) {
+
+            orb.style.transform =
+                "scale(1)";
+
+            orb.style.borderRadius =
+                "50%";
+
+            context.close();
+
+            return;
+
+        }
+
+        analyser.getByteFrequencyData(data);
+
+        let total = 0;
+
+        for (
+            let i = 0;
+            i < data.length;
+            i++
+        ) {
+
+            total += data[i];
+
+        }
+
+        const average =
+            total / data.length;
+
+        const scale =
+            1 + (average / 255) * 0.8;
+
+        const deformation =
+            40 + (average / 255) * 20;
+
+        orb.style.transform =
+            `scale(${scale})`;
+
+        orb.style.borderRadius =
+            `${deformation}% ${60 - deformation / 4}% ${deformation}% 50%`;
+
+        requestAnimationFrame(
+            animate
+        );
+
+    }
+
+    animate();
+
+}
+
+
+function randomColor() {
+
+    const hue =
+        Math.floor(
+            Math.random() * 360
+        );
+
+    return `hsl(${hue}, 80%, 60%)`;
+
+}
+
+
+function randomStat() {
+
+    return Math.floor(
+        Math.random() * 11
+    );
+
+}
+
+
+function clamp(
+    value,
+    min,
+    max
+) {
+
+    return Math.min(
+        Math.max(value, min),
+        max
+    );
+
+}
+
+
+function escapeHTML(text) {
+
+    const div =
+        document.createElement("div");
+
+    div.textContent = text;
+
+    return div.innerHTML;
+
+}
+
+</script>
+
+</body>
+</html>
