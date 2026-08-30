@@ -3,95 +3,46 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Batalha dos Sons</title>
 
 <style>
-
-/* =========================================================
-   BATALHA DOS SONS — V3
-   ========================================================= */
-
 :root {
     --bg: #f4f0e8;
-    --bg-soft: #faf8f3;
-    --card: rgba(255,255,255,0.78);
-    --card-solid: #fffdf8;
-
+    --bg2: #faf8f3;
+    --card: rgba(255,255,255,.76);
     --gold: #b49a62;
     --gold-dark: #8e7648;
     --gold-light: #d8c69b;
-
     --text: #24231f;
-    --text-soft: #777166;
-    --text-light: #a39b8d;
-
-    --border: rgba(180,154,98,0.42);
-    --border-soft: rgba(82,74,60,0.12);
-
-    --shadow:
-        0 12px 40px rgba(82,70,45,0.08);
-
-    --shadow-strong:
-        0 18px 50px rgba(82,70,45,0.14);
-
+    --soft: #777166;
+    --light: #a39b8d;
+    --border: rgba(180,154,98,.42);
+    --shadow: 0 12px 40px rgba(82,70,45,.08);
     --radius: 22px;
 }
 
-* {
-    box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
-html {
-    scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
     margin: 0;
     min-height: 100vh;
-
-    font-family:
-        Inter,
-        ui-sans-serif,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Arial,
-        sans-serif;
-
     color: var(--text);
-
+    font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
     background:
-        radial-gradient(
-            circle at 50% -20%,
-            rgba(214,198,155,0.25),
-            transparent 36%
-        ),
-        linear-gradient(
-            135deg,
-            #f4f0e8,
-            #f8f5ef 50%,
-            #f1ece2
-        );
+        radial-gradient(circle at 50% -20%, rgba(214,198,155,.25), transparent 36%),
+        linear-gradient(135deg, var(--bg), var(--bg2) 50%, #f1ece2);
 }
 
-
-/* =========================================================
-   HEADER
-   ========================================================= */
+button, input { font: inherit; }
 
 header {
     padding: 34px 20px 30px;
     text-align: center;
-
-    border-bottom:
-        1px solid rgba(180,154,98,0.22);
-
-    background:
-        rgba(255,255,255,0.32);
-
-    backdrop-filter:
-        blur(16px);
+    border-bottom: 1px solid rgba(180,154,98,.22);
+    background: rgba(255,255,255,.32);
+    backdrop-filter: blur(16px);
 }
 
 .brand {
@@ -103,1243 +54,880 @@ header {
 .brand-symbol {
     width: 42px;
     height: 42px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
+    display: grid;
+    place-items: center;
     border-radius: 50%;
-
-    border:
-        1px solid var(--border);
-
-    background:
-        rgba(255,255,255,0.68);
-
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,.68);
     color: var(--gold-dark);
-
     font-size: 20px;
-
-    box-shadow:
-        0 7px 20px rgba(100,86,54,0.08);
+    box-shadow: 0 7px 20px rgba(100,86,54,.08);
 }
 
 header h1 {
     margin: 0;
-
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-    font-size:
-        clamp(26px, 4vw, 36px);
-
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(27px,4vw,36px);
     font-weight: 500;
-
-    letter-spacing: 0.04em;
+    letter-spacing: .04em;
 }
 
 header p {
     margin: 9px 0 0;
-
-    color: var(--text-soft);
-
-    font-size: 13px;
-
-    letter-spacing: 0.2em;
-
+    color: var(--soft);
+    font-size: 12px;
+    letter-spacing: .2em;
     text-transform: uppercase;
 }
 
-
-/* =========================================================
-   LAYOUT
-   ========================================================= */
-
 .container {
-    width: min(1180px, 92%);
+    width: min(1180px,92%);
     margin: 42px auto;
 }
 
 .panel {
     position: relative;
-
     margin-bottom: 26px;
-
     padding: 28px;
-
-    border:
-        1px solid var(--border);
-
-    border-radius:
-        var(--radius);
-
-    background:
-        var(--card);
-
-    backdrop-filter:
-        blur(18px);
-
-    box-shadow:
-        var(--shadow);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--card);
+    backdrop-filter: blur(18px);
+    box-shadow: var(--shadow);
 }
 
 .panel::before {
     content: "";
-
     position: absolute;
     inset: 8px;
-
     pointer-events: none;
-
-    border:
-        1px solid rgba(180,154,98,0.10);
-
-    border-radius:
-        calc(var(--radius) - 8px);
+    border: 1px solid rgba(180,154,98,.09);
+    border-radius: calc(var(--radius) - 8px);
 }
 
 .panel-title {
     position: relative;
-
     display: flex;
     align-items: center;
     gap: 10px;
-
-    margin-bottom: 6px;
-}
-
-.panel-icon {
-    color: var(--gold-dark);
 }
 
 .panel h2 {
     margin: 0;
-
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-    font-size: 23px;
-
-    font-weight: 500;
+    font: 500 23px Georgia, "Times New Roman", serif;
 }
+
+.panel-icon { color: var(--gold-dark); }
 
 .small-note {
     position: relative;
-
-    margin: 6px 0 18px;
-
-    color: var(--text-soft);
-
+    margin: 7px 0 18px;
+    color: var(--soft);
     font-size: 13px;
-
-    line-height: 1.5;
+    line-height: 1.55;
 }
 
+.capture-grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
 
-/* =========================================================
-   CAPTURA
-   ========================================================= */
-
-.record-area {
+.capture-box {
+    padding: 25px;
+    border: 1px solid rgba(180,154,98,.27);
+    border-radius: 18px;
+    background: rgba(255,255,255,.46);
     text-align: center;
+}
+
+.capture-box h3 {
+    margin: 0 0 7px;
+    font: 500 20px Georgia, serif;
+}
+
+.capture-box p {
+    min-height: 42px;
+    margin: 0 0 17px;
+    color: var(--soft);
+    font-size: 12px;
+    line-height: 1.5;
 }
 
 .record-button {
     position: relative;
-
-    width: 112px;
-    height: 112px;
-
+    width: 106px;
+    height: 106px;
     border-radius: 50%;
-
-    border:
-        1px solid var(--gold);
-
-    background:
-        linear-gradient(
-            145deg,
-            #fffdf8,
-            #eee6d5
-        );
-
+    border: 1px solid var(--gold);
+    background: linear-gradient(145deg,#fffdf8,#eee6d5);
     color: var(--gold-dark);
-
-    font-size: 35px;
-
+    font-size: 34px;
     cursor: pointer;
-
-    box-shadow:
-        0 12px 30px rgba(107,88,45,0.14);
-
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
-}
-
-.record-button::before {
-    content: "";
-
-    position: absolute;
-    inset: 7px;
-
-    border:
-        1px solid rgba(180,154,98,0.32);
-
-    border-radius: 50%;
+    box-shadow: 0 12px 30px rgba(107,88,45,.14);
+    transition: .22s;
 }
 
 .record-button:hover {
     transform: translateY(-2px) scale(1.03);
-
-    box-shadow:
-        0 16px 40px rgba(107,88,45,0.20);
 }
 
 .record-button.recording {
-    animation:
-        elegantPulse 1s infinite alternate;
+    animation: pulseRecord .9s infinite alternate;
 }
 
-@keyframes elegantPulse {
-
-    from {
-        box-shadow:
-            0 0 0 rgba(180,154,98,0.1),
-            0 12px 30px rgba(107,88,45,0.14);
-    }
-
-    to {
-        box-shadow:
-            0 0 0 12px rgba(180,154,98,0.08),
-            0 16px 45px rgba(107,88,45,0.22);
-    }
-
-}
-
-#recordStatus {
-    margin-top: 18px;
-
-    color: var(--text-soft);
-
-    font-size: 14px;
+@keyframes pulseRecord {
+    from { box-shadow: 0 0 0 0 rgba(180,154,98,.10); }
+    to { box-shadow: 0 0 0 13px rgba(180,154,98,.09); }
 }
 
 .sound-name {
-    width: min(420px, 90%);
-
-    margin-top: 20px;
-
-    padding: 14px 16px;
-
-    border:
-        1px solid rgba(180,154,98,0.38);
-
-    border-radius: 13px;
-
+    width: min(420px,90%);
+    margin-top: 17px;
+    padding: 13px 15px;
+    border: 1px solid rgba(180,154,98,.38);
+    border-radius: 12px;
     outline: none;
-
-    background:
-        rgba(255,255,255,0.68);
-
+    background: rgba(255,255,255,.75);
     color: var(--text);
-
-    font-size: 15px;
-
-    transition:
-        border-color 0.2s ease,
-        box-shadow 0.2s ease;
 }
 
 .sound-name:focus {
     border-color: var(--gold);
-
-    box-shadow:
-        0 0 0 4px rgba(180,154,98,0.10);
+    box-shadow: 0 0 0 4px rgba(180,154,98,.09);
 }
 
-.capture-hint {
+#recordStatus {
+    margin-top: 15px;
+    color: var(--soft);
+    font-size: 13px;
+    min-height: 20px;
+}
+
+.hunt-status {
     margin-top: 12px;
-
-    color: var(--text-light);
-
+    color: var(--gold-dark);
     font-size: 12px;
+    min-height: 18px;
 }
 
+.premium-button {
+    padding: 12px 23px;
+    border: 1px solid var(--gold);
+    border-radius: 999px;
+    background: linear-gradient(145deg,#c4a96c,#947847);
+    color: #fff;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 650;
+    letter-spacing: .07em;
+    transition: .2s;
+}
 
-/* =========================================================
-   INVENTÁRIO
-   ========================================================= */
+.premium-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 9px 22px rgba(100,78,38,.16);
+}
+
+.light-button {
+    background: rgba(255,255,255,.72);
+    color: var(--gold-dark);
+}
+
+.danger-button {
+    background: #6e5940;
+}
+
+.hunt-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
 
 .inventory-header {
     position: relative;
-
     display: flex;
-    align-items: center;
     justify-content: space-between;
-
     gap: 15px;
-
     margin-bottom: 20px;
 }
 
 .sound-counter {
+    height: fit-content;
     padding: 7px 11px;
-
-    border:
-        1px solid rgba(180,154,98,0.32);
-
+    border: 1px solid rgba(180,154,98,.32);
     border-radius: 999px;
-
     color: var(--gold-dark);
-
-    background:
-        rgba(255,255,255,0.55);
-
+    background: rgba(255,255,255,.55);
     font-size: 12px;
 }
 
 .inventory {
     position: relative;
-
     display: grid;
-
-    grid-template-columns:
-        repeat(
-            auto-fill,
-            minmax(235px, 1fr)
-        );
-
+    grid-template-columns: repeat(auto-fill,minmax(240px,1fr));
     gap: 18px;
+}
+
+.empty {
+    grid-column: 1/-1;
+    padding: 45px 20px;
+    text-align: center;
+    color: var(--light);
 }
 
 .sound-card {
     position: relative;
-
     overflow: hidden;
-
     padding: 20px;
-
-    border:
-        1px solid rgba(180,154,98,0.26);
-
+    border: 1px solid rgba(180,154,98,.26);
     border-radius: 18px;
-
-    background:
-        rgba(255,255,255,0.68);
-
-    box-shadow:
-        0 8px 25px rgba(80,69,48,0.06);
-
+    background: rgba(255,255,255,.68);
+    box-shadow: 0 8px 25px rgba(80,69,48,.06);
     cursor: pointer;
-
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease,
-        border-color 0.25s ease;
-}
-
-.sound-card::before {
-    content: "";
-
-    position: absolute;
-
-    top: 0;
-    left: 20%;
-    right: 20%;
-
-    height: 1px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            var(--gold-light),
-            transparent
-        );
+    transition: .24s;
 }
 
 .sound-card:hover {
-    transform:
-        translateY(-5px);
-
-    border-color:
-        rgba(180,154,98,0.55);
-
-    box-shadow:
-        var(--shadow-strong);
+    transform: translateY(-5px);
+    border-color: rgba(180,154,98,.55);
+    box-shadow: 0 17px 40px rgba(82,70,45,.12);
 }
 
 .sound-card.selected {
-    border-color:
-        var(--gold);
-
-    box-shadow:
-        0 0 0 2px rgba(180,154,98,0.10),
-        0 16px 35px rgba(91,75,43,0.12);
+    border-color: var(--gold);
+    box-shadow: 0 0 0 2px rgba(180,154,98,.1),0 16px 35px rgba(91,75,43,.12);
 }
 
 .sound-orb-container {
-    height: 128px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height: 122px;
+    display: grid;
+    place-items: center;
 }
 
-.sound-orb {
-    width: 80px;
-    height: 80px;
-
+.sound-orb,
+.fighter-orb {
+    width: 78px;
+    height: 78px;
     border-radius: 50%;
-
-    box-shadow:
-        0 12px 30px currentColor;
-
-    transition:
-        transform 0.05s linear,
-        border-radius 0.08s linear;
+    box-shadow: 0 11px 29px currentColor;
+    transition: transform .05s linear,border-radius .08s linear;
 }
 
 .sound-card h3 {
-    margin:
-        10px 0 5px;
-
+    margin: 10px 0 4px;
     text-align: center;
-
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-    font-size: 18px;
-
-    font-weight: 500;
+    font: 500 18px Georgia, serif;
 }
 
 .rarity {
-    margin-bottom: 16px;
-
+    margin-bottom: 6px;
     text-align: center;
-
     font-size: 11px;
+    font-weight: 750;
+    letter-spacing: .14em;
+}
 
-    font-weight: 700;
-
-    letter-spacing: 0.15em;
+.origin {
+    margin-bottom: 14px;
+    color: var(--light);
+    text-align: center;
+    font-size: 10px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
 }
 
 .stats {
     display: grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
+    grid-template-columns: 1fr 1fr;
     gap: 8px;
-
-    padding-top: 14px;
-
-    border-top:
-        1px solid rgba(180,154,98,0.16);
-
-    color: var(--text-soft);
-
+    padding-top: 13px;
+    border-top: 1px solid rgba(180,154,98,.15);
+    color: var(--soft);
     font-size: 12px;
 }
 
 .stat-value {
     color: var(--text);
-
     font-weight: 700;
 }
 
+.history {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 10px;
+    background: rgba(180,154,98,.07);
+    color: var(--soft);
+    font-size: 11px;
+}
+
+.history strong { color: var(--text); }
+
 .card-actions {
     display: flex;
-
     gap: 8px;
-
-    margin-top: 17px;
+    margin-top: 14px;
 }
 
 .card-button {
     flex: 1;
-
-    padding: 10px 8px;
-
-    border:
-        1px solid rgba(180,154,98,0.32);
-
+    padding: 10px 7px;
+    border: 1px solid rgba(180,154,98,.32);
     border-radius: 10px;
-
-    background:
-        rgba(255,255,255,0.62);
-
+    background: rgba(255,255,255,.64);
     color: var(--text);
-
     cursor: pointer;
-
     font-size: 12px;
-
-    transition:
-        background 0.2s ease,
-        border-color 0.2s ease;
 }
 
-.card-button:hover {
-    background:
-        #fffaf0;
-
-    border-color:
-        var(--gold);
-}
-
+.card-button:hover,
 .select-button.selected-button {
-    color:
-        var(--gold-dark);
-
-    border-color:
-        var(--gold);
-
-    background:
-        rgba(212,194,151,0.15);
+    border-color: var(--gold);
+    color: var(--gold-dark);
+    background: rgba(212,194,151,.13);
 }
-
-.empty {
-    grid-column:
-        1 / -1;
-
-    padding: 50px 20px;
-
-    text-align: center;
-
-    color:
-        var(--text-light);
-}
-
-
-/* =========================================================
-   ARENA
-   ========================================================= */
 
 .battle-zone {
     position: relative;
-
     display: grid;
-
-    grid-template-columns:
-        1fr auto 1fr;
-
+    grid-template-columns: 1fr auto 1fr;
     gap: 22px;
-
-    align-items: stretch;
-
-    margin-top: 24px;
+    margin-top: 22px;
 }
 
 .fighter {
-    min-height: 195px;
-
+    min-height: 190px;
     padding: 24px;
-
     display: flex;
-
     flex-direction: column;
-
     justify-content: center;
-
     text-align: center;
-
-    border:
-        1px solid rgba(180,154,98,0.30);
-
+    border: 1px solid rgba(180,154,98,.3);
     border-radius: 17px;
-
-    background:
-        rgba(255,255,255,0.55);
+    background: rgba(255,255,255,.55);
 }
 
 .fighter-orb {
-    width: 72px;
-    height: 72px;
-
-    margin:
-        5px auto 16px;
-
-    border-radius: 50%;
-
-    box-shadow:
-        0 10px 28px currentColor;
-
-    transition:
-        transform 0.3s ease,
-        filter 0.3s ease;
-}
-
-.fighter-orb.round-winner-orb {
-    animation:
-        winnerPulse 0.65s ease;
-}
-
-@keyframes winnerPulse {
-
-    0% {
-        transform: scale(1);
-    }
-
-    45% {
-        transform: scale(1.22);
-        filter: brightness(1.15);
-    }
-
-    100% {
-        transform: scale(1);
-    }
-
+    width: 70px;
+    height: 70px;
+    margin: 4px auto 15px;
 }
 
 .fighter-name {
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-    font-size: 20px;
-
-    font-weight: 500;
+    font: 500 20px Georgia, serif;
 }
 
 .fighter-rarity {
     margin-top: 5px;
-
-    font-size: 11px;
-
-    font-weight: 700;
-
-    letter-spacing: 0.14em;
+    font-size: 10px;
+    font-weight: 750;
+    letter-spacing: .13em;
 }
 
 .vs {
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    color:
-        var(--gold-dark);
-
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-    font-size: 26px;
+    display: grid;
+    place-items: center;
+    color: var(--gold-dark);
+    font: 500 26px Georgia, serif;
 }
 
 .battle-controls {
     position: relative;
-
-    margin-top: 24px;
-
+    margin-top: 23px;
     text-align: center;
 }
 
 .battle-button {
-    padding:
-        13px 28px;
-
-    border:
-        1px solid var(--gold);
-
-    border-radius:
-        999px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #c4a96c,
-            #9a8050
-        );
-
+    padding: 13px 27px;
+    border: 1px solid var(--gold);
+    border-radius: 999px;
+    background: linear-gradient(145deg,#c4a96c,#947847);
     color: white;
-
     cursor: pointer;
-
-    font-size: 13px;
-
-    font-weight: 600;
-
-    letter-spacing: 0.08em;
-
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
-}
-
-.battle-button:hover {
-    transform:
-        translateY(-2px);
-
-    box-shadow:
-        0 10px 25px rgba(116,92,48,0.16);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .08em;
 }
 
 .battle-button:disabled {
-    opacity: 0.35;
-
+    opacity: .35;
     cursor: not-allowed;
-
-    transform: none;
-
-    box-shadow: none;
 }
 
 .secondary-button {
     margin-left: 8px;
-
+    background: rgba(255,255,255,.73);
     color: var(--gold-dark);
-
-    background:
-        rgba(255,255,255,0.70);
 }
-
-
-/* =========================================================
-   RODADAS
-   ========================================================= */
 
 .rounds {
     position: relative;
-
     display: grid;
-
     gap: 12px;
-
-    margin-top: 26px;
+    margin-top: 25px;
 }
 
 .round {
-    opacity: 0;
-
-    transform:
-        translateY(12px);
-
     display: grid;
-
-    grid-template-columns:
-        1fr auto 1fr;
-
+    grid-template-columns: 1fr auto 1fr;
     gap: 13px;
-
     align-items: center;
-
     padding: 15px;
-
-    border:
-        1px solid rgba(180,154,98,0.23);
-
+    border: 1px solid rgba(180,154,98,.24);
     border-radius: 14px;
-
-    background:
-        rgba(255,255,255,0.48);
-
-    animation:
-        roundReveal 0.4s ease forwards;
+    background: rgba(255,255,255,.5);
+    animation: reveal .35s ease;
 }
 
-@keyframes roundReveal {
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
+@keyframes reveal {
+    from { opacity:0; transform:translateY(10px); }
+    to { opacity:1; transform:translateY(0); }
 }
 
 .attribute-box {
     padding: 12px;
-
     text-align: center;
-
-    border:
-        1px solid rgba(180,154,98,0.16);
-
+    border: 1px solid rgba(180,154,98,.15);
     border-radius: 11px;
-
-    background:
-        rgba(255,255,255,0.58);
-
-    transition:
-        border-color 0.3s ease,
-        background 0.3s ease;
+    background: rgba(255,255,255,.6);
 }
 
 .attribute-box.winner {
-    border-color:
-        var(--gold);
-
-    background:
-        rgba(213,194,149,0.14);
+    border-color: var(--gold);
+    background: rgba(213,194,149,.14);
 }
 
 .attribute-name {
-    color:
-        var(--text-soft);
-
+    color: var(--soft);
     font-size: 12px;
 }
 
 .attribute-value {
     margin-top: 4px;
-
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-    font-size: 25px;
+    font: 500 26px Georgia, serif;
 }
 
 .round-vs {
-    color:
-        var(--gold-dark);
-
-    font-size: 12px;
-
-    font-weight: 700;
+    color: var(--gold-dark);
+    font-size: 11px;
+    font-weight: bold;
 }
 
 .round-winner {
-    grid-column:
-        1 / -1;
-
+    grid-column: 1/-1;
+    color: var(--gold-dark);
     text-align: center;
-
-    color:
-        var(--gold-dark);
-
     font-size: 12px;
+    font-weight: 650;
+}
 
-    font-weight: 600;
+.current-score {
+    margin-top: 15px;
+    text-align: center;
+    color: var(--soft);
+    font-size: 12px;
 }
 
 .final-result {
     position: relative;
-
     margin-top: 22px;
-
     padding: 24px;
-
-    text-align: center;
-
-    border:
-        1px solid var(--gold);
-
+    border: 1px solid var(--gold);
     border-radius: 16px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,0.70),
-            rgba(224,210,177,0.20)
-        );
-
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-    font-size: 24px;
-
-    animation:
-        resultAppear 0.5s ease;
-}
-
-@keyframes resultAppear {
-
-    from {
-        opacity: 0;
-        transform:
-            translateY(10px)
-            scale(0.98);
-    }
-
-    to {
-        opacity: 1;
-        transform:
-            translateY(0)
-            scale(1);
-    }
-
+    text-align: center;
+    background: linear-gradient(145deg,rgba(255,255,255,.72),rgba(224,210,177,.2));
+    font: 500 25px Georgia, serif;
+    animation: reveal .4s ease;
 }
 
 .score {
     margin-top: 8px;
-
-    color:
-        var(--text-soft);
-
-    font-family:
-        Inter,
-        Arial,
-        sans-serif;
-
-    font-size: 13px;
+    color: var(--soft);
+    font: 13px Inter,Arial,sans-serif;
 }
 
+.winner-pulse {
+    animation: winnerPulse .55s ease;
+}
 
-/* =========================================================
-   FOOTER
-   ========================================================= */
+@keyframes winnerPulse {
+    50% { transform: scale(1.22); filter: brightness(1.18); }
+}
 
 .version {
-    padding:
-        5px 20px 35px;
-
+    padding: 5px 20px 35px;
     text-align: center;
-
-    color:
-        var(--text-light);
-
-    font-size: 11px;
-
-    letter-spacing: 0.12em;
+    color: var(--light);
+    font-size: 10px;
+    letter-spacing: .14em;
 }
 
+/* ALERTA DE CAPTURA */
 
-/* =========================================================
-   MOBILE
-   ========================================================= */
+.capture-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    place-items: center;
+    padding: 20px;
+    background: rgba(41,37,29,.45);
+    backdrop-filter: blur(9px);
+}
 
-@media (max-width: 720px) {
+.capture-modal.active { display: grid; }
+
+.modal-card {
+    width: min(470px,100%);
+    padding: 34px;
+    border: 1px solid var(--gold);
+    border-radius: 24px;
+    background: #faf7ef;
+    text-align: center;
+    box-shadow: 0 30px 90px rgba(34,29,20,.28);
+    animation: modalIn .35s ease;
+}
+
+@keyframes modalIn {
+    from { opacity:0; transform:scale(.94); }
+    to { opacity:1; transform:scale(1); }
+}
+
+.modal-symbol {
+    width: 76px;
+    height: 76px;
+    margin: 0 auto 18px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    color: var(--gold-dark);
+    font-size: 31px;
+    animation: alertPulse .7s infinite alternate;
+}
+
+@keyframes alertPulse {
+    to { transform:scale(1.08); box-shadow:0 0 0 9px rgba(180,154,98,.09); }
+}
+
+.modal-card h2 {
+    margin: 0;
+    font: 500 27px Georgia, serif;
+}
+
+.modal-card p {
+    color: var(--soft);
+    line-height: 1.6;
+}
+
+.capture-countdown {
+    margin: 17px 0;
+    color: var(--gold-dark);
+    font: 500 42px Georgia, serif;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 9px;
+    flex-wrap: wrap;
+}
+
+@media(max-width:720px) {
+    .capture-grid,
+    .battle-zone,
+    .round {
+        grid-template-columns:1fr;
+    }
 
     .container {
-        width: 94%;
-        margin-top: 24px;
+        width:94%;
+        margin-top:24px;
     }
 
-    .panel {
-        padding: 21px;
-    }
+    .panel { padding:21px; }
 
-    .battle-zone {
-        grid-template-columns: 1fr;
-    }
+    .card-actions { flex-direction:column; }
 
-    .vs {
-        padding: 2px;
-    }
+    .inventory-header { flex-direction:column; }
 
-    .round {
-        grid-template-columns: 1fr;
-    }
+    .round-vs,
+    .vs { text-align:center; }
 
-    .round-vs {
-        text-align: center;
+    .secondary-button {
+        margin:8px 0 0;
     }
-
-    .card-actions {
-        flex-direction: column;
-    }
-
-    .inventory-header {
-        align-items: flex-start;
-        flex-direction: column;
-    }
-
 }
-
 </style>
 </head>
-
 
 <body>
 
 <header>
-
     <div class="brand">
-
-        <div class="brand-symbol">
-            ♪
-        </div>
-
-        <h1>
-            Batalha dos Sons
-        </h1>
-
+        <div class="brand-symbol">♪</div>
+        <h1>Batalha dos Sons</h1>
     </div>
-
-    <p>
-        Capture · Colecione · Batalhe
-    </p>
-
+    <p>Capture · Colecione · Batalhe</p>
 </header>
-
 
 <div class="container">
 
+<section class="panel">
+    <div class="panel-title">
+        <span class="panel-icon">◇</span>
+        <h2>Obter Sons</h2>
+    </div>
 
-    <!-- =====================================================
-         CAPTURA
-         ===================================================== -->
+    <p class="small-note">
+        Você pode criar um som quando quiser ou ativar a Caçada para receber oportunidades especiais de captura.
+    </p>
 
-    <section class="panel record-area">
+    <div class="capture-grid">
 
-        <div class="panel-title">
+        <div class="capture-box">
+            <h3>Criar Som</h3>
+            <p>
+                Grave livremente. Sons criados podem alcançar no máximo a raridade Raro.
+            </p>
 
-            <span class="panel-icon">
-                ◇
-            </span>
-
-            <h2>
-                Capturar Som
-            </h2>
-
-        </div>
-
-        <p class="small-note">
-            Transforme qualquer som em uma peça única
-            da sua coleção.
-        </p>
-
-        <button
-            id="recordButton"
-            class="record-button"
-            title="Gravar som"
-        >
-            🎙️
-        </button>
-
-        <div id="recordStatus">
-            Clique para começar a gravação
-        </div>
-
-        <input
-            id="soundName"
-            class="sound-name"
-            maxlength="30"
-            placeholder="Nome do som (opcional)"
-        >
-
-        <div class="capture-hint">
-            Clique novamente no microfone para finalizar.
-        </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         INVENTÁRIO
-         ===================================================== -->
-
-    <section class="panel">
-
-        <div class="inventory-header">
+            <button id="recordButton" class="record-button">🎙️</button>
 
             <div>
-
-                <div class="panel-title">
-
-                    <span class="panel-icon">
-                        ◇
-                    </span>
-
-                    <h2>
-                        Inventário
-                    </h2>
-
-                </div>
-
-                <p class="small-note">
-                    Seus sons ficam salvos neste navegador.
-                    Escolha dois para entrar na Arena.
-                </p>
-
+                <input
+                    id="soundName"
+                    class="sound-name"
+                    maxlength="30"
+                    placeholder="Nome do som (opcional)"
+                >
             </div>
 
-            <div
-                id="soundCounter"
-                class="sound-counter"
-            >
-                0 sons
+            <div id="recordStatus">
+                Clique no microfone para gravar.
             </div>
-
         </div>
 
-        <div
-            id="inventory"
-            class="inventory"
-        >
+        <div class="capture-box">
+            <h3>Caçada Sonora</h3>
+            <p>
+                Ative a Caçada. Em algum momento o aplicativo chamará você para capturar um som inesperado.
+            </p>
 
-            <div class="empty">
-                Sua coleção ainda está vazia.
+            <div class="hunt-actions">
+                <button id="huntButton" class="premium-button">
+                    ATIVAR CAÇADA
+                </button>
+
+                <button id="testCaptureButton" class="premium-button light-button">
+                    TESTAR EVENTO
+                </button>
             </div>
 
+            <div id="huntStatus" class="hunt-status">
+                Caçada desativada.
+            </div>
         </div>
 
-    </section>
+    </div>
+</section>
 
 
-    <!-- =====================================================
-         ARENA
-         ===================================================== -->
+<section class="panel">
 
-    <section class="panel">
-
-        <div class="panel-title">
-
-            <span class="panel-icon">
-                ◇
-            </span>
-
-            <h2>
-                Arena
-            </h2>
-
-        </div>
-
-        <p class="small-note">
-            Cada atributo é usado uma única vez.
-            Os confrontos são embaralhados novamente
-            a cada batalha.
-        </p>
-
-
-        <div class="battle-zone">
-
-            <div
-                id="fighterA"
-                class="fighter"
-            >
-
-                <div class="fighter-name">
-                    Som I
-                </div>
-
-                <p class="small-note">
-                    Selecione um som.
-                </p>
-
+    <div class="inventory-header">
+        <div>
+            <div class="panel-title">
+                <span class="panel-icon">◇</span>
+                <h2>Inventário</h2>
             </div>
 
-
-            <div class="vs">
-                VS
-            </div>
-
-
-            <div
-                id="fighterB"
-                class="fighter"
-            >
-
-                <div class="fighter-name">
-                    Som II
-                </div>
-
-                <p class="small-note">
-                    Selecione outro som.
-                </p>
-
-            </div>
-
+            <p class="small-note">
+                Seus sons ficam salvos neste navegador.
+            </p>
         </div>
 
+        <div id="soundCounter" class="sound-counter">
+            0 sons
+        </div>
+    </div>
 
-        <div class="battle-controls">
+    <div id="inventory" class="inventory">
+        <div class="empty">
+            Sua coleção ainda está vazia.
+        </div>
+    </div>
 
-            <button
-                id="battleButton"
-                class="battle-button"
-                disabled
-            >
-                BATALHAR
-            </button>
+</section>
 
-            <button
-                id="rematchButton"
-                class="
-                    battle-button
-                    secondary-button
-                "
-                style="display:none;"
-            >
-                REVANCHE
-            </button>
 
+<section class="panel">
+
+    <div class="panel-title">
+        <span class="panel-icon">◇</span>
+        <h2>Arena</h2>
+    </div>
+
+    <p class="small-note">
+        Cada atributo é utilizado apenas uma vez. Os pareamentos são sorteados novamente em cada batalha.
+    </p>
+
+    <div class="battle-zone">
+
+        <div id="fighterA" class="fighter">
+            <div class="fighter-name">Som I</div>
+            <p class="small-note">Selecione um som.</p>
         </div>
 
+        <div class="vs">VS</div>
 
-        <div
-            id="rounds"
-            class="rounds"
-        ></div>
+        <div id="fighterB" class="fighter">
+            <div class="fighter-name">Som II</div>
+            <p class="small-note">Selecione outro som.</p>
+        </div>
 
+    </div>
 
-        <div
-            id="finalResult"
-            class="final-result"
+    <div class="battle-controls">
+
+        <button id="battleButton" class="battle-button" disabled>
+            BATALHAR
+        </button>
+
+        <button
+            id="nextRoundButton"
+            class="battle-button secondary-button"
             style="display:none;"
-        ></div>
+        >
+            PRÓXIMA RODADA
+        </button>
 
-    </section>
+        <button
+            id="resultButton"
+            class="battle-button secondary-button"
+            style="display:none;"
+        >
+            VER RESULTADO
+        </button>
+
+        <button
+            id="rematchButton"
+            class="battle-button secondary-button"
+            style="display:none;"
+        >
+            REVANCHE
+        </button>
+
+    </div>
+
+    <div id="currentScore" class="current-score"></div>
+
+    <div id="rounds" class="rounds"></div>
+
+    <div
+        id="finalResult"
+        class="final-result"
+        style="display:none;"
+    ></div>
+
+</section>
 
 </div>
 
-
 <div class="version">
-    BATALHA DOS SONS · V3
+    BATALHA DOS SONS · V4
+</div>
+
+
+<!-- ALERTA DE CAPTURA -->
+
+<div id="captureModal" class="capture-modal">
+
+    <div class="modal-card">
+
+        <div class="modal-symbol">♪</div>
+
+        <h2>CAPTURA DISPONÍVEL</h2>
+
+        <p>
+            Grave algum som ao seu redor antes que a oportunidade desapareça.
+        </p>
+
+        <div id="captureCountdown" class="capture-countdown">
+            10
+        </div>
+
+        <div class="modal-buttons">
+
+            <button
+                id="captureNowButton"
+                class="premium-button"
+            >
+                GRAVAR AGORA
+            </button>
+
+            <button
+                id="ignoreCaptureButton"
+                class="premium-button light-button"
+            >
+                IGNORAR
+            </button>
+
+        </div>
+
+    </div>
+
 </div>
 
 
 <script>
 
 /* =========================================================
-   VARIÁVEIS GERAIS
+   ESTADO
    ========================================================= */
 
 let mediaRecorder = null;
+let currentStream = null;
 let audioChunks = [];
 let recording = false;
+
+let recordingMode = "created";
 
 let sounds = [];
 
 let selectedA = null;
 let selectedB = null;
 
+let huntActive = false;
+let huntTimer = null;
+
+let captureCountdownTimer = null;
+let captureSeconds = 10;
+
+let currentBattle = null;
+
 
 /* =========================================================
-   PALETA DE ESFERAS
+   PALETA
    ========================================================= */
 
 const orbPalette = [
-
-    "#16233F", // azul marinho
-
-    "#123A32", // esmeralda escuro
-
-    "#542932", // vinho
-
-    "#313A46", // grafite azulado
-
-    "#16414C", // petróleo
-
-    "#51405E", // ameixa
-
-    "#4F5735", // oliva escuro
-
-    "#784D3C", // terracota
-
-    "#35404A", // ardósia
-
-    "#3C324D", // violeta profundo
-
-    "#27515A", // teal profundo
-
-    "#664444"  // bordô queimado
-
+    "#16233F",
+    "#123A32",
+    "#542932",
+    "#313A46",
+    "#16414C",
+    "#51405E",
+    "#4F5735",
+    "#784D3C",
+    "#35404A",
+    "#3C324D",
+    "#27515A",
+    "#664444"
 ];
 
 
@@ -1348,7 +936,6 @@ const orbPalette = [
    ========================================================= */
 
 const attributeInfo = {
-
     grave: {
         name: "Grave",
         icon: "◐"
@@ -1373,18 +960,14 @@ const attributeInfo = {
         name: "Complexidade",
         icon: "◇"
     }
-
 };
 
-
 const attributeKeys = [
-
     "grave",
     "agudo",
     "impacto",
     "duracao",
     "complexidade"
-
 ];
 
 
@@ -1393,171 +976,172 @@ const attributeKeys = [
    ========================================================= */
 
 const recordButton =
-    document.getElementById(
-        "recordButton"
-    );
-
-const recordStatus =
-    document.getElementById(
-        "recordStatus"
-    );
-
-const inventory =
-    document.getElementById(
-        "inventory"
-    );
+    document.getElementById("recordButton");
 
 const soundNameInput =
-    document.getElementById(
-        "soundName"
-    );
+    document.getElementById("soundName");
+
+const recordStatus =
+    document.getElementById("recordStatus");
+
+const huntButton =
+    document.getElementById("huntButton");
+
+const testCaptureButton =
+    document.getElementById("testCaptureButton");
+
+const huntStatus =
+    document.getElementById("huntStatus");
+
+const inventory =
+    document.getElementById("inventory");
+
+const soundCounter =
+    document.getElementById("soundCounter");
 
 const fighterA =
-    document.getElementById(
-        "fighterA"
-    );
+    document.getElementById("fighterA");
 
 const fighterB =
-    document.getElementById(
-        "fighterB"
-    );
+    document.getElementById("fighterB");
 
 const battleButton =
-    document.getElementById(
-        "battleButton"
-    );
+    document.getElementById("battleButton");
+
+const nextRoundButton =
+    document.getElementById("nextRoundButton");
+
+const resultButton =
+    document.getElementById("resultButton");
 
 const rematchButton =
-    document.getElementById(
-        "rematchButton"
-    );
+    document.getElementById("rematchButton");
+
+const currentScore =
+    document.getElementById("currentScore");
 
 const roundsContainer =
-    document.getElementById(
-        "rounds"
-    );
+    document.getElementById("rounds");
 
 const finalResult =
-    document.getElementById(
-        "finalResult"
-    );
+    document.getElementById("finalResult");
 
-const soundCounterElement =
-    document.getElementById(
-        "soundCounter"
-    );
+const captureModal =
+    document.getElementById("captureModal");
+
+const captureCountdown =
+    document.getElementById("captureCountdown");
+
+const captureNowButton =
+    document.getElementById("captureNowButton");
+
+const ignoreCaptureButton =
+    document.getElementById("ignoreCaptureButton");
 
 
 /* =========================================================
    INDEXED DB
    ========================================================= */
 
-const DB_NAME =
-    "BatalhaDosSonsDB";
-
-const DB_VERSION =
-    1;
-
-const STORE_NAME =
-    "sounds";
-
+const DB_NAME = "BatalhaDosSonsDB";
+const DB_VERSION = 1;
+const STORE_NAME = "sounds";
 
 function openDatabase() {
 
-    return new Promise(
-        (resolve, reject) => {
+    return new Promise((resolve,reject) => {
 
-            const request =
-                indexedDB.open(
-                    DB_NAME,
-                    DB_VERSION
-                );
+        const request =
+            indexedDB.open(
+                DB_NAME,
+                DB_VERSION
+            );
 
-            request.onupgradeneeded =
-                event => {
+        request.onupgradeneeded =
+            event => {
 
-                    const db =
-                        event.target.result;
+                const db =
+                    event.target.result;
 
-                    if (
-                        !db.objectStoreNames.contains(
-                            STORE_NAME
-                        )
-                    ) {
+                if (
+                    !db.objectStoreNames.contains(
+                        STORE_NAME
+                    )
+                ) {
 
-                        db.createObjectStore(
-                            STORE_NAME,
-                            {
-                                keyPath: "id"
-                            }
-                        );
-
-                    }
-
-                };
-
-            request.onsuccess =
-                () => {
-
-                    resolve(
-                        request.result
+                    db.createObjectStore(
+                        STORE_NAME,
+                        {
+                            keyPath: "id"
+                        }
                     );
 
-                };
+                }
 
-            request.onerror =
-                () => {
+            };
 
-                    reject(
-                        request.error
-                    );
+        request.onsuccess =
+            () => resolve(
+                request.result
+            );
 
-                };
+        request.onerror =
+            () => reject(
+                request.error
+            );
 
-        }
-    );
+    });
 
 }
 
 
-async function saveSoundToDatabase(
-    sound
-) {
+async function saveSoundToDatabase(sound) {
 
     const db =
         await openDatabase();
 
-    return new Promise(
-        (resolve, reject) => {
+    return new Promise((resolve,reject) => {
 
-            const transaction =
-                db.transaction(
-                    STORE_NAME,
-                    "readwrite"
-                );
+        const tx =
+            db.transaction(
+                STORE_NAME,
+                "readwrite"
+            );
 
-            const store =
-                transaction.objectStore(
-                    STORE_NAME
-                );
+        const store =
+            tx.objectStore(
+                STORE_NAME
+            );
 
-            const request =
-                store.put(sound);
+        const storedSound = {
+            id: sound.id,
+            name: sound.name,
+            stats: sound.stats,
+            rarity: sound.rarity,
+            color: sound.color,
+            audioBlob: sound.audioBlob,
+            createdAt: sound.createdAt,
+            origin: sound.origin,
+            history: sound.history
+        };
 
-            request.onsuccess =
-                () => resolve();
+        const request =
+            store.put(
+                storedSound
+            );
 
-            request.onerror =
-                () =>
-                    reject(
-                        request.error
-                    );
+        request.onsuccess =
+            () => resolve();
 
-            transaction.oncomplete =
-                () => db.close();
+        request.onerror =
+            () => reject(
+                request.error
+            );
 
-        }
-    );
+        tx.oncomplete =
+            () => db.close();
+
+    });
 
 }
 
@@ -1567,52 +1151,42 @@ async function getAllSoundsFromDatabase() {
     const db =
         await openDatabase();
 
-    return new Promise(
-        (resolve, reject) => {
+    return new Promise((resolve,reject) => {
 
-            const transaction =
-                db.transaction(
-                    STORE_NAME,
-                    "readonly"
-                );
+        const tx =
+            db.transaction(
+                STORE_NAME,
+                "readonly"
+            );
 
-            const store =
-                transaction.objectStore(
-                    STORE_NAME
-                );
+        const store =
+            tx.objectStore(
+                STORE_NAME
+            );
 
-            const request =
-                store.getAll();
+        const request =
+            store.getAll();
 
-            request.onsuccess =
-                () => {
+        request.onsuccess =
+            () => resolve(
+                request.result || []
+            );
 
-                    resolve(
-                        request.result || []
-                    );
+        request.onerror =
+            () => reject(
+                request.error
+            );
 
-                };
+        tx.oncomplete =
+            () => db.close();
 
-            request.onerror =
-                () => {
-
-                    reject(
-                        request.error
-                    );
-
-                };
-
-            transaction.oncomplete =
-                () => db.close();
-
-        }
-    );
+    });
 
 }
 
 
 /* =========================================================
-   CARREGAR INVENTÁRIO
+   MIGRAÇÃO / CARREGAMENTO
    ========================================================= */
 
 async function loadSavedSounds() {
@@ -1623,37 +1197,21 @@ async function loadSavedSounds() {
             await getAllSoundsFromDatabase();
 
         sounds =
-            saved.map(
-                sound => {
-
-                    return {
-
-                        ...sound,
-
-                        audioURL:
-                            URL.createObjectURL(
-                                sound.audioBlob
-                            )
-
-                    };
-
-                }
-            );
+            saved.map(sound => normalizeSound(sound));
 
         sounds.sort(
-            (a, b) =>
-                b.createdAt -
-                a.createdAt
+            (a,b) =>
+                b.createdAt - a.createdAt
         );
 
         renderInventory();
 
     }
 
-    catch (error) {
+    catch(error) {
 
         console.error(
-            "Erro ao carregar sons:",
+            "Erro ao carregar inventário:",
             error
         );
 
@@ -1662,8 +1220,34 @@ async function loadSavedSounds() {
 }
 
 
+function normalizeSound(sound) {
+
+    return {
+        ...sound,
+
+        origin:
+            sound.origin ||
+            "created",
+
+        history:
+            sound.history ||
+            {
+                wins: 0,
+                losses: 0,
+                draws: 0
+            },
+
+        audioURL:
+            URL.createObjectURL(
+                sound.audioBlob
+            )
+    };
+
+}
+
+
 /* =========================================================
-   GRAVAÇÃO
+   GRAVAÇÃO NORMAL
    ========================================================= */
 
 recordButton.addEventListener(
@@ -1672,106 +1256,16 @@ recordButton.addEventListener(
 
         if (!recording) {
 
-            try {
+            recordingMode =
+                "created";
 
-                const stream =
-                    await navigator
-                        .mediaDevices
-                        .getUserMedia({
-                            audio: true
-                        });
-
-                mediaRecorder =
-                    new MediaRecorder(
-                        stream
-                    );
-
-                audioChunks = [];
-
-                mediaRecorder.ondataavailable =
-                    event => {
-
-                        if (
-                            event.data.size > 0
-                        ) {
-
-                            audioChunks.push(
-                                event.data
-                            );
-
-                        }
-
-                    };
-
-
-                mediaRecorder.onstop =
-                    async () => {
-
-                        const audioBlob =
-                            new Blob(
-                                audioChunks,
-                                {
-                                    type:
-                                        mediaRecorder
-                                            .mimeType
-                                }
-                            );
-
-                        await createSound(
-                            audioBlob
-                        );
-
-                        stream
-                            .getTracks()
-                            .forEach(
-                                track =>
-                                    track.stop()
-                            );
-
-                    };
-
-
-                mediaRecorder.start();
-
-                recording = true;
-
-                recordButton
-                    .classList
-                    .add(
-                        "recording"
-                    );
-
-                recordStatus.textContent =
-                    "Gravando… clique novamente para finalizar.";
-
-            }
-
-            catch (error) {
-
-                console.error(error);
-
-                alert(
-                    "Não consegui acessar o microfone. Verifique a permissão do navegador."
-                );
-
-            }
+            await startRecording();
 
         }
 
         else {
 
-            mediaRecorder.stop();
-
-            recording = false;
-
-            recordButton
-                .classList
-                .remove(
-                    "recording"
-                );
-
-            recordStatus.textContent =
-                "Analisando o som…";
+            stopRecording();
 
         }
 
@@ -1779,12 +1273,141 @@ recordButton.addEventListener(
 );
 
 
+async function startRecording() {
+
+    try {
+
+        currentStream =
+            await navigator.mediaDevices.getUserMedia({
+                audio: true
+            });
+
+        mediaRecorder =
+            new MediaRecorder(
+                currentStream
+            );
+
+        audioChunks = [];
+
+        mediaRecorder.ondataavailable =
+            event => {
+
+                if (event.data.size > 0) {
+                    audioChunks.push(
+                        event.data
+                    );
+                }
+
+            };
+
+        mediaRecorder.onstop =
+            async () => {
+
+                const blob =
+                    new Blob(
+                        audioChunks,
+                        {
+                            type:
+                                mediaRecorder.mimeType
+                        }
+                    );
+
+                await createSound(
+                    blob,
+                    recordingMode
+                );
+
+                if (currentStream) {
+
+                    currentStream
+                        .getTracks()
+                        .forEach(
+                            track => track.stop()
+                        );
+
+                }
+
+                currentStream = null;
+
+            };
+
+        mediaRecorder.start();
+
+        recording = true;
+
+        recordButton
+            .classList
+            .add("recording");
+
+        if (
+            recordingMode ===
+            "random"
+        ) {
+
+            recordButton.textContent =
+                "■";
+
+            recordStatus.textContent =
+                "Captura especial gravando… clique no microfone para finalizar.";
+
+        }
+
+        else {
+
+            recordStatus.textContent =
+                "Gravando… clique novamente para finalizar.";
+
+        }
+
+    }
+
+    catch(error) {
+
+        console.error(error);
+
+        alert(
+            "Não consegui acessar o microfone. Confira a permissão do navegador."
+        );
+
+    }
+
+}
+
+
+function stopRecording() {
+
+    if (
+        mediaRecorder &&
+        mediaRecorder.state !==
+        "inactive"
+    ) {
+
+        mediaRecorder.stop();
+
+    }
+
+    recording = false;
+
+    recordButton
+        .classList
+        .remove("recording");
+
+    recordButton.textContent =
+        "🎙️";
+
+    recordStatus.textContent =
+        "Analisando o som…";
+
+}
+
+
 /* =========================================================
    CRIAR SOM
    ========================================================= */
 
 async function createSound(
-    audioBlob
+    audioBlob,
+    mode
 ) {
 
     let stats;
@@ -1798,51 +1421,50 @@ async function createSound(
 
     }
 
-    catch (error) {
+    catch(error) {
 
         console.error(error);
 
         stats = {
-
-            grave:
-                randomStat(),
-
-            agudo:
-                randomStat(),
-
-            impacto:
-                randomStat(),
-
-            duracao:
-                randomStat(),
-
-            complexidade:
-                randomStat()
-
+            grave: randomStat(),
+            agudo: randomStat(),
+            impacto: randomStat(),
+            duracao: randomStat(),
+            complexidade: randomStat()
         };
 
     }
 
 
     const rarity =
-        calculateRarity(
-            stats
-        );
+        mode === "random"
+            ?
+            calculateCapturedRarity()
+            :
+            calculateCreatedRarity(
+                stats
+            );
 
-    const color =
-        elegantRandomColor();
+
+    const defaultName =
+        mode === "random"
+            ?
+            `Captura #${sounds.length + 1}`
+            :
+            `Som #${sounds.length + 1}`;
+
 
     const name =
-        soundNameInput
-            .value
-            .trim()
+        soundNameInput.value.trim()
         ||
-        `Som #${sounds.length + 1}`;
+        defaultName;
 
 
     const sound = {
 
         id:
+            typeof crypto !==
+            "undefined" &&
             crypto.randomUUID
                 ?
                 crypto.randomUUID()
@@ -1858,7 +1480,8 @@ async function createSound(
 
         rarity,
 
-        color,
+        color:
+            elegantRandomColor(),
 
         audioBlob,
 
@@ -1868,76 +1491,60 @@ async function createSound(
             ),
 
         createdAt:
-            Date.now()
+            Date.now(),
+
+        origin:
+            mode,
+
+        history: {
+            wins: 0,
+            losses: 0,
+            draws: 0
+        }
 
     };
 
 
-    sounds.unshift(
+    sounds.unshift(sound);
+
+    await saveSoundToDatabase(
         sound
     );
-
-
-    try {
-
-        await saveSoundToDatabase(
-            {
-
-                id:
-                    sound.id,
-
-                name:
-                    sound.name,
-
-                stats:
-                    sound.stats,
-
-                rarity:
-                    sound.rarity,
-
-                color:
-                    sound.color,
-
-                audioBlob:
-                    sound.audioBlob,
-
-                createdAt:
-                    sound.createdAt
-
-            }
-
-        );
-
-    }
-
-    catch (error) {
-
-        console.error(
-            "Erro ao salvar:",
-            error
-        );
-
-    }
-
-
-    renderInventory();
 
     soundNameInput.value =
         "";
 
-    recordStatus.textContent =
-        "Som capturado e salvo.";
+    renderInventory();
+
+
+    if (
+        mode === "random"
+    ) {
+
+        recordStatus.textContent =
+            `Captura concluída — ${rarity.name}!`;
+
+        if (huntActive) {
+            scheduleNextCapture();
+        }
+
+    }
+
+    else {
+
+        recordStatus.textContent =
+            "Som criado e salvo.";
+
+    }
 
 }
 
 
 /* =========================================================
-   ANÁLISE DO ÁUDIO
+   ANÁLISE DE ÁUDIO
    ========================================================= */
 
-async function analyzeAudio(
-    blob
-) {
+async function analyzeAudio(blob) {
 
     const arrayBuffer =
         await blob.arrayBuffer();
@@ -1950,23 +1557,17 @@ async function analyzeAudio(
         new AudioContextClass();
 
     const buffer =
-        await audioContext
-            .decodeAudioData(
-                arrayBuffer.slice(0)
-            );
+        await audioContext.decodeAudioData(
+            arrayBuffer.slice(0)
+        );
 
     const channel =
         buffer.getChannelData(0);
 
-
     let sumSquares = 0;
-
     let peak = 0;
-
     let zeroCrossings = 0;
-
     let differenceSum = 0;
-
 
     for (
         let i = 1;
@@ -1979,50 +1580,34 @@ async function analyzeAudio(
                 channel[i]
             );
 
-
         sumSquares +=
             channel[i] *
             channel[i];
 
-
-        if (
-            sample > peak
-        ) {
-
-            peak =
-                sample;
-
+        if (sample > peak) {
+            peak = sample;
         }
 
-
         if (
-
             (
                 channel[i - 1] < 0 &&
                 channel[i] >= 0
             )
-
             ||
-
             (
                 channel[i - 1] >= 0 &&
                 channel[i] < 0
             )
-
         ) {
 
             zeroCrossings++;
 
         }
 
-
         differenceSum +=
             Math.abs(
-
-                channel[i]
-                -
+                channel[i] -
                 channel[i - 1]
-
             );
 
     }
@@ -2030,24 +1615,16 @@ async function analyzeAudio(
 
     const rms =
         Math.sqrt(
-
             sumSquares /
-
             Math.max(
                 channel.length,
                 1
             )
-
         );
-
-
-    const duration =
-        buffer.duration;
 
 
     const crossingRate =
         zeroCrossings /
-
         Math.max(
             channel.length,
             1
@@ -2056,7 +1633,6 @@ async function analyzeAudio(
 
     const variation =
         differenceSum /
-
         Math.max(
             channel.length,
             1
@@ -2065,78 +1641,56 @@ async function analyzeAudio(
 
     const impacto =
         clamp(
-
             Math.round(
                 peak * 12
             ),
-
             0,
             10
-
         );
 
 
     const agudo =
         clamp(
-
             Math.round(
                 crossingRate * 170
             ),
-
             0,
             10
-
         );
 
 
     const grave =
         clamp(
-
             Math.round(
-
-                10
-                -
-                agudo
-                +
+                10 -
+                agudo +
                 rms * 4
-
             ),
-
             0,
             10
-
         );
 
 
     const duracao =
         clamp(
-
             Math.round(
-                duration * 1.4
+                buffer.duration *
+                1.4
             ),
-
             0,
             10
-
         );
 
 
     const complexidade =
         clamp(
-
             Math.round(
-
-                variation * 80
-                +
-                crossingRate * 60
-                +
+                variation * 80 +
+                crossingRate * 60 +
                 rms * 8
-
             ),
-
             0,
             10
-
         );
 
 
@@ -2144,136 +1698,390 @@ async function analyzeAudio(
 
 
     return {
-
         grave,
         agudo,
         impacto,
         duracao,
         complexidade
-
     };
 
 }
 
 
 /* =========================================================
-   RARIDADE
+   RARIDADE — SOM CRIADO
+   máximo: RARO
    ========================================================= */
 
-function calculateRarity(
-    stats
-) {
+function calculateCreatedRarity(stats) {
 
     const values =
-        Object.values(
-            stats
-        );
-
+        Object.values(stats);
 
     const average =
         values.reduce(
-
-            (
-                total,
-                value
-            ) =>
-                total + value,
-
+            (a,b) => a + b,
             0
-
         ) /
         values.length;
 
-
     const highest =
-        Math.max(
-            ...values
-        );
-
+        Math.max(...values);
 
     const score =
-        average * 0.75
-        +
-        highest * 0.25;
+        average * .75 +
+        highest * .25;
 
 
-    if (
-        score >= 8.5
-    ) {
+    if (score >= 6.3) {
 
         return {
-
-            name:
-                "LENDÁRIO",
-
-            color:
-                "#8A6A2F"
-
+            name: "RARO",
+            color: "#334F73"
         };
 
     }
 
 
-    if (
-        score >= 7
-    ) {
+    if (score >= 4.4) {
 
         return {
-
-            name:
-                "ÉPICO",
-
-            color:
-                "#654875"
-
-        };
-
-    }
-
-
-    if (
-        score >= 5.5
-    ) {
-
-        return {
-
-            name:
-                "RARO",
-
-            color:
-                "#334F73"
-
-        };
-
-    }
-
-
-    if (
-        score >= 4
-    ) {
-
-        return {
-
-            name:
-                "INCOMUM",
-
-            color:
-                "#476551"
-
+            name: "INCOMUM",
+            color: "#476551"
         };
 
     }
 
 
     return {
-
-        name:
-            "COMUM",
-
-        color:
-            "#77736B"
-
+        name: "COMUM",
+        color: "#77736B"
     };
+
+}
+
+
+/* =========================================================
+   RARIDADE — CAPTURA ALEATÓRIA
+
+   COMUM       40%
+   INCOMUM     27%
+   RARO        17%
+   ÉPICO        9%
+   LENDÁRIO     5%
+   MÍTICO       2%
+   ========================================================= */
+
+function calculateCapturedRarity() {
+
+    const roll =
+        Math.random() * 100;
+
+
+    if (roll < 2) {
+
+        return {
+            name: "MÍTICO",
+            color: "#8A3138"
+        };
+
+    }
+
+
+    if (roll < 7) {
+
+        return {
+            name: "LENDÁRIO",
+            color: "#9A722C"
+        };
+
+    }
+
+
+    if (roll < 16) {
+
+        return {
+            name: "ÉPICO",
+            color: "#654875"
+        };
+
+    }
+
+
+    if (roll < 33) {
+
+        return {
+            name: "RARO",
+            color: "#334F73"
+        };
+
+    }
+
+
+    if (roll < 60) {
+
+        return {
+            name: "INCOMUM",
+            color: "#476551"
+        };
+
+    }
+
+
+    return {
+        name: "COMUM",
+        color: "#77736B"
+    };
+
+}
+
+
+/* =========================================================
+   CAÇADA SONORA
+   ========================================================= */
+
+huntButton.addEventListener(
+    "click",
+    () => {
+
+        huntActive =
+            !huntActive;
+
+
+        if (huntActive) {
+
+            huntButton.textContent =
+                "DESATIVAR CAÇADA";
+
+            huntButton.classList.add(
+                "danger-button"
+            );
+
+            huntStatus.textContent =
+                "Caçada ativa. Uma oportunidade pode surgir a qualquer momento.";
+
+            scheduleNextCapture();
+
+        }
+
+        else {
+
+            huntButton.textContent =
+                "ATIVAR CAÇADA";
+
+            huntButton.classList.remove(
+                "danger-button"
+            );
+
+            huntStatus.textContent =
+                "Caçada desativada.";
+
+            clearTimeout(
+                huntTimer
+            );
+
+        }
+
+    }
+);
+
+
+testCaptureButton.addEventListener(
+    "click",
+    () => {
+
+        triggerCaptureEvent();
+
+    }
+);
+
+
+function scheduleNextCapture() {
+
+    clearTimeout(
+        huntTimer
+    );
+
+    if (!huntActive) {
+        return;
+    }
+
+    /*
+       MVP:
+       entre 30 e 90 segundos.
+       Depois podemos aumentar bastante.
+    */
+
+    const delay =
+        30000 +
+        Math.random() *
+        60000;
+
+
+    huntTimer =
+        setTimeout(
+            triggerCaptureEvent,
+            delay
+        );
+
+}
+
+
+function triggerCaptureEvent() {
+
+    if (
+        recording ||
+        captureModal
+            .classList
+            .contains("active")
+    ) {
+        return;
+    }
+
+
+    playAlertSound();
+
+    captureSeconds =
+        10;
+
+    captureCountdown.textContent =
+        captureSeconds;
+
+    captureModal
+        .classList
+        .add("active");
+
+
+    clearInterval(
+        captureCountdownTimer
+    );
+
+
+    captureCountdownTimer =
+        setInterval(
+            () => {
+
+                captureSeconds--;
+
+                captureCountdown.textContent =
+                    captureSeconds;
+
+
+                if (
+                    captureSeconds <= 0
+                ) {
+
+                    closeCaptureEvent();
+
+                    huntStatus.textContent =
+                        "A oportunidade escapou.";
+
+                    if (huntActive) {
+                        scheduleNextCapture();
+                    }
+
+                }
+
+            },
+            1000
+        );
+
+}
+
+
+function closeCaptureEvent() {
+
+    clearInterval(
+        captureCountdownTimer
+    );
+
+    captureModal
+        .classList
+        .remove("active");
+
+}
+
+
+captureNowButton.addEventListener(
+    "click",
+    async () => {
+
+        closeCaptureEvent();
+
+        recordingMode =
+            "random";
+
+        await startRecording();
+
+    }
+);
+
+
+ignoreCaptureButton.addEventListener(
+    "click",
+    () => {
+
+        closeCaptureEvent();
+
+        huntStatus.textContent =
+            "Oportunidade ignorada.";
+
+        if (huntActive) {
+            scheduleNextCapture();
+        }
+
+    }
+);
+
+
+function playAlertSound() {
+
+    try {
+
+        const AudioContextClass =
+            window.AudioContext ||
+            window.webkitAudioContext;
+
+        const ctx =
+            new AudioContextClass();
+
+        const osc =
+            ctx.createOscillator();
+
+        const gain =
+            ctx.createGain();
+
+        osc.frequency.value =
+            660;
+
+        gain.gain.value =
+            .06;
+
+        osc.connect(gain);
+
+        gain.connect(
+            ctx.destination
+        );
+
+        osc.start();
+
+        osc.stop(
+            ctx.currentTime +
+            .18
+        );
+
+        osc.onended =
+            () => ctx.close();
+
+    }
+
+    catch(error) {
+
+        console.log(
+            "Alerta sonoro indisponível."
+        );
+
+    }
 
 }
 
@@ -2288,7 +2096,7 @@ function renderInventory() {
         "";
 
 
-    soundCounterElement.textContent =
+    soundCounter.textContent =
         sounds.length === 1
             ?
             "1 som"
@@ -2301,13 +2109,9 @@ function renderInventory() {
     ) {
 
         inventory.innerHTML = `
-
             <div class="empty">
-
                 Sua coleção ainda está vazia.
-
             </div>
-
         `;
 
         return;
@@ -2316,21 +2120,17 @@ function renderInventory() {
 
 
     sounds.forEach(
-        sound => {
-
-            addSoundCard(
-                sound
-            );
-
-        }
+        sound =>
+            addSoundCard(sound)
     );
+
+
+    updateSelectionUI();
 
 }
 
 
-function addSoundCard(
-    sound
-) {
+function addSoundCard(sound) {
 
     const card =
         document.createElement(
@@ -2342,6 +2142,15 @@ function addSoundCard(
 
     card.dataset.id =
         sound.id;
+
+
+    const originText =
+        sound.origin ===
+        "random"
+            ?
+            "Captura Aleatória"
+            :
+            "Som Criado";
 
 
     card.innerHTML = `
@@ -2358,27 +2167,20 @@ function addSoundCard(
 
         </div>
 
-
         <h3>
-
-            ${escapeHTML(
-                sound.name
-            )}
-
+            ${escapeHTML(sound.name)}
         </h3>
-
 
         <div
             class="rarity"
-            style="
-                color:${sound.rarity.color};
-            "
+            style="color:${sound.rarity.color}"
         >
-
             ${sound.rarity.name}
-
         </div>
 
+        <div class="origin">
+            ${originText}
+        </div>
 
         <div class="stats">
 
@@ -2389,14 +2191,12 @@ function addSoundCard(
                 </span>
             </div>
 
-
             <div>
                 ◑ Agudo:
                 <span class="stat-value">
                     ${sound.stats.agudo}/10
                 </span>
             </div>
-
 
             <div>
                 ✦ Impacto:
@@ -2405,14 +2205,12 @@ function addSoundCard(
                 </span>
             </div>
 
-
             <div>
                 ◷ Duração:
                 <span class="stat-value">
                     ${sound.stats.duracao}/10
                 </span>
             </div>
-
 
             <div>
                 ◇ Complexidade:
@@ -2423,34 +2221,39 @@ function addSoundCard(
 
         </div>
 
+        <div class="history">
 
-        <div class="card-actions">
+            <span>
+                V <strong>
+                    ${sound.history.wins}
+                </strong>
+            </span>
 
-            <button
-                class="
-                    card-button
-                    play-button
-                "
-            >
+            <span>
+                D <strong>
+                    ${sound.history.losses}
+                </strong>
+            </span>
 
-                Ouvir
-
-            </button>
-
-
-            <button
-                class="
-                    card-button
-                    select-button
-                "
-            >
-
-                Selecionar
-
-            </button>
+            <span>
+                E <strong>
+                    ${sound.history.draws}
+                </strong>
+            </span>
 
         </div>
 
+        <div class="card-actions">
+
+            <button class="card-button play-button">
+                Ouvir
+            </button>
+
+            <button class="card-button select-button">
+                Selecionar
+            </button>
+
+        </div>
     `;
 
 
@@ -2462,18 +2265,6 @@ function addSoundCard(
     const orb =
         card.querySelector(
             ".sound-orb"
-        );
-
-
-    const playButton =
-        card.querySelector(
-            ".play-button"
-        );
-
-
-    const selectButton =
-        card.querySelector(
-            ".select-button"
         );
 
 
@@ -2498,48 +2289,55 @@ function addSoundCard(
     );
 
 
-    playButton.addEventListener(
-        "click",
-        event => {
+    card
+        .querySelector(
+            ".play-button"
+        )
+        .addEventListener(
+            "click",
+            event => {
 
-            event.stopPropagation();
+                event.stopPropagation();
 
-            playSound(
-                sound.audioURL,
-                orb
-            );
+                playSound(
+                    sound.audioURL,
+                    orb
+                );
 
-        }
-    );
+            }
+        );
 
 
-    selectButton.addEventListener(
-        "click",
-        event => {
+    card
+        .querySelector(
+            ".select-button"
+        )
+        .addEventListener(
+            "click",
+            event => {
 
-            event.stopPropagation();
+                event.stopPropagation();
 
-            selectSound(
-                sound
-            );
+                selectSound(
+                    sound
+                );
 
-        }
-    );
+            }
+        );
 
 }
 
 
 /* =========================================================
-   SELEÇÃO PARA ARENA
+   SELEÇÃO
    ========================================================= */
 
-function selectSound(
-    sound
-) {
+function selectSound(sound) {
 
     if (
         selectedA &&
-        selectedA.id === sound.id
+        selectedA.id ===
+        sound.id
     ) {
 
         selectedA =
@@ -2549,7 +2347,8 @@ function selectSound(
 
     else if (
         selectedB &&
-        selectedB.id === sound.id
+        selectedB.id ===
+        sound.id
     ) {
 
         selectedB =
@@ -2557,18 +2356,14 @@ function selectSound(
 
     }
 
-    else if (
-        !selectedA
-    ) {
+    else if (!selectedA) {
 
         selectedA =
             sound;
 
     }
 
-    else if (
-        !selectedB
-    ) {
+    else if (!selectedB) {
 
         selectedB =
             sound;
@@ -2588,12 +2383,10 @@ function selectSound(
 
     updateSelectionUI();
 
+    resetBattle();
+
 }
 
-
-/* =========================================================
-   UI DE SELEÇÃO
-   ========================================================= */
 
 function updateSelectionUI() {
 
@@ -2607,26 +2400,24 @@ function updateSelectionUI() {
                 const id =
                     card.dataset.id;
 
-
                 const selected =
-
                     (
                         selectedA &&
                         selectedA.id === id
                     )
-
                     ||
-
                     (
                         selectedB &&
                         selectedB.id === id
                     );
 
 
-                card.classList.toggle(
-                    "selected",
-                    selected
-                );
+                card
+                    .classList
+                    .toggle(
+                        "selected",
+                        selected
+                    );
 
 
                 const button =
@@ -2635,18 +2426,14 @@ function updateSelectionUI() {
                     );
 
 
-                if (
-                    selected
-                ) {
+                if (selected) {
 
                     button.textContent =
                         "Na Arena";
 
-                    button
-                        .classList
-                        .add(
-                            "selected-button"
-                        );
+                    button.classList.add(
+                        "selected-button"
+                    );
 
                 }
 
@@ -2655,11 +2442,9 @@ function updateSelectionUI() {
                     button.textContent =
                         "Selecionar";
 
-                    button
-                        .classList
-                        .remove(
-                            "selected-button"
-                        );
+                    button.classList.remove(
+                        "selected-button"
+                    );
 
                 }
 
@@ -2685,15 +2470,8 @@ function updateSelectionUI() {
         !selectedA ||
         !selectedB;
 
-
-    clearBattleResults();
-
 }
 
-
-/* =========================================================
-   LUTADORES
-   ========================================================= */
 
 function renderFighter(
     element,
@@ -2701,12 +2479,9 @@ function renderFighter(
     placeholder
 ) {
 
-    if (
-        !sound
-    ) {
+    if (!sound) {
 
         element.innerHTML = `
-
             <div class="fighter-name">
                 ${placeholder}
             </div>
@@ -2714,7 +2489,6 @@ function renderFighter(
             <p class="small-note">
                 Selecione um som.
             </p>
-
         `;
 
         return;
@@ -2732,25 +2506,15 @@ function renderFighter(
             "
         ></div>
 
-
         <div class="fighter-name">
-
-            ${escapeHTML(
-                sound.name
-            )}
-
+            ${escapeHTML(sound.name)}
         </div>
-
 
         <div
             class="fighter-rarity"
-            style="
-                color:${sound.rarity.color};
-            "
+            style="color:${sound.rarity.color}"
         >
-
             ${sound.rarity.name}
-
         </div>
 
     `;
@@ -2759,7 +2523,7 @@ function renderFighter(
 
 
 /* =========================================================
-   BATALHA
+   BATALHA MANUAL
    ========================================================= */
 
 battleButton.addEventListener(
@@ -2767,6 +2531,26 @@ battleButton.addEventListener(
     () => {
 
         startBattle();
+
+    }
+);
+
+
+nextRoundButton.addEventListener(
+    "click",
+    () => {
+
+        revealNextRound();
+
+    }
+);
+
+
+resultButton.addEventListener(
+    "click",
+    () => {
+
+        finishBattle();
 
     }
 );
@@ -2782,36 +2566,17 @@ rematchButton.addEventListener(
 );
 
 
-/* =========================================================
-   INICIAR BATALHA
-   ========================================================= */
-
 function startBattle() {
 
     if (
         !selectedA ||
         !selectedB
     ) {
-
         return;
-
     }
 
 
-    roundsContainer.innerHTML =
-        "";
-
-
-    finalResult.style.display =
-        "none";
-
-
-    rematchButton.style.display =
-        "none";
-
-
-    battleButton.disabled =
-        true;
+    resetBattleVisuals();
 
 
     const attributesA =
@@ -2826,381 +2591,334 @@ function startBattle() {
         );
 
 
-    let scoreA = 0;
-
-    let scoreB = 0;
-
-
-    const rounds =
-        [];
+    const rounds = [];
 
 
     for (
         let i = 0;
-        i < attributeKeys.length;
+        i < 5;
         i++
     ) {
 
         const attributeA =
             attributesA[i];
 
-
         const attributeB =
             attributesB[i];
-
 
         const valueA =
             selectedA.stats[
                 attributeA
             ];
 
-
         const valueB =
             selectedB.stats[
                 attributeB
             ];
 
+        let winner =
+            "DRAW";
 
-        let winner;
 
-
-        if (
-            valueA > valueB
-        ) {
-
-            winner =
-                "A";
-
-            scoreA +=
-                1;
-
+        if (valueA > valueB) {
+            winner = "A";
         }
 
-        else if (
-            valueB > valueA
-        ) {
-
-            winner =
-                "B";
-
-            scoreB +=
-                1;
-
-        }
-
-        else {
-
-            winner =
-                "EMPATE";
-
-            scoreA +=
-                0.5;
-
-            scoreB +=
-                0.5;
-
+        if (valueB > valueA) {
+            winner = "B";
         }
 
 
         rounds.push({
-
-            number:
-                i + 1,
-
+            number: i + 1,
             attributeA,
-
             attributeB,
-
             valueA,
-
             valueB,
-
             winner
-
         });
 
     }
 
 
-    showRounds(
-
+    currentBattle = {
         rounds,
-        scoreA,
-        scoreB
+        currentRound: 0,
+        scoreA: 0,
+        scoreB: 0,
+        historySaved: false
+    };
 
-    );
 
-}
+    battleButton.style.display =
+        "none";
 
-
-/* =========================================================
-   MOSTRAR RODADAS
-   ========================================================= */
-
-async function showRounds(
-    rounds,
-    scoreA,
-    scoreB
-) {
-
-    for (
-        const round of rounds
-    ) {
-
-        await wait(
-            800
-        );
-
-
-        const infoA =
-            attributeInfo[
-                round.attributeA
-            ];
-
-
-        const infoB =
-            attributeInfo[
-                round.attributeB
-            ];
-
-
-        const roundElement =
-            document.createElement(
-                "div"
-            );
-
-
-        roundElement.className =
-            "round";
-
-
-        let winnerText =
-            "Empate";
-
-
-        let winnerAClass =
-            "";
-
-
-        let winnerBClass =
-            "";
-
-
-        if (
-            round.winner === "A"
-        ) {
-
-            winnerText =
-                `${selectedA.name} venceu a rodada`;
-
-            winnerAClass =
-                "winner";
-
-
-            pulseFighter(
-                "A"
-            );
-
-        }
-
-        else if (
-            round.winner === "B"
-        ) {
-
-            winnerText =
-                `${selectedB.name} venceu a rodada`;
-
-            winnerBClass =
-                "winner";
-
-
-            pulseFighter(
-                "B"
-            );
-
-        }
-
-
-        roundElement.innerHTML = `
-
-            <div
-                class="
-                    attribute-box
-                    ${winnerAClass}
-                "
-            >
-
-                <div class="attribute-name">
-
-                    ${infoA.icon}
-                    ${infoA.name}
-
-                </div>
-
-                <div class="attribute-value">
-
-                    ${round.valueA}
-
-                </div>
-
-            </div>
-
-
-            <div class="round-vs">
-
-                VS
-
-            </div>
-
-
-            <div
-                class="
-                    attribute-box
-                    ${winnerBClass}
-                "
-            >
-
-                <div class="attribute-name">
-
-                    ${infoB.icon}
-                    ${infoB.name}
-
-                </div>
-
-                <div class="attribute-value">
-
-                    ${round.valueB}
-
-                </div>
-
-            </div>
-
-
-            <div class="round-winner">
-
-                Rodada ${round.number}
-                ·
-                ${escapeHTML(
-                    winnerText
-                )}
-
-            </div>
-
-        `;
-
-
-        roundsContainer.appendChild(
-            roundElement
-        );
-
-
-        roundElement.scrollIntoView({
-            behavior:
-                "smooth",
-
-            block:
-                "nearest"
-        });
-
-    }
-
-
-    await wait(
-        650
-    );
-
-
-    showFinalResult(
-        scoreA,
-        scoreB
-    );
-
-
-    battleButton.disabled =
-        false;
-
-
-    rematchButton.style.display =
+    nextRoundButton.style.display =
         "inline-block";
 
+    nextRoundButton.textContent =
+        "REVELAR 1ª RODADA";
+
+
+    currentScore.textContent =
+        "A batalha começou. Revele o primeiro confronto.";
+
 }
 
 
 /* =========================================================
-   PULSO DO VENCEDOR
+   REVELAR UMA RODADA
    ========================================================= */
 
-function pulseFighter(
-    side
-) {
+function revealNextRound() {
 
-    const fighter =
-        side === "A"
-            ?
-            fighterA
-            :
-            fighterB;
-
-
-    const orb =
-        fighter.querySelector(
-            ".fighter-orb"
-        );
+    if (!currentBattle) {
+        return;
+    }
 
 
     if (
-        !orb
+        currentBattle.currentRound >=
+        currentBattle.rounds.length
     ) {
         return;
     }
 
 
-    orb.classList.remove(
-        "round-winner-orb"
+    const round =
+        currentBattle.rounds[
+            currentBattle.currentRound
+        ];
+
+
+    if (
+        round.winner === "A"
+    ) {
+
+        currentBattle.scoreA +=
+            1;
+
+    }
+
+    else if (
+        round.winner === "B"
+    ) {
+
+        currentBattle.scoreB +=
+            1;
+
+    }
+
+    else {
+
+        currentBattle.scoreA +=
+            .5;
+
+        currentBattle.scoreB +=
+            .5;
+
+    }
+
+
+    renderRound(
+        round
     );
 
 
-    void orb.offsetWidth;
+    currentBattle.currentRound++;
 
 
-    orb.classList.add(
-        "round-winner-orb"
-    );
+    currentScore.textContent =
+        `${escapeHTML(selectedA.name)} ${formatScore(currentBattle.scoreA)} × ${formatScore(currentBattle.scoreB)} ${escapeHTML(selectedB.name)}`;
+
+
+    if (
+        currentBattle.currentRound >= 5
+    ) {
+
+        nextRoundButton.style.display =
+            "none";
+
+        resultButton.style.display =
+            "inline-block";
+
+    }
+
+    else {
+
+        nextRoundButton.textContent =
+            `PRÓXIMA RODADA · ${currentBattle.currentRound + 1}/5`;
+
+    }
 
 }
 
 
 /* =========================================================
-   RESULTADO FINAL
+   DESENHAR RODADA
    ========================================================= */
 
-function showFinalResult(
-    scoreA,
-    scoreB
-) {
+function renderRound(round) {
+
+    const infoA =
+        attributeInfo[
+            round.attributeA
+        ];
+
+    const infoB =
+        attributeInfo[
+            round.attributeB
+        ];
+
+
+    let winnerText =
+        "Empate";
+
+    let classA =
+        "";
+
+    let classB =
+        "";
+
+
+    if (
+        round.winner === "A"
+    ) {
+
+        winnerText =
+            `${selectedA.name} venceu a rodada`;
+
+        classA =
+            "winner";
+
+        pulseFighter(
+            fighterA
+        );
+
+    }
+
+
+    if (
+        round.winner === "B"
+    ) {
+
+        winnerText =
+            `${selectedB.name} venceu a rodada`;
+
+        classB =
+            "winner";
+
+        pulseFighter(
+            fighterB
+        );
+
+    }
+
+
+    const element =
+        document.createElement(
+            "div"
+        );
+
+
+    element.className =
+        "round";
+
+
+    element.innerHTML = `
+
+        <div class="attribute-box ${classA}">
+
+            <div class="attribute-name">
+                ${infoA.icon}
+                ${infoA.name}
+            </div>
+
+            <div class="attribute-value">
+                ${round.valueA}
+            </div>
+
+        </div>
+
+
+        <div class="round-vs">
+            VS
+        </div>
+
+
+        <div class="attribute-box ${classB}">
+
+            <div class="attribute-name">
+                ${infoB.icon}
+                ${infoB.name}
+            </div>
+
+            <div class="attribute-value">
+                ${round.valueB}
+            </div>
+
+        </div>
+
+
+        <div class="round-winner">
+
+            Rodada ${round.number}
+            ·
+            ${escapeHTML(winnerText)}
+
+        </div>
+
+    `;
+
+
+    roundsContainer.appendChild(
+        element
+    );
+
+
+    element.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest"
+    });
+
+}
+
+
+/* =========================================================
+   RESULTADO
+   ========================================================= */
+
+async function finishBattle() {
+
+    if (!currentBattle) {
+        return;
+    }
+
+
+    resultButton.style.display =
+        "none";
+
 
     let result;
 
 
     if (
-        scoreA > scoreB
+        currentBattle.scoreA >
+        currentBattle.scoreB
     ) {
 
         result =
-            `◇ ${escapeHTML(
-                selectedA.name
-            )} venceu`;
+            `◇ ${escapeHTML(selectedA.name)} venceu`;
 
     }
 
     else if (
-        scoreB > scoreA
+        currentBattle.scoreB >
+        currentBattle.scoreA
     ) {
 
         result =
-            `◇ ${escapeHTML(
-                selectedB.name
-            )} venceu`;
+            `◇ ${escapeHTML(selectedB.name)} venceu`;
 
     }
 
@@ -3218,23 +2936,19 @@ function showFinalResult(
 
         <div class="score">
 
-            ${escapeHTML(
-                selectedA.name
-            )}
+            ${escapeHTML(selectedA.name)}
 
             ${formatScore(
-                scoreA
+                currentBattle.scoreA
             )}
 
             &nbsp; × &nbsp;
 
             ${formatScore(
-                scoreB
+                currentBattle.scoreB
             )}
 
-            ${escapeHTML(
-                selectedB.name
-            )}
+            ${escapeHTML(selectedB.name)}
 
         </div>
 
@@ -3245,41 +2959,155 @@ function showFinalResult(
         "block";
 
 
+    rematchButton.style.display =
+        "inline-block";
+
+
+    if (
+        !currentBattle.historySaved
+    ) {
+
+        await saveBattleHistory();
+
+        currentBattle.historySaved =
+            true;
+
+    }
+
+
     finalResult.scrollIntoView({
-
-        behavior:
-            "smooth",
-
-        block:
-            "nearest"
-
+        behavior: "smooth",
+        block: "nearest"
     });
 
 }
 
 
 /* =========================================================
-   LIMPAR BATALHA
+   HISTÓRICO
    ========================================================= */
 
-function clearBattleResults() {
+async function saveBattleHistory() {
 
-    roundsContainer.innerHTML =
-        "";
+    if (
+        currentBattle.scoreA >
+        currentBattle.scoreB
+    ) {
+
+        selectedA.history.wins++;
+        selectedB.history.losses++;
+
+    }
+
+    else if (
+        currentBattle.scoreB >
+        currentBattle.scoreA
+    ) {
+
+        selectedB.history.wins++;
+        selectedA.history.losses++;
+
+    }
+
+    else {
+
+        selectedA.history.draws++;
+        selectedB.history.draws++;
+
+    }
 
 
-    finalResult.style.display =
-        "none";
+    await Promise.all([
+        saveSoundToDatabase(
+            selectedA
+        ),
+
+        saveSoundToDatabase(
+            selectedB
+        )
+    ]);
 
 
-    rematchButton.style.display =
-        "none";
+    renderInventory();
 
 }
 
 
 /* =========================================================
-   TOCAR ÁUDIO + ESFERA
+   RESET BATALHA
+   ========================================================= */
+
+function resetBattleVisuals() {
+
+    roundsContainer.innerHTML =
+        "";
+
+    finalResult.style.display =
+        "none";
+
+    nextRoundButton.style.display =
+        "none";
+
+    resultButton.style.display =
+        "none";
+
+    rematchButton.style.display =
+        "none";
+
+    currentScore.textContent =
+        "";
+
+}
+
+
+function resetBattle() {
+
+    currentBattle =
+        null;
+
+    resetBattleVisuals();
+
+    battleButton.style.display =
+        "inline-block";
+
+    battleButton.disabled =
+        !selectedA ||
+        !selectedB;
+
+}
+
+
+/* =========================================================
+   PULSO
+   ========================================================= */
+
+function pulseFighter(fighter) {
+
+    const orb =
+        fighter.querySelector(
+            ".fighter-orb"
+        );
+
+    if (!orb) {
+        return;
+    }
+
+
+    orb.classList.remove(
+        "winner-pulse"
+    );
+
+    void orb.offsetWidth;
+
+    orb.classList.add(
+        "winner-pulse"
+    );
+
+}
+
+
+/* =========================================================
+   TOCAR SOM + BOLINHA
    ========================================================= */
 
 function playSound(
@@ -3303,15 +3131,13 @@ function playSound(
 
 
     const source =
-        context
-            .createMediaElementSource(
-                audio
-            );
+        context.createMediaElementSource(
+            audio
+        );
 
 
     const analyser =
-        context
-            .createAnalyser();
+        context.createAnalyser();
 
 
     analyser.fftSize =
@@ -3330,10 +3156,7 @@ function playSound(
 
     const data =
         new Uint8Array(
-
-            analyser
-                .frequencyBinCount
-
+            analyser.frequencyBinCount
         );
 
 
@@ -3350,31 +3173,24 @@ function playSound(
             orb.style.transform =
                 "scale(1)";
 
-
             orb.style.borderRadius =
                 "50%";
 
-
             context.close();
-
 
             return;
 
         }
 
 
-        analyser
-            .getByteFrequencyData(
-                data
-            );
+        analyser.getByteFrequencyData(
+            data
+        );
 
 
         let total = 0;
-
         let lowTotal = 0;
-
         let highTotal = 0;
-
 
         const half =
             Math.floor(
@@ -3388,13 +3204,9 @@ function playSound(
             i++
         ) {
 
-            total +=
-                data[i];
+            total += data[i];
 
-
-            if (
-                i < half
-            ) {
+            if (i < half) {
 
                 lowTotal +=
                     data[i];
@@ -3423,7 +3235,6 @@ function playSound(
 
         const high =
             highTotal /
-
             (
                 data.length -
                 half
@@ -3431,35 +3242,26 @@ function playSound(
 
 
         const scale =
-            1
-            +
+            1 +
             (
-                average /
-                255
-            )
-            *
-            0.75;
+                average / 255
+            ) *
+            .75;
 
 
         const shapeA =
-            38
-            +
+            38 +
             (
-                low /
-                255
-            )
-            *
+                low / 255
+            ) *
             23;
 
 
         const shapeB =
-            38
-            +
+            38 +
             (
-                high /
-                255
-            )
-            *
+                high / 255
+            ) *
             23;
 
 
@@ -3468,11 +3270,7 @@ function playSound(
 
 
         orb.style.borderRadius =
-
-            `${shapeA}% 
-             ${shapeB}% 
-             ${60 - shapeA / 4}% 
-             ${50 + shapeB / 6}%`;
+            `${shapeA}% ${shapeB}% ${60 - shapeA / 4}% ${50 + shapeB / 6}%`;
 
 
         requestAnimationFrame(
@@ -3488,60 +3286,41 @@ function playSound(
 
 
 /* =========================================================
-   CORES
+   UTILIDADES
    ========================================================= */
 
 function elegantRandomColor() {
 
     return orbPalette[
-
         Math.floor(
-
-            Math.random()
-            *
+            Math.random() *
             orbPalette.length
-
         )
-
     ];
 
 }
 
 
-/* =========================================================
-   EMBARALHAR
-   ========================================================= */
-
-function shuffle(
-    array
-) {
+function shuffle(array) {
 
     for (
-
         let i =
             array.length - 1;
-
         i > 0;
-
         i--
-
     ) {
 
         const j =
             Math.floor(
-
-                Math.random()
-                *
+                Math.random() *
                 (i + 1)
-
             );
 
 
         [
             array[i],
             array[j]
-        ]
-        =
+        ] =
         [
             array[j],
             array[i]
@@ -3549,28 +3328,7 @@ function shuffle(
 
     }
 
-
     return array;
-
-}
-
-
-/* =========================================================
-   UTILIDADES
-   ========================================================= */
-
-function wait(
-    milliseconds
-) {
-
-    return new Promise(
-        resolve =>
-
-            setTimeout(
-                resolve,
-                milliseconds
-            )
-    );
 
 }
 
@@ -3578,11 +3336,8 @@ function wait(
 function randomStat() {
 
     return Math.floor(
-
-        Math.random()
-        *
+        Math.random() *
         11
-
     );
 
 }
@@ -3595,22 +3350,17 @@ function clamp(
 ) {
 
     return Math.min(
-
         Math.max(
             value,
             min
         ),
-
         max
-
     );
 
 }
 
 
-function formatScore(
-    score
-) {
+function formatScore(score) {
 
     return Number.isInteger(
         score
@@ -3623,21 +3373,15 @@ function formatScore(
 }
 
 
-function escapeHTML(
-    text
-) {
+function escapeHTML(text) {
 
     const div =
         document.createElement(
             "div"
         );
 
-
     div.textContent =
-        String(
-            text
-        );
-
+        String(text);
 
     return div.innerHTML;
 
@@ -3645,7 +3389,7 @@ function escapeHTML(
 
 
 /* =========================================================
-   INICIAR V3
+   INICIAR
    ========================================================= */
 
 loadSavedSounds();
